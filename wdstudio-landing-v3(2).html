@@ -1,0 +1,1222 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WD Studio Agency — Digital Solutions</title>
+<meta name="description" content="Soluciones digitales personalizadas e inteligencia artificial para empresas worldwide. Chatbots IA, desarrollo web y automatización desde $333 USD.">
+<style>
+:root {
+  --black: #000000;
+  --white: #ffffff;
+  --gray-50: #fafafa;
+  --gray-100: #f5f5f5;
+  --gray-200: #e5e5e5;
+  --gray-300: #d4d4d4;
+  --gray-400: #a3a3a3;
+  --gray-500: #737373;
+  --gray-600: #525252;
+  --gray-700: #404040;
+  --gray-800: #262626;
+  --gray-900: #171717;
+  --gray-950: #0a0a0a;
+}
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  background: var(--white);
+  color: var(--black);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+html[dir="rtl"] body { font-family: 'Segoe UI', Tahoma, Arial, sans-serif; }
+html[lang="zh"] body { font-family: 'PingFang SC', 'Microsoft YaHei', 'Helvetica Neue', sans-serif; }
+
+a { color: inherit; text-decoration: none; }
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 clamp(1.5rem, 5vw, 4rem);
+}
+
+/* ===== NAV ===== */
+.nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 1000;
+  padding: 1.5rem clamp(1.5rem, 5vw, 4rem);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: transparent;
+  transition: all 0.4s;
+}
+
+.nav.scrolled {
+  background: rgba(255,255,255,0.95);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--gray-200);
+  padding-top: 1rem; padding-bottom: 1rem;
+}
+
+.nav-logo img {
+  height: 32px;
+  width: auto;
+  transition: opacity 0.4s;
+}
+
+.nav-logo .logo-light { display: block; }
+.nav-logo .logo-dark { display: none; }
+.nav.scrolled .nav-logo .logo-light { display: none; }
+.nav.scrolled .nav-logo .logo-dark { display: block; }
+
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.nav-link {
+  font-size: 0.75rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.7);
+  transition: color 0.3s;
+  font-weight: 500;
+}
+
+.nav.scrolled .nav-link { color: var(--gray-500); }
+.nav-link:hover { color: var(--white); }
+.nav.scrolled .nav-link:hover { color: var(--black); }
+
+.nav-cta {
+  font-size: 0.7rem;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  font-weight: 600;
+  padding: 0.6rem 1.5rem;
+  border: 1px solid rgba(255,255,255,0.3);
+  color: var(--white);
+  transition: all 0.3s;
+}
+
+.nav.scrolled .nav-cta { border-color: var(--black); color: var(--black); }
+.nav-cta:hover { background: var(--white); color: var(--black); }
+.nav.scrolled .nav-cta:hover { background: var(--black); color: var(--white); }
+
+/* Language Switcher */
+.lang-switch {
+  display: flex;
+  gap: 2px;
+  background: rgba(255,255,255,0.1);
+  border-radius: 4px;
+  padding: 2px;
+  transition: background 0.4s;
+}
+
+.nav.scrolled .lang-switch { background: var(--gray-100); }
+
+.lang-btn {
+  padding: 0.35rem 0.55rem;
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  border: none;
+  background: transparent;
+  color: rgba(255,255,255,0.5);
+  cursor: pointer;
+  transition: all 0.3s;
+  border-radius: 3px;
+  font-family: inherit;
+}
+
+.nav.scrolled .lang-btn { color: var(--gray-400); }
+
+.lang-btn.active {
+  background: var(--white);
+  color: var(--black);
+}
+
+.nav.scrolled .lang-btn.active {
+  background: var(--black);
+  color: var(--white);
+}
+
+/* ===== HERO ===== */
+.hero {
+  min-height: 100vh;
+  background: var(--black);
+  color: var(--white);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 10rem 0 8rem;
+}
+
+.hero-label {
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  color: var(--gray-500);
+  margin-bottom: 2.5rem;
+  opacity: 0; animation: fadeIn 0.6s 0.2s forwards;
+}
+
+.hero-title {
+  font-size: clamp(2.5rem, 6.5vw, 5.5rem);
+  font-weight: 300;
+  line-height: 1.08;
+  letter-spacing: -0.03em;
+  max-width: 900px;
+  margin-bottom: 2.5rem;
+  opacity: 0; animation: fadeIn 0.6s 0.4s forwards;
+}
+
+html[dir="rtl"] .hero-title { letter-spacing: 0; }
+html[lang="zh"] .hero-title { letter-spacing: 0; }
+
+.hero-title strong { font-weight: 700; }
+
+.hero-sub {
+  font-size: clamp(0.95rem, 1.3vw, 1.1rem);
+  color: var(--gray-400);
+  max-width: 480px;
+  line-height: 1.7;
+  font-weight: 300;
+  margin-bottom: 2rem;
+  opacity: 0; animation: fadeIn 0.6s 0.6s forwards;
+}
+
+.hero-price {
+  font-size: 0.95rem;
+  color: var(--gray-300);
+  font-weight: 300;
+  margin-bottom: 3rem;
+  opacity: 0; animation: fadeIn 0.6s 0.7s forwards;
+  letter-spacing: 0.5px;
+}
+
+.hero-price strong {
+  font-weight: 700;
+  color: var(--white);
+  font-size: 1.1rem;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  opacity: 0; animation: fadeIn 0.6s 0.8s forwards;
+}
+
+/* Buttons */
+.btn-white {
+  display: inline-flex; align-items: center; gap: 0.6rem;
+  padding: 1rem 2.2rem;
+  background: var(--white); color: var(--black);
+  font-size: 0.75rem; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 1.5px;
+  border: none; cursor: pointer; transition: all 0.3s;
+  font-family: inherit;
+}
+.btn-white:hover { background: var(--gray-200); transform: translateY(-1px); }
+
+.btn-ghost {
+  display: inline-flex; align-items: center; gap: 0.6rem;
+  padding: 1rem 2.2rem;
+  background: transparent; color: var(--white);
+  font-size: 0.75rem; font-weight: 500;
+  text-transform: uppercase; letter-spacing: 1.5px;
+  border: 1px solid var(--gray-700); cursor: pointer; transition: all 0.3s;
+  font-family: inherit;
+}
+.btn-ghost:hover { border-color: var(--gray-400); }
+
+.btn-black {
+  display: inline-flex; align-items: center; gap: 0.6rem;
+  padding: 1rem 2.2rem;
+  background: var(--black); color: var(--white);
+  font-size: 0.75rem; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 1.5px;
+  border: 1px solid var(--black); cursor: pointer; transition: all 0.3s;
+  font-family: inherit;
+}
+.btn-black:hover { background: var(--gray-800); transform: translateY(-1px); }
+
+/* ===== METRICS ===== */
+.metrics {
+  padding: 5rem 0;
+  border-bottom: 1px solid var(--gray-200);
+}
+
+.metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.metric {
+  text-align: center;
+  padding: 1.5rem;
+  border-right: 1px solid var(--gray-200);
+}
+
+html[dir="rtl"] .metric { border-right: none; border-left: 1px solid var(--gray-200); }
+html[dir="rtl"] .metric:last-child { border-left: none; }
+
+.metric:last-child { border-right: none; }
+
+.metric-value {
+  font-size: 2.8rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
+
+.metric-label {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--gray-500);
+  margin-top: 0.6rem;
+}
+
+/* ===== SERVICES ===== */
+.services { padding: 8rem 0; }
+
+.section-label {
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  color: var(--gray-500);
+  margin-bottom: 1.5rem;
+  font-weight: 500;
+}
+
+.section-heading {
+  font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+  font-weight: 300;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  max-width: 600px;
+  margin-bottom: 4rem;
+}
+
+html[dir="rtl"] .section-heading { letter-spacing: 0; }
+
+.section-heading strong { font-weight: 700; }
+
+.services-list { display: flex; flex-direction: column; }
+
+.service-row {
+  display: grid;
+  grid-template-columns: 80px 1fr 1fr;
+  gap: 3rem;
+  align-items: start;
+  padding: 2.5rem 0;
+  border-top: 1px solid var(--gray-200);
+  transition: background 0.3s;
+  cursor: default;
+}
+
+.service-row:hover {
+  background: var(--gray-50);
+  margin: 0 -2rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
+.service-num {
+  font-size: 0.7rem;
+  letter-spacing: 1px;
+  color: var(--gray-400);
+  padding-top: 0.3rem;
+  font-weight: 500;
+}
+
+.service-name {
+  font-size: 1.3rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  line-height: 1.3;
+}
+
+.service-desc {
+  font-size: 0.88rem;
+  color: var(--gray-600);
+  line-height: 1.7;
+  font-weight: 300;
+}
+
+/* ===== AI SECTION ===== */
+.ai-section {
+  background: var(--gray-950);
+  color: var(--white);
+  padding: 8rem 0;
+}
+
+.ai-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6rem;
+  align-items: start;
+}
+
+.ai-heading {
+  font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+  font-weight: 300;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  margin-bottom: 1.5rem;
+}
+
+.ai-heading strong { font-weight: 700; }
+
+.ai-sub {
+  color: var(--gray-400);
+  font-size: 0.95rem;
+  line-height: 1.7;
+  font-weight: 300;
+  margin-bottom: 2.5rem;
+}
+
+.ai-cta-row { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+.ai-features { display: flex; flex-direction: column; }
+
+.ai-feature {
+  padding: 1.8rem 0;
+  border-bottom: 1px solid var(--gray-800);
+}
+
+.ai-feature:first-child { border-top: 1px solid var(--gray-800); }
+
+.ai-feature-title {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.ai-feature-title::before {
+  content: '';
+  width: 6px; height: 6px;
+  background: var(--white);
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.ai-feature-desc {
+  font-size: 0.85rem;
+  color: var(--gray-500);
+  line-height: 1.6;
+  font-weight: 300;
+  padding-left: 1.5rem;
+}
+
+html[dir="rtl"] .ai-feature-desc { padding-left: 0; padding-right: 1.5rem; }
+
+/* ===== PROCESS ===== */
+.process {
+  padding: 8rem 0;
+  border-bottom: 1px solid var(--gray-200);
+}
+
+.process-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  margin-top: 4rem;
+}
+
+.process-step {
+  padding: 2rem 2rem 2rem 0;
+  border-right: 1px solid var(--gray-200);
+}
+
+html[dir="rtl"] .process-step { border-right: none; border-left: 1px solid var(--gray-200); padding: 2rem 0 2rem 2rem; }
+html[dir="rtl"] .process-step:last-child { border-left: none; }
+
+.process-step:last-child { border-right: none; }
+
+.process-num {
+  font-size: 3rem;
+  font-weight: 200;
+  color: var(--gray-300);
+  line-height: 1;
+  margin-bottom: 1.5rem;
+}
+
+.process-title {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+}
+
+.process-desc {
+  font-size: 0.83rem;
+  color: var(--gray-500);
+  line-height: 1.7;
+  font-weight: 300;
+}
+
+/* ===== FORM ===== */
+.form-section { padding: 8rem 0; }
+
+.form-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6rem;
+  align-items: start;
+}
+
+.form-info-heading {
+  font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+  font-weight: 300;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  margin-bottom: 1.5rem;
+}
+
+.form-info-heading strong { font-weight: 700; }
+
+.form-info-text {
+  font-size: 0.95rem;
+  color: var(--gray-600);
+  line-height: 1.7;
+  font-weight: 300;
+  margin-bottom: 2.5rem;
+}
+
+.form-benefits { display: flex; flex-direction: column; gap: 1rem; }
+
+.form-benefit {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  font-size: 0.88rem;
+  color: var(--gray-600);
+}
+
+.form-benefit::before {
+  content: '→';
+  color: var(--black);
+  font-weight: 600;
+  flex-shrink: 0;
+}
+
+html[dir="rtl"] .form-benefit::before { content: '←'; }
+
+.form-card {
+  background: var(--gray-50);
+  border: 1px solid var(--gray-200);
+  padding: 2.5rem;
+}
+
+.form-group { margin-bottom: 1.5rem; }
+
+.form-label {
+  display: block;
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--gray-500);
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+}
+
+.form-input {
+  width: 100%;
+  padding: 0.85rem 0;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--gray-300);
+  color: var(--black);
+  font-family: inherit;
+  font-size: 0.95rem;
+  font-weight: 400;
+  outline: none;
+  transition: border-color 0.3s;
+}
+
+.form-input:focus { border-color: var(--black); }
+.form-input::placeholder { color: var(--gray-400); }
+select.form-input { -webkit-appearance: none; cursor: pointer; background: transparent; }
+.form-input option { background: var(--white); color: var(--black); }
+
+.form-submit {
+  width: 100%;
+  padding: 1.1rem;
+  background: var(--black);
+  color: var(--white);
+  font-family: inherit;
+  font-weight: 600;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s;
+  margin-top: 0.5rem;
+}
+
+.form-submit:hover { background: var(--gray-800); transform: translateY(-1px); }
+
+.form-note {
+  text-align: center;
+  font-size: 0.7rem;
+  color: var(--gray-400);
+  margin-top: 1rem;
+}
+
+.form-success { display: none; text-align: center; padding: 3rem 1rem; }
+.form-success.show { display: block; }
+.form-success h4 { font-size: 1.3rem; font-weight: 600; margin-bottom: 0.75rem; }
+.form-success p { color: var(--gray-500); font-size: 0.9rem; font-weight: 300; }
+
+/* ===== FINAL CTA ===== */
+.final-cta {
+  background: var(--black);
+  color: var(--white);
+  padding: 8rem 0;
+  text-align: center;
+}
+
+.final-heading {
+  font-size: clamp(2rem, 4.5vw, 3.5rem);
+  font-weight: 300;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  margin-bottom: 1.5rem;
+}
+
+.final-heading strong { font-weight: 700; }
+
+.final-sub {
+  font-size: 1rem;
+  color: var(--gray-400);
+  max-width: 440px;
+  margin: 0 auto 3rem;
+  line-height: 1.7;
+  font-weight: 300;
+}
+
+.final-actions {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+}
+
+.final-note {
+  font-size: 0.7rem;
+  color: var(--gray-600);
+  letter-spacing: 0.5px;
+}
+
+/* ===== FOOTER ===== */
+.footer {
+  padding: 3rem 0;
+  border-top: 1px solid var(--gray-200);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.footer-left { display: flex; align-items: center; gap: 2rem; }
+.footer-logo img { height: 24px; width: auto; }
+.footer-copy { font-size: 0.7rem; color: var(--gray-400); letter-spacing: 0.5px; }
+.footer-links { display: flex; gap: 2rem; }
+
+.footer-link {
+  font-size: 0.7rem;
+  color: var(--gray-500);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: color 0.3s;
+  font-weight: 500;
+}
+
+.footer-link:hover { color: var(--black); }
+
+/* ===== WHATSAPP ===== */
+.wa-float {
+  position: fixed;
+  bottom: 2rem; right: 2rem;
+  width: 56px; height: 56px;
+  background: var(--black);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  z-index: 999;
+  transition: all 0.3s;
+  cursor: pointer;
+}
+
+html[dir="rtl"] .wa-float { right: auto; left: 2rem; }
+
+.wa-float:hover { transform: scale(1.08); box-shadow: 0 8px 30px rgba(0,0,0,0.25); }
+.wa-float svg { width: 24px; height: 24px; fill: var(--white); }
+
+/* ===== ANIMATIONS ===== */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1024px) {
+  .process-grid { grid-template-columns: repeat(2, 1fr); }
+  .process-step { border-bottom: 1px solid var(--gray-200); }
+  .process-step:nth-child(2) { border-right: none; }
+  html[dir="rtl"] .process-step:nth-child(2) { border-left: none; }
+  .ai-grid { grid-template-columns: 1fr; gap: 3rem; }
+  .form-wrapper { grid-template-columns: 1fr; gap: 3rem; }
+}
+
+@media (max-width: 768px) {
+  .nav-right .nav-link { display: none; }
+  .metrics-grid { grid-template-columns: repeat(2, 1fr); }
+  .metric { border-bottom: 1px solid var(--gray-200); }
+  .service-row { grid-template-columns: 1fr; gap: 0.5rem; }
+  .service-num { display: none; }
+  .process-grid { grid-template-columns: 1fr; }
+  .process-step { border-right: none !important; border-left: none !important; }
+  .hero-actions { flex-direction: column; }
+  .btn-white, .btn-ghost, .btn-black { justify-content: center; width: 100%; }
+  .form-card { padding: 1.5rem; }
+  .final-actions { flex-direction: column; align-items: center; }
+  .lang-switch { gap: 1px; }
+  .lang-btn { padding: 0.3rem 0.4rem; font-size: 0.6rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav" id="nav">
+  <a href="#" class="nav-logo">
+    <img class="logo-light" src="data:image/png;base64,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" alt="WD Studio">
+    <img class="logo-dark" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAD0AAAAoCAYAAABNefLBAAAJcUlEQVR4nN2aXYxdVRXHf+vOTDvtdGZa+gEt2BaBUipfBYzlSyhShAdEosRENCYS+qj44JOBSsKT+qA8mqgPaKKYGBLjA/INVbF8CihSTED6MZR22pnOdNrpzNy/D3vte/fdd58zwwMvruTk7HvO3mut/9prr732Ohfg74CAOb/Ha9bvXwOQ1EuBJJnf1wLHgKZfkU9sn5C0LvTd2efDv5LJSq8ZYC/wTnId83cT/u4R4Dua5gqJRlsneiSspG+kOypAz/j9vjrQ/q7Hmw9nY9OrKeniDPT1BdnRSCMSK/buZfHIyI4BvcUi4Angx8BdwOPJmFPAa8ADmmJDAr5liJLCbxaER8V/vlDQkrYQZi2d6XQm7wz9Hl0EMD3KZ0rG8ftBiSWJjF7gFUnnhCcNgGuAt7Lxx4GHRkYYcOBxQrrohxnQ1ACvS7LoxjXA4/u4XFKXjXx/koKeOsp6wiylYFPQyxK+24Anw/idfRK9AOP7WZnInE5kvjF9iMvqgG/LBKbtGUkXOLCyu9DhCQ/UGPC1YMBdDYDjB1lNe52WQA8kBr8f+FEqKwKfPMRZwH6XMwucdh7jwPYicElLfFCVi9+bASuBjkyvLfCJQE5LOj90a6AjDAEf1YGmreufgFsyWS3gwJfp9LCo+/HpCTyW+BpPGPyW7hmK7UdzYQXQMYovBQ7UGPDbsb8OsBQ4WA169bLQd3wlsEfSYCorAR712l0B/E29R79EQ8Ia0ArtTxSwRHe+VtJSM5urWttmJkk9ZjblwnEAOd3caq2j6YbBlcvo3EbgPXwdcNDMJlxG3td8i3o4e95LMMDFdi73mdEEehpRMUnPESyTunB8v87MtibPqmghBrxO+mCJmYn3N0DZME5Dkd8XgN1u8JLR58zQ0aM8DhwhrIlomIa3vz82xgozZgF3tcDwdardcpf3rVvXDb9fQDuYlLajbaHfXUuA9zOZXe4NPCdpayojp0fbLv4Y3btHbN8TrQAQXeZZ/51aP7V2/q6DzKzp93eBtwv9oysHXh8urvOaBhw+KWkD0EfIJVoycrqr7eJ/9Uf5EhDwVWfc0SG6ZepCsc8VktaaWbPK2kkwGwTWFnh1GnDmPzWuTcOMOTO7CdhrZrN1XgbIDBGSlRIGA64c38/KqHxc1y8S9rZ0TRhhhgbM7JqESVFRADPb5u3TBeEAV0layS9enK7hFekG4JkIrKafAKYn+K+3050m6rB6+By2RCUlqWFmo8BL3iGdhSjslnkUjMxvBX5K2I7S8dGAg2a2zR6kSTXoGR25ewg4T1IEXecZApiZYhQ4kcmF9tLalAqM7ScLA+K7GyT1mtlsheC4pV0u6ZfAvwvKRr47agAAnLBVv7kKOGlmH/ik1M00AANrmKQNukRnp6Ajw6f9nrpHDPsXAJuhO4omSl0IYGYHgb9lvCMvgBv9tDVHmaaAm4BXs3Hz0Qwhn8/lRlqRMorr+g3gA4Ir5pG3YWbbK5SIS2U78JbP+HOFvrG9hdPf2wycrFB+EXA18FQNgBLNEA4eVTTYUibJqKaBF/xxaeuKblnaEiAc9552fq8Q1nWD7vXVZ4sv+jzVoDcAayRFb6lbz216lgb1XjGbv8wzqlLkvVrSUJ6S+u8lwDmSdksyM5ukvW+W3HhHQUEjJBNLgX+Z2WRF6lmmG+mD9jm8QEdzgdHFnydsN/nW1QRWmdln/VnMwKJrXwmM+S4QqyMxMKbUyumBdQn/nP7sj2vP8h00wQAQM7nSuH0doD3xMEJqGDf51MLRxeKhITKNfLYDL6UeIOlZwiyX9s1VfuUK9hLO8c+7+IW4tgFMB36DhfdRx7dLvh9dKUbx0rq+ye9zWZ8rgWd8fHT/dwlbVx4YqygaeZQPv+n7/IJc2wD6h9hIADiX6CtvHxkf580S6CggumUp8l4qaX0S/JqSVgNDkl6FsMYJBmxSzunnI8Gv6Tz01VLMvS/PcES5AvYMDzNaAh3X9R5CKSeNvDGj6jez6/1ZL4CZXQvsM7PpQo78ZDL+k6Km595Rr1yWAb+DQmhPUtJjhIIb1KekkfmNwF8ydnMAvu1M0hkYF0hVuUuikDAzmjrOKkJwhDa2mOp+KPGHWDkp0UJS0uslLQKmfe1elOTIc9BhwEPAK4kSC6OzzmSBNuoBsCG+BAzTuZ6b3n7IrGX4bkqKAVvp/mKh5NlV3m8z8HipVJy4+v101+BKV1JE+EasXc9TfqbHi36vU66RveD1sUbdTEfz/hN4j3JKasDNnoRsB972qJ1bMs/pF5pDA4fm7SHRF87d3AtcRnt7nCXEmwNTU3w96uHrvopZq/L5K7pnKFoy5sWP0Pp60VkxraiS5p5TMdNn1s60FBKgUx+xiVAHyOve+yZGsvJvHSVueXcGNFVsVNJZBNdek4LMeEVD/J75XbwF+tAhlglMu4Jb+tVwd+4BOHmMcwkf95p01uWenjrAegdcWbrOFY3rej3hUBDLtc2s/RBhpiuLdokBd7pCpxM++RX5Hki/ZVXQbdCqlMRrH/BdeSBb0AxnysZZe5nqmZkGfpaBy/lEA26u4ZNfH0ksl+iTWCTRd/gwgxPho989hJNg7HsKeBG4b2yMMwCwasDzpTsxIPwROJ92cIg0SzhYDEd8JSZJTr/XlbuI7nw8UkwZG2Y8kfFsAGf4fT/B2C+fOsVL/f28A7B8eXBnD27F7XFBGZKkPmCo6jUgT2YWwmsA6O9+c9xvj3F84lvYEDbYw+Kpk20dly7mNMs4YVYuB/l3rbnaCM0nmxZ+ouSu28q6qmb1YzBUIzseml8NST3xfXK30piqdnLlvHpCG5N2JRF7V6N9xd/toJlsi5Y/L8j+eIHt/5okbZF0trf71P5E2iPpEs+5kTTk1uuXtFXSqmTMkLcbkoYL6WmPpE1eYkLSoPw/Kf57WO2/dSyVtEySf7rVpyVd4u3FyfN+SZcmPFb4+yhjjaSNXVMtKRTizW52EMvNbAeAmd1uZhuB1f77i8Byb9+Gl2nMbLuZ/cCB9pnZDj98pO621sx2Amv9TH67mW3Bj4ZmditecnJ9tvrxFTM7L7aBTWb2OX9+h5ldSNi/MbO7zexB54uZ3WZmd5b8e86FzRL24Cbt4vko4RvVCv896cxOAXuAgz47qwiJ86cIich6SRd6bh6BnwQmzWylFxwmgWWSxpz3YAQjaZRwqjvsv9+hXQ+foV1RHSeUikb99z+AMdqFwhFg5f8AczcWL3Q4+DcAAAAASUVORK5CYII=" alt="WD Studio">
+  </a>
+  <div class="nav-right">
+    <a href="#services" class="nav-link" data-i18n="nav_services"></a>
+    <a href="#ai" class="nav-link" data-i18n="nav_ai"></a>
+    <a href="#contact" class="nav-link" data-i18n="nav_contact"></a>
+    <div class="lang-switch">
+      <button class="lang-btn active" onclick="setLang('es')">ES</button>
+      <button class="lang-btn" onclick="setLang('en')">EN</button>
+      <button class="lang-btn" onclick="setLang('ar')">عر</button>
+      <button class="lang-btn" onclick="setLang('zh')">中</button>
+    </div>
+    <a href="https://wa.link/hf8ufv" target="_blank" class="nav-cta" data-i18n="nav_cta"></a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
+    <p class="hero-label">WD Studio Agency · Worldwide · 2026</p>
+    <h1 class="hero-title" data-i18n="hero_title"></h1>
+    <p class="hero-sub" data-i18n="hero_sub"></p>
+    <p class="hero-price" data-i18n="hero_price"></p>
+    <div class="hero-actions">
+      <a href="#contact" class="btn-white" data-i18n="hero_cta1"></a>
+      <a href="https://wa.link/hf8ufv" target="_blank" class="btn-ghost" data-i18n="hero_cta2"></a>
+    </div>
+  </div>
+</section>
+
+<!-- METRICS -->
+<section class="metrics">
+  <div class="container">
+    <div class="metrics-grid">
+      <div class="metric">
+        <div class="metric-value">50+</div>
+        <div class="metric-label" data-i18n="metric_projects"></div>
+      </div>
+      <div class="metric">
+        <div class="metric-value">12+</div>
+        <div class="metric-label" data-i18n="metric_countries"></div>
+      </div>
+      <div class="metric">
+        <div class="metric-value">100%</div>
+        <div class="metric-label" data-i18n="metric_custom"></div>
+      </div>
+      <div class="metric">
+        <div class="metric-value">$333</div>
+        <div class="metric-label" data-i18n="metric_price"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="container">
+    <div class="reveal">
+      <p class="section-label" data-i18n="services_label"></p>
+      <h2 class="section-heading" data-i18n="services_heading"></h2>
+    </div>
+    <div class="services-list reveal">
+      <div class="service-row">
+        <span class="service-num">01</span>
+        <div class="service-name" data-i18n="svc1_name"></div>
+        <div class="service-desc" data-i18n="svc1_desc"></div>
+      </div>
+      <div class="service-row">
+        <span class="service-num">02</span>
+        <div class="service-name" data-i18n="svc2_name"></div>
+        <div class="service-desc" data-i18n="svc2_desc"></div>
+      </div>
+      <div class="service-row">
+        <span class="service-num">03</span>
+        <div class="service-name" data-i18n="svc3_name"></div>
+        <div class="service-desc" data-i18n="svc3_desc"></div>
+      </div>
+      <div class="service-row">
+        <span class="service-num">04</span>
+        <div class="service-name" data-i18n="svc4_name"></div>
+        <div class="service-desc" data-i18n="svc4_desc"></div>
+      </div>
+      <div class="service-row">
+        <span class="service-num">05</span>
+        <div class="service-name" data-i18n="svc5_name"></div>
+        <div class="service-desc" data-i18n="svc5_desc"></div>
+      </div>
+      <div class="service-row">
+        <span class="service-num">06</span>
+        <div class="service-name" data-i18n="svc6_name"></div>
+        <div class="service-desc" data-i18n="svc6_desc"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AI SECTION -->
+<section class="ai-section" id="ai">
+  <div class="container">
+    <div class="ai-grid">
+      <div class="reveal">
+        <p class="section-label" style="color:var(--gray-500);" data-i18n="ai_label"></p>
+        <h2 class="ai-heading" data-i18n="ai_heading"></h2>
+        <p class="ai-sub" data-i18n="ai_sub"></p>
+        <div class="ai-cta-row">
+          <a href="#contact" class="btn-white" data-i18n="ai_cta1"></a>
+          <a href="https://wa.link/hf8ufv" target="_blank" class="btn-ghost" data-i18n="ai_cta2"></a>
+        </div>
+      </div>
+      <div class="ai-features reveal">
+        <div class="ai-feature">
+          <div class="ai-feature-title" data-i18n="aif1_title"></div>
+          <div class="ai-feature-desc" data-i18n="aif1_desc"></div>
+        </div>
+        <div class="ai-feature">
+          <div class="ai-feature-title" data-i18n="aif2_title"></div>
+          <div class="ai-feature-desc" data-i18n="aif2_desc"></div>
+        </div>
+        <div class="ai-feature">
+          <div class="ai-feature-title" data-i18n="aif3_title"></div>
+          <div class="ai-feature-desc" data-i18n="aif3_desc"></div>
+        </div>
+        <div class="ai-feature">
+          <div class="ai-feature-title" data-i18n="aif4_title"></div>
+          <div class="ai-feature-desc" data-i18n="aif4_desc"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="process" id="process">
+  <div class="container">
+    <div class="reveal">
+      <p class="section-label" data-i18n="process_label"></p>
+      <h2 class="section-heading" data-i18n="process_heading"></h2>
+    </div>
+    <div class="process-grid reveal">
+      <div class="process-step">
+        <div class="process-num">01</div>
+        <div class="process-title" data-i18n="step1_title"></div>
+        <div class="process-desc" data-i18n="step1_desc"></div>
+      </div>
+      <div class="process-step">
+        <div class="process-num">02</div>
+        <div class="process-title" data-i18n="step2_title"></div>
+        <div class="process-desc" data-i18n="step2_desc"></div>
+      </div>
+      <div class="process-step">
+        <div class="process-num">03</div>
+        <div class="process-title" data-i18n="step3_title"></div>
+        <div class="process-desc" data-i18n="step3_desc"></div>
+      </div>
+      <div class="process-step">
+        <div class="process-num">04</div>
+        <div class="process-title" data-i18n="step4_title"></div>
+        <div class="process-desc" data-i18n="step4_desc"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FORM -->
+<section class="form-section" id="contact">
+  <div class="container">
+    <div class="form-wrapper">
+      <div class="reveal">
+        <p class="section-label" data-i18n="form_label"></p>
+        <h2 class="form-info-heading" data-i18n="form_heading"></h2>
+        <p class="form-info-text" data-i18n="form_text"></p>
+        <div class="form-benefits">
+          <div class="form-benefit" data-i18n="fb1"></div>
+          <div class="form-benefit" data-i18n="fb2"></div>
+          <div class="form-benefit" data-i18n="fb3"></div>
+          <div class="form-benefit" data-i18n="fb4"></div>
+          <div class="form-benefit" data-i18n="fb5"></div>
+        </div>
+      </div>
+      <div class="form-card reveal">
+        <div id="formFields">
+          <div class="form-group">
+            <label class="form-label" data-i18n="fl_name"></label>
+            <input class="form-input" type="text" id="f-name" data-i18n-ph="fp_name">
+          </div>
+          <div class="form-group">
+            <label class="form-label" data-i18n="fl_email"></label>
+            <input class="form-input" type="email" id="f-email" data-i18n-ph="fp_email">
+          </div>
+          <div class="form-group">
+            <label class="form-label" data-i18n="fl_company"></label>
+            <input class="form-input" type="text" id="f-company" data-i18n-ph="fp_company">
+          </div>
+          <div class="form-group">
+            <label class="form-label" data-i18n="fl_service"></label>
+            <select class="form-input" id="f-service">
+              <option value="" data-i18n="fo_select"></option>
+              <option value="web" data-i18n="fo_web"></option>
+              <option value="chatbot" data-i18n="fo_chatbot"></option>
+              <option value="automation" data-i18n="fo_automation"></option>
+              <option value="branding" data-i18n="fo_branding"></option>
+              <option value="marketing" data-i18n="fo_marketing"></option>
+              <option value="consulting" data-i18n="fo_consulting"></option>
+              <option value="integral" data-i18n="fo_integral"></option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label" data-i18n="fl_budget"></label>
+            <select class="form-input" id="f-budget">
+              <option value="" data-i18n="fo_range"></option>
+              <option value="333-500">$333 – $500</option>
+              <option value="500-1000">$500 – $1,000</option>
+              <option value="1000-3000">$1,000 – $3,000</option>
+              <option value="3000-5000">$3,000 – $5,000</option>
+              <option value="5000+">$5,000+</option>
+            </select>
+          </div>
+          <button class="form-submit" onclick="submitForm()" data-i18n="form_submit"></button>
+        </div>
+        <div class="form-success" id="formSuccess">
+          <h4 data-i18n="form_ok_title"></h4>
+          <p data-i18n="form_ok_text"></p>
+        </div>
+        <div class="form-note" data-i18n="form_note"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final-cta">
+  <div class="container reveal">
+    <h2 class="final-heading" data-i18n="final_heading"></h2>
+    <p class="final-sub" data-i18n="final_sub"></p>
+    <div class="final-actions">
+      <a href="https://wa.link/hf8ufv" target="_blank" class="btn-white" data-i18n="final_cta1"></a>
+      <a href="#contact" class="btn-ghost" data-i18n="final_cta2"></a>
+    </div>
+    <p class="final-note" data-i18n="final_note"></p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container footer">
+    <div class="footer-left">
+      <a href="#" class="footer-logo">
+        <img src="data:image/png;base64,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" alt="WD Studio">
+      </a>
+      <span class="footer-copy">© 2026 WD Studio Agency. All rights reserved. Worldwide.</span>
+    </div>
+    <div class="footer-links">
+      <a href="https://www.behance.net/wdstudioagency" target="_blank" class="footer-link">Behance</a>
+      <a href="https://wa.link/hf8ufv" target="_blank" class="footer-link">WhatsApp</a>
+    </div>
+  </div>
+</footer>
+
+<!-- WHATSAPP FLOAT -->
+<a href="https://wa.link/hf8ufv" target="_blank" class="wa-float" title="WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<script>
+// ===== TRANSLATIONS =====
+const T = {
+  es: {
+    nav_services: 'Servicios', nav_ai: 'IA', nav_contact: 'Contacto', nav_cta: 'Cotizar →',
+    hero_title: 'Soluciones digitales<br>e <strong>inteligencia artificial</strong><br>personalizadas para tu negocio',
+    hero_sub: 'Cada proyecto es único. Diseñamos, desarrollamos y automatizamos soluciones 100% a la medida de tu negocio — desde sitios web que convierten hasta chatbots con IA que trabajan por ti 24/7.',
+    hero_price: 'Servicios personalizados desde <strong>$333 USD</strong>',
+    hero_cta1: 'Cotizar mi proyecto →', hero_cta2: 'Hablar por WhatsApp',
+    metric_projects: 'Proyectos entregados', metric_countries: 'Países atendidos', metric_custom: 'Personalizado', metric_price: 'USD desde',
+    services_label: 'Servicios', services_heading: 'Soluciones <strong>a tu medida</strong> para crecer en digital',
+    svc1_name: 'Diseño & Desarrollo Web', svc1_desc: 'Sitios web 100% personalizados, diseñados para convertir visitantes en clientes. Nada de plantillas — cada pixel refleja tu marca. Desde $333 USD.',
+    svc2_name: 'Chatbots con Inteligencia Artificial', svc2_desc: 'Asistentes virtuales hechos a la medida de tu negocio. Atienden, califican y convierten leads en WhatsApp, web y redes sociales. 24/7, sin descanso.',
+    svc3_name: 'Automatización & Soluciones IA', svc3_desc: 'Flujos personalizados que eliminan tu trabajo manual. CRM inteligente, email sequences, generación de contenido con IA y pipelines de venta automatizados.',
+    svc4_name: 'Branding & Identidad Visual', svc4_desc: 'La identidad visual que tu marca merece. Logo, paleta, tipografía y guidelines diseñados exclusivamente para ti — nada genérico.',
+    svc5_name: 'Marketing Digital & Campañas', svc5_desc: 'Estrategias de adquisición personalizadas con Meta Ads, Google Ads y email marketing. Campañas diseñadas para TU audiencia, con retorno medible.',
+    svc6_name: 'Consultoría Estratégica Digital', svc6_desc: 'Auditoría completa de tu presencia digital con roadmap 100% personalizado. Identificamos tus oportunidades únicas y diseñamos el plan para escalar.',
+    ai_label: 'Inteligencia Artificial', ai_heading: 'Tu propio asistente IA, <strong>hecho a medida</strong>, que trabaja <strong>24/7</strong> por tu negocio',
+    ai_sub: 'No es un bot genérico. Diseñamos soluciones de IA personalizadas para tu negocio, tu tono de voz y tus procesos. Se integran con WhatsApp, tu sitio web y tus herramientas — y empiezan a trabajar desde el día uno.',
+    ai_cta1: 'Quiero un chatbot →', ai_cta2: 'Más información',
+    aif1_title: 'Chatbots para WhatsApp & Web', aif1_desc: 'Asistentes inteligentes que entienden contexto, responden preguntas complejas y guían al cliente hacia la compra.',
+    aif2_title: 'Calificación automática de leads', aif2_desc: 'El bot identifica qué prospectos están listos para comprar y los prioriza. Solo recibes leads que valen tu tiempo.',
+    aif3_title: 'Automatización de procesos', aif3_desc: 'Desde respuestas automáticas hasta generación de reportes, cotizaciones y seguimiento de clientes sin intervención manual.',
+    aif4_title: 'Integración con tus herramientas', aif4_desc: 'Se conecta con tu CRM, calendario, email, WhatsApp Business y cualquier plataforma que ya uses.',
+    process_label: 'Proceso', process_heading: 'De la idea al <strong>resultado</strong> en cuatro pasos',
+    step1_title: 'Diagnóstico', step1_desc: 'Analizamos tu negocio, competencia y objetivos. Identificamos las oportunidades más rentables para tu caso.',
+    step2_title: 'Propuesta', step2_desc: 'Diseñamos una solución a medida con entregables claros, timeline definido y precio cerrado. Sin sorpresas.',
+    step3_title: 'Ejecución', step3_desc: 'Nuestro equipo ejecuta con precisión. Actualizaciones semanales para que siempre sepas el estado del proyecto.',
+    step4_title: 'Lanzamiento', step4_desc: 'Entregamos, capacitamos y optimizamos. Soporte continuo para asegurar que todo funcione y genere resultados.',
+    form_label: 'Cotiza tu proyecto', form_heading: 'Recibe una <strong>propuesta personalizada</strong> en 24hrs',
+    form_text: 'Cada negocio es diferente. Cuéntanos qué necesitas y diseñamos una solución a tu medida con precio cerrado. Atendemos clientes worldwide.',
+    fb1: 'Soluciones 100% personalizadas desde $333 USD', fb2: 'Consulta inicial gratuita — sin compromiso', fb3: 'Respuesta garantizada en menos de 24 horas', fb4: 'Atención worldwide — trabajamos con clientes en todo el mundo', fb5: 'Propuesta detallada con precio cerrado, sin letra chica',
+    fl_name: 'Nombre', fl_email: 'Email', fl_company: 'Empresa', fl_service: '¿Qué necesitas?', fl_budget: 'Presupuesto estimado (USD)',
+    fp_name: 'Tu nombre completo', fp_email: 'correo@empresa.com', fp_company: 'Nombre de tu empresa o marca',
+    fo_select: 'Selecciona un servicio', fo_web: 'Diseño & Desarrollo Web', fo_chatbot: 'Chatbot con Inteligencia Artificial', fo_automation: 'Automatización & Soluciones IA', fo_branding: 'Branding & Identidad Visual', fo_marketing: 'Marketing Digital & Campañas', fo_consulting: 'Consultoría Estratégica', fo_integral: 'Solución integral',
+    fo_range: 'Selecciona un rango',
+    form_submit: 'Cotizar mi proyecto →', form_ok_title: 'Recibido ✓', form_ok_text: 'Te contactaremos en menos de 24 horas con una propuesta personalizada.',
+    form_note: 'Tus datos están seguros. No compartimos información con terceros.',
+    final_heading: 'Soluciones personalizadas<br>desde <strong>$333 USD</strong>', final_sub: 'Trabajamos con clientes en todo el mundo. Cuéntanos tu proyecto y recibe una propuesta hecha a tu medida en menos de 24 horas.',
+    final_cta1: 'Escríbenos por WhatsApp →', final_cta2: 'Llenar formulario',
+    final_note: 'Worldwide &nbsp;·&nbsp; Desde $333 USD &nbsp;·&nbsp; 100% personalizado &nbsp;·&nbsp; Consulta gratuita',
+    form_alert: 'Por favor completa al menos tu nombre y email.'
+  },
+
+  en: {
+    nav_services: 'Services', nav_ai: 'AI', nav_contact: 'Contact', nav_cta: 'Get a Quote →',
+    hero_title: 'Custom digital solutions<br>& <strong>artificial intelligence</strong><br>tailored to your business',
+    hero_sub: 'Every project is unique. We design, develop and automate solutions 100% tailored to your business — from high-converting websites to AI chatbots that work for you 24/7.',
+    hero_price: 'Custom solutions starting at <strong>$333 USD</strong>',
+    hero_cta1: 'Get a Quote →', hero_cta2: 'Chat on WhatsApp',
+    metric_projects: 'Projects delivered', metric_countries: 'Countries served', metric_custom: 'Fully custom', metric_price: 'USD starting',
+    services_label: 'Services', services_heading: '<strong>Tailored solutions</strong> to grow your digital presence',
+    svc1_name: 'Web Design & Development', svc1_desc: '100% custom websites designed to convert visitors into clients. No templates — every pixel reflects your brand. Starting at $333 USD.',
+    svc2_name: 'AI-Powered Chatbots', svc2_desc: 'Virtual assistants custom-built for your business. They engage, qualify and convert leads on WhatsApp, web and social media. 24/7, non-stop.',
+    svc3_name: 'Automation & AI Solutions', svc3_desc: 'Custom workflows that eliminate manual work. Smart CRM, email sequences, AI content generation and automated sales pipelines.',
+    svc4_name: 'Branding & Visual Identity', svc4_desc: 'The visual identity your brand deserves. Logo, colors, typography and guidelines designed exclusively for you — nothing generic.',
+    svc5_name: 'Digital Marketing & Campaigns', svc5_desc: 'Personalized acquisition strategies with Meta Ads, Google Ads and email marketing. Campaigns designed for YOUR audience with measurable ROI.',
+    svc6_name: 'Digital Strategy Consulting', svc6_desc: 'Complete audit of your digital presence with a 100% customized roadmap. We identify your unique opportunities and design a plan to scale.',
+    ai_label: 'Artificial Intelligence', ai_heading: 'Your own AI assistant, <strong>custom-built</strong>, working <strong>24/7</strong> for your business',
+    ai_sub: 'Not a generic bot. We design AI solutions personalized for your business, your tone of voice and your processes. They integrate with WhatsApp, your website and your tools — and start working from day one.',
+    ai_cta1: 'I want a chatbot →', ai_cta2: 'Learn more',
+    aif1_title: 'WhatsApp & Web Chatbots', aif1_desc: 'Smart assistants that understand context, answer complex questions and guide customers toward purchase.',
+    aif2_title: 'Automatic Lead Qualification', aif2_desc: 'The bot identifies which prospects are ready to buy and prioritizes them. You only receive leads worth your time.',
+    aif3_title: 'Process Automation', aif3_desc: 'From automatic responses to report generation, quotes and client follow-up without manual intervention.',
+    aif4_title: 'Integration with Your Tools', aif4_desc: 'Connects with your CRM, calendar, email, WhatsApp Business and any platform you already use.',
+    process_label: 'Process', process_heading: 'From idea to <strong>results</strong> in four steps',
+    step1_title: 'Discovery', step1_desc: 'We analyze your business, competition and goals. We identify the most profitable opportunities for your case.',
+    step2_title: 'Proposal', step2_desc: 'We design a tailored solution with clear deliverables, defined timeline and fixed price. No surprises.',
+    step3_title: 'Execution', step3_desc: 'Our team executes with precision. Weekly updates so you always know the project status.',
+    step4_title: 'Launch', step4_desc: 'We deliver, train and optimize. Ongoing support to ensure everything works and generates results.',
+    form_label: 'Get Your Quote', form_heading: 'Receive a <strong>custom proposal</strong> in 24hrs',
+    form_text: 'Every business is different. Tell us what you need and we\'ll design a tailored solution with a fixed price. We serve clients worldwide.',
+    fb1: '100% custom solutions starting at $333 USD', fb2: 'Free initial consultation — no commitment', fb3: 'Guaranteed response in less than 24 hours', fb4: 'Worldwide service — we work with clients across the globe', fb5: 'Detailed proposal with fixed price, no fine print',
+    fl_name: 'Name', fl_email: 'Email', fl_company: 'Company', fl_service: 'What do you need?', fl_budget: 'Estimated budget (USD)',
+    fp_name: 'Your full name', fp_email: 'email@company.com', fp_company: 'Your company or brand name',
+    fo_select: 'Select a service', fo_web: 'Web Design & Development', fo_chatbot: 'AI-Powered Chatbot', fo_automation: 'Automation & AI Solutions', fo_branding: 'Branding & Visual Identity', fo_marketing: 'Digital Marketing & Campaigns', fo_consulting: 'Strategic Consulting', fo_integral: 'Full solution',
+    fo_range: 'Select a range',
+    form_submit: 'Get my quote →', form_ok_title: 'Received ✓', form_ok_text: 'We\'ll contact you within 24 hours with a custom proposal.',
+    form_note: 'Your data is safe. We don\'t share your information with third parties.',
+    final_heading: 'Custom solutions<br>starting at <strong>$333 USD</strong>', final_sub: 'We work with clients worldwide. Tell us about your project and receive a tailored proposal in less than 24 hours.',
+    final_cta1: 'Message us on WhatsApp →', final_cta2: 'Fill out the form',
+    final_note: 'Worldwide &nbsp;·&nbsp; From $333 USD &nbsp;·&nbsp; 100% custom &nbsp;·&nbsp; Free consultation',
+    form_alert: 'Please fill in at least your name and email.'
+  },
+
+  ar: {
+    nav_services: 'الخدمات', nav_ai: 'الذكاء الاصطناعي', nav_contact: 'تواصل', nav_cta: 'احصل على عرض ←',
+    hero_title: 'حلول رقمية<br>و<strong>ذكاء اصطناعي</strong><br>مصممة خصيصاً لعملك',
+    hero_sub: 'كل مشروع فريد. نصمم ونطور ونؤتمت حلولاً مخصصة 100% لعملك — من مواقع ويب تحقق التحويلات إلى روبوتات ذكاء اصطناعي تعمل لأجلك على مدار الساعة.',
+    hero_price: 'حلول مخصصة تبدأ من <strong>333$ دولار</strong>',
+    hero_cta1: 'احصل على عرض سعر ←', hero_cta2: 'تحدث عبر واتساب',
+    metric_projects: 'مشروع منجز', metric_countries: 'دولة نخدمها', metric_custom: 'مخصص بالكامل', metric_price: 'دولار أمريكي',
+    services_label: 'الخدمات', services_heading: 'حلول <strong>مصممة خصيصاً</strong> لنمو حضورك الرقمي',
+    svc1_name: 'تصميم وتطوير المواقع', svc1_desc: 'مواقع ويب مخصصة 100%، مصممة لتحويل الزوار إلى عملاء. بدون قوالب جاهزة — كل بكسل يعكس علامتك التجارية. تبدأ من 333$ دولار.',
+    svc2_name: 'روبوتات الذكاء الاصطناعي', svc2_desc: 'مساعدون افتراضيون مصممون خصيصاً لعملك. يستقبلون ويؤهلون ويحولون العملاء المحتملين عبر واتساب والويب ووسائل التواصل. 24/7 بلا توقف.',
+    svc3_name: 'الأتمتة وحلول الذكاء الاصطناعي', svc3_desc: 'سير عمل مخصص يلغي العمل اليدوي. إدارة علاقات عملاء ذكية، تسلسلات بريد إلكتروني، إنشاء محتوى بالذكاء الاصطناعي وأنابيب مبيعات آلية.',
+    svc4_name: 'العلامة التجارية والهوية البصرية', svc4_desc: 'الهوية البصرية التي تستحقها علامتك. شعار وألوان وخطوط وإرشادات مصممة حصرياً لك — لا شيء عام.',
+    svc5_name: 'التسويق الرقمي والحملات', svc5_desc: 'استراتيجيات استقطاب مخصصة مع إعلانات ميتا وجوجل والتسويق بالبريد الإلكتروني. حملات مصممة لجمهورك مع عائد قابل للقياس.',
+    svc6_name: 'الاستشارات الاستراتيجية الرقمية', svc6_desc: 'تدقيق شامل لحضورك الرقمي مع خارطة طريق مخصصة 100%. نحدد فرصك الفريدة ونصمم خطة للتوسع.',
+    ai_label: 'الذكاء الاصطناعي', ai_heading: 'مساعدك الخاص بالذكاء الاصطناعي، <strong>مصمم خصيصاً</strong>، يعمل <strong>24/7</strong> لأجل عملك',
+    ai_sub: 'ليس روبوتاً عاماً. نصمم حلول ذكاء اصطناعي مخصصة لعملك ونبرتك وعملياتك. تتكامل مع واتساب وموقعك وأدواتك — وتبدأ العمل من اليوم الأول.',
+    ai_cta1: 'أريد روبوت محادثة ←', ai_cta2: 'مزيد من المعلومات',
+    aif1_title: 'روبوتات واتساب والويب', aif1_desc: 'مساعدون أذكياء يفهمون السياق ويجيبون على الأسئلة المعقدة ويوجهون العميل نحو الشراء.',
+    aif2_title: 'تأهيل تلقائي للعملاء المحتملين', aif2_desc: 'يحدد الروبوت العملاء المحتملين المستعدين للشراء ويمنحهم الأولوية. تتلقى فقط العملاء الذين يستحقون وقتك.',
+    aif3_title: 'أتمتة العمليات', aif3_desc: 'من الردود التلقائية إلى إنشاء التقارير وعروض الأسعار ومتابعة العملاء بدون تدخل يدوي.',
+    aif4_title: 'التكامل مع أدواتك', aif4_desc: 'يتصل بنظام إدارة العملاء والتقويم والبريد الإلكتروني وواتساب بزنس وأي منصة تستخدمها.',
+    process_label: 'العملية', process_heading: 'من الفكرة إلى <strong>النتائج</strong> في أربع خطوات',
+    step1_title: 'التشخيص', step1_desc: 'نحلل عملك ومنافسيك وأهدافك. نحدد الفرص الأكثر ربحية لحالتك.',
+    step2_title: 'العرض', step2_desc: 'نصمم حلاً مخصصاً بمخرجات واضحة وجدول زمني محدد وسعر ثابت. بدون مفاجآت.',
+    step3_title: 'التنفيذ', step3_desc: 'فريقنا ينفذ بدقة. تحديثات أسبوعية لتكون دائماً على اطلاع بحالة المشروع.',
+    step4_title: 'الإطلاق', step4_desc: 'نسلم وندرب ونحسن. دعم مستمر لضمان أن كل شيء يعمل ويحقق نتائج.',
+    form_label: 'احصل على عرضك', form_heading: 'احصل على <strong>عرض مخصص</strong> خلال 24 ساعة',
+    form_text: 'كل عمل مختلف. أخبرنا بما تحتاج وسنصمم حلاً مخصصاً بسعر ثابت. نخدم عملاء حول العالم.',
+    fb1: 'حلول مخصصة 100% تبدأ من 333$ دولار', fb2: 'استشارة أولية مجانية — بدون التزام', fb3: 'رد مضمون في أقل من 24 ساعة', fb4: 'خدمة عالمية — نعمل مع عملاء حول العالم', fb5: 'عرض مفصل بسعر ثابت بدون شروط مخفية',
+    fl_name: 'الاسم', fl_email: 'البريد الإلكتروني', fl_company: 'الشركة', fl_service: 'ماذا تحتاج؟', fl_budget: 'الميزانية المقدرة (دولار)',
+    fp_name: 'اسمك الكامل', fp_email: 'email@company.com', fp_company: 'اسم شركتك أو علامتك التجارية',
+    fo_select: 'اختر خدمة', fo_web: 'تصميم وتطوير المواقع', fo_chatbot: 'روبوت ذكاء اصطناعي', fo_automation: 'أتمتة وحلول ذكاء اصطناعي', fo_branding: 'العلامة التجارية والهوية البصرية', fo_marketing: 'التسويق الرقمي والحملات', fo_consulting: 'الاستشارات الاستراتيجية', fo_integral: 'حل متكامل',
+    fo_range: 'اختر نطاقاً',
+    form_submit: 'احصل على عرض سعر ←', form_ok_title: '✓ تم الاستلام', form_ok_text: 'سنتواصل معك خلال 24 ساعة بعرض مخصص.',
+    form_note: 'بياناتك آمنة. لا نشارك معلوماتك مع أطراف ثالثة.',
+    final_heading: 'حلول مخصصة<br>تبدأ من <strong>333$ دولار</strong>', final_sub: 'نعمل مع عملاء حول العالم. أخبرنا عن مشروعك واحصل على عرض مخصص في أقل من 24 ساعة.',
+    final_cta1: 'راسلنا على واتساب ←', final_cta2: 'املأ النموذج',
+    final_note: 'عالمياً &nbsp;·&nbsp; من 333$ دولار &nbsp;·&nbsp; مخصص 100% &nbsp;·&nbsp; استشارة مجانية',
+    form_alert: 'يرجى ملء الاسم والبريد الإلكتروني على الأقل.'
+  },
+
+  zh: {
+    nav_services: '服务', nav_ai: '人工智能', nav_contact: '联系', nav_cta: '获取报价 →',
+    hero_title: '定制数字解决方案<br>与<strong>人工智能</strong><br>为您的业务量身打造',
+    hero_sub: '每个项目都是独一无二的。我们设计、开发和自动化100%为您的业务量身定制的解决方案——从高转化网站到全天候为您工作的AI聊天机器人。',
+    hero_price: '定制服务起价 <strong>$333 美元</strong>',
+    hero_cta1: '获取报价 →', hero_cta2: 'WhatsApp咨询',
+    metric_projects: '已交付项目', metric_countries: '服务国家', metric_custom: '完全定制', metric_price: '美元起',
+    services_label: '服务', services_heading: '<strong>量身定制</strong>的数字增长解决方案',
+    svc1_name: '网站设计与开发', svc1_desc: '100%定制网站，旨在将访客转化为客户。没有模板——每个像素都体现您的品牌。起价333美元。',
+    svc2_name: 'AI智能聊天机器人', svc2_desc: '为您的业务量身定制的虚拟助手。在WhatsApp、网站和社交媒体上接待、筛选和转化潜在客户。全天候不间断服务。',
+    svc3_name: '自动化与AI解决方案', svc3_desc: '消除手动工作的定制流程。智能CRM、邮件序列、AI内容生成和自动化销售管道。',
+    svc4_name: '品牌与视觉识别', svc4_desc: '您的品牌应得的视觉识别。标志、色彩、字体和指南专为您设计——绝非通用。',
+    svc5_name: '数字营销与广告', svc5_desc: '使用Meta Ads、Google Ads和电子邮件营销的个性化获客策略。为您的受众量身设计的广告活动，回报可衡量。',
+    svc6_name: '数字战略咨询', svc6_desc: '全面审核您的数字存在，提供100%定制路线图。识别您的独特机会并设计扩展计划。',
+    ai_label: '人工智能', ai_heading: '您专属的AI助手，<strong>量身定制</strong>，<strong>全天候</strong>为您的业务工作',
+    ai_sub: '不是通用机器人。我们为您的业务、语调和流程设计个性化AI解决方案。与WhatsApp、您的网站和工具集成——从第一天开始工作。',
+    ai_cta1: '我想要聊天机器人 →', ai_cta2: '了解更多',
+    aif1_title: 'WhatsApp和网站聊天机器人', aif1_desc: '理解上下文、回答复杂问题并引导客户完成购买的智能助手。',
+    aif2_title: '自动潜在客户筛选', aif2_desc: '机器人识别准备购买的潜在客户并优先处理。您只收到值得您时间的线索。',
+    aif3_title: '流程自动化', aif3_desc: '从自动回复到报告生成、报价和客户跟进，无需人工干预。',
+    aif4_title: '与您的工具集成', aif4_desc: '连接您的CRM、日历、电子邮件、WhatsApp Business以及您使用的任何平台。',
+    process_label: '流程', process_heading: '从创意到<strong>成果</strong>仅需四步',
+    step1_title: '诊断', step1_desc: '我们分析您的业务、竞争对手和目标。识别最具盈利性的机会。',
+    step2_title: '提案', step2_desc: '我们设计量身定制的解决方案，明确交付物、时间表和固定价格。没有意外。',
+    step3_title: '执行', step3_desc: '我们的团队精确执行。每周更新，让您始终了解项目状态。',
+    step4_title: '启动', step4_desc: '我们交付、培训和优化。持续支持确保一切正常运行并产生结果。',
+    form_label: '获取报价', form_heading: '24小时内收到<strong>定制提案</strong>',
+    form_text: '每个企业都不同。告诉我们您的需求，我们将以固定价格设计量身定制的解决方案。我们服务全球客户。',
+    fb1: '100%定制解决方案，起价333美元', fb2: '免费初始咨询——无需承诺', fb3: '保证24小时内回复', fb4: '全球服务——我们与世界各地的客户合作', fb5: '详细提案，固定价格，没有隐藏条款',
+    fl_name: '姓名', fl_email: '电子邮件', fl_company: '公司', fl_service: '您需要什么？', fl_budget: '预估预算（美元）',
+    fp_name: '您的全名', fp_email: 'email@company.com', fp_company: '您的公司或品牌名称',
+    fo_select: '选择服务', fo_web: '网站设计与开发', fo_chatbot: 'AI智能聊天机器人', fo_automation: '自动化与AI解决方案', fo_branding: '品牌与视觉识别', fo_marketing: '数字营销与广告', fo_consulting: '战略咨询', fo_integral: '全套解决方案',
+    fo_range: '选择范围',
+    form_submit: '获取报价 →', form_ok_title: '已收到 ✓', form_ok_text: '我们将在24小时内联系您，提供定制提案。',
+    form_note: '您的数据安全。我们不会与第三方共享您的信息。',
+    final_heading: '定制解决方案<br>起价 <strong>$333 美元</strong>', final_sub: '我们与全球客户合作。告诉我们您的项目，24小时内收到量身定制的提案。',
+    final_cta1: 'WhatsApp联系我们 →', final_cta2: '填写表单',
+    final_note: '全球服务 &nbsp;·&nbsp; 333美元起 &nbsp;·&nbsp; 100%定制 &nbsp;·&nbsp; 免费咨询',
+    form_alert: '请至少填写您的姓名和电子邮件。'
+  }
+};
+
+let currentLang = 'es';
+
+function setLang(lang) {
+  currentLang = lang;
+  const t = T[lang];
+  const html = document.documentElement;
+
+  // Set direction for Arabic
+  html.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
+  html.setAttribute('lang', lang);
+
+  // Update active button
+  document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+  document.querySelector(`.lang-btn[onclick="setLang('${lang}')"]`).classList.add('active');
+
+  // Replace all data-i18n text
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    if (t[key] !== undefined) el.innerHTML = t[key];
+  });
+
+  // Replace placeholders
+  document.querySelectorAll('[data-i18n-ph]').forEach(el => {
+    const key = el.getAttribute('data-i18n-ph');
+    if (t[key] !== undefined) el.placeholder = t[key];
+  });
+}
+
+// Init
+setLang('es');
+
+// Nav scroll
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 80);
+});
+
+// Reveal
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// Form
+function submitForm() {
+  const name = document.getElementById('f-name').value;
+  const email = document.getElementById('f-email').value;
+  const company = document.getElementById('f-company').value;
+  const service = document.getElementById('f-service').value;
+  const budget = document.getElementById('f-budget').value;
+
+  if (!name || !email) {
+    alert(T[currentLang].form_alert);
+    return;
+  }
+
+  console.log('Lead:', { name, email, company, service, budget, lang: currentLang });
+
+  document.getElementById('formFields').style.display = 'none';
+  document.getElementById('formSuccess').classList.add('show');
+
+  setTimeout(() => { window.open('https://wa.link/hf8ufv', '_blank'); }, 2000);
+}
+
+// Smooth scroll
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', function(e) {
+    e.preventDefault();
+    const t = document.querySelector(this.getAttribute('href'));
+    if (t) t.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+});
+</script>
+</body>
+</html>
