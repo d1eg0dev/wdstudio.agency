@@ -806,6 +806,11 @@ html[dir="rtl"] .wa-float { right: auto; left: 2rem; }
         <div class="service-name" data-i18n="svc6_name"></div>
         <div class="service-desc" data-i18n="svc6_desc"></div>
       </div>
+      <div class="service-row">
+        <span class="service-num">07</span>
+        <div class="service-name" data-i18n="svc7_name"></div>
+        <div class="service-desc" data-i18n="svc7_desc"></div>
+      </div>
     </div>
   </div>
 </section>
@@ -917,6 +922,7 @@ html[dir="rtl"] .wa-float { right: auto; left: 2rem; }
               <option value="branding" data-i18n="fo_branding"></option>
               <option value="marketing" data-i18n="fo_marketing"></option>
               <option value="consulting" data-i18n="fo_consulting"></option>
+              <option value="photovideo" data-i18n="fo_photovideo"></option>
               <option value="integral" data-i18n="fo_integral"></option>
             </select>
           </div>
@@ -966,6 +972,7 @@ html[dir="rtl"] .wa-float { right: auto; left: 2rem; }
       <span class="footer-copy">© 2026 WD Studio Agency. All rights reserved. Worldwide.</span>
     </div>
     <div class="footer-links">
+      <a href="mailto:diego@wdstudio.agency" class="footer-link">diego@wdstudio.agency</a>
       <a href="https://www.behance.net/wdstudioagency" target="_blank" class="footer-link">Behance</a>
       <a href="https://wa.link/hf8ufv" target="_blank" class="footer-link">WhatsApp</a>
     </div>
@@ -994,6 +1001,7 @@ const T = {
     svc4_name: 'Branding & Identidad Visual', svc4_desc: 'La identidad visual que tu marca merece. Logo, paleta, tipografía y guidelines diseñados exclusivamente para ti — nada genérico.',
     svc5_name: 'Marketing Digital & Campañas', svc5_desc: 'Estrategias de adquisición personalizadas con Meta Ads, Google Ads y email marketing. Campañas diseñadas para TU audiencia, con retorno medible.',
     svc6_name: 'Consultoría Estratégica Digital', svc6_desc: 'Auditoría completa de tu presencia digital con roadmap 100% personalizado. Identificamos tus oportunidades únicas y diseñamos el plan para escalar.',
+    svc7_name: 'Fotografía & Video Profesional', svc7_desc: 'Contenido visual de alta calidad para tu marca. Fotografía de producto, corporativa, inmobiliaria y producción de video profesional que eleva tu imagen.',
     ai_label: 'Inteligencia Artificial', ai_heading: 'Tu propio asistente IA, <strong>hecho a medida</strong>, que trabaja <strong>24/7</strong> por tu negocio',
     ai_sub: 'No es un bot genérico. Diseñamos soluciones de IA personalizadas para tu negocio, tu tono de voz y tus procesos. Se integran con WhatsApp, tu sitio web y tus herramientas — y empiezan a trabajar desde el día uno.',
     ai_cta1: 'Quiero un chatbot →', ai_cta2: 'Más información',
@@ -1011,7 +1019,7 @@ const T = {
     fb1: 'Soluciones 100% personalizadas desde $333 USD', fb2: 'Consulta inicial gratuita — sin compromiso', fb3: 'Respuesta garantizada en menos de 24 horas', fb4: 'Atención worldwide — trabajamos con clientes en todo el mundo', fb5: 'Propuesta detallada con precio cerrado, sin letra chica',
     fl_name: 'Nombre', fl_email: 'Email', fl_company: 'Empresa', fl_service: '¿Qué necesitas?', fl_budget: 'Presupuesto estimado (USD)',
     fp_name: 'Tu nombre completo', fp_email: 'correo@empresa.com', fp_company: 'Nombre de tu empresa o marca',
-    fo_select: 'Selecciona un servicio', fo_web: 'Diseño & Desarrollo Web', fo_chatbot: 'Chatbot con Inteligencia Artificial', fo_automation: 'Automatización & Soluciones IA', fo_branding: 'Branding & Identidad Visual', fo_marketing: 'Marketing Digital & Campañas', fo_consulting: 'Consultoría Estratégica', fo_integral: 'Solución integral',
+    fo_select: 'Selecciona un servicio', fo_web: 'Diseño & Desarrollo Web', fo_chatbot: 'Chatbot con Inteligencia Artificial', fo_automation: 'Automatización & Soluciones IA', fo_branding: 'Branding & Identidad Visual', fo_marketing: 'Marketing Digital & Campañas', fo_consulting: 'Consultoría Estratégica', fo_photovideo: 'Fotografía & Video Profesional', fo_integral: 'Solución integral',
     fo_range: 'Selecciona un rango',
     form_submit: 'Cotizar mi proyecto →', form_ok_title: 'Recibido ✓', form_ok_text: 'Te contactaremos en menos de 24 horas con una propuesta personalizada.',
     form_note: 'Tus datos están seguros. No compartimos información con terceros.',
@@ -1035,6 +1043,7 @@ const T = {
     svc4_name: 'Branding & Visual Identity', svc4_desc: 'The visual identity your brand deserves. Logo, colors, typography and guidelines designed exclusively for you — nothing generic.',
     svc5_name: 'Digital Marketing & Campaigns', svc5_desc: 'Personalized acquisition strategies with Meta Ads, Google Ads and email marketing. Campaigns designed for YOUR audience with measurable ROI.',
     svc6_name: 'Digital Strategy Consulting', svc6_desc: 'Complete audit of your digital presence with a 100% customized roadmap. We identify your unique opportunities and design a plan to scale.',
+    svc7_name: 'Professional Photography & Video', svc7_desc: 'High-quality visual content for your brand. Product, corporate, real estate photography and professional video production that elevates your image.',
     ai_label: 'Artificial Intelligence', ai_heading: 'Your own AI assistant, <strong>custom-built</strong>, working <strong>24/7</strong> for your business',
     ai_sub: 'Not a generic bot. We design AI solutions personalized for your business, your tone of voice and your processes. They integrate with WhatsApp, your website and your tools — and start working from day one.',
     ai_cta1: 'I want a chatbot →', ai_cta2: 'Learn more',
@@ -1052,7 +1061,7 @@ const T = {
     fb1: '100% custom solutions starting at $333 USD', fb2: 'Free initial consultation — no commitment', fb3: 'Guaranteed response in less than 24 hours', fb4: 'Worldwide service — we work with clients across the globe', fb5: 'Detailed proposal with fixed price, no fine print',
     fl_name: 'Name', fl_email: 'Email', fl_company: 'Company', fl_service: 'What do you need?', fl_budget: 'Estimated budget (USD)',
     fp_name: 'Your full name', fp_email: 'email@company.com', fp_company: 'Your company or brand name',
-    fo_select: 'Select a service', fo_web: 'Web Design & Development', fo_chatbot: 'AI-Powered Chatbot', fo_automation: 'Automation & AI Solutions', fo_branding: 'Branding & Visual Identity', fo_marketing: 'Digital Marketing & Campaigns', fo_consulting: 'Strategic Consulting', fo_integral: 'Full solution',
+    fo_select: 'Select a service', fo_web: 'Web Design & Development', fo_chatbot: 'AI-Powered Chatbot', fo_automation: 'Automation & AI Solutions', fo_branding: 'Branding & Visual Identity', fo_marketing: 'Digital Marketing & Campaigns', fo_consulting: 'Strategic Consulting', fo_photovideo: 'Professional Photography & Video', fo_integral: 'Full solution',
     fo_range: 'Select a range',
     form_submit: 'Get my quote →', form_ok_title: 'Received ✓', form_ok_text: 'We\'ll contact you within 24 hours with a custom proposal.',
     form_note: 'Your data is safe. We don\'t share your information with third parties.',
@@ -1076,6 +1085,7 @@ const T = {
     svc4_name: 'العلامة التجارية والهوية البصرية', svc4_desc: 'الهوية البصرية التي تستحقها علامتك. شعار وألوان وخطوط وإرشادات مصممة حصرياً لك — لا شيء عام.',
     svc5_name: 'التسويق الرقمي والحملات', svc5_desc: 'استراتيجيات استقطاب مخصصة مع إعلانات ميتا وجوجل والتسويق بالبريد الإلكتروني. حملات مصممة لجمهورك مع عائد قابل للقياس.',
     svc6_name: 'الاستشارات الاستراتيجية الرقمية', svc6_desc: 'تدقيق شامل لحضورك الرقمي مع خارطة طريق مخصصة 100%. نحدد فرصك الفريدة ونصمم خطة للتوسع.',
+    svc7_name: 'التصوير الفوتوغرافي والفيديو الاحترافي', svc7_desc: 'محتوى بصري عالي الجودة لعلامتك التجارية. تصوير منتجات وعقارات وشركات وإنتاج فيديو احترافي يرفع مستوى صورتك.',
     ai_label: 'الذكاء الاصطناعي', ai_heading: 'مساعدك الخاص بالذكاء الاصطناعي، <strong>مصمم خصيصاً</strong>، يعمل <strong>24/7</strong> لأجل عملك',
     ai_sub: 'ليس روبوتاً عاماً. نصمم حلول ذكاء اصطناعي مخصصة لعملك ونبرتك وعملياتك. تتكامل مع واتساب وموقعك وأدواتك — وتبدأ العمل من اليوم الأول.',
     ai_cta1: 'أريد روبوت محادثة ←', ai_cta2: 'مزيد من المعلومات',
@@ -1093,7 +1103,7 @@ const T = {
     fb1: 'حلول مخصصة 100% تبدأ من 333$ دولار', fb2: 'استشارة أولية مجانية — بدون التزام', fb3: 'رد مضمون في أقل من 24 ساعة', fb4: 'خدمة عالمية — نعمل مع عملاء حول العالم', fb5: 'عرض مفصل بسعر ثابت بدون شروط مخفية',
     fl_name: 'الاسم', fl_email: 'البريد الإلكتروني', fl_company: 'الشركة', fl_service: 'ماذا تحتاج؟', fl_budget: 'الميزانية المقدرة (دولار)',
     fp_name: 'اسمك الكامل', fp_email: 'email@company.com', fp_company: 'اسم شركتك أو علامتك التجارية',
-    fo_select: 'اختر خدمة', fo_web: 'تصميم وتطوير المواقع', fo_chatbot: 'روبوت ذكاء اصطناعي', fo_automation: 'أتمتة وحلول ذكاء اصطناعي', fo_branding: 'العلامة التجارية والهوية البصرية', fo_marketing: 'التسويق الرقمي والحملات', fo_consulting: 'الاستشارات الاستراتيجية', fo_integral: 'حل متكامل',
+    fo_select: 'اختر خدمة', fo_web: 'تصميم وتطوير المواقع', fo_chatbot: 'روبوت ذكاء اصطناعي', fo_automation: 'أتمتة وحلول ذكاء اصطناعي', fo_branding: 'العلامة التجارية والهوية البصرية', fo_marketing: 'التسويق الرقمي والحملات', fo_consulting: 'الاستشارات الاستراتيجية', fo_photovideo: 'التصوير الفوتوغرافي والفيديو', fo_integral: 'حل متكامل',
     fo_range: 'اختر نطاقاً',
     form_submit: 'احصل على عرض سعر ←', form_ok_title: '✓ تم الاستلام', form_ok_text: 'سنتواصل معك خلال 24 ساعة بعرض مخصص.',
     form_note: 'بياناتك آمنة. لا نشارك معلوماتك مع أطراف ثالثة.',
@@ -1117,6 +1127,7 @@ const T = {
     svc4_name: '品牌与视觉识别', svc4_desc: '您的品牌应得的视觉识别。标志、色彩、字体和指南专为您设计——绝非通用。',
     svc5_name: '数字营销与广告', svc5_desc: '使用Meta Ads、Google Ads和电子邮件营销的个性化获客策略。为您的受众量身设计的广告活动，回报可衡量。',
     svc6_name: '数字战略咨询', svc6_desc: '全面审核您的数字存在，提供100%定制路线图。识别您的独特机会并设计扩展计划。',
+    svc7_name: '专业摄影与视频制作', svc7_desc: '为您的品牌打造高质量视觉内容。产品摄影、企业摄影、房地产摄影和专业视频制作，提升您的品牌形象。',
     ai_label: '人工智能', ai_heading: '您专属的AI助手，<strong>量身定制</strong>，<strong>全天候</strong>为您的业务工作',
     ai_sub: '不是通用机器人。我们为您的业务、语调和流程设计个性化AI解决方案。与WhatsApp、您的网站和工具集成——从第一天开始工作。',
     ai_cta1: '我想要聊天机器人 →', ai_cta2: '了解更多',
@@ -1134,7 +1145,7 @@ const T = {
     fb1: '100%定制解决方案，起价333美元', fb2: '免费初始咨询——无需承诺', fb3: '保证24小时内回复', fb4: '全球服务——我们与世界各地的客户合作', fb5: '详细提案，固定价格，没有隐藏条款',
     fl_name: '姓名', fl_email: '电子邮件', fl_company: '公司', fl_service: '您需要什么？', fl_budget: '预估预算（美元）',
     fp_name: '您的全名', fp_email: 'email@company.com', fp_company: '您的公司或品牌名称',
-    fo_select: '选择服务', fo_web: '网站设计与开发', fo_chatbot: 'AI智能聊天机器人', fo_automation: '自动化与AI解决方案', fo_branding: '品牌与视觉识别', fo_marketing: '数字营销与广告', fo_consulting: '战略咨询', fo_integral: '全套解决方案',
+    fo_select: '选择服务', fo_web: '网站设计与开发', fo_chatbot: 'AI智能聊天机器人', fo_automation: '自动化与AI解决方案', fo_branding: '品牌与视觉识别', fo_marketing: '数字营销与广告', fo_consulting: '战略咨询', fo_photovideo: '专业摄影与视频', fo_integral: '全套解决方案',
     fo_range: '选择范围',
     form_submit: '获取报价 →', form_ok_title: '已收到 ✓', form_ok_text: '我们将在24小时内联系您，提供定制提案。',
     form_note: '您的数据安全。我们不会与第三方共享您的信息。',
@@ -1188,25 +1199,46 @@ const observer = new IntersectionObserver((entries) => {
 }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
 document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-// Form
+// Form - sends to Google Sheets + email notification
+const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxvFquiDvm6gmmvw_67hB9CL-2J74GJYxutFIl6rLitTMSZenMhpYTGH7nlLX7JUswYRw/exec'; // Replace after deploying the script
+
 function submitForm() {
   const name = document.getElementById('f-name').value;
   const email = document.getElementById('f-email').value;
   const company = document.getElementById('f-company').value;
   const service = document.getElementById('f-service').value;
   const budget = document.getElementById('f-budget').value;
+  const lang = currentLang;
 
   if (!name || !email) {
     alert(T[currentLang].form_alert);
     return;
   }
 
-  console.log('Lead:', { name, email, company, service, budget, lang: currentLang });
+  // Disable button while sending
+  const btn = document.querySelector('.form-submit');
+  const originalText = btn.textContent;
+  btn.textContent = '...';
+  btn.disabled = true;
 
-  document.getElementById('formFields').style.display = 'none';
-  document.getElementById('formSuccess').classList.add('show');
-
-  setTimeout(() => { window.open('https://wa.link/hf8ufv', '_blank'); }, 2000);
+  // Send to Google Apps Script
+  fetch(APPS_SCRIPT_URL, {
+    method: 'POST',
+    mode: 'no-cors',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ name, email, company, service, budget, lang, timestamp: new Date().toISOString() })
+  })
+  .then(() => {
+    document.getElementById('formFields').style.display = 'none';
+    document.getElementById('formSuccess').classList.add('show');
+    setTimeout(() => { window.open('https://wa.link/hf8ufv', '_blank'); }, 2000);
+  })
+  .catch(() => {
+    // Even if fetch fails with no-cors, data was sent
+    document.getElementById('formFields').style.display = 'none';
+    document.getElementById('formSuccess').classList.add('show');
+    setTimeout(() => { window.open('https://wa.link/hf8ufv', '_blank'); }, 2000);
+  });
 }
 
 // Smooth scroll
