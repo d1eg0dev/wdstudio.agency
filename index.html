@@ -1,1254 +1,591 @@
 <!DOCTYPE html>
-<html lang="es" dir="ltr">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>WD Studio Agency — Digital Solutions</title>
-<meta name="description" content="Soluciones digitales personalizadas e inteligencia artificial para empresas worldwide. Chatbots IA, desarrollo web y automatización desde $333 USD.">
+<title>WD Studio — Digital identity for the world's most beautiful properties</title>
+<meta name="description" content="WD Studio is a design and development studio for luxury properties. Websites, custom software, photography and AI — for villas, hotels and developments worldwide. Since 2019.">
+<meta property="og:title" content="WD Studio — Digital identity for the world's most beautiful properties">
+<meta property="og:description" content="A design and development studio for luxury properties. Since 2019. Worldwide.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
-:root {
-  --black: #000000;
-  --white: #ffffff;
-  --gray-50: #fafafa;
-  --gray-100: #f5f5f5;
-  --gray-200: #e5e5e5;
-  --gray-300: #d4d4d4;
-  --gray-400: #a3a3a3;
-  --gray-500: #737373;
-  --gray-600: #525252;
-  --gray-700: #404040;
-  --gray-800: #262626;
-  --gray-900: #171717;
-  --gray-950: #0a0a0a;
-}
-
-*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-html { scroll-behavior: smooth; }
-
-body {
-  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  background: var(--white);
-  color: var(--black);
-  -webkit-font-smoothing: antialiased;
-  overflow-x: hidden;
-}
-
-html[dir="rtl"] body { font-family: 'Segoe UI', Tahoma, Arial, sans-serif; }
-html[lang="zh"] body { font-family: 'PingFang SC', 'Microsoft YaHei', 'Helvetica Neue', sans-serif; }
-
-a { color: inherit; text-decoration: none; }
-
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 clamp(1.5rem, 5vw, 4rem);
-}
-
-/* ===== NAV ===== */
-.nav {
-  position: fixed;
-  top: 0; left: 0; right: 0;
-  z-index: 1000;
-  padding: 1.5rem clamp(1.5rem, 5vw, 4rem);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background: transparent;
-  transition: all 0.4s;
-}
-
-.nav.scrolled {
-  background: rgba(255,255,255,0.95);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border-bottom: 1px solid var(--gray-200);
-  padding-top: 1rem; padding-bottom: 1rem;
-}
-
-.nav-logo img {
-  height: 32px;
-  width: auto;
-  transition: opacity 0.4s;
-}
-
-.nav-logo .logo-light { display: block; }
-.nav-logo .logo-dark { display: none; }
-.nav.scrolled .nav-logo .logo-light { display: none; }
-.nav.scrolled .nav-logo .logo-dark { display: block; }
-
-.nav-right {
-  display: flex;
-  align-items: center;
-  gap: 2rem;
-}
-
-.nav-link {
-  font-size: 0.75rem;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  color: rgba(255,255,255,0.7);
-  transition: color 0.3s;
-  font-weight: 500;
-}
-
-.nav.scrolled .nav-link { color: var(--gray-500); }
-.nav-link:hover { color: var(--white); }
-.nav.scrolled .nav-link:hover { color: var(--black); }
-
-.nav-cta {
-  font-size: 0.7rem;
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
-  font-weight: 600;
-  padding: 0.6rem 1.5rem;
-  border: 1px solid rgba(255,255,255,0.3);
-  color: var(--white);
-  transition: all 0.3s;
-}
-
-.nav.scrolled .nav-cta { border-color: var(--black); color: var(--black); }
-.nav-cta:hover { background: var(--white); color: var(--black); }
-.nav.scrolled .nav-cta:hover { background: var(--black); color: var(--white); }
-
-/* Language Switcher */
-.lang-switch {
-  display: flex;
-  gap: 2px;
-  background: rgba(255,255,255,0.1);
-  border-radius: 4px;
-  padding: 2px;
-  transition: background 0.4s;
-}
-
-.nav.scrolled .lang-switch { background: var(--gray-100); }
-
-.lang-btn {
-  padding: 0.35rem 0.55rem;
-  font-size: 0.65rem;
-  font-weight: 600;
-  letter-spacing: 0.5px;
-  text-transform: uppercase;
-  border: none;
-  background: transparent;
-  color: rgba(255,255,255,0.5);
-  cursor: pointer;
-  transition: all 0.3s;
-  border-radius: 3px;
-  font-family: inherit;
-}
-
-.nav.scrolled .lang-btn { color: var(--gray-400); }
-
-.lang-btn.active {
-  background: var(--white);
-  color: var(--black);
-}
-
-.nav.scrolled .lang-btn.active {
-  background: var(--black);
-  color: var(--white);
-}
-
-/* ===== HERO ===== */
-.hero {
-  min-height: 100vh;
-  background: var(--black);
-  color: var(--white);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: 10rem 0 8rem;
-}
-
-.hero-label {
-  font-size: 0.65rem;
-  text-transform: uppercase;
-  letter-spacing: 4px;
-  color: var(--gray-500);
-  margin-bottom: 2.5rem;
-  opacity: 0; animation: fadeIn 0.6s 0.2s forwards;
-}
-
-.hero-title {
-  font-size: clamp(2.5rem, 6.5vw, 5.5rem);
-  font-weight: 300;
-  line-height: 1.08;
-  letter-spacing: -0.03em;
-  max-width: 900px;
-  margin-bottom: 2.5rem;
-  opacity: 0; animation: fadeIn 0.6s 0.4s forwards;
-}
-
-html[dir="rtl"] .hero-title { letter-spacing: 0; }
-html[lang="zh"] .hero-title { letter-spacing: 0; }
-
-.hero-title strong { font-weight: 700; }
-
-.hero-sub {
-  font-size: clamp(0.95rem, 1.3vw, 1.1rem);
-  color: var(--gray-400);
-  max-width: 480px;
-  line-height: 1.7;
-  font-weight: 300;
-  margin-bottom: 2rem;
-  opacity: 0; animation: fadeIn 0.6s 0.6s forwards;
-}
-
-.hero-price {
-  font-size: 0.95rem;
-  color: var(--gray-300);
-  font-weight: 300;
-  margin-bottom: 3rem;
-  opacity: 0; animation: fadeIn 0.6s 0.7s forwards;
-  letter-spacing: 0.5px;
-}
-
-.hero-price strong {
-  font-weight: 700;
-  color: var(--white);
-  font-size: 1.1rem;
-}
-
-.hero-actions {
-  display: flex;
-  gap: 1rem;
-  flex-wrap: wrap;
-  opacity: 0; animation: fadeIn 0.6s 0.8s forwards;
-}
-
-/* Buttons */
-.btn-white {
-  display: inline-flex; align-items: center; gap: 0.6rem;
-  padding: 1rem 2.2rem;
-  background: var(--white); color: var(--black);
-  font-size: 0.75rem; font-weight: 600;
-  text-transform: uppercase; letter-spacing: 1.5px;
-  border: none; cursor: pointer; transition: all 0.3s;
-  font-family: inherit;
-}
-.btn-white:hover { background: var(--gray-200); transform: translateY(-1px); }
-
-.btn-ghost {
-  display: inline-flex; align-items: center; gap: 0.6rem;
-  padding: 1rem 2.2rem;
-  background: transparent; color: var(--white);
-  font-size: 0.75rem; font-weight: 500;
-  text-transform: uppercase; letter-spacing: 1.5px;
-  border: 1px solid var(--gray-700); cursor: pointer; transition: all 0.3s;
-  font-family: inherit;
-}
-.btn-ghost:hover { border-color: var(--gray-400); }
-
-.btn-black {
-  display: inline-flex; align-items: center; gap: 0.6rem;
-  padding: 1rem 2.2rem;
-  background: var(--black); color: var(--white);
-  font-size: 0.75rem; font-weight: 600;
-  text-transform: uppercase; letter-spacing: 1.5px;
-  border: 1px solid var(--black); cursor: pointer; transition: all 0.3s;
-  font-family: inherit;
-}
-.btn-black:hover { background: var(--gray-800); transform: translateY(-1px); }
-
-/* ===== METRICS ===== */
-.metrics {
-  padding: 5rem 0;
-  border-bottom: 1px solid var(--gray-200);
-}
-
-.metrics-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-}
-
-.metric {
-  text-align: center;
-  padding: 1.5rem;
-  border-right: 1px solid var(--gray-200);
-}
-
-html[dir="rtl"] .metric { border-right: none; border-left: 1px solid var(--gray-200); }
-html[dir="rtl"] .metric:last-child { border-left: none; }
-
-.metric:last-child { border-right: none; }
-
-.metric-value {
-  font-size: 2.8rem;
-  font-weight: 700;
-  letter-spacing: -0.02em;
-  line-height: 1;
-}
-
-.metric-label {
-  font-size: 0.7rem;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  color: var(--gray-500);
-  margin-top: 0.6rem;
-}
-
-/* ===== SERVICES ===== */
-.services { padding: 8rem 0; }
-
-.section-label {
-  font-size: 0.65rem;
-  text-transform: uppercase;
-  letter-spacing: 4px;
-  color: var(--gray-500);
-  margin-bottom: 1.5rem;
-  font-weight: 500;
-}
-
-.section-heading {
-  font-size: clamp(1.8rem, 3.5vw, 2.8rem);
-  font-weight: 300;
-  line-height: 1.2;
-  letter-spacing: -0.02em;
-  max-width: 600px;
-  margin-bottom: 4rem;
-}
-
-html[dir="rtl"] .section-heading { letter-spacing: 0; }
-
-.section-heading strong { font-weight: 700; }
-
-.services-list { display: flex; flex-direction: column; }
-
-.service-row {
-  display: grid;
-  grid-template-columns: 80px 1fr 1fr;
-  gap: 3rem;
-  align-items: start;
-  padding: 2.5rem 0;
-  border-top: 1px solid var(--gray-200);
-  transition: background 0.3s;
-  cursor: default;
-}
-
-.service-row:hover {
-  background: var(--gray-50);
-  margin: 0 -2rem;
-  padding-left: 2rem;
-  padding-right: 2rem;
-}
-
-.service-num {
-  font-size: 0.7rem;
-  letter-spacing: 1px;
-  color: var(--gray-400);
-  padding-top: 0.3rem;
-  font-weight: 500;
-}
-
-.service-name {
-  font-size: 1.3rem;
-  font-weight: 600;
-  letter-spacing: -0.01em;
-  line-height: 1.3;
-}
-
-.service-desc {
-  font-size: 0.88rem;
-  color: var(--gray-600);
-  line-height: 1.7;
-  font-weight: 300;
-}
-
-/* ===== AI SECTION ===== */
-.ai-section {
-  background: var(--gray-950);
-  color: var(--white);
-  padding: 8rem 0;
-}
-
-.ai-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 6rem;
-  align-items: start;
-}
-
-.ai-heading {
-  font-size: clamp(1.8rem, 3.5vw, 2.8rem);
-  font-weight: 300;
-  line-height: 1.2;
-  letter-spacing: -0.02em;
-  margin-bottom: 1.5rem;
-}
-
-.ai-heading strong { font-weight: 700; }
-
-.ai-sub {
-  color: var(--gray-400);
-  font-size: 0.95rem;
-  line-height: 1.7;
-  font-weight: 300;
-  margin-bottom: 2.5rem;
-}
-
-.ai-cta-row { display: flex; gap: 1rem; flex-wrap: wrap; }
-
-.ai-features { display: flex; flex-direction: column; }
-
-.ai-feature {
-  padding: 1.8rem 0;
-  border-bottom: 1px solid var(--gray-800);
-}
-
-.ai-feature:first-child { border-top: 1px solid var(--gray-800); }
-
-.ai-feature-title {
-  font-size: 1rem;
-  font-weight: 600;
-  margin-bottom: 0.5rem;
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-}
-
-.ai-feature-title::before {
-  content: '';
-  width: 6px; height: 6px;
-  background: var(--white);
-  border-radius: 50%;
-  flex-shrink: 0;
-}
-
-.ai-feature-desc {
-  font-size: 0.85rem;
-  color: var(--gray-500);
-  line-height: 1.6;
-  font-weight: 300;
-  padding-left: 1.5rem;
-}
-
-html[dir="rtl"] .ai-feature-desc { padding-left: 0; padding-right: 1.5rem; }
-
-/* ===== PROCESS ===== */
-.process {
-  padding: 8rem 0;
-  border-bottom: 1px solid var(--gray-200);
-}
-
-.process-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  margin-top: 4rem;
-}
-
-.process-step {
-  padding: 2rem 2rem 2rem 0;
-  border-right: 1px solid var(--gray-200);
-}
-
-html[dir="rtl"] .process-step { border-right: none; border-left: 1px solid var(--gray-200); padding: 2rem 0 2rem 2rem; }
-html[dir="rtl"] .process-step:last-child { border-left: none; }
-
-.process-step:last-child { border-right: none; }
-
-.process-num {
-  font-size: 3rem;
-  font-weight: 200;
-  color: var(--gray-300);
-  line-height: 1;
-  margin-bottom: 1.5rem;
-}
-
-.process-title {
-  font-size: 1rem;
-  font-weight: 600;
-  margin-bottom: 0.75rem;
-}
-
-.process-desc {
-  font-size: 0.83rem;
-  color: var(--gray-500);
-  line-height: 1.7;
-  font-weight: 300;
-}
-
-/* ===== FORM ===== */
-.form-section { padding: 8rem 0; }
-
-.form-wrapper {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 6rem;
-  align-items: start;
-}
-
-.form-info-heading {
-  font-size: clamp(1.8rem, 3.5vw, 2.8rem);
-  font-weight: 300;
-  line-height: 1.2;
-  letter-spacing: -0.02em;
-  margin-bottom: 1.5rem;
-}
-
-.form-info-heading strong { font-weight: 700; }
-
-.form-info-text {
-  font-size: 0.95rem;
-  color: var(--gray-600);
-  line-height: 1.7;
-  font-weight: 300;
-  margin-bottom: 2.5rem;
-}
-
-.form-benefits { display: flex; flex-direction: column; gap: 1rem; }
-
-.form-benefit {
-  display: flex;
-  align-items: flex-start;
-  gap: 0.75rem;
-  font-size: 0.88rem;
-  color: var(--gray-600);
-}
-
-.form-benefit::before {
-  content: '→';
-  color: var(--black);
-  font-weight: 600;
-  flex-shrink: 0;
-}
-
-html[dir="rtl"] .form-benefit::before { content: '←'; }
-
-.form-card {
-  background: var(--gray-50);
-  border: 1px solid var(--gray-200);
-  padding: 2.5rem;
-}
-
-.form-group { margin-bottom: 1.5rem; }
-
-.form-label {
-  display: block;
-  font-size: 0.65rem;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  color: var(--gray-500);
-  margin-bottom: 0.5rem;
-  font-weight: 500;
-}
-
-.form-input {
-  width: 100%;
-  padding: 0.85rem 0;
-  background: transparent;
-  border: none;
-  border-bottom: 1px solid var(--gray-300);
-  color: var(--black);
-  font-family: inherit;
-  font-size: 0.95rem;
-  font-weight: 400;
-  outline: none;
-  transition: border-color 0.3s;
-}
-
-.form-input:focus { border-color: var(--black); }
-.form-input::placeholder { color: var(--gray-400); }
-select.form-input { -webkit-appearance: none; cursor: pointer; background: transparent; }
-.form-input option { background: var(--white); color: var(--black); }
-
-.form-submit {
-  width: 100%;
-  padding: 1.1rem;
-  background: var(--black);
-  color: var(--white);
-  font-family: inherit;
-  font-weight: 600;
-  font-size: 0.75rem;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  border: none;
-  cursor: pointer;
-  transition: all 0.3s;
-  margin-top: 0.5rem;
-}
-
-.form-submit:hover { background: var(--gray-800); transform: translateY(-1px); }
-
-.form-note {
-  text-align: center;
-  font-size: 0.7rem;
-  color: var(--gray-400);
-  margin-top: 1rem;
-}
-
-.form-success { display: none; text-align: center; padding: 3rem 1rem; }
-.form-success.show { display: block; }
-.form-success h4 { font-size: 1.3rem; font-weight: 600; margin-bottom: 0.75rem; }
-.form-success p { color: var(--gray-500); font-size: 0.9rem; font-weight: 300; }
-
-/* ===== FINAL CTA ===== */
-.final-cta {
-  background: var(--black);
-  color: var(--white);
-  padding: 8rem 0;
-  text-align: center;
-}
-
-.final-heading {
-  font-size: clamp(2rem, 4.5vw, 3.5rem);
-  font-weight: 300;
-  letter-spacing: -0.02em;
-  line-height: 1.15;
-  margin-bottom: 1.5rem;
-}
-
-.final-heading strong { font-weight: 700; }
-
-.final-sub {
-  font-size: 1rem;
-  color: var(--gray-400);
-  max-width: 440px;
-  margin: 0 auto 3rem;
-  line-height: 1.7;
-  font-weight: 300;
-}
-
-.final-actions {
-  display: flex;
-  justify-content: center;
-  gap: 1rem;
-  flex-wrap: wrap;
-  margin-bottom: 2rem;
-}
-
-.final-note {
-  font-size: 0.7rem;
-  color: var(--gray-600);
-  letter-spacing: 0.5px;
-}
-
-/* ===== FOOTER ===== */
-.footer {
-  padding: 3rem 0;
-  border-top: 1px solid var(--gray-200);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 1rem;
-}
-
-.footer-left { display: flex; align-items: center; gap: 2rem; }
-.footer-logo img { height: 24px; width: auto; }
-.footer-copy { font-size: 0.7rem; color: var(--gray-400); letter-spacing: 0.5px; }
-.footer-links { display: flex; gap: 2rem; }
-
-.footer-link {
-  font-size: 0.7rem;
-  color: var(--gray-500);
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  transition: color 0.3s;
-  font-weight: 500;
-}
-
-.footer-link:hover { color: var(--black); }
-
-/* ===== WHATSAPP ===== */
-.wa-float {
-  position: fixed;
-  bottom: 2rem; right: 2rem;
-  width: 56px; height: 56px;
-  background: var(--black);
-  border-radius: 50%;
-  display: flex; align-items: center; justify-content: center;
-  z-index: 999;
-  transition: all 0.3s;
-  cursor: pointer;
-}
-
-html[dir="rtl"] .wa-float { right: auto; left: 2rem; }
-
-.wa-float:hover { transform: scale(1.08); box-shadow: 0 8px 30px rgba(0,0,0,0.25); }
-.wa-float svg { width: 24px; height: 24px; fill: var(--white); }
-
-/* ===== ANIMATIONS ===== */
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-.reveal {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: all 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-}
-
-.reveal.visible { opacity: 1; transform: translateY(0); }
-
-/* ===== RESPONSIVE ===== */
-@media (max-width: 1024px) {
-  .process-grid { grid-template-columns: repeat(2, 1fr); }
-  .process-step { border-bottom: 1px solid var(--gray-200); }
-  .process-step:nth-child(2) { border-right: none; }
-  html[dir="rtl"] .process-step:nth-child(2) { border-left: none; }
-  .ai-grid { grid-template-columns: 1fr; gap: 3rem; }
-  .form-wrapper { grid-template-columns: 1fr; gap: 3rem; }
-}
-
-@media (max-width: 768px) {
-  .nav-right .nav-link { display: none; }
-  .metrics-grid { grid-template-columns: repeat(2, 1fr); }
-  .metric { border-bottom: 1px solid var(--gray-200); }
-  .service-row { grid-template-columns: 1fr; gap: 0.5rem; }
-  .service-num { display: none; }
-  .process-grid { grid-template-columns: 1fr; }
-  .process-step { border-right: none !important; border-left: none !important; }
-  .hero-actions { flex-direction: column; }
-  .btn-white, .btn-ghost, .btn-black { justify-content: center; width: 100%; }
-  .form-card { padding: 1.5rem; }
-  .final-actions { flex-direction: column; align-items: center; }
-  .lang-switch { gap: 1px; }
-  .lang-btn { padding: 0.3rem 0.4rem; font-size: 0.6rem; }
-}
+@font-face{
+  font-family:'Helios Ext';
+  src:url('fonts/HeliosExt.woff2') format('woff2'),
+      url('fonts/HeliosExt.woff') format('woff'),
+      url('fonts/HeliosExt.otf') format('opentype');
+  font-weight:400; font-style:normal; font-display:swap;
+}
+:root{
+  --ink:#0B0B0B; --paper:#FFFFFF; --bone:#F4F2ED;
+  --g900:#171717; --g800:#262626; --g700:#404040;
+  --g500:#737373; --g400:#A3A3A3; --g300:#D4D4D4; --g200:#E7E5E1;
+  --display:'Cormorant Garamond',Georgia,serif;
+  --brand:'Helios Ext','Helvetica Neue',Arial,sans-serif;
+  --body:'Inter',-apple-system,'Helvetica Neue',Arial,sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--paper);color:var(--ink);font-family:var(--body);font-weight:300;line-height:1.65;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+.container{max-width:1280px;margin:0 auto;padding:0 40px}
+.label{font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:var(--g500);font-weight:500}
+h2.heading{font-family:var(--display);font-weight:300;font-size:clamp(2rem,4.2vw,3.4rem);line-height:1.14;letter-spacing:-.01em;margin-top:18px}
+.reveal{opacity:0;transform:translateY(28px);transition:opacity 1s ease,transform 1s ease}
+.reveal.in{opacity:1;transform:none}
+
+/* NAV */
+nav{position:fixed;inset:0 0 auto 0;z-index:80;padding:22px 0;transition:background .4s,padding .4s,border-color .4s;border-bottom:1px solid transparent}
+nav.solid{background:rgba(255,255,255,.94);backdrop-filter:blur(10px);padding:14px 0;border-bottom-color:var(--g200)}
+.nav-in{max-width:1280px;margin:0 auto;padding:0 40px;display:flex;justify-content:space-between;align-items:center;gap:28px}
+.nav-logo img{height:22px;width:auto}
+.logo-light{display:none}
+.logo-dark{display:block}
+.nav-right{display:flex;align-items:center;gap:34px}
+.nav-link{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--g700);transition:color .3s}
+nav.solid .nav-link{color:var(--g700)}
+.nav-link:hover{color:var(--ink)}
+.lang{display:flex;gap:5px;font-size:11px;letter-spacing:.1em;color:var(--g400)}
+nav.solid .lang{color:var(--g400)}
+.lang button{background:none;border:none;cursor:pointer;font:inherit;color:inherit;padding:0;transition:color .3s}
+.lang button.active{color:var(--ink);font-weight:500}
+.nav-cta{font-size:11px;letter-spacing:.18em;text-transform:uppercase;border:1px solid var(--ink);padding:10px 20px;color:var(--ink);transition:all .3s}
+.nav-cta:hover{background:var(--ink);color:#fff}
+
+/* HERO */
+header{position:relative;min-height:100vh;background:#fff;color:var(--ink);display:flex;align-items:flex-end;overflow:hidden}
+header picture{position:absolute;inset:0}
+header .bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center center}
+.hero-in{position:relative;z-index:2;width:100%;padding-bottom:70px}
+.hero-eyebrow{font-size:10px;letter-spacing:.32em;text-transform:uppercase;color:var(--g700);margin-bottom:22px}
+.wordmark{font-family:var(--brand);font-weight:400;font-size:clamp(2.4rem,10vw,8.2rem);line-height:1;letter-spacing:.005em;color:var(--ink)}
+.hero-sub{font-family:var(--display);font-style:italic;font-weight:300;font-size:clamp(1.25rem,2.8vw,2.1rem);line-height:1.32;color:var(--g800);max-width:22ch;margin-top:26px}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:44px}
+.btn{display:inline-block;font-size:11px;letter-spacing:.2em;text-transform:uppercase;padding:16px 34px;transition:all .3s;cursor:pointer;font-family:inherit;border:1px solid transparent}
+.btn-solid{background:#fff;color:var(--ink)}
+.btn-solid:hover{background:var(--g300)}
+.btn-line{border-color:rgba(255,255,255,.45);color:#fff}
+.btn-line:hover{background:rgba(255,255,255,.12)}
+.btn-dark{background:var(--ink);color:#fff}
+.btn-dark:hover{background:var(--g800)}
+.btn-outline{border-color:var(--ink);color:var(--ink)}
+.btn-outline:hover{background:var(--ink);color:#fff}
+
+/* MANIFESTO */
+.manifesto{padding:120px 0;background:var(--bone)}
+.man-grid{display:grid;grid-template-columns:1fr 1.5fr;gap:80px;align-items:start}
+.man-body p{font-size:19px;line-height:1.85;color:var(--g700);max-width:56ch}
+.man-body p+p{margin-top:22px}
+.man-body strong{font-weight:400;color:var(--ink)}
+
+/* METRICS */
+.metrics{border-top:1px solid var(--g200);padding:64px 0;background:var(--bone)}
+.met-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:40px}
+.met-v{font-family:var(--brand);font-size:clamp(1.9rem,3.4vw,2.7rem);line-height:1;font-weight:400;letter-spacing:.01em}
+.met-l{margin-top:12px;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--g500)}
+
+/* WORK */
+.work{padding:120px 0;background:var(--ink);color:#fff}
+.work .label{color:var(--g500)}
+.work .heading{color:#fff}
+.work-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:56px 36px;margin-top:64px}
+.w-shot{position:relative;overflow:hidden;aspect-ratio:16/11;background:var(--g900);border:1px solid var(--g800)}
+.w-shot img{width:100%;height:100%;object-fit:cover;object-position:top center;transition:transform 1.3s cubic-bezier(.2,.7,.3,1)}
+.w-item:hover .w-shot img{transform:scale(1.045)}
+.w-meta{display:flex;justify-content:space-between;align-items:baseline;gap:16px;margin-top:20px;padding-bottom:12px;border-bottom:1px solid var(--g800)}
+.w-name{font-family:var(--display);font-size:1.5rem;font-weight:300}
+.w-url{font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--g500)}
+.w-desc{margin-top:14px;font-size:15px;line-height:1.7;color:var(--g400);max-width:44ch}
+.w-tag{display:inline-block;margin-top:14px;font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;border:1px solid var(--g700);padding:6px 12px;color:#fff}
+
+/* SERVICES */
+.services{padding:120px 0}
+.svc{display:grid;grid-template-columns:80px 1fr 1.15fr;gap:40px;align-items:start;padding:52px 0;border-top:1px solid var(--g200)}
+.svc:last-child{border-bottom:1px solid var(--g200)}
+.svc-num{font-family:var(--display);font-size:1.5rem;color:var(--g400);font-weight:300}
+.svc-name{font-family:var(--display);font-size:clamp(1.5rem,2.6vw,2.1rem);font-weight:300;line-height:1.2}
+.svc-desc{font-size:16px;line-height:1.8;color:var(--g700)}
+.svc-meta{margin-top:16px;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--g500)}
+
+/* APPROACH */
+.approach{padding:120px 0;background:var(--bone)}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:60px;border-top:1px solid var(--g300)}
+.step{padding:38px 30px 0 0;border-right:1px solid var(--g300)}
+.step:last-child{border-right:none;padding-right:0}
+.step-n{font-family:var(--display);font-size:1.2rem;color:var(--g400)}
+.step-t{margin:14px 0 10px;font-family:var(--display);font-size:1.4rem;font-weight:400}
+.step-d{font-size:14.5px;line-height:1.7;color:var(--g700)}
+
+/* CONTACT */
+.contact{padding:120px 0;background:var(--ink);color:#fff}
+.contact .label{color:var(--g500)}
+.contact .heading{color:#fff}
+.c-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:80px;align-items:start;margin-top:56px}
+.c-list{list-style:none;margin-top:34px}
+.c-list li{display:flex;gap:16px;padding:16px 0;border-bottom:1px solid var(--g800);font-size:15px;color:var(--g400);line-height:1.6}
+.c-list li span:first-child{color:#fff;flex-shrink:0}
+.c-intro{font-size:18px;line-height:1.8;color:var(--g400);max-width:44ch}
+.form{background:var(--paper);color:var(--ink);padding:44px}
+.fg{margin-bottom:22px}
+.fl{display:block;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--g500);margin-bottom:9px}
+.fi{width:100%;border:none;border-bottom:1px solid var(--g300);padding:11px 0;font-family:inherit;font-size:15px;font-weight:300;background:transparent;color:var(--ink);transition:border-color .3s}
+.fi:focus{outline:none;border-bottom-color:var(--ink)}
+select.fi{cursor:pointer}
+textarea.fi{resize:vertical;min-height:70px}
+.form-submit{width:100%;margin-top:12px;background:var(--ink);color:#fff;border:none;cursor:pointer;font-family:inherit;font-size:11px;letter-spacing:.2em;text-transform:uppercase;padding:17px;transition:background .3s}
+.form-submit:hover{background:var(--g800)}
+.form-note{margin-top:18px;font-size:12px;color:var(--g500);line-height:1.6}
+.form-ok{display:none;text-align:center;padding:40px 0}
+.form-ok h4{font-family:var(--display);font-size:1.6rem;font-weight:400;margin-bottom:10px}
+.form-ok p{font-size:15px;color:var(--g500)}
+
+/* NEWSLETTER */
+.nl{padding:70px 0;border-top:1px solid var(--g200)}
+.nl-in{display:flex;justify-content:space-between;align-items:flex-end;gap:44px;flex-wrap:wrap}
+.nl-copy{max-width:38ch}
+.nl-copy h4{font-family:var(--display);font-size:1.5rem;font-weight:400;margin-bottom:8px}
+.nl-copy p{font-size:14.5px;color:var(--g500);line-height:1.65}
+.nl-right{flex:1;max-width:420px;min-width:290px}
+.nl-form{display:flex;border-bottom:1px solid var(--g300);transition:border-color .3s}
+.nl-form:focus-within{border-bottom-color:var(--ink)}
+.nl-form input[type=email]{flex:1;min-width:0;border:none;background:transparent;padding:13px 2px;font-family:inherit;font-size:15px;font-weight:300;outline:none}
+.nl-form button{border:none;background:transparent;cursor:pointer;font-family:inherit;font-size:10px;letter-spacing:.2em;text-transform:uppercase;padding:13px 0 13px 22px;transition:opacity .3s}
+.nl-form button:disabled{opacity:.4}
+.nl-form input[type=text]{position:absolute!important;left:-9999px!important;width:1px!important;height:1px!important;opacity:0!important}
+.nl-msg{font-size:13px;color:var(--g500);margin-top:11px;min-height:18px}
+
+/* FOOTER */
+footer{padding:52px 0;border-top:1px solid var(--g200)}
+.f-brand{display:flex;flex-direction:column;gap:12px}
+.f-brand img{height:20px;width:auto}
+.f-in{display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap;font-size:12.5px;color:var(--g500)}
+.f-links{display:flex;gap:26px}
+.f-links a{transition:color .3s}
+.f-links a:hover{color:var(--ink)}
+
+@media(max-width:1000px){
+  .man-grid,.c-grid{grid-template-columns:1fr;gap:40px}
+  .steps{grid-template-columns:1fr 1fr}
+  .step{border-right:none;padding-right:0;border-bottom:1px solid var(--g300);padding-bottom:30px}
+  .met-grid{grid-template-columns:1fr 1fr;gap:34px}
+}
+@media(max-width:820px){
+  .container,.nav-in{padding:0 22px}
+  .nav-link{display:none}
+  .work-grid{grid-template-columns:1fr;gap:44px}
+  .svc{grid-template-columns:1fr;gap:14px;padding:38px 0}
+  .svc-num{font-size:1.1rem}
+  section,.manifesto,.work,.services,.approach,.contact{padding:72px 0}
+  .form{padding:28px}
+  .hero-in{padding-bottom:48px}
+  .btn{width:100%;text-align:center}
+}
+@media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}.w-shot img{transition:none}}
 </style>
 </head>
 <body>
 
-<!-- NAV -->
-<nav class="nav" id="nav">
-  <a href="#" class="nav-logo">
-    <img class="logo-light" src="data:image/png;base64,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" alt="WD Studio">
-    <img class="logo-dark" src="data:image/png;base64,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" alt="WD Studio">
-  </a>
-  <div class="nav-right">
-    <a href="#services" class="nav-link" data-i18n="nav_services"></a>
-    <a href="#ai" class="nav-link" data-i18n="nav_ai"></a>
-    <a href="#contact" class="nav-link" data-i18n="nav_contact"></a>
-    <div class="lang-switch">
-      <button class="lang-btn active" onclick="setLang('es')">ES</button>
-      <button class="lang-btn" onclick="setLang('en')">EN</button>
-      <button class="lang-btn" onclick="setLang('ar')">عر</button>
-      <button class="lang-btn" onclick="setLang('zh')">中</button>
+<nav id="nav">
+  <div class="nav-in">
+    <a href="#" class="nav-logo">
+      <img class="logo-light" src="images/logo-light.png" alt="WD Studio Agency">
+      <img class="logo-dark" src="images/logo-dark.png" alt="WD Studio Agency">
+    </a>
+    <div class="nav-right">
+      <a href="#work" class="nav-link" data-i18n="nav_work"></a>
+      <a href="#services" class="nav-link" data-i18n="nav_services"></a>
+      <a href="#approach" class="nav-link" data-i18n="nav_approach"></a>
+      <div class="lang">
+        <button data-lang="en" class="active">EN</button><span>/</span><button data-lang="es">ES</button>
+      </div>
+      <a href="#contact" class="nav-cta" data-i18n="nav_cta"></a>
     </div>
-    <a href="https://wa.link/al6913" target="_blank" class="nav-cta" data-i18n="nav_cta"></a>
   </div>
 </nav>
 
-<!-- HERO -->
-<section class="hero">
-  <div class="container">
-    <p class="hero-label">WD Studio Agency · Worldwide · 2026</p>
-    <h1 class="hero-title" data-i18n="hero_title"></h1>
-    <p class="hero-sub" data-i18n="hero_sub"></p>
-    <p class="hero-price" data-i18n="hero_price"></p>
-    <div class="hero-actions">
-      <a href="#contact" class="btn-white" data-i18n="hero_cta1"></a>
-      <a href="https://wa.link/al6913" target="_blank" class="btn-ghost" data-i18n="hero_cta2"></a>
+<header>
+  <picture>
+      <source srcset="images/hero.webp" type="image/webp">
+      <img class="bg" src="images/hero.jpg" alt="Copa del Sol, Costa Careyes">
+    </picture>
+  <div class="hero-in">
+    <div class="container">
+      <p class="hero-eyebrow" data-i18n="hero_eyebrow"></p>
+      <h1 class="wordmark">WD STUDIO</h1>
+      <p class="hero-sub" data-i18n="hero_sub"></p>
+      <div class="hero-actions">
+        <a href="#work" class="btn btn-dark" data-i18n="hero_cta1"></a>
+        <a href="#contact" class="btn btn-outline" data-i18n="hero_cta2"></a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section class="manifesto">
+  <div class="container man-grid reveal">
+    <div>
+      <p class="label" data-i18n="man_label"></p>
+      <h2 class="heading" data-i18n="man_heading"></h2>
+    </div>
+    <div class="man-body">
+      <p data-i18n="man_p1"></p>
+      <p data-i18n="man_p2"></p>
+      <p data-i18n="man_p3"></p>
     </div>
   </div>
 </section>
 
-<!-- METRICS -->
 <section class="metrics">
   <div class="container">
-    <div class="metrics-grid">
-      <div class="metric">
-        <div class="metric-value">50+</div>
-        <div class="metric-label" data-i18n="metric_projects"></div>
-      </div>
-      <div class="metric">
-        <div class="metric-value">12+</div>
-        <div class="metric-label" data-i18n="metric_countries"></div>
-      </div>
-      <div class="metric">
-        <div class="metric-value">100%</div>
-        <div class="metric-label" data-i18n="metric_custom"></div>
-      </div>
-      <div class="metric">
-        <div class="metric-value">$333</div>
-        <div class="metric-label" data-i18n="metric_price"></div>
-      </div>
+    <div class="met-grid reveal">
+      <div><div class="met-v">2019</div><div class="met-l" data-i18n="met1"></div></div>
+      <div><div class="met-v">50+</div><div class="met-l" data-i18n="met2"></div></div>
+      <div><div class="met-v">12</div><div class="met-l" data-i18n="met3"></div></div>
+      <div><div class="met-v">100%</div><div class="met-l" data-i18n="met4"></div></div>
     </div>
   </div>
 </section>
 
-<!-- SERVICES -->
+<section class="work" id="work">
+  <div class="container">
+    <div class="reveal">
+      <p class="label" data-i18n="work_label"></p>
+      <h2 class="heading" data-i18n="work_heading"></h2>
+    </div>
+    <div class="work-grid reveal">
+      <a class="w-item" href="https://casa-copal.com" target="_blank" rel="noopener">
+        <div class="w-shot"><picture><source srcset="images/work/copal.webp" type="image/webp"><img src="images/work/copal.jpg" alt="Casa Copal" loading="lazy"></picture></div>
+        <div class="w-meta"><span class="w-name">Casa Copal</span><span class="w-url">casa-copal.com</span></div>
+        <p class="w-desc" data-i18n="w1"></p>
+      </a>
+      <a class="w-item" href="https://casa-candelabros.com" target="_blank" rel="noopener">
+        <div class="w-shot"><picture><source srcset="images/work/candelabros.webp" type="image/webp"><img src="images/work/candelabros.jpg" alt="Casa Candelabros" loading="lazy"></picture></div>
+        <div class="w-meta"><span class="w-name">Casa Candelabros</span><span class="w-url">casa-candelabros.com</span></div>
+        <p class="w-desc" data-i18n="w2"></p>
+      </a>
+      <a class="w-item" href="https://villastritoncareyes.com" target="_blank" rel="noopener">
+        <div class="w-shot"><picture><source srcset="images/work/triton.webp" type="image/webp"><img src="images/work/triton.jpg" alt="Villas Tritón" loading="lazy"></picture></div>
+        <div class="w-meta"><span class="w-name">Villas Tritón</span><span class="w-url">villastritoncareyes.com</span></div>
+        <p class="w-desc" data-i18n="w3"></p>
+      </a>
+      <a class="w-item" href="https://nautiluscareyes.com" target="_blank" rel="noopener">
+        <div class="w-shot"><picture><source srcset="images/work/nautilus.webp" type="image/webp"><img src="images/work/nautilus.jpg" alt="Casa Nautilus" loading="lazy"></picture></div>
+        <div class="w-meta"><span class="w-name">Casa Nautilus</span><span class="w-url">nautiluscareyes.com</span></div>
+        <p class="w-desc" data-i18n="w4"></p>
+      </a>
+      <a class="w-item" href="https://pacificluxuryvillas.com" target="_blank" rel="noopener">
+        <div class="w-shot"><picture><source srcset="images/work/pacific.webp" type="image/webp"><img src="images/work/pacific.jpg" alt="Pacific Luxury Villas" loading="lazy"></picture></div>
+        <div class="w-meta"><span class="w-name">Pacific Luxury Villas</span><span class="w-url">pacificluxuryvillas.com</span></div>
+        <p class="w-desc" data-i18n="w5"></p>
+        <span class="w-tag" data-i18n="w5t"></span>
+      </a>
+      <a class="w-item" href="https://casatauro.mx" target="_blank" rel="noopener">
+        <div class="w-shot"><picture><source srcset="images/work/tauro.webp" type="image/webp"><img src="images/work/tauro.jpg" alt="Casa Tauro" loading="lazy"></picture></div>
+        <div class="w-meta"><span class="w-name">Casa Tauro</span><span class="w-url">casatauro.mx</span></div>
+        <p class="w-desc" data-i18n="w6"></p>
+        <span class="w-tag" data-i18n="w6t"></span>
+      </a>
+    </div>
+  </div>
+</section>
+
 <section class="services" id="services">
   <div class="container">
     <div class="reveal">
-      <p class="section-label" data-i18n="services_label"></p>
-      <h2 class="section-heading" data-i18n="services_heading"></h2>
+      <p class="label" data-i18n="svc_label"></p>
+      <h2 class="heading" data-i18n="svc_heading"></h2>
     </div>
-    <div class="services-list reveal">
-      <div class="service-row">
-        <span class="service-num">01</span>
-        <div class="service-name" data-i18n="svc1_name"></div>
-        <div class="service-desc" data-i18n="svc1_desc"></div>
+    <div class="reveal" style="margin-top:56px">
+      <div class="svc">
+        <div class="svc-num">01</div>
+        <div><h3 class="svc-name" data-i18n="s1n"></h3><p class="svc-meta" data-i18n="s1m"></p></div>
+        <p class="svc-desc" data-i18n="s1d"></p>
       </div>
-      <div class="service-row">
-        <span class="service-num">02</span>
-        <div class="service-name" data-i18n="svc2_name"></div>
-        <div class="service-desc" data-i18n="svc2_desc"></div>
+      <div class="svc">
+        <div class="svc-num">02</div>
+        <div><h3 class="svc-name" data-i18n="s2n"></h3><p class="svc-meta" data-i18n="s2m"></p></div>
+        <p class="svc-desc" data-i18n="s2d"></p>
       </div>
-      <div class="service-row">
-        <span class="service-num">03</span>
-        <div class="service-name" data-i18n="svc3_name"></div>
-        <div class="service-desc" data-i18n="svc3_desc"></div>
+      <div class="svc">
+        <div class="svc-num">03</div>
+        <div><h3 class="svc-name" data-i18n="s3n"></h3><p class="svc-meta" data-i18n="s3m"></p></div>
+        <p class="svc-desc" data-i18n="s3d"></p>
       </div>
-      <div class="service-row">
-        <span class="service-num">04</span>
-        <div class="service-name" data-i18n="svc4_name"></div>
-        <div class="service-desc" data-i18n="svc4_desc"></div>
-      </div>
-      <div class="service-row">
-        <span class="service-num">05</span>
-        <div class="service-name" data-i18n="svc5_name"></div>
-        <div class="service-desc" data-i18n="svc5_desc"></div>
-      </div>
-      <div class="service-row">
-        <span class="service-num">06</span>
-        <div class="service-name" data-i18n="svc6_name"></div>
-        <div class="service-desc" data-i18n="svc6_desc"></div>
-      </div>
-      <div class="service-row">
-        <span class="service-num">07</span>
-        <div class="service-name" data-i18n="svc7_name"></div>
-        <div class="service-desc" data-i18n="svc7_desc"></div>
+      <div class="svc">
+        <div class="svc-num">04</div>
+        <div><h3 class="svc-name" data-i18n="s4n"></h3><p class="svc-meta" data-i18n="s4m"></p></div>
+        <p class="svc-desc" data-i18n="s4d"></p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- AI SECTION -->
-<section class="ai-section" id="ai">
-  <div class="container">
-    <div class="ai-grid">
-      <div class="reveal">
-        <p class="section-label" style="color:var(--gray-500);" data-i18n="ai_label"></p>
-        <h2 class="ai-heading" data-i18n="ai_heading"></h2>
-        <p class="ai-sub" data-i18n="ai_sub"></p>
-        <div class="ai-cta-row">
-          <a href="#contact" class="btn-white" data-i18n="ai_cta1"></a>
-          <a href="https://wa.link/al6913" target="_blank" class="btn-ghost" data-i18n="ai_cta2"></a>
-        </div>
-      </div>
-      <div class="ai-features reveal">
-        <div class="ai-feature">
-          <div class="ai-feature-title" data-i18n="aif1_title"></div>
-          <div class="ai-feature-desc" data-i18n="aif1_desc"></div>
-        </div>
-        <div class="ai-feature">
-          <div class="ai-feature-title" data-i18n="aif2_title"></div>
-          <div class="ai-feature-desc" data-i18n="aif2_desc"></div>
-        </div>
-        <div class="ai-feature">
-          <div class="ai-feature-title" data-i18n="aif3_title"></div>
-          <div class="ai-feature-desc" data-i18n="aif3_desc"></div>
-        </div>
-        <div class="ai-feature">
-          <div class="ai-feature-title" data-i18n="aif4_title"></div>
-          <div class="ai-feature-desc" data-i18n="aif4_desc"></div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- PROCESS -->
-<section class="process" id="process">
+<section class="approach" id="approach">
   <div class="container">
     <div class="reveal">
-      <p class="section-label" data-i18n="process_label"></p>
-      <h2 class="section-heading" data-i18n="process_heading"></h2>
+      <p class="label" data-i18n="app_label"></p>
+      <h2 class="heading" data-i18n="app_heading"></h2>
     </div>
-    <div class="process-grid reveal">
-      <div class="process-step">
-        <div class="process-num">01</div>
-        <div class="process-title" data-i18n="step1_title"></div>
-        <div class="process-desc" data-i18n="step1_desc"></div>
-      </div>
-      <div class="process-step">
-        <div class="process-num">02</div>
-        <div class="process-title" data-i18n="step2_title"></div>
-        <div class="process-desc" data-i18n="step2_desc"></div>
-      </div>
-      <div class="process-step">
-        <div class="process-num">03</div>
-        <div class="process-title" data-i18n="step3_title"></div>
-        <div class="process-desc" data-i18n="step3_desc"></div>
-      </div>
-      <div class="process-step">
-        <div class="process-num">04</div>
-        <div class="process-title" data-i18n="step4_title"></div>
-        <div class="process-desc" data-i18n="step4_desc"></div>
-      </div>
+    <div class="steps reveal">
+      <div class="step"><div class="step-n">I</div><h4 class="step-t" data-i18n="p1t"></h4><p class="step-d" data-i18n="p1d"></p></div>
+      <div class="step"><div class="step-n">II</div><h4 class="step-t" data-i18n="p2t"></h4><p class="step-d" data-i18n="p2d"></p></div>
+      <div class="step"><div class="step-n">III</div><h4 class="step-t" data-i18n="p3t"></h4><p class="step-d" data-i18n="p3d"></p></div>
+      <div class="step"><div class="step-n">IV</div><h4 class="step-t" data-i18n="p4t"></h4><p class="step-d" data-i18n="p4d"></p></div>
     </div>
   </div>
 </section>
 
-<!-- FORM -->
-<section class="form-section" id="contact">
+<section class="contact" id="contact">
   <div class="container">
-    <div class="form-wrapper">
-      <div class="reveal">
-        <p class="section-label" data-i18n="form_label"></p>
-        <h2 class="form-info-heading" data-i18n="form_heading"></h2>
-        <p class="form-info-text" data-i18n="form_text"></p>
-        <div class="form-benefits">
-          <div class="form-benefit" data-i18n="fb1"></div>
-          <div class="form-benefit" data-i18n="fb2"></div>
-          <div class="form-benefit" data-i18n="fb3"></div>
-          <div class="form-benefit" data-i18n="fb4"></div>
-          <div class="form-benefit" data-i18n="fb5"></div>
-        </div>
+    <div class="reveal">
+      <p class="label" data-i18n="c_label"></p>
+      <h2 class="heading" data-i18n="c_heading"></h2>
+    </div>
+    <div class="c-grid reveal">
+      <div>
+        <p class="c-intro" data-i18n="c_intro"></p>
+        <ul class="c-list">
+          <li><span>—</span><span data-i18n="cb1"></span></li>
+          <li><span>—</span><span data-i18n="cb2"></span></li>
+          <li><span>—</span><span data-i18n="cb3"></span></li>
+          <li><span>—</span><span data-i18n="cb4"></span></li>
+        </ul>
       </div>
-      <div class="form-card reveal">
+      <div class="form">
         <div id="formFields">
-          <div class="form-group">
-            <label class="form-label" data-i18n="fl_name"></label>
-            <input class="form-input" type="text" id="f-name" data-i18n-ph="fp_name">
-          </div>
-          <div class="form-group">
-            <label class="form-label" data-i18n="fl_email"></label>
-            <input class="form-input" type="email" id="f-email" data-i18n-ph="fp_email">
-          </div>
-          <div class="form-group">
-            <label class="form-label" data-i18n="fl_company"></label>
-            <input class="form-input" type="text" id="f-company" data-i18n-ph="fp_company">
-          </div>
-          <div class="form-group">
-            <label class="form-label" data-i18n="fl_service"></label>
-            <select class="form-input" id="f-service">
+          <div class="fg"><label class="fl" data-i18n="fl_name"></label><input class="fi" id="f-name" type="text"></div>
+          <div class="fg"><label class="fl" data-i18n="fl_email"></label><input class="fi" id="f-email" type="email"></div>
+          <div class="fg"><label class="fl" data-i18n="fl_company"></label><input class="fi" id="f-company" type="text"></div>
+          <div class="fg"><label class="fl" data-i18n="fl_service"></label>
+            <select class="fi" id="f-service">
               <option value="" data-i18n="fo_select"></option>
               <option value="web" data-i18n="fo_web"></option>
-              <option value="chatbot" data-i18n="fo_chatbot"></option>
-              <option value="automation" data-i18n="fo_automation"></option>
-              <option value="branding" data-i18n="fo_branding"></option>
-              <option value="marketing" data-i18n="fo_marketing"></option>
-              <option value="consulting" data-i18n="fo_consulting"></option>
-              <option value="photovideo" data-i18n="fo_photovideo"></option>
+              <option value="software" data-i18n="fo_software"></option>
+              <option value="photovideo" data-i18n="fo_photo"></option>
+              <option value="ai" data-i18n="fo_ai"></option>
               <option value="integral" data-i18n="fo_integral"></option>
             </select>
           </div>
-          <div class="form-group">
-            <label class="form-label" data-i18n="fl_budget"></label>
-            <select class="form-input" id="f-budget">
+          <div class="fg"><label class="fl" data-i18n="fl_budget"></label>
+            <select class="fi" id="f-budget">
               <option value="" data-i18n="fo_range"></option>
-              <option value="333-500">$333 – $500</option>
-              <option value="500-1000">$500 – $1,000</option>
-              <option value="1000-3000">$1,000 – $3,000</option>
-              <option value="3000-5000">$3,000 – $5,000</option>
-              <option value="5000+">$5,000+</option>
+              <option value="1200-3000">$1,200 – $3,000</option>
+              <option value="3000-6000">$3,000 – $6,000</option>
+              <option value="6000-12000">$6,000 – $12,000</option>
+              <option value="12000-25000">$12,000 – $25,000</option>
+              <option value="25000+">$25,000+</option>
             </select>
           </div>
-          <button class="form-submit" onclick="submitForm()" data-i18n="form_submit"></button>
+          <div class="fg"><label class="fl" data-i18n="fl_project"></label><textarea class="fi" id="f-project" rows="3"></textarea></div>
+          <button class="form-submit" id="btnSubmit" data-i18n="form_submit"></button>
         </div>
-        <div class="form-success" id="formSuccess">
-          <h4 data-i18n="form_ok_title"></h4>
-          <p data-i18n="form_ok_text"></p>
+        <div class="form-ok" id="formOk">
+          <h4 data-i18n="ok_title"></h4>
+          <p data-i18n="ok_text"></p>
         </div>
-        <div class="form-note" data-i18n="form_note"></div>
+        <p class="form-note" data-i18n="form_note"></p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- FINAL CTA -->
-<section class="final-cta">
-  <div class="container reveal">
-    <h2 class="final-heading" data-i18n="final_heading"></h2>
-    <p class="final-sub" data-i18n="final_sub"></p>
-    <div class="final-actions">
-      <a href="https://wa.link/al6913" target="_blank" class="btn-white" data-i18n="final_cta1"></a>
-      <a href="#contact" class="btn-ghost" data-i18n="final_cta2"></a>
+<section class="nl">
+  <div class="container nl-in">
+    <div class="nl-copy">
+      <h4 data-i18n="nl_title"></h4>
+      <p data-i18n="nl_sub"></p>
     </div>
-    <p class="final-note" data-i18n="final_note"></p>
+    <div class="nl-right">
+      <form id="nlForm" class="nl-form" novalidate>
+        <input type="email" name="EMAIL" required placeholder="you@email.com" aria-label="Email">
+        <button type="submit" data-i18n="nl_btn"></button>
+        <input type="text" name="email_address_check" value="" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <input type="hidden" name="locale" value="en">
+      </form>
+      <p id="nlMsg" class="nl-msg"></p>
+    </div>
   </div>
 </section>
 
-<!-- FOOTER -->
 <footer>
-  <div class="container footer">
-    <div class="footer-left">
-      <a href="#" class="footer-logo">
-        <img src="data:image/png;base64,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" alt="WD Studio">
-      </a>
-      <span class="footer-copy">© 2026 WD Studio Agency. All rights reserved. Worldwide.</span>
-    </div>
-    <div class="footer-links">
-      <a href="mailto:diego@wdstudio.agency" class="footer-link">diego@wdstudio.agency</a>
-      <a href="https://www.behance.net/wdstudioagency" target="_blank" class="footer-link">Behance</a>
-      <a href="https://wa.link/al6913" target="_blank" class="footer-link">WhatsApp</a>
+  <div class="container f-in">
+    <span class="f-brand"><img src="images/logo-dark.png" alt="WD Studio Agency"><span>© 2026 · <span data-i18n="f_tag"></span></span></span>
+    <div class="f-links">
+      <a href="mailto:diego@wdstudio.agency">diego@wdstudio.agency</a>
+      <a href="https://www.behance.net/wdstudioagency" target="_blank" rel="noopener">Behance</a>
+      <a href="https://wa.link/al6913" target="_blank" rel="noopener">WhatsApp</a>
     </div>
   </div>
 </footer>
 
-<!-- WHATSAPP FLOAT -->
-<a href="https://wa.link/al6913" target="_blank" class="wa-float" title="WhatsApp">
-  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-</a>
-
 <script>
-// ===== TRANSLATIONS =====
 const T = {
-  es: {
-    nav_services: 'Servicios', nav_ai: 'IA', nav_contact: 'Contacto', nav_cta: 'Cotizar →',
-    hero_title: 'Soluciones digitales<br>e <strong>inteligencia artificial</strong><br>personalizadas para tu negocio',
-    hero_sub: 'Cada proyecto es único. Diseñamos, desarrollamos y automatizamos soluciones 100% a la medida de tu negocio — desde sitios web que convierten hasta chatbots con IA que trabajan por ti 24/7.',
-    hero_price: 'Servicios personalizados desde <strong>$333 USD</strong>',
-    hero_cta1: 'Cotizar mi proyecto →', hero_cta2: 'Hablar por WhatsApp',
-    metric_projects: 'Proyectos entregados', metric_countries: 'Países atendidos', metric_custom: 'Personalizado', metric_price: 'USD desde',
-    services_label: 'Servicios', services_heading: 'Soluciones <strong>a tu medida</strong> para crecer en digital',
-    svc1_name: 'Diseño & Desarrollo Web', svc1_desc: 'Sitios web 100% personalizados, diseñados para convertir visitantes en clientes. Nada de plantillas — cada pixel refleja tu marca. Desde $333 USD.',
-    svc2_name: 'Chatbots con Inteligencia Artificial', svc2_desc: 'Asistentes virtuales hechos a la medida de tu negocio. Atienden, califican y convierten leads en WhatsApp, web y redes sociales. 24/7, sin descanso.',
-    svc3_name: 'Automatización & Soluciones IA', svc3_desc: 'Flujos personalizados que eliminan tu trabajo manual. CRM inteligente, email sequences, generación de contenido con IA y pipelines de venta automatizados.',
-    svc4_name: 'Branding & Identidad Visual', svc4_desc: 'La identidad visual que tu marca merece. Logo, paleta, tipografía y guidelines diseñados exclusivamente para ti — nada genérico.',
-    svc5_name: 'Marketing Digital & Campañas', svc5_desc: 'Estrategias de adquisición personalizadas con Meta Ads, Google Ads y email marketing. Campañas diseñadas para TU audiencia, con retorno medible.',
-    svc6_name: 'Consultoría Estratégica Digital', svc6_desc: 'Auditoría completa de tu presencia digital con roadmap 100% personalizado. Identificamos tus oportunidades únicas y diseñamos el plan para escalar.',
-    svc7_name: 'Fotografía & Video Profesional', svc7_desc: 'Contenido visual de alta calidad para tu marca. Fotografía de producto, corporativa, inmobiliaria y producción de video profesional que eleva tu imagen.',
-    ai_label: 'Inteligencia Artificial', ai_heading: 'Tu propio asistente IA, <strong>hecho a medida</strong>, que trabaja <strong>24/7</strong> por tu negocio',
-    ai_sub: 'No es un bot genérico. Diseñamos soluciones de IA personalizadas para tu negocio, tu tono de voz y tus procesos. Se integran con WhatsApp, tu sitio web y tus herramientas — y empiezan a trabajar desde el día uno.',
-    ai_cta1: 'Quiero un chatbot →', ai_cta2: 'Más información',
-    aif1_title: 'Chatbots para WhatsApp & Web', aif1_desc: 'Asistentes inteligentes que entienden contexto, responden preguntas complejas y guían al cliente hacia la compra.',
-    aif2_title: 'Calificación automática de leads', aif2_desc: 'El bot identifica qué prospectos están listos para comprar y los prioriza. Solo recibes leads que valen tu tiempo.',
-    aif3_title: 'Automatización de procesos', aif3_desc: 'Desde respuestas automáticas hasta generación de reportes, cotizaciones y seguimiento de clientes sin intervención manual.',
-    aif4_title: 'Integración con tus herramientas', aif4_desc: 'Se conecta con tu CRM, calendario, email, WhatsApp Business y cualquier plataforma que ya uses.',
-    process_label: 'Proceso', process_heading: 'De la idea al <strong>resultado</strong> en cuatro pasos',
-    step1_title: 'Diagnóstico', step1_desc: 'Analizamos tu negocio, competencia y objetivos. Identificamos las oportunidades más rentables para tu caso.',
-    step2_title: 'Propuesta', step2_desc: 'Diseñamos una solución a medida con entregables claros, timeline definido y precio cerrado. Sin sorpresas.',
-    step3_title: 'Ejecución', step3_desc: 'Nuestro equipo ejecuta con precisión. Actualizaciones semanales para que siempre sepas el estado del proyecto.',
-    step4_title: 'Lanzamiento', step4_desc: 'Entregamos, capacitamos y optimizamos. Soporte continuo para asegurar que todo funcione y genere resultados.',
-    form_label: 'Cotiza tu proyecto', form_heading: 'Recibe una <strong>propuesta personalizada</strong> en 24hrs',
-    form_text: 'Cada negocio es diferente. Cuéntanos qué necesitas y diseñamos una solución a tu medida con precio cerrado. Atendemos clientes worldwide.',
-    fb1: 'Soluciones 100% personalizadas desde $333 USD', fb2: 'Consulta inicial gratuita — sin compromiso', fb3: 'Respuesta garantizada en menos de 24 horas', fb4: 'Atención worldwide — trabajamos con clientes en todo el mundo', fb5: 'Propuesta detallada con precio cerrado, sin letra chica',
-    fl_name: 'Nombre', fl_email: 'Email', fl_company: 'Empresa', fl_service: '¿Qué necesitas?', fl_budget: 'Presupuesto estimado (USD)',
-    fp_name: 'Tu nombre completo', fp_email: 'correo@empresa.com', fp_company: 'Nombre de tu empresa o marca',
-    fo_select: 'Selecciona un servicio', fo_web: 'Diseño & Desarrollo Web', fo_chatbot: 'Chatbot con Inteligencia Artificial', fo_automation: 'Automatización & Soluciones IA', fo_branding: 'Branding & Identidad Visual', fo_marketing: 'Marketing Digital & Campañas', fo_consulting: 'Consultoría Estratégica', fo_photovideo: 'Fotografía & Video Profesional', fo_integral: 'Solución integral',
-    fo_range: 'Selecciona un rango',
-    form_submit: 'Cotizar mi proyecto →', form_ok_title: 'Recibido ✓', form_ok_text: 'Te contactaremos en menos de 24 horas con una propuesta personalizada.',
-    form_note: 'Tus datos están seguros. No compartimos información con terceros.',
-    final_heading: 'Soluciones personalizadas<br>desde <strong>$333 USD</strong>', final_sub: 'Trabajamos con clientes en todo el mundo. Cuéntanos tu proyecto y recibe una propuesta hecha a tu medida en menos de 24 horas.',
-    final_cta1: 'Escríbenos por WhatsApp →', final_cta2: 'Llenar formulario',
-    final_note: 'Worldwide &nbsp;·&nbsp; Desde $333 USD &nbsp;·&nbsp; 100% personalizado &nbsp;·&nbsp; Consulta gratuita',
-    form_alert: 'Por favor completa al menos tu nombre y email.'
-  },
-
-  en: {
-    nav_services: 'Services', nav_ai: 'AI', nav_contact: 'Contact', nav_cta: 'Get a Quote →',
-    hero_title: 'Custom digital solutions<br>& <strong>artificial intelligence</strong><br>tailored to your business',
-    hero_sub: 'Every project is unique. We design, develop and automate solutions 100% tailored to your business — from high-converting websites to AI chatbots that work for you 24/7.',
-    hero_price: 'Custom solutions starting at <strong>$333 USD</strong>',
-    hero_cta1: 'Get a Quote →', hero_cta2: 'Chat on WhatsApp',
-    metric_projects: 'Projects delivered', metric_countries: 'Countries served', metric_custom: 'Fully custom', metric_price: 'USD starting',
-    services_label: 'Services', services_heading: '<strong>Tailored solutions</strong> to grow your digital presence',
-    svc1_name: 'Web Design & Development', svc1_desc: '100% custom websites designed to convert visitors into clients. No templates — every pixel reflects your brand. Starting at $333 USD.',
-    svc2_name: 'AI-Powered Chatbots', svc2_desc: 'Virtual assistants custom-built for your business. They engage, qualify and convert leads on WhatsApp, web and social media. 24/7, non-stop.',
-    svc3_name: 'Automation & AI Solutions', svc3_desc: 'Custom workflows that eliminate manual work. Smart CRM, email sequences, AI content generation and automated sales pipelines.',
-    svc4_name: 'Branding & Visual Identity', svc4_desc: 'The visual identity your brand deserves. Logo, colors, typography and guidelines designed exclusively for you — nothing generic.',
-    svc5_name: 'Digital Marketing & Campaigns', svc5_desc: 'Personalized acquisition strategies with Meta Ads, Google Ads and email marketing. Campaigns designed for YOUR audience with measurable ROI.',
-    svc6_name: 'Digital Strategy Consulting', svc6_desc: 'Complete audit of your digital presence with a 100% customized roadmap. We identify your unique opportunities and design a plan to scale.',
-    svc7_name: 'Professional Photography & Video', svc7_desc: 'High-quality visual content for your brand. Product, corporate, real estate photography and professional video production that elevates your image.',
-    ai_label: 'Artificial Intelligence', ai_heading: 'Your own AI assistant, <strong>custom-built</strong>, working <strong>24/7</strong> for your business',
-    ai_sub: 'Not a generic bot. We design AI solutions personalized for your business, your tone of voice and your processes. They integrate with WhatsApp, your website and your tools — and start working from day one.',
-    ai_cta1: 'I want a chatbot →', ai_cta2: 'Learn more',
-    aif1_title: 'WhatsApp & Web Chatbots', aif1_desc: 'Smart assistants that understand context, answer complex questions and guide customers toward purchase.',
-    aif2_title: 'Automatic Lead Qualification', aif2_desc: 'The bot identifies which prospects are ready to buy and prioritizes them. You only receive leads worth your time.',
-    aif3_title: 'Process Automation', aif3_desc: 'From automatic responses to report generation, quotes and client follow-up without manual intervention.',
-    aif4_title: 'Integration with Your Tools', aif4_desc: 'Connects with your CRM, calendar, email, WhatsApp Business and any platform you already use.',
-    process_label: 'Process', process_heading: 'From idea to <strong>results</strong> in four steps',
-    step1_title: 'Discovery', step1_desc: 'We analyze your business, competition and goals. We identify the most profitable opportunities for your case.',
-    step2_title: 'Proposal', step2_desc: 'We design a tailored solution with clear deliverables, defined timeline and fixed price. No surprises.',
-    step3_title: 'Execution', step3_desc: 'Our team executes with precision. Weekly updates so you always know the project status.',
-    step4_title: 'Launch', step4_desc: 'We deliver, train and optimize. Ongoing support to ensure everything works and generates results.',
-    form_label: 'Get Your Quote', form_heading: 'Receive a <strong>custom proposal</strong> in 24hrs',
-    form_text: 'Every business is different. Tell us what you need and we\'ll design a tailored solution with a fixed price. We serve clients worldwide.',
-    fb1: '100% custom solutions starting at $333 USD', fb2: 'Free initial consultation — no commitment', fb3: 'Guaranteed response in less than 24 hours', fb4: 'Worldwide service — we work with clients across the globe', fb5: 'Detailed proposal with fixed price, no fine print',
-    fl_name: 'Name', fl_email: 'Email', fl_company: 'Company', fl_service: 'What do you need?', fl_budget: 'Estimated budget (USD)',
-    fp_name: 'Your full name', fp_email: 'email@company.com', fp_company: 'Your company or brand name',
-    fo_select: 'Select a service', fo_web: 'Web Design & Development', fo_chatbot: 'AI-Powered Chatbot', fo_automation: 'Automation & AI Solutions', fo_branding: 'Branding & Visual Identity', fo_marketing: 'Digital Marketing & Campaigns', fo_consulting: 'Strategic Consulting', fo_photovideo: 'Professional Photography & Video', fo_integral: 'Full solution',
-    fo_range: 'Select a range',
-    form_submit: 'Get my quote →', form_ok_title: 'Received ✓', form_ok_text: 'We\'ll contact you within 24 hours with a custom proposal.',
-    form_note: 'Your data is safe. We don\'t share your information with third parties.',
-    final_heading: 'Custom solutions<br>starting at <strong>$333 USD</strong>', final_sub: 'We work with clients worldwide. Tell us about your project and receive a tailored proposal in less than 24 hours.',
-    final_cta1: 'Message us on WhatsApp →', final_cta2: 'Fill out the form',
-    final_note: 'Worldwide &nbsp;·&nbsp; From $333 USD &nbsp;·&nbsp; 100% custom &nbsp;·&nbsp; Free consultation',
-    form_alert: 'Please fill in at least your name and email.'
-  },
-
-  ar: {
-    nav_services: 'الخدمات', nav_ai: 'الذكاء الاصطناعي', nav_contact: 'تواصل', nav_cta: 'احصل على عرض ←',
-    hero_title: 'حلول رقمية<br>و<strong>ذكاء اصطناعي</strong><br>مصممة خصيصاً لعملك',
-    hero_sub: 'كل مشروع فريد. نصمم ونطور ونؤتمت حلولاً مخصصة 100% لعملك — من مواقع ويب تحقق التحويلات إلى روبوتات ذكاء اصطناعي تعمل لأجلك على مدار الساعة.',
-    hero_price: 'حلول مخصصة تبدأ من <strong>333$ دولار</strong>',
-    hero_cta1: 'احصل على عرض سعر ←', hero_cta2: 'تحدث عبر واتساب',
-    metric_projects: 'مشروع منجز', metric_countries: 'دولة نخدمها', metric_custom: 'مخصص بالكامل', metric_price: 'دولار أمريكي',
-    services_label: 'الخدمات', services_heading: 'حلول <strong>مصممة خصيصاً</strong> لنمو حضورك الرقمي',
-    svc1_name: 'تصميم وتطوير المواقع', svc1_desc: 'مواقع ويب مخصصة 100%، مصممة لتحويل الزوار إلى عملاء. بدون قوالب جاهزة — كل بكسل يعكس علامتك التجارية. تبدأ من 333$ دولار.',
-    svc2_name: 'روبوتات الذكاء الاصطناعي', svc2_desc: 'مساعدون افتراضيون مصممون خصيصاً لعملك. يستقبلون ويؤهلون ويحولون العملاء المحتملين عبر واتساب والويب ووسائل التواصل. 24/7 بلا توقف.',
-    svc3_name: 'الأتمتة وحلول الذكاء الاصطناعي', svc3_desc: 'سير عمل مخصص يلغي العمل اليدوي. إدارة علاقات عملاء ذكية، تسلسلات بريد إلكتروني، إنشاء محتوى بالذكاء الاصطناعي وأنابيب مبيعات آلية.',
-    svc4_name: 'العلامة التجارية والهوية البصرية', svc4_desc: 'الهوية البصرية التي تستحقها علامتك. شعار وألوان وخطوط وإرشادات مصممة حصرياً لك — لا شيء عام.',
-    svc5_name: 'التسويق الرقمي والحملات', svc5_desc: 'استراتيجيات استقطاب مخصصة مع إعلانات ميتا وجوجل والتسويق بالبريد الإلكتروني. حملات مصممة لجمهورك مع عائد قابل للقياس.',
-    svc6_name: 'الاستشارات الاستراتيجية الرقمية', svc6_desc: 'تدقيق شامل لحضورك الرقمي مع خارطة طريق مخصصة 100%. نحدد فرصك الفريدة ونصمم خطة للتوسع.',
-    svc7_name: 'التصوير الفوتوغرافي والفيديو الاحترافي', svc7_desc: 'محتوى بصري عالي الجودة لعلامتك التجارية. تصوير منتجات وعقارات وشركات وإنتاج فيديو احترافي يرفع مستوى صورتك.',
-    ai_label: 'الذكاء الاصطناعي', ai_heading: 'مساعدك الخاص بالذكاء الاصطناعي، <strong>مصمم خصيصاً</strong>، يعمل <strong>24/7</strong> لأجل عملك',
-    ai_sub: 'ليس روبوتاً عاماً. نصمم حلول ذكاء اصطناعي مخصصة لعملك ونبرتك وعملياتك. تتكامل مع واتساب وموقعك وأدواتك — وتبدأ العمل من اليوم الأول.',
-    ai_cta1: 'أريد روبوت محادثة ←', ai_cta2: 'مزيد من المعلومات',
-    aif1_title: 'روبوتات واتساب والويب', aif1_desc: 'مساعدون أذكياء يفهمون السياق ويجيبون على الأسئلة المعقدة ويوجهون العميل نحو الشراء.',
-    aif2_title: 'تأهيل تلقائي للعملاء المحتملين', aif2_desc: 'يحدد الروبوت العملاء المحتملين المستعدين للشراء ويمنحهم الأولوية. تتلقى فقط العملاء الذين يستحقون وقتك.',
-    aif3_title: 'أتمتة العمليات', aif3_desc: 'من الردود التلقائية إلى إنشاء التقارير وعروض الأسعار ومتابعة العملاء بدون تدخل يدوي.',
-    aif4_title: 'التكامل مع أدواتك', aif4_desc: 'يتصل بنظام إدارة العملاء والتقويم والبريد الإلكتروني وواتساب بزنس وأي منصة تستخدمها.',
-    process_label: 'العملية', process_heading: 'من الفكرة إلى <strong>النتائج</strong> في أربع خطوات',
-    step1_title: 'التشخيص', step1_desc: 'نحلل عملك ومنافسيك وأهدافك. نحدد الفرص الأكثر ربحية لحالتك.',
-    step2_title: 'العرض', step2_desc: 'نصمم حلاً مخصصاً بمخرجات واضحة وجدول زمني محدد وسعر ثابت. بدون مفاجآت.',
-    step3_title: 'التنفيذ', step3_desc: 'فريقنا ينفذ بدقة. تحديثات أسبوعية لتكون دائماً على اطلاع بحالة المشروع.',
-    step4_title: 'الإطلاق', step4_desc: 'نسلم وندرب ونحسن. دعم مستمر لضمان أن كل شيء يعمل ويحقق نتائج.',
-    form_label: 'احصل على عرضك', form_heading: 'احصل على <strong>عرض مخصص</strong> خلال 24 ساعة',
-    form_text: 'كل عمل مختلف. أخبرنا بما تحتاج وسنصمم حلاً مخصصاً بسعر ثابت. نخدم عملاء حول العالم.',
-    fb1: 'حلول مخصصة 100% تبدأ من 333$ دولار', fb2: 'استشارة أولية مجانية — بدون التزام', fb3: 'رد مضمون في أقل من 24 ساعة', fb4: 'خدمة عالمية — نعمل مع عملاء حول العالم', fb5: 'عرض مفصل بسعر ثابت بدون شروط مخفية',
-    fl_name: 'الاسم', fl_email: 'البريد الإلكتروني', fl_company: 'الشركة', fl_service: 'ماذا تحتاج؟', fl_budget: 'الميزانية المقدرة (دولار)',
-    fp_name: 'اسمك الكامل', fp_email: 'email@company.com', fp_company: 'اسم شركتك أو علامتك التجارية',
-    fo_select: 'اختر خدمة', fo_web: 'تصميم وتطوير المواقع', fo_chatbot: 'روبوت ذكاء اصطناعي', fo_automation: 'أتمتة وحلول ذكاء اصطناعي', fo_branding: 'العلامة التجارية والهوية البصرية', fo_marketing: 'التسويق الرقمي والحملات', fo_consulting: 'الاستشارات الاستراتيجية', fo_photovideo: 'التصوير الفوتوغرافي والفيديو', fo_integral: 'حل متكامل',
-    fo_range: 'اختر نطاقاً',
-    form_submit: 'احصل على عرض سعر ←', form_ok_title: '✓ تم الاستلام', form_ok_text: 'سنتواصل معك خلال 24 ساعة بعرض مخصص.',
-    form_note: 'بياناتك آمنة. لا نشارك معلوماتك مع أطراف ثالثة.',
-    final_heading: 'حلول مخصصة<br>تبدأ من <strong>333$ دولار</strong>', final_sub: 'نعمل مع عملاء حول العالم. أخبرنا عن مشروعك واحصل على عرض مخصص في أقل من 24 ساعة.',
-    final_cta1: 'راسلنا على واتساب ←', final_cta2: 'املأ النموذج',
-    final_note: 'عالمياً &nbsp;·&nbsp; من 333$ دولار &nbsp;·&nbsp; مخصص 100% &nbsp;·&nbsp; استشارة مجانية',
-    form_alert: 'يرجى ملء الاسم والبريد الإلكتروني على الأقل.'
-  },
-
-  zh: {
-    nav_services: '服务', nav_ai: '人工智能', nav_contact: '联系', nav_cta: '获取报价 →',
-    hero_title: '定制数字解决方案<br>与<strong>人工智能</strong><br>为您的业务量身打造',
-    hero_sub: '每个项目都是独一无二的。我们设计、开发和自动化100%为您的业务量身定制的解决方案——从高转化网站到全天候为您工作的AI聊天机器人。',
-    hero_price: '定制服务起价 <strong>$333 美元</strong>',
-    hero_cta1: '获取报价 →', hero_cta2: 'WhatsApp咨询',
-    metric_projects: '已交付项目', metric_countries: '服务国家', metric_custom: '完全定制', metric_price: '美元起',
-    services_label: '服务', services_heading: '<strong>量身定制</strong>的数字增长解决方案',
-    svc1_name: '网站设计与开发', svc1_desc: '100%定制网站，旨在将访客转化为客户。没有模板——每个像素都体现您的品牌。起价333美元。',
-    svc2_name: 'AI智能聊天机器人', svc2_desc: '为您的业务量身定制的虚拟助手。在WhatsApp、网站和社交媒体上接待、筛选和转化潜在客户。全天候不间断服务。',
-    svc3_name: '自动化与AI解决方案', svc3_desc: '消除手动工作的定制流程。智能CRM、邮件序列、AI内容生成和自动化销售管道。',
-    svc4_name: '品牌与视觉识别', svc4_desc: '您的品牌应得的视觉识别。标志、色彩、字体和指南专为您设计——绝非通用。',
-    svc5_name: '数字营销与广告', svc5_desc: '使用Meta Ads、Google Ads和电子邮件营销的个性化获客策略。为您的受众量身设计的广告活动，回报可衡量。',
-    svc6_name: '数字战略咨询', svc6_desc: '全面审核您的数字存在，提供100%定制路线图。识别您的独特机会并设计扩展计划。',
-    svc7_name: '专业摄影与视频制作', svc7_desc: '为您的品牌打造高质量视觉内容。产品摄影、企业摄影、房地产摄影和专业视频制作，提升您的品牌形象。',
-    ai_label: '人工智能', ai_heading: '您专属的AI助手，<strong>量身定制</strong>，<strong>全天候</strong>为您的业务工作',
-    ai_sub: '不是通用机器人。我们为您的业务、语调和流程设计个性化AI解决方案。与WhatsApp、您的网站和工具集成——从第一天开始工作。',
-    ai_cta1: '我想要聊天机器人 →', ai_cta2: '了解更多',
-    aif1_title: 'WhatsApp和网站聊天机器人', aif1_desc: '理解上下文、回答复杂问题并引导客户完成购买的智能助手。',
-    aif2_title: '自动潜在客户筛选', aif2_desc: '机器人识别准备购买的潜在客户并优先处理。您只收到值得您时间的线索。',
-    aif3_title: '流程自动化', aif3_desc: '从自动回复到报告生成、报价和客户跟进，无需人工干预。',
-    aif4_title: '与您的工具集成', aif4_desc: '连接您的CRM、日历、电子邮件、WhatsApp Business以及您使用的任何平台。',
-    process_label: '流程', process_heading: '从创意到<strong>成果</strong>仅需四步',
-    step1_title: '诊断', step1_desc: '我们分析您的业务、竞争对手和目标。识别最具盈利性的机会。',
-    step2_title: '提案', step2_desc: '我们设计量身定制的解决方案，明确交付物、时间表和固定价格。没有意外。',
-    step3_title: '执行', step3_desc: '我们的团队精确执行。每周更新，让您始终了解项目状态。',
-    step4_title: '启动', step4_desc: '我们交付、培训和优化。持续支持确保一切正常运行并产生结果。',
-    form_label: '获取报价', form_heading: '24小时内收到<strong>定制提案</strong>',
-    form_text: '每个企业都不同。告诉我们您的需求，我们将以固定价格设计量身定制的解决方案。我们服务全球客户。',
-    fb1: '100%定制解决方案，起价333美元', fb2: '免费初始咨询——无需承诺', fb3: '保证24小时内回复', fb4: '全球服务——我们与世界各地的客户合作', fb5: '详细提案，固定价格，没有隐藏条款',
-    fl_name: '姓名', fl_email: '电子邮件', fl_company: '公司', fl_service: '您需要什么？', fl_budget: '预估预算（美元）',
-    fp_name: '您的全名', fp_email: 'email@company.com', fp_company: '您的公司或品牌名称',
-    fo_select: '选择服务', fo_web: '网站设计与开发', fo_chatbot: 'AI智能聊天机器人', fo_automation: '自动化与AI解决方案', fo_branding: '品牌与视觉识别', fo_marketing: '数字营销与广告', fo_consulting: '战略咨询', fo_photovideo: '专业摄影与视频', fo_integral: '全套解决方案',
-    fo_range: '选择范围',
-    form_submit: '获取报价 →', form_ok_title: '已收到 ✓', form_ok_text: '我们将在24小时内联系您，提供定制提案。',
-    form_note: '您的数据安全。我们不会与第三方共享您的信息。',
-    final_heading: '定制解决方案<br>起价 <strong>$333 美元</strong>', final_sub: '我们与全球客户合作。告诉我们您的项目，24小时内收到量身定制的提案。',
-    final_cta1: 'WhatsApp联系我们 →', final_cta2: '填写表单',
-    final_note: '全球服务 &nbsp;·&nbsp; 333美元起 &nbsp;·&nbsp; 100%定制 &nbsp;·&nbsp; 免费咨询',
-    form_alert: '请至少填写您的姓名和电子邮件。'
-  }
+en: {
+  nav_work:'Work', nav_services:'Services', nav_approach:'Approach', nav_cta:'Start a project',
+  hero_eyebrow:'Design &amp; Development Studio · Est. 2019 · Worldwide',
+  hero_sub:'Digital identity for the world\u2019s most beautiful properties.',
+  hero_cta1:'See the work', hero_cta2:'Start a project',
+  man_label:'The studio', man_heading:'We are curators<br>of aesthetics.',
+  man_p1:'A beautiful property already knows what it is. The architect decided it, the light confirmed it, and the people who stay there feel it before they can name it. Our work is not to invent that \u2014 it is to <strong>carry it intact into a screen</strong>.',
+  man_p2:'That means reading a house before designing for it. The amber of Casa Copal, the palapa at Nautilus, the cliff that Tritón is built into \u2014 each one asked for a different structure, a different pace, a different way of holding a photograph. None of them could have used the same template, and none of them did.',
+  man_p3:'We build websites, custom software, photography and AI systems. But what a client actually buys is <strong>judgment</strong>: knowing what to leave out.',
+  met1:'Founded', met2:'Projects delivered', met3:'Countries', met4:'Built from scratch',
+  work_label:'Selected work', work_heading:'Properties that<br>already live online.',
+  w1:'Private estate in Costa Careyes, architecture by Manolo Mestre. An editorial site built around the amber and stone of the house itself.',
+  w2:'Luxury villa in Careyes. A wide editorial grid designed so the photography leads and the writing follows.',
+  w3:'Three houses connected along the cliff. Information architecture that lets you browse the estate whole, or each house on its own.',
+  w4:'Four-bedroom villa beneath a palapa. Video, gallery and direct booking \u2014 no intermediaries, no commission.',
+  w5:'Real estate portfolio in Costa Careyes with a bilingual AI assistant that qualifies buyers and answers around the clock.', w5t:'AI · Real estate assistant',
+  w6:'Oceanfront house with direct WhatsApp booking built into the site. From search to conversation in one tap.', w6t:'WhatsApp booking',
+  svc_label:'Services', svc_heading:'Four things,<br>done properly.',
+  s1n:'Websites', s1m:'Design · Development · SEO',
+  s1d:'Fully custom sites for villas, hotels and developments. No templates and no page builders \u2014 every project is designed around the property it belongs to, then built to load fast and rank.',
+  s2n:'Custom software', s2m:'Booking · CRM · Integrations',
+  s2d:'Direct booking systems, inquiry management, payments and the integrations that remove intermediaries. Owners keep the guest relationship, and the commission.',
+  s3n:'Photography &amp; video', s3m:'Stills · Motion · Drone',
+  s3d:'Architectural and lifestyle photography, film and aerial work \u2014 shot for the way the property will actually be seen: on a phone, in a newsletter, on a listing.',
+  s4n:'AI development', s4m:'Assistants · Automation',
+  s4d:'Bilingual assistants that qualify inquiries and answer at any hour, plus automation for the parts of a property business that should not need a person awake.',
+  app_label:'Approach', app_heading:'How a project runs.',
+  p1t:'Read', p1d:'We study the property, its architecture, its guests and what it competes with. Nothing is designed before this.',
+  p2t:'Shape', p2d:'Structure and art direction. Which photograph opens, what the visitor reads first, where the decision happens.',
+  p3t:'Build', p3d:'Development, content, systems and integrations. Fast, accessible and built to be maintained.',
+  p4t:'Hand over', p4d:'Launch, training and support. You own every file, every account and every asset. No hostage-taking.',
+  c_label:'Contact', c_heading:'Tell us about<br>the property.',
+  c_intro:'We take on a small number of projects at a time. Tell us what you have and we\u2019ll reply within one business day \u2014 with an honest answer about whether we\u2019re the right studio for it.',
+  cb1:'Projects from $1,200 USD, priced as a fixed scope', cb2:'Reply within one business day, always from Diego',
+  cb3:'Worldwide \u2014 we work remotely and travel when the project needs it', cb4:'You own every file and account from day one',
+  fl_name:'Name', fl_email:'Email', fl_company:'Property or company', fl_service:'What you need',
+  fo_select:'Select one', fo_web:'Website', fo_software:'Custom software', fo_photo:'Photography &amp; video', fo_ai:'AI development', fo_integral:'Full project',
+  fl_budget:'Budget', fo_range:'Select a range', fl_project:'About the project',
+  form_submit:'Send inquiry', ok_title:'Received.', ok_text:'We\u2019ll be in touch within one business day.',
+  form_note:'Your information stays with us. We never share or sell it.',
+  form_alert:'Please add your name and email.',
+  nl_title:'Studio notes', nl_sub:'New work and occasional notes on designing for luxury property. A few times a year, never more.',
+  nl_btn:'Join', f_tag:'Digital identity for beautiful properties'
+},
+es: {
+  nav_work:'Trabajo', nav_services:'Servicios', nav_approach:'Método', nav_cta:'Iniciar proyecto',
+  hero_eyebrow:'Estudio de diseño y desarrollo · Desde 2019 · Worldwide',
+  hero_sub:'Identidad digital para las propiedades más bellas del mundo.',
+  hero_cta1:'Ver el trabajo', hero_cta2:'Iniciar proyecto',
+  man_label:'El estudio', man_heading:'Somos curadores<br>de estética.',
+  man_p1:'Una propiedad hermosa ya sabe lo que es. Lo decidió el arquitecto, lo confirmó la luz, y quien se queda ahí lo siente antes de saber nombrarlo. Nuestro trabajo no es inventar eso \u2014 es <strong>llevarlo intacto a una pantalla</strong>.',
+  man_p2:'Eso significa leer una casa antes de diseñarle algo. El ámbar de Casa Copal, la palapa de Nautilus, el acantilado sobre el que está construido Tritón: cada uno pedía otra estructura, otro ritmo, otra forma de sostener una fotografía. Ninguno podía usar la misma plantilla, y ninguno la usó.',
+  man_p3:'Hacemos sitios web, software a la medida, fotografía y sistemas de IA. Pero lo que un cliente compra en realidad es <strong>criterio</strong>: saber qué dejar fuera.',
+  met1:'Fundado', met2:'Proyectos entregados', met3:'Países', met4:'Hecho desde cero',
+  work_label:'Trabajo seleccionado', work_heading:'Propiedades que<br>ya viven en línea.',
+  w1:'Estate privado en Costa Careyes, arquitectura de Manolo Mestre. Un sitio editorial construido alrededor del ámbar y la piedra de la casa.',
+  w2:'Villa de lujo en Careyes. Retícula editorial amplia, pensada para que la fotografía mande y el texto acompañe.',
+  w3:'Tres casas conectadas sobre el acantilado. Arquitectura de información que permite recorrer el conjunto completo o cada casa por separado.',
+  w4:'Villa de cuatro recámaras bajo palapa. Video, galería y reserva directa \u2014 sin intermediarios ni comisiones.',
+  w5:'Portafolio inmobiliario en Costa Careyes con asistente de IA bilingüe que califica compradores y responde a cualquier hora.', w5t:'IA · Asistente inmobiliario',
+  w6:'Casa frente al mar con reserva directa por WhatsApp integrada al sitio. De la búsqueda a la conversación en un toque.', w6t:'Reserva por WhatsApp',
+  svc_label:'Servicios', svc_heading:'Cuatro cosas,<br>hechas bien.',
+  s1n:'Sitios web', s1m:'Diseño · Desarrollo · SEO',
+  s1d:'Sitios completamente a la medida para villas, hoteles y desarrollos. Sin plantillas ni maquetadores: cada proyecto se diseña alrededor de la propiedad y se construye para cargar rápido y posicionar.',
+  s2n:'Software a la medida', s2m:'Reservas · CRM · Integraciones',
+  s2d:'Sistemas de reserva directa, gestión de inquiries, pagos y las integraciones que eliminan intermediarios. El dueño se queda con la relación con el huésped, y con la comisión.',
+  s3n:'Fotografía y video', s3m:'Foto · Video · Dron',
+  s3d:'Fotografía de arquitectura y lifestyle, cine y tomas aéreas \u2014 producidas pensando en cómo se va a ver la propiedad de verdad: en un teléfono, en un correo, en un listado.',
+  s4n:'Desarrollo con IA', s4m:'Asistentes · Automatización',
+  s4d:'Asistentes bilingües que califican inquiries y responden a cualquier hora, más automatización para las partes de una propiedad que no deberían necesitar a alguien despierto.',
+  app_label:'Método', app_heading:'Cómo corre un proyecto.',
+  p1t:'Leer', p1d:'Estudiamos la propiedad, su arquitectura, sus huéspedes y contra qué compite. Nada se diseña antes de esto.',
+  p2t:'Formar', p2d:'Estructura y dirección de arte. Qué fotografía abre, qué lee primero el visitante, dónde ocurre la decisión.',
+  p3t:'Construir', p3d:'Desarrollo, contenido, sistemas e integraciones. Rápido, accesible y hecho para poder mantenerse.',
+  p4t:'Entregar', p4d:'Lanzamiento, capacitación y soporte. Todos los archivos, cuentas y assets son tuyos. Nada queda secuestrado.',
+  c_label:'Contacto', c_heading:'Cuéntanos de<br>la propiedad.',
+  c_intro:'Tomamos pocos proyectos a la vez. Cuéntanos qué tienes y respondemos en menos de un día hábil \u2014 con una respuesta honesta sobre si somos el estudio indicado.',
+  cb1:'Proyectos desde $1,200 USD, con alcance y precio cerrados', cb2:'Respuesta en menos de un día hábil, siempre de Diego',
+  cb3:'Worldwide \u2014 trabajamos en remoto y viajamos cuando el proyecto lo pide', cb4:'Todos los archivos y cuentas son tuyos desde el día uno',
+  fl_name:'Nombre', fl_email:'Correo', fl_company:'Propiedad o empresa', fl_service:'Qué necesitas',
+  fo_select:'Selecciona una', fo_web:'Sitio web', fo_software:'Software a la medida', fo_photo:'Fotografía y video', fo_ai:'Desarrollo con IA', fo_integral:'Proyecto completo',
+  fl_budget:'Presupuesto', fo_range:'Selecciona un rango', fl_project:'Sobre el proyecto',
+  form_submit:'Enviar', ok_title:'Recibido.', ok_text:'Te contactamos en menos de un día hábil.',
+  form_note:'Tu información se queda con nosotros. Nunca la compartimos ni la vendemos.',
+  form_alert:'Agrega tu nombre y correo, por favor.',
+  nl_title:'Notas del estudio', nl_sub:'Trabajo nuevo y notas ocasionales sobre diseño para propiedades de lujo. Pocas veces al año, nunca más.',
+  nl_btn:'Suscribirme', f_tag:'Identidad digital para propiedades bellas'
+}
 };
 
-let currentLang = 'es';
-
-function setLang(lang) {
-  currentLang = lang;
-  const t = T[lang];
-  const html = document.documentElement;
-
-  // Set direction for Arabic
-  html.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
-  html.setAttribute('lang', lang);
-
-  // Update active button
-  document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
-  document.querySelector(`.lang-btn[onclick="setLang('${lang}')"]`).classList.add('active');
-
-  // Replace all data-i18n text
-  document.querySelectorAll('[data-i18n]').forEach(el => {
-    const key = el.getAttribute('data-i18n');
-    if (t[key] !== undefined) el.innerHTML = t[key];
+let lang = 'en';
+function setLang(l){
+  lang = l;
+  document.documentElement.lang = l;
+  document.querySelectorAll('[data-i18n]').forEach(function(el){
+    var v = T[l][el.getAttribute('data-i18n')];
+    if (v !== undefined) el.innerHTML = v;
   });
-
-  // Replace placeholders
-  document.querySelectorAll('[data-i18n-ph]').forEach(el => {
-    const key = el.getAttribute('data-i18n-ph');
-    if (t[key] !== undefined) el.placeholder = t[key];
+  document.querySelectorAll('.lang button').forEach(function(b){
+    b.classList.toggle('active', b.getAttribute('data-lang') === l);
   });
+  var loc = document.querySelector('#nlForm input[name=locale]');
+  if (loc) loc.value = l;
+  try { localStorage.setItem('wds-lang', l); } catch(e){}
 }
+document.querySelectorAll('.lang button').forEach(function(b){
+  b.addEventListener('click', function(){ setLang(b.getAttribute('data-lang')); });
+});
+try { setLang(localStorage.getItem('wds-lang') === 'es' ? 'es' : 'en'); } catch(e){ setLang('en'); }
 
-// Init
-setLang('es');
-
-// Nav scroll
-const nav = document.getElementById('nav');
-window.addEventListener('scroll', () => {
-  nav.classList.toggle('scrolled', window.scrollY > 80);
+window.addEventListener('scroll', function(){
+  document.getElementById('nav').classList.toggle('solid', window.scrollY > 60);
 });
 
-// Reveal
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-}, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
-document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+  var io = new IntersectionObserver(function(es){
+    es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, {threshold:.1});
+  document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+} else {
+  document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('in'); });
+}
 
-// Form - sends to Google Sheets + email notification
-const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxvFquiDvm6gmmvw_67hB9CL-2J74GJYxutFIl6rLitTMSZenMhpYTGH7nlLX7JUswYRw/exec'; // Replace after deploying the script
-
-function submitForm() {
-  const name = document.getElementById('f-name').value;
-  const email = document.getElementById('f-email').value;
-  const company = document.getElementById('f-company').value;
-  const service = document.getElementById('f-service').value;
-  const budget = document.getElementById('f-budget').value;
-  const lang = currentLang;
-
-  if (!name || !email) {
-    alert(T[currentLang].form_alert);
-    return;
+var APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxvFquiDvm6gmmvw_67hB9CL-2J74GJYxutFIl6rLitTMSZenMhpYTGH7nlLX7JUswYRw/exec';
+document.getElementById('btnSubmit').addEventListener('click', function(){
+  var name = document.getElementById('f-name').value.trim();
+  var email = document.getElementById('f-email').value.trim();
+  if (!name || email.indexOf('@') < 1){ alert(T[lang].form_alert); return; }
+  var btn = this; btn.disabled = true;
+  var data = {
+    name: name, email: email,
+    company: document.getElementById('f-company').value.trim(),
+    service: document.getElementById('f-service').value,
+    budget: document.getElementById('f-budget').value,
+    project: document.getElementById('f-project').value.trim(),
+    lang: lang, source: 'wdstudio.agency'
+  };
+  fetch(APPS_SCRIPT_URL, {method:'POST', mode:'no-cors', body: JSON.stringify(data)})
+    .then(done).catch(done);
+  function done(){
+    document.getElementById('formFields').style.display = 'none';
+    document.getElementById('formOk').style.display = 'block';
   }
-
-  // Disable button while sending
-  const btn = document.querySelector('.form-submit');
-  const originalText = btn.textContent;
-  btn.textContent = '...';
-  btn.disabled = true;
-
-  // Send to Google Apps Script
-  fetch(APPS_SCRIPT_URL, {
-    method: 'POST',
-    mode: 'no-cors',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ name, email, company, service, budget, lang, timestamp: new Date().toISOString() })
-  })
-  .then(() => {
-    document.getElementById('formFields').style.display = 'none';
-    document.getElementById('formSuccess').classList.add('show');
-    setTimeout(() => { window.open('https://wa.link/al6913', '_blank'); }, 2000);
-  })
-  .catch(() => {
-    // Even if fetch fails with no-cors, data was sent
-    document.getElementById('formFields').style.display = 'none';
-    document.getElementById('formSuccess').classList.add('show');
-    setTimeout(() => { window.open('https://wa.link/al6913', '_blank'); }, 2000);
-  });
-}
-
-// Smooth scroll
-document.querySelectorAll('a[href^="#"]').forEach(a => {
-  a.addEventListener('click', function(e) {
-    e.preventDefault();
-    const t = document.querySelector(this.getAttribute('href'));
-    if (t) t.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  });
 });
+
+(function(){
+  var BREVO = 'REEMPLAZAR_URL_BREVO_WDSTUDIO';
+  var f = document.getElementById('nlForm'), m = document.getElementById('nlMsg');
+  if (!f) return;
+  f.addEventListener('submit', function(e){
+    e.preventDefault();
+    var i = f.querySelector('input[name=EMAIL]'), b = f.querySelector('button');
+    if (i.value.indexOf('@') < 1) return;
+    b.disabled = true;
+    var ok = function(){
+      m.textContent = lang === 'es' ? 'Gracias. Ya estás en la lista.' : 'Thank you. You are on the list.';
+      f.reset(); b.disabled = false;
+    };
+    fetch(BREVO, {method:'POST', body:new FormData(f)}).then(ok).catch(ok);
+  });
+})();
 </script>
+
 </body>
 </html>
