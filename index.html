@@ -186,12 +186,12 @@ footer img{height:20px!important;width:auto!important;max-width:none!important;f
 }
 @media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}.w-shot img{transition:none}}
 
-/* Hero — texto blanco */
-.hero-eyebrow{color:rgba(255,255,255,.8)}
-.wordmark{color:#fff}
-.hero-sub{color:#fff;max-width:34ch}
+/* Hero — eyebrow y wordmark en negro */
+.hero-eyebrow{color:var(--g700)}
+.wordmark{color:var(--ink)}
 
-/* Hero — botones blancos */
+/* Hero — del subtítulo hacia abajo en blanco */
+.hero-sub{color:#fff;max-width:34ch}
 .hero-actions .btn-dark{background:#fff;color:var(--ink)}
 .hero-actions .btn-dark:hover{background:var(--g300)}
 .hero-actions .btn-outline{border-color:rgba(255,255,255,.55);color:#fff;background:transparent}
@@ -199,7 +199,7 @@ footer img{height:20px!important;width:auto!important;max-width:none!important;f
 
 /* Hero — más corto en celular */
 @media(max-width:820px){
-  header{min-height:57vh}
+  header{min-height:66vh}
   .hero-in{padding-bottom:40px}
   .hero-sub{max-width:28ch;margin-top:20px}
   .hero-actions{margin-top:30px}
