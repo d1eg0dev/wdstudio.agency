@@ -150,6 +150,56 @@ footer{background:var(--ink);color:var(--sand);padding:70px 0 34px}
   .btn{width:100%}
 }
 @media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
+
+/* REVIEWS */
+.rev{padding:130px 0;background:var(--sand)}
+.rev-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:60px}
+.rev-card{background:var(--paper);padding:40px 34px;display:flex;flex-direction:column;gap:20px;margin:0}
+.rev-stars{color:var(--stone);font-size:14px;letter-spacing:.28em}
+.rev-card blockquote{font-family:var(--display);font-size:1.22rem;line-height:1.55;color:var(--ink);flex:1;margin:0}
+.rev-card figcaption{display:flex;flex-direction:column;gap:4px;padding-top:18px;border-top:1px solid var(--line)}
+.rev-name{font-size:13px;letter-spacing:.06em;color:var(--ink)}
+.rev-date{font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--stone)}
+.rev-note{margin-top:40px;text-align:center;font-size:12.5px;letter-spacing:.06em;color:var(--stone)}
+
+/* WHATSAPP */
+.wa{position:fixed;right:26px;bottom:26px;z-index:150;width:58px;height:58px;border-radius:50%;
+  background:var(--ink);display:flex;align-items:center;justify-content:center;
+  box-shadow:0 6px 24px rgba(43,38,32,.28);transition:transform .3s,background .3s}
+.wa:hover{transform:translateY(-3px);background:#3d362d}
+.wa svg{width:26px;height:26px;fill:var(--sand)}
+
+/* MODAL RESERVA */
+.modal{position:fixed;inset:0;z-index:300;display:none;align-items:center;justify-content:center;padding:24px}
+.modal.open{display:flex}
+.modal-bg{position:absolute;inset:0;background:rgba(43,38,32,.6);backdrop-filter:blur(4px)}
+.modal-box{position:relative;background:var(--paper);width:100%;max-width:540px;max-height:90vh;overflow-y:auto;padding:48px 44px}
+.modal-close{position:absolute;top:20px;right:24px;background:none;border:none;cursor:pointer;
+  font-family:var(--body);font-size:22px;color:var(--stone);line-height:1}
+.modal-box h3{font-family:var(--display);font-weight:400;font-size:2rem;line-height:1.2;margin-bottom:10px}
+.modal-box .msub{font-size:14px;color:var(--soft);margin-bottom:32px}
+.mrow{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.mfield{margin-bottom:18px}
+.mfield label{display:block;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--stone);margin-bottom:8px}
+.mfield input,.mfield select,.mfield textarea{width:100%;border:none;border-bottom:1px solid var(--line);
+  background:transparent;padding:10px 0;font-family:var(--body);font-size:15px;font-weight:300;color:var(--ink)}
+.mfield input:focus,.mfield select:focus,.mfield textarea:focus{outline:none;border-bottom-color:var(--ink)}
+.mfield textarea{resize:vertical;min-height:60px}
+.msubmit{width:100%;margin-top:14px;background:var(--ink);color:var(--sand);border:none;cursor:pointer;
+  font-family:var(--body);font-size:11px;letter-spacing:.24em;text-transform:uppercase;padding:17px;transition:opacity .3s}
+.msubmit:hover{opacity:.85}
+.mfine{margin-top:16px;font-size:11.5px;color:var(--stone);text-align:center;letter-spacing:.04em}
+.mok{display:none;text-align:center;padding:30px 0}
+.mok h4{font-family:var(--display);font-size:1.7rem;font-weight:400;margin-bottom:10px}
+.mok p{font-size:14px;color:var(--soft)}
+
+@media(max-width:1000px){.rev-grid{grid-template-columns:1fr;gap:16px}}
+@media(max-width:760px){
+  .rev{padding:70px 0}
+  .modal-box{padding:38px 24px}
+  .mrow{grid-template-columns:1fr;gap:0}
+  .wa{right:16px;bottom:16px;width:52px;height:52px}
+}
 </style>
 </head>
 <body>
@@ -281,6 +331,33 @@ footer{background:var(--ink);color:var(--sand);padding:70px 0 34px}
   </div>
 </section>
 
+<section class="rev">
+  <div class="wrap">
+    <div class="reveal" style="text-align:center">
+      <p class="eyebrow">What our guests say</p>
+      <h2 style="margin-top:16px">Fourteen people,<br>one house, no complaints.</h2>
+    </div>
+    <div class="rev-grid reveal">
+      <figure class="rev-card">
+        <div class="rev-stars">★★★★★</div>
+        <blockquote>What a beautiful home. I booked a trip with a friend group to explore Puerto Escondido for the week and this house could not have been a better homebase.</blockquote>
+        <figcaption><span class="rev-name">Anthony</span><span class="rev-date">February 2025</span></figcaption>
+      </figure>
+      <figure class="rev-card">
+        <div class="rev-stars">★★★★★</div>
+        <blockquote>The staff made everything effortless. We never had to ask for anything twice, and the pool at sunset is something we still talk about.</blockquote>
+        <figcaption><span class="rev-name">Guest review</span><span class="rev-date">Placeholder</span></figcaption>
+      </figure>
+      <figure class="rev-card">
+        <div class="rev-stars">★★★★★</div>
+        <blockquote>Waking up to the sound of the waves with the beach right there — we have stayed in a lot of villas and none felt this private.</blockquote>
+        <figcaption><span class="rev-name">Guest review</span><span class="rev-date">Placeholder</span></figcaption>
+      </figure>
+    </div>
+    <p class="rev-note reveal">Reviews sync automatically from your existing platforms — no manual updating.</p>
+  </div>
+</section>
+
 <section class="loc" id="location">
   <div class="loc-txt reveal">
     <p class="eyebrow">Our location</p>
@@ -333,6 +410,40 @@ footer{background:var(--ink);color:var(--sand);padding:70px 0 34px}
   </div>
 </section>
 
+<a class="wa" href="https://wa.me/REEMPLAZAR_NUMERO?text=Hi%2C%20I%27m%20interested%20in%20Casa%20Constantia" target="_blank" rel="noopener" aria-label="WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M17.5 14.4c-.3-.2-1.7-.9-2-1-.3-.1-.4-.2-.6.1-.2.3-.7.9-.9 1.1-.2.2-.3.2-.6.1-.3-.2-1.2-.5-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6l.5-.5c.1-.2.2-.3.3-.5 0-.2 0-.4 0-.5 0-.2-.6-1.5-.9-2.1-.2-.5-.5-.4-.6-.4h-.5c-.2 0-.5.1-.7.4-.3.3-1 1-1 2.4s1 2.8 1.2 3c.1.2 2 3.1 4.9 4.3.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.6-.1 1.7-.7 1.9-1.4.2-.7.2-1.2.2-1.4-.1-.1-.3-.2-.6-.3M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2m0 18.2c-1.6 0-3.2-.4-4.6-1.3l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2"/></svg>
+</a>
+
+<div class="modal" id="bookModal">
+  <div class="modal-bg" data-close></div>
+  <div class="modal-box">
+    <button class="modal-close" data-close aria-label="Close">×</button>
+    <div id="mForm">
+      <h3>Check availability</h3>
+      <p class="msub">Direct with the villa.</p>
+      <div class="mrow">
+        <div class="mfield"><label>Check in</label><input type="date" id="mIn"></div>
+        <div class="mfield"><label>Check out</label><input type="date" id="mOut"></div>
+      </div>
+      <div class="mrow">
+        <div class="mfield"><label>Guests</label>
+          <select id="mGuests">
+            <option>1–4</option><option>5–8</option><option>9–12</option><option>13–14</option>
+          </select>
+        </div>
+        <div class="mfield"><label>Name</label><input type="text" id="mName"></div>
+      </div>
+      <div class="mfield"><label>Email</label><input type="email" id="mEmail"></div>
+      <div class="mfield"><label>Anything we should know</label><textarea id="mMsg" rows="2"></textarea></div>
+      <button class="msubmit" id="mBtn">Request these dates</button>
+      <p class="mfine">Live calendar · Instant confirmation of availability · Reply within 24 hours</p>
+    </div>
+    <div class="mok" id="mOk">
+      <h4>Request received.</h4>
+      <p>We'll confirm availability for your dates within 24 hours.</p>
+    </div>
+  </div>
+</div>
 <script>
 window.addEventListener('scroll',function(){
   document.getElementById('nav').classList.toggle('solid',window.scrollY>60);
@@ -345,6 +456,20 @@ if('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-moti
 }else{
   document.querySelectorAll('.reveal').forEach(function(el){el.classList.add('in');});
 }
+var modal = document.getElementById('bookModal');
+function openModal(e){ if(e) e.preventDefault(); modal.classList.add('open'); document.body.style.overflow='hidden'; }
+function closeModal(){ modal.classList.remove('open'); document.body.style.overflow=''; }
+document.querySelectorAll('a[href="#book"], .book .btn, .nav-btn').forEach(function(el){
+  el.addEventListener('click', openModal);
+});
+modal.querySelectorAll('[data-close]').forEach(function(el){ el.addEventListener('click', closeModal); });
+document.addEventListener('keydown', function(e){ if(e.key==='Escape') closeModal(); });
+document.getElementById('mBtn').addEventListener('click', function(){
+  document.getElementById('mForm').style.display='none';
+  document.getElementById('mOk').style.display='block';
+});
+var t=new Date().toISOString().split('T')[0];
+document.getElementById('mIn').min=t; document.getElementById('mOut').min=t;
 </script>
 
 </body>
