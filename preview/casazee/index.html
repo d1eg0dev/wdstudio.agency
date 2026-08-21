@@ -457,17 +457,29 @@ window.addEventListener('scroll',function(){
   nav.classList.toggle('solid',window.scrollY>60);
   bar.classList.toggle('stuck',window.scrollY>hdr.offsetHeight-120);
 });
+
+var modal=document.getElementById('bookModal');
+function openModal(e){if(e)e.preventDefault();modal.classList.add('open');document.body.style.overflow='hidden';}
+function closeModal(){modal.classList.remove('open');document.body.style.overflow='';}
+document.querySelectorAll('#bGo, a[href="#book"], .nav-book, .wed .btn, .book2 .btn').forEach(function(el){
+  el.addEventListener('click', openModal);
+});
+modal.querySelectorAll('[data-close]').forEach(function(el){el.addEventListener('click',closeModal);});
+document.addEventListener('keydown',function(e){if(e.key==='Escape')closeModal();});
+
 function iso(d){return d.toISOString().split('T')[0];}
-var bIn=document.getElementById('bIn'),bOut=document.getElementById('bOut');
-bIn.min=iso(new Date()); bOut.min=iso(new Date(Date.now()+864e5));
-bIn.addEventListener('change',function(){
-  var d=new Date(bIn.value); d.setDate(d.getDate()+1);
-  bOut.min=iso(d);
-  if(!bOut.value||bOut.value<=bIn.value) bOut.value=iso(d);
+var mIn=document.getElementById('mIn'),mOut=document.getElementById('mOut');
+mIn.min=iso(new Date()); mOut.min=iso(new Date(Date.now()+864e5));
+mIn.addEventListener('change',function(){
+  var d=new Date(mIn.value); d.setDate(d.getDate()+1);
+  mOut.min=iso(d);
+  if(!mOut.value||mOut.value<=mIn.value) mOut.value=iso(d);
 });
-document.getElementById('bGo').addEventListener('click',function(){
-  document.getElementById('book').scrollIntoView({behavior:'smooth'});
+document.getElementById('mBtn').addEventListener('click',function(){
+  document.getElementById('mForm').style.display='none';
+  document.getElementById('mOk').style.display='block';
 });
+
 if('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches){
   var io=new IntersectionObserver(function(es){
     es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});
