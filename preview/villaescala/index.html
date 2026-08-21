@@ -155,20 +155,6 @@ header::after{content:'';position:absolute;inset:0;background:linear-gradient(18
 .g-grid img{height:100%;object-fit:cover;transition:transform 1.3s cubic-bezier(.2,.7,.3,1)}
 .g-grid figure:hover img{transform:scale(1.05)}
 
-/* RESEÑAS */
-.rev{padding:120px 0;background:var(--mist)}
-.rev .r-grid{display:grid;grid-template-columns:1fr 1fr;gap:30px;margin-top:56px}
-.rev .r-card{position:relative;background:var(--paper);padding:48px 40px 40px;border-radius:3px;margin:0;display:block}
-.rev .r-mark{position:absolute;top:14px;left:34px;font-family:var(--display);font-size:5rem;line-height:1;color:var(--teal);opacity:.5}
-.rev .r-card blockquote{position:relative;margin:0;padding:0;border:none}
-.rev .r-card blockquote p{font-size:16px;line-height:1.85;color:var(--slate);margin:0}
-.rev .r-card blockquote p + p{margin-top:16px}
-.rev .r-card blockquote em{font-style:normal;color:var(--navy);font-weight:500}
-.rev .r-card figcaption{margin-top:26px;padding-top:20px;border-top:1px solid var(--line);
-  font-family:var(--display);font-size:1.2rem;color:var(--navy)}
-@media(max-width:1000px){.rev .r-grid{grid-template-columns:1fr;gap:20px}}
-@media(max-width:760px){.rev{padding:70px 0}.rev .r-card{padding:40px 24px 32px}.rev .r-mark{left:20px}}
-
 /* CTA */
 .cta{padding:130px 0;text-align:center;background:var(--mist)}
 .cta .lede{margin:22px auto 0}
@@ -480,35 +466,33 @@ footer{background:var(--navy);color:#fff;padding:80px 0 30px}
     </div>
   </div>
 </section>
-
-<section class="rev">
+<section class="rev" id="reviews" style="padding:120px 0;background:var(--mist)">
   <div class="wrap">
     <div class="reveal" style="text-align:center">
       <p class="tag">Guest reviews</p>
       <h2 style="margin-top:14px">What people say<br>when they <em>get home</em></h2>
     </div>
-    <div class="r-grid reveal">
-      <figure class="r-card">
-        <div class="r-mark">"</div>
-        <blockquote>
-          <p>Arriving up the drive and across the swing bridge, the property opened up in front of us. <em>It looked like a private paradise.</em></p>
-          <p>Artisan furniture, local fabrics, and a balcony view to rival any coastal destination. Reading, napping, playing games in the pool, local wines and tequilas — everything a break from ordinary life should be.</p>
-          <p><em>Visit Villa Escala and leave all your worries behind.</em></p>
+
+    <div class="reveal" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:30px;margin-top:56px">
+
+      <figure style="position:relative;background:var(--paper);padding:52px 40px 40px;border-radius:3px;margin:0">
+        <div style="position:absolute;top:16px;left:34px;font-family:var(--display);font-size:5rem;line-height:1;color:var(--teal);opacity:.45">&ldquo;</div>
+        <blockquote style="position:relative;margin:0;padding:0;border:none">
+          <p style="font-size:16px;line-height:1.85;color:var(--slate);margin:0">Arriving up the drive and across the swing bridge, the property opened up in front of us. <em style="font-style:normal;color:var(--navy);font-weight:500">It looked like a private paradise.</em></p>
+          <p style="font-size:16px;line-height:1.85;color:var(--slate);margin:16px 0 0">Artisan furniture, local fabrics, and a balcony view to rival any coastal destination. Reading, napping, playing games in the pool, local wines and tequilas — everything a break from ordinary life should be.</p>
+          <p style="font-size:16px;line-height:1.85;margin:16px 0 0;color:var(--navy);font-weight:500">Visit Villa Escala and leave all your worries behind.</p>
         </blockquote>
-        <figcaption>Lori &amp; David Strickland</figcaption>
+        <figcaption style="margin-top:26px;padding-top:20px;border-top:1px solid var(--line);font-family:var(--display);font-size:1.25rem;color:var(--navy)">Lori &amp; David Strickland</figcaption>
       </figure>
-      <figure class="r-card">
-        <div class="r-mark">"</div>
-        <blockquote>
-          <p>A stunning getaway with 360 views of the harbour and the beaches. Really a retreat centre — private bedrooms and an enormous kitchen, made for a family reunion or a meeting with your most valued clients.</p>
-          <p>Steps from the oceanfront walkways and the town, where dozens of restaurants welcome you into the real heart of Mexico.</p>
-          <p><em>We fell in love with this place and can't wait to return.</em></p>
+
+      <figure style="position:relative;background:var(--paper);padding:52px 40px 40px;border-radius:3px;margin:0">
+        <div style="position:absolute;top:16px;left:34px;font-family:var(--display);font-size:5rem;line-height:1;color:var(--teal);opacity:.45">&ldquo;</div>
+        <blockquote style="position:relative;margin:0;padding:0;border:none">
+          <p style="font-size:16px;line-height:1.85;color:var(--slate);margin:0">A stunning getaway with 360 views of the harbour and the beaches. Really a retreat centre — private bedrooms and an enormous kitchen, made for a family reunion or a meeting with your most valued clients.</p>
+          <p style="font-size:16px;line-height:1.85;color:var(--slate);margin:16px 0 0">Steps from the oceanfront walkways and the town, where dozens of restaurants welcome you into the real heart of Mexico.</p>
+          <p style="font-size:16px;line-height:1.85;margin:16px 0 0;color:var(--navy);font-weight:500">We fell in love with this place and can't wait to return.</p>
         </blockquote>
-        <figcaption>Vivian Glyck &amp; Mike Koenigs</figcaption>
-      </figure>
-    </div>
-  </div>
-</section>
+        <figcaption style="margin-top:26px;padding-top:20px;border-top:1px solid var(--line);font-family:var(--display);f
 
 <section class="cta" id="enquire">
   <div class="wrap reveal">
