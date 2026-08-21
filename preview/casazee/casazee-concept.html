@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Casa Zee — Concept by WD Studio</title>
+<meta name="robots" content="noindex,nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#1C2426;
+  --sea:#4A6670;
+  --sand:#C9B79C;
+  --bone:#FAF8F5;
+  --shell:#F0EBE3;
+  --line:#E3DCD1;
+  --mute:#8A8378;
+  --display:'Marcellus',Georgia,serif;
+  --body:'Jost',-apple-system,'Helvetica Neue',Arial,sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bone);color:var(--ink);font-family:var(--body);font-weight:300;line-height:1.7;-webkit-font-smoothing:antialiased}
+img{display:block;width:100%;height:auto}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1320px;margin:0 auto;padding:0 46px}
+.tag{font-size:10px;letter-spacing:.34em;text-transform:uppercase;color:var(--sand)}
+h2{font-family:var(--display);font-weight:400;font-size:clamp(2.1rem,4.8vw,3.7rem);line-height:1.16;letter-spacing:.005em}
+.lede{font-size:18px;line-height:1.85;color:var(--sea);max-width:56ch}
+.reveal{opacity:0;transform:translateY(24px);transition:opacity 1s ease,transform 1s ease}
+.reveal.in{opacity:1;transform:none}
+
+.concept{position:fixed;top:0;left:0;right:0;z-index:300;background:var(--ink);color:var(--sand);
+  font-size:10px;letter-spacing:.2em;text-transform:uppercase;padding:9px 22px;display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap}
+.concept a{border-bottom:1px solid rgba(201,183,156,.5)}
+
+nav{position:fixed;top:31px;left:0;right:0;z-index:200;padding:20px 0;transition:all .4s}
+nav.solid{background:rgba(250,248,245,.96);backdrop-filter:blur(10px);padding:12px 0;border-bottom:1px solid var(--line)}
+.nav-in{max-width:1320px;margin:0 auto;padding:0 46px;display:flex;justify-content:space-between;align-items:center;gap:26px}
+.nav-logo img{height:40px;width:auto;filter:brightness(0) invert(1)}
+nav.solid .nav-logo img{filter:none}
+.nav-links{display:flex;gap:30px}
+.nav-links a{font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.82)}
+nav.solid .nav-links a{color:var(--sea)}
+nav.solid .nav-links a:hover{color:var(--ink)}
+.nav-book{background:#fff;color:var(--ink);font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;
+  font-weight:500;padding:12px 24px;transition:all .3s}
+nav.solid .nav-book{background:var(--ink);color:var(--bone)}
+.nav-book:hover{opacity:.86}
+
+header{position:relative;height:100vh;min-height:640px;overflow:hidden;background:var(--ink)}
+header .bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+header::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(28,36,38,.44) 0%,rgba(28,36,38,.06) 40%,rgba(28,36,38,.8) 100%)}
+.hero-c{position:absolute;left:0;right:0;bottom:0;z-index:4;color:#fff;padding-bottom:158px}
+.hero-c h1{font-family:var(--display);font-weight:400;font-size:clamp(2.6rem,7.4vw,6.2rem);line-height:1.04;letter-spacing:.01em}
+.hero-c .sub{margin-top:22px;font-size:clamp(1rem,1.8vw,1.3rem);max-width:32ch;color:rgba(255,255,255,.92)}
+.hero-meta{margin-top:34px;display:flex;gap:12px 38px;flex-wrap:wrap;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.82)}
+
+.bookbar{position:absolute;left:0;right:0;bottom:0;z-index:6;background:var(--bone);border-top:1px solid var(--line)}
+.bookbar.stuck{position:fixed;bottom:0;box-shadow:0 -8px 26px rgba(28,36,38,.14)}
+.bb-in{max-width:1320px;margin:0 auto;padding:16px 46px;display:flex;align-items:end;gap:20px;flex-wrap:wrap}
+.bb-f{display:flex;flex-direction:column;gap:6px}
+.bb-f label{font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:var(--mute)}
+.bb-f input,.bb-f select{background:transparent;border:none;border-bottom:1px solid var(--line);
+  color:var(--ink);font-family:var(--body);font-size:14.5px;font-weight:300;padding:5px 0;min-width:132px}
+.bb-f input:focus,.bb-f select:focus{outline:none;border-bottom-color:var(--ink)}
+.bb-btn{margin-left:auto;background:var(--ink);color:var(--bone);border:none;cursor:pointer;
+  font-family:var(--body);font-size:11px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;
+  padding:15px 40px;transition:opacity .3s}
+.bb-btn:hover{opacity:.86}
+.bb-note{width:100%;font-size:9.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--mute);padding-top:2px}
+
+.intro{padding:130px 0 110px}
+.intro-g{display:grid;grid-template-columns:1fr 1.25fr;gap:84px;align-items:start}
+.intro p{font-size:18px;line-height:1.9;color:var(--sea)}
+.intro p+p{margin-top:20px}
+.intro strong{font-weight:400;color:var(--ink)}
+.figs{display:grid;grid-template-columns:repeat(4,1fr);gap:30px;margin-top:84px;border-top:1px solid var(--line);padding-top:40px}
+.fig .v{font-family:var(--display);font-size:clamp(2.1rem,3.8vw,3rem);line-height:1}
+.fig .l{margin-top:8px;font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--mute)}
+
+.strip{display:grid;grid-template-columns:repeat(3,1fr);gap:0}
+.strip figure{aspect-ratio:4/5;overflow:hidden}
+.strip img{height:100%;object-fit:cover;transition:transform 1.3s cubic-bezier(.2,.7,.3,1)}
+.strip figure:hover img{transform:scale(1.05)}
+
+.amen{padding:120px 0;background:var(--shell)}
+.amen-g{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:56px;border-top:1px solid var(--line)}
+.amen-col{padding:34px 30px 34px 0;border-right:1px solid var(--line)}
+.amen-col:last-child{border-right:none;padding-right:0}
+.amen-col h4{font-family:var(--display);font-size:1.25rem;margin-bottom:16px}
+.amen-col ul{list-style:none}
+.amen-col li{font-size:14.5px;color:var(--sea);padding:7px 0;border-bottom:1px solid rgba(227,220,209,.6)}
+
+.wed{position:relative;padding:150px 0;background:var(--ink);color:#fff;overflow:hidden;text-align:center}
+.wed .bgimg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.42}
+.wed .inner{position:relative;z-index:3}
+.wed h2{color:#fff;max-width:18ch;margin:14px auto 0}
+.wed .lede{color:rgba(255,255,255,.82);margin:26px auto 0;text-align:center}
+.wed .btn{display:inline-block;margin-top:42px;background:var(--sand);color:var(--ink);
+  font-size:11px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;padding:17px 46px;transition:opacity .3s}
+.wed .btn:hover{opacity:.88}
+
+.exp{padding:130px 0}
+.exp-g{display:grid;grid-template-columns:repeat(4,1fr);gap:26px;margin-top:60px}
+.exp-c figure{aspect-ratio:3/4;overflow:hidden;background:var(--line)}
+.exp-c img{height:100%;object-fit:cover;transition:transform 1.3s cubic-bezier(.2,.7,.3,1)}
+.exp-c:hover img{transform:scale(1.05)}
+.exp-c h3{font-family:var(--display);font-size:1.3rem;margin-top:18px}
+.exp-c p{margin-top:8px;font-size:14px;line-height:1.7;color:var(--sea)}
+
+.test{padding:120px 0;background:var(--shell)}
+.t-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;margin-top:56px}
+.t-card{background:var(--bone);padding:38px 32px;display:flex;flex-direction:column;gap:18px}
+.t-card blockquote{font-family:var(--display);font-size:1.2rem;line-height:1.55;flex:1}
+.t-card .who{padding-top:16px;border-top:1px solid var(--line);font-size:12.5px;color:var(--mute);letter-spacing:.06em}
+.t-note{margin-top:38px;text-align:center;font-size:12.5px;color:var(--mute);letter-spacing:.04em}
+
+.book2{padding:130px 0;text-align:center}
+.book2 .lede{margin:24px auto 0}
+.book2 .btn{display:inline-block;margin-top:42px;background:var(--ink);color:var(--bone);
+  font-size:11px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;padding:18px 50px}
+.book2 .fine{margin-top:20px;font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--mute)}
+
+footer{background:var(--ink);color:var(--bone);padding:80px 0 30px}
+.f-top{display:flex;justify-content:space-between;gap:40px;flex-wrap:wrap;padding-bottom:46px;border-bottom:1px solid rgba(250,248,245,.18)}
+.f-logo img{max-width:180px;filter:brightness(0) invert(1)}
+.f-col{font-size:13.5px;line-height:2.05;color:rgba(250,248,245,.7)}
+.f-bot{margin-top:26px;display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;font-size:11px;color:rgba(250,248,245,.42)}
+
+.wa{position:fixed;right:22px;bottom:104px;z-index:180;width:54px;height:54px;border-radius:50%;
+  background:var(--ink);display:flex;align-items:center;justify-content:center;box-shadow:0 6px 22px rgba(28,36,38,.3);transition:transform .3s}
+.wa:hover{transform:translateY(-3px)}
+.wa svg{width:24px;height:24px;fill:var(--sand)}
+
+.wd{padding:90px 0;text-align:center;border-top:1px solid var(--line)}
+.wd h3{font-family:var(--display);font-size:clamp(1.5rem,3vw,2.2rem);margin:12px 0 16px}
+.wd p{font-size:15.5px;color:var(--sea);max-width:58ch;margin:0 auto}
+.wd .btn{display:inline-block;margin-top:32px;background:var(--ink);color:var(--bone);
+  font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;padding:15px 38px}
+
+@media(max-width:1000px){
+  .intro-g{grid-template-columns:1fr;gap:44px}
+  .figs,.exp-g{grid-template-columns:1fr 1fr;gap:26px}
+  .amen-g,.t-grid{grid-template-columns:1fr}
+  .amen-col{border-right:none;border-bottom:1px solid var(--line);padding-right:0}
+  .strip{grid-template-columns:1fr 1fr}
+  .strip figure:last-child{display:none}
+}
+@media(max-width:760px){
+  .wrap,.nav-in,.bb-in{padding-left:20px;padding-right:20px}
+  .nav-links{display:none}
+  .intro,.amen,.exp,.test,.book2{padding:70px 0}
+  .wed{padding:90px 0}
+  .hero-c{padding-bottom:216px}
+  .bb-f{flex:1;min-width:112px}
+  .bb-f input,.bb-f select{min-width:0;width:100%}
+  .bb-btn{margin-left:0;width:100%}
+  .wa{bottom:152px;right:14px}
+  .strip{grid-template-columns:1fr}
+  .strip figure:last-child{display:block}
+}
+@media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
+</style>
+</head>
+<body>
+
+<div class="concept">
+  <span>Concept preview — not a live site</span>
+  <span>Prepared for Casa Zee by <a href="https://wdstudio.agency" target="_blank" rel="noopener">WD Studio</a></span>
+</div>
+
+<nav id="nav">
+  <div class="nav-in">
+    <a href="#" class="nav-logo"><img src="https://casazeepuerto.com/wp-content/uploads/2023/08/CasaZee-Logo-150h.png" alt="Casa Zee"></a>
+    <div class="nav-links">
+      <a href="#villa">The Villa</a>
+      <a href="#amenities">Amenities</a>
+      <a href="#weddings">Weddings</a>
+      <a href="#experience">Experience</a>
+    </div>
+    <a href="#book" class="nav-book">Book</a>
+  </div>
+</nav>
+
+<header>
+  <img class="bg" src="https://casazeepuerto.com/wp-content/uploads/2024/06/Casa-Zee-Drone-HI-RES-1000-2.jpg" alt="Casa Zee, Puerto Escondido">
+  <div class="hero-c">
+    <div class="wrap">
+      <h1>Where luxury meets<br>an endless ocean</h1>
+      <p class="sub">A beachfront villa for twenty, on a private stretch of the Oaxacan coast.</p>
+      <div class="hero-meta">
+        <span>Santa María Colotepec · Oaxaca</span>
+        <span>8 bedrooms · Sleeps 20</span>
+        <span>Full-time staff</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="bookbar" id="bookbar">
+    <div class="bb-in">
+      <div class="bb-f"><label>Check in</label><input type="date" id="bIn"></div>
+      <div class="bb-f"><label>Check out</label><input type="date" id="bOut"></div>
+      <div class="bb-f"><label>Guests</label>
+        <select id="bGuests"><option>1–6</option><option selected>7–12</option><option>13–16</option><option>17–20</option></select>
+      </div>
+      <button class="bb-btn" id="bGo">Check availability</button>
+      <div class="bb-note">Live calendar · Direct rates · Reply within 24 hours</div>
+    </div>
+  </div>
+</header>
+
+<section class="intro" id="villa">
+  <div class="wrap">
+    <div class="intro-g reveal">
+      <div>
+        <p class="tag">The villa</p>
+        <h2 style="margin-top:14px">The whole house,<br>and nobody else.</h2>
+      </div>
+      <div>
+        <p>Casa Zee sits directly on a quiet beach in Santa María Colotepec, twenty minutes from Puerto Escondido and thirty from the airport. <strong>Eight bedrooms, nine bathrooms, room for twenty.</strong></p>
+        <p>Inside and outside stop being separate. Every principal space faces the water, the pool ends where the view begins, and a full-time staff — including a chef — makes the day run without anyone having to organise it.</p>
+        <p>Built for multi-generational families, retreats, and groups who would rather have a house than a hotel.</p>
+      </div>
+    </div>
+    <div class="figs reveal">
+      <div class="fig"><div class="v">8</div><div class="l">Bedrooms</div></div>
+      <div class="fig"><div class="v">9</div><div class="l">Bathrooms</div></div>
+      <div class="fig"><div class="v">20</div><div class="l">Guests</div></div>
+      <div class="fig"><div class="v">30<span style="font-size:.45em"> min</span></div><div class="l">From the airport</div></div>
+    </div>
+  </div>
+</section>
+
+<div class="strip reveal">
+  <figure><img src="https://casazeepuerto.com/wp-content/uploads/2023/11/Casa-Zee-WEB-1015.jpg" alt="" loading="lazy"></figure>
+  <figure><img src="https://casazeepuerto.com/wp-content/uploads/2023/11/Casa-Zee-WEB-1021-am.jpg" alt="" loading="lazy"></figure>
+  <figure><img src="https://casazeepuerto.com/wp-content/uploads/2024/06/Casa-Zee-HI-RES-1056-2-1.jpg" alt="" loading="lazy"></figure>
+</div>
+
+<section class="amen" id="amenities">
+  <div class="wrap">
+    <div class="reveal">
+      <p class="tag">Features &amp; amenities</p>
+      <h2 style="margin-top:14px">Everything already<br>taken care of.</h2>
+    </div>
+    <div class="amen-g reveal">
+      <div class="amen-col">
+        <h4>The house</h4>
+        <ul>
+          <li>Private pool, oceanfront</li>
+          <li>Equipped kitchen &amp; wine fridge</li>
+          <li>Dining area &amp; bar</li>
+          <li>Yoga area</li>
+          <li>Air conditioning throughout</li>
+        </ul>
+      </div>
+      <div class="amen-col">
+        <h4>The day</h4>
+        <ul>
+          <li>Full-time staff and chef</li>
+          <li>BBQ and pool loungers</li>
+          <li>Starlink wifi</li>
+          <li>Smart TVs &amp; Bluetooth sound</li>
+          <li>Direct beach access</li>
+        </ul>
+      </div>
+      <div class="amen-col">
+        <h4>Concierge</h4>
+        <ul>
+          <li>Pantry stocked before arrival</li>
+          <li>Airport transportation</li>
+          <li>Crib and highchair rental</li>
+          <li>Tours and experiences</li>
+          <li>Personalised check-in and out</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="wed" id="weddings">
+  <img class="bgimg" src="https://casazeepuerto.com/wp-content/uploads/2024/06/Casa-Zee-Drone-HI-RES-1001-1-2.jpg" alt="" loading="lazy">
+  <div class="wrap inner reveal">
+    <p class="tag">Weddings &amp; celebrations</p>
+    <h2>Say I do, with the<br>Pacific behind you.</h2>
+    <p class="lede">The whole property becomes yours — ceremony on the sand, dinner by the pool, and twenty people who never have to drive home. Our team coordinates with your planner, or becomes one.</p>
+    <a class="btn" href="#book">Enquire about your date</a>
+  </div>
+</section>
+
+<section class="exp" id="experience">
+  <div class="wrap">
+    <div class="reveal">
+      <p class="tag">The Casa Zee experience</p>
+      <h2 style="margin-top:14px">Do everything.<br>Or nothing at all.</h2>
+    </div>
+    <div class="exp-g reveal">
+      <div class="exp-c">
+        <figure><img src="https://casazeepuerto.com/wp-content/uploads/2024/06/CNV7n6T022.jpg" alt="" loading="lazy"></figure>
+        <h3>The pool</h3>
+        <p>Edged so the water meets the horizon. Loungers, floaties, and a bar three steps away.</p>
+      </div>
+      <div class="exp-c">
+        <figure><img src="https://casazeepuerto.com/wp-content/uploads/2024/01/Casa-Zee-WEB-1060-1-Entertainment.jpg" alt="" loading="lazy"></figure>
+        <h3>Long evenings</h3>
+        <p>Sound, screens and space for twenty — for the nights that were meant to end early.</p>
+      </div>
+      <div class="exp-c">
+        <figure><img src="https://casazeepuerto.com/wp-content/uploads/2024/01/Casa-Zee-WEB-1071-22.jpg" alt="" loading="lazy"></figure>
+        <h3>The kitchen</h3>
+        <p>A chef who cooks Oaxacan when you want it and simple when you don't. Or cook yourself.</p>
+      </div>
+      <div class="exp-c">
+        <figure><img src="https://casazeepuerto.com/wp-content/uploads/2024/06/Lifestyle_WEB-1075-yoga22.jpg" alt="" loading="lazy"></figure>
+        <h3>Yoga &amp; retreats</h3>
+        <p>A dedicated space facing the water. Bring your teacher, or we'll find one.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="test">
+  <div class="wrap">
+    <div class="reveal" style="text-align:center">
+      <p class="tag">Guests</p>
+      <h2 style="margin-top:14px">Twenty people,<br>one house, no complaints.</h2>
+    </div>
+    <div class="t-grid reveal">
+      <div class="t-card">
+        <blockquote>Ten days here and it will be hard to go anywhere else on vacation. Quiet, secluded, and staffed by people who genuinely care.</blockquote>
+        <div class="who">Guest review · 2026</div>
+      </div>
+      <div class="t-card">
+        <blockquote>Spotlessly clean, the dining was culinary excellence, and the whole stay felt magical. We are already planning the next one.</blockquote>
+        <div class="who">Guest review · 2026</div>
+      </div>
+      <div class="t-card">
+        <blockquote>Iguanas, sea turtles, parrots — we even saw a whale. Your own piece of paradise, twelve minutes from town.</blockquote>
+        <div class="who">Guest review · 2026</div>
+      </div>
+    </div>
+    <p class="t-note reveal">Reviews sync automatically from your existing platforms — no manual updating.</p>
+  </div>
+</section>
+
+<section class="book2" id="book">
+  <div class="wrap reveal">
+    <p class="tag">Reservations</p>
+    <h2 style="margin-top:14px">Book the house<br>directly.</h2>
+    <p class="lede">No platform between you and the people who run the villa. Rates, availability and the details that matter, answered by someone who has been there.</p>
+    <a class="btn" href="#">Check your dates</a>
+    <p class="fine">Direct rates · No platform fees · Reply within 24 hours</p>
+  </div>
+</section>
+
+<a class="wa" href="https://wa.me/529585874543?text=Hi%2C%20I%27m%20interested%20in%20Casa%20Zee" target="_blank" rel="noopener" aria-label="WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M17.5 14.4c-.3-.2-1.7-.9-2-1-.3-.1-.4-.2-.6.1-.2.3-.7.9-.9 1.1-.2.2-.3.2-.6.1-.3-.2-1.2-.5-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6l.5-.5c.1-.2.2-.3.3-.5 0-.2 0-.4 0-.5 0-.2-.6-1.5-.9-2.1-.2-.5-.5-.4-.6-.4h-.5c-.2 0-.5.1-.7.4-.3.3-1 1-1 2.4s1 2.8 1.2 3c.1.2 2 3.1 4.9 4.3.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.6-.1 1.7-.7 1.9-1.4.2-.7.2-1.2.2-1.4-.1-.1-.3-.2-.6-.3M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2m0 18.2c-1.6 0-3.2-.4-4.6-1.3l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2"/></svg>
+</a>
+
+<footer>
+  <div class="wrap">
+    <div class="f-top">
+      <div class="f-logo"><img src="https://casazeepuerto.com/wp-content/uploads/2023/08/CasaZee-Logo-150h.png" alt="Casa Zee"></div>
+      <div class="f-col">
+        Santa María Colotepec<br>Oaxaca, Mexico<br>30 min from PXM
+      </div>
+      <div class="f-col">
+        <a href="tel:+529585874543">+52 958 587 4543</a><br>
+        <a href="https://www.instagram.com/casazeepuerto/" target="_blank" rel="noopener">Instagram</a><br>
+        <a href="https://www.facebook.com/CasaZeePuerto" target="_blank" rel="noopener">Facebook</a>
+      </div>
+      <div class="f-col">
+        <a href="#villa">The Villa</a><br>
+        <a href="#weddings">Weddings</a><br>
+        <a href="#book">Book direct</a>
+      </div>
+    </div>
+    <div class="f-bot">
+      <span>© 2026 Casa Zee · Puerto Escondido</span>
+      <span>Concept design — WD Studio</span>
+    </div>
+  </div>
+</footer>
+
+<section class="wd">
+  <div class="wrap">
+    <p class="tag">About this preview</p>
+    <h3>A concept, not a proposal</h3>
+    <p>Built using your own photography, to show one direction. The booking bar would connect to a live calendar with direct payment. The full project would start from your material and your input, not from this.</p>
+    <a class="btn" href="https://wdstudio.agency" target="_blank" rel="noopener">wdstudio.agency</a>
+  </div>
+</section>
+
+<script>
+var nav=document.getElementById('nav'),bar=document.getElementById('bookbar'),hdr=document.querySelector('header');
+window.addEventListener('scroll',function(){
+  nav.classList.toggle('solid',window.scrollY>60);
+  bar.classList.toggle('stuck',window.scrollY>hdr.offsetHeight-120);
+});
+function iso(d){return d.toISOString().split('T')[0];}
+var bIn=document.getElementById('bIn'),bOut=document.getElementById('bOut');
+bIn.min=iso(new Date()); bOut.min=iso(new Date(Date.now()+864e5));
+bIn.addEventListener('change',function(){
+  var d=new Date(bIn.value); d.setDate(d.getDate()+1);
+  bOut.min=iso(d);
+  if(!bOut.value||bOut.value<=bIn.value) bOut.value=iso(d);
+});
+document.getElementById('bGo').addEventListener('click',function(){
+  document.getElementById('book').scrollIntoView({behavior:'smooth'});
+});
+if('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+  var io=new IntersectionObserver(function(es){
+    es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});
+  },{threshold:.1});
+  document.querySelectorAll('.reveal').forEach(function(el){io.observe(el);});
+}else{
+  document.querySelectorAll('.reveal').forEach(function(el){el.classList.add('in');});
+}
+</script>
+
+</body>
+</html>
