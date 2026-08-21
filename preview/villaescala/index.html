@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Villa Escala — Concept by WD Studio</title>
+<meta name="description" content="A six-bedroom villa above Playa La Ropa, Zihuatanejo. Private infinity pool, in-house chef, sleeps up to 17. The beach made famous by the closing scene of The Shawshank Redemption.">
+<meta name="robots" content="noindex,nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Manrope:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#012940;
+  --teal:#12A9A3;
+  --mist:#F0F0F0;
+  --paper:#FCFCFB;
+  --slate:#5C7280;
+  --line:#E2E6E8;
+  --display:'Cormorant Garamond',Georgia,serif;
+  --body:'Manrope',-apple-system,'Helvetica Neue',Arial,sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--paper);color:var(--navy);font-family:var(--body);font-weight:300;line-height:1.7;-webkit-font-smoothing:antialiased}
+img{display:block;width:100%;height:auto}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1340px;margin:0 auto;padding:0 44px}
+.tag{font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:var(--teal);font-weight:600}
+h2{font-family:var(--display);font-weight:400;font-size:clamp(2.2rem,4.8vw,3.6rem);line-height:1.12}
+h2 em{font-style:italic;color:var(--teal)}
+.lede{font-size:17.5px;line-height:1.85;color:var(--slate);max-width:58ch}
+.reveal{opacity:0;transform:translateY(24px);transition:opacity 1s ease,transform 1s ease}
+.reveal.in{opacity:1;transform:none}
+
+.concept{position:fixed;top:0;left:0;right:0;z-index:400;background:var(--navy);color:#fff;
+  font-size:10px;letter-spacing:.2em;text-transform:uppercase;padding:9px 22px;display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap}
+.concept a{color:var(--teal);border-bottom:1px solid rgba(18,169,163,.5)}
+
+nav{position:fixed;top:31px;left:0;right:0;z-index:200;padding:20px 0;transition:all .4s}
+nav.solid{background:rgba(252,252,251,.97);backdrop-filter:blur(10px);padding:12px 0;border-bottom:1px solid var(--line)}
+.nav-in{max-width:1340px;margin:0 auto;padding:0 44px;display:flex;justify-content:space-between;align-items:center;gap:26px}
+.brand{font-family:var(--display);font-size:1.5rem;letter-spacing:.14em;color:#fff}
+nav.solid .brand{color:var(--navy)}
+.nav-links{display:flex;gap:30px}
+.nav-links a{font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.85);font-weight:500}
+nav.solid .nav-links a{color:var(--slate)}
+nav.solid .nav-links a:hover{color:var(--navy)}
+.nav-cta{background:#fff;color:var(--navy);font-size:10.5px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;padding:12px 24px;border-radius:100px;transition:all .3s}
+nav.solid .nav-cta{background:var(--navy);color:#fff}
+.nav-cta:hover{background:var(--teal);color:#fff}
+
+header{position:relative;min-height:100vh;overflow:hidden;background:var(--navy);display:flex;align-items:center}
+header .bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.78}
+header::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(1,41,64,.5) 0%,rgba(1,41,64,.1) 42%,rgba(1,41,64,.78) 100%)}
+.hero-c{position:relative;z-index:4;width:100%;color:#fff;padding:140px 0 56px;text-align:center}
+.hero-c .kick{font-size:11px;letter-spacing:.34em;text-transform:uppercase;color:rgba(255,255,255,.78);margin-bottom:22px}
+.hero-c h1{font-family:var(--display);font-weight:300;font-size:clamp(2.6rem,7.6vw,6.4rem);line-height:1.02;letter-spacing:.02em}
+.hero-c h1 em{font-style:italic;font-weight:300}
+.hero-c .sub{margin:22px auto 0;font-size:clamp(1rem,1.6vw,1.15rem);max-width:44ch;color:rgba(255,255,255,.9)}
+
+.enq{margin:44px auto 0;background:rgba(252,252,251,.97);backdrop-filter:blur(8px);border-radius:100px;
+  padding:12px 12px 12px 30px;max-width:880px;display:grid;grid-template-columns:1fr 1fr 1fr auto;gap:22px;align-items:center;text-align:left}
+.e-f{display:flex;flex-direction:column;gap:3px;border-right:1px solid var(--line);padding-right:20px}
+.e-f:nth-child(3){border-right:none}
+.e-f label{font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--slate);font-weight:600}
+.e-f input,.e-f select{border:none;background:transparent;font-family:var(--body);font-size:14.5px;font-weight:400;color:var(--navy);padding:2px 0}
+.e-f input:focus,.e-f select:focus{outline:none}
+.e-btn{background:var(--navy);color:#fff;border:none;cursor:pointer;font-family:var(--body);font-size:11px;font-weight:600;
+  letter-spacing:.16em;text-transform:uppercase;padding:16px 34px;border-radius:100px;transition:background .3s;white-space:nowrap}
+.e-btn:hover{background:var(--teal)}
+
+/* MOSAICO */
+.mosaic{padding:120px 0 0;position:relative;text-align:center}
+.mosaic h2{max-width:16ch;margin:0 auto}
+.m-float{position:relative;height:520px;margin-top:-40px}
+.m-float img{position:absolute;border-radius:2px;object-fit:cover;box-shadow:0 12px 34px rgba(1,41,64,.1)}
+.m1{width:200px;height:135px;left:4%;top:60px}
+.m2{width:150px;height:190px;left:22%;top:0}
+.m3{width:120px;height:88px;left:38%;top:200px}
+.m4{width:180px;height:120px;right:24%;top:20px}
+.m5{width:210px;height:145px;right:3%;top:120px}
+.m6{width:165px;height:115px;left:10%;bottom:20px}
+.m7{width:140px;height:100px;left:44%;bottom:0}
+.m8{width:225px;height:150px;right:8%;bottom:10px}
+
+/* SPECS */
+.specs{padding:0 0 120px}
+.sp-bar{display:grid;grid-template-columns:repeat(5,1fr);gap:0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.sp{padding:32px 20px;text-align:center;border-right:1px solid var(--line)}
+.sp:last-child{border-right:none}
+.sp .v{font-family:var(--display);font-size:clamp(1.9rem,3.4vw,2.6rem);line-height:1}
+.sp .l{margin-top:6px;font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--slate);font-weight:500}
+
+/* OVERVIEW + SIDEBAR */
+.ov{padding:0 0 120px}
+.ov-g{display:grid;grid-template-columns:1.6fr 1fr;gap:70px;align-items:start}
+.ov-body p{font-size:17.5px;line-height:1.9;color:var(--slate)}
+.ov-body p+p{margin-top:20px}
+.ov-body strong{font-weight:500;color:var(--navy)}
+.card{position:sticky;top:120px;background:#fff;border:1px solid var(--line);border-radius:4px;padding:34px 30px}
+.card .loc{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--slate);font-weight:600}
+.card h3{font-family:var(--display);font-size:2rem;font-weight:400;margin:8px 0 20px}
+.card .row{display:flex;justify-content:space-between;gap:14px;padding:12px 0;border-bottom:1px solid var(--line);font-size:14px;color:var(--slate)}
+.card .row b{font-weight:500;color:var(--navy)}
+.card .price{margin-top:22px;padding:18px;background:var(--mist);border-radius:3px;text-align:center}
+.card .price .p{font-family:var(--display);font-size:1.5rem}
+.card .price .n{margin-top:4px;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--slate)}
+.card .btn{display:block;margin-top:16px;background:var(--navy);color:#fff;text-align:center;
+  font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;padding:16px;border-radius:100px;transition:background .3s}
+.card .btn:hover{background:var(--teal)}
+.card .fine{margin-top:14px;font-size:11.5px;color:var(--slate);text-align:center;line-height:1.6}
+
+/* AMENIDADES */
+.amen{padding:110px 0;background:var(--mist)}
+.a-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:52px;border-top:1px solid var(--line)}
+.a-col{padding:32px 26px 32px 0;border-right:1px solid var(--line)}
+.a-col:last-child{border-right:none;padding-right:0}
+.a-col h4{font-family:var(--display);font-size:1.4rem;font-weight:400;margin-bottom:16px}
+.a-col ul{list-style:none}
+.a-col li{font-size:14px;color:var(--slate);padding:7px 0;line-height:1.6}
+
+/* STAY TYPES */
+.stay{padding:120px 0}
+.st-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;margin-top:56px}
+.st{position:relative;aspect-ratio:3/4;overflow:hidden;border-radius:3px;background:var(--navy)}
+.st img{height:100%;object-fit:cover;opacity:.86;transition:transform 1.3s cubic-bezier(.2,.7,.3,1)}
+.st:hover img{transform:scale(1.06)}
+.st::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(1,41,64,.06) 45%,rgba(1,41,64,.84) 100%)}
+.st-t{position:absolute;left:0;right:0;bottom:0;z-index:3;padding:26px 22px;color:#fff}
+.st-t h3{font-family:var(--display);font-size:1.5rem;font-weight:400;line-height:1.15}
+.st-t p{margin-top:6px;font-size:13px;color:rgba(255,255,255,.8);line-height:1.6}
+
+/* AREA */
+.area{position:relative;background:var(--navy);color:#fff;overflow:hidden}
+.ar-g{display:grid;grid-template-columns:1fr 1fr;align-items:center}
+.ar-img{aspect-ratio:1/1;overflow:hidden}
+.ar-img img{height:100%;object-fit:cover}
+.ar-txt{padding:100px 70px}
+.ar-txt h2{color:#fff}
+.ar-txt .lede{color:rgba(255,255,255,.8)}
+.ar-list{list-style:none;margin-top:28px}
+.ar-list li{display:flex;gap:16px;padding:13px 0;border-bottom:1px solid rgba(255,255,255,.16);font-size:14.5px;color:rgba(255,255,255,.84)}
+.ar-list li span:first-child{color:var(--teal);flex-shrink:0;font-weight:600}
+
+/* GALERÍA */
+.gal{padding:120px 0}
+.g-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:52px}
+.g-grid figure{overflow:hidden;aspect-ratio:1/1;border-radius:2px;background:var(--mist)}
+.g-grid figure:first-child{grid-column:span 2;grid-row:span 2}
+.g-grid img{height:100%;object-fit:cover;transition:transform 1.3s cubic-bezier(.2,.7,.3,1)}
+.g-grid figure:hover img{transform:scale(1.05)}
+
+/* CTA */
+.cta{padding:130px 0;text-align:center;background:var(--mist)}
+.cta .lede{margin:22px auto 0}
+.cta .btn{display:inline-block;margin-top:40px;background:var(--navy);color:#fff;
+  font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;padding:18px 48px;border-radius:100px;transition:background .3s}
+.cta .btn:hover{background:var(--teal)}
+.cta .fine{margin-top:18px;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--slate)}
+
+/* MODAL */
+.modal{position:fixed;inset:0;z-index:500;display:none;align-items:center;justify-content:center;padding:24px}
+.modal.open{display:flex}
+.modal-bg{position:absolute;inset:0;background:rgba(1,41,64,.66);backdrop-filter:blur(4px)}
+.modal-box{position:relative;background:var(--paper);width:100%;max-width:560px;max-height:90vh;overflow-y:auto;padding:46px 42px;border-radius:4px}
+.modal-close{position:absolute;top:18px;right:22px;background:none;border:none;cursor:pointer;font-size:24px;color:var(--slate);line-height:1}
+.modal-box h3{font-family:var(--display);font-weight:400;font-size:2rem;line-height:1.2;margin-bottom:8px}
+.modal-box .msub{font-size:14px;color:var(--slate);margin-bottom:28px}
+.mrow{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.mfield{margin-bottom:18px}
+.mfield label{display:block;font-size:9.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--slate);margin-bottom:8px;font-weight:600}
+.mfield input,.mfield select,.mfield textarea{width:100%;border:none;border-bottom:1px solid var(--line);
+  background:transparent;padding:10px 0;font-family:var(--body);font-size:15px;font-weight:300;color:var(--navy)}
+.mfield input:focus,.mfield select:focus,.mfield textarea:focus{outline:none;border-bottom-color:var(--teal)}
+.mfield textarea{resize:vertical;min-height:56px}
+.msubmit{width:100%;margin-top:12px;background:var(--navy);color:#fff;border:none;cursor:pointer;
+  font-family:var(--body);font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;padding:17px;border-radius:100px}
+.mfine{margin-top:16px;font-size:11px;color:var(--slate);text-align:center}
+.mok{display:none;text-align:center;padding:30px 0}
+.mok h4{font-family:var(--display);font-size:1.7rem;margin-bottom:10px}
+.mok p{font-size:14.5px;color:var(--slate)}
+
+footer{background:var(--navy);color:#fff;padding:80px 0 30px}
+.f-top{display:flex;justify-content:space-between;gap:44px;flex-wrap:wrap;padding-bottom:46px;border-bottom:1px solid rgba(255,255,255,.16)}
+.f-brand{font-family:var(--display);font-size:1.8rem;letter-spacing:.14em}
+.f-col{font-size:13.5px;line-height:2.05;color:rgba(255,255,255,.72)}
+.f-bot{margin-top:26px;display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;font-size:11px;color:rgba(255,255,255,.45)}
+
+.wa{position:fixed;right:22px;bottom:24px;z-index:180;width:54px;height:54px;border-radius:50%;
+  background:var(--navy);display:flex;align-items:center;justify-content:center;box-shadow:0 6px 22px rgba(1,41,64,.3);transition:transform .3s}
+.wa:hover{transform:translateY(-3px)}
+.wa svg{width:24px;height:24px;fill:#fff}
+
+.wd{padding:90px 0;text-align:center;border-top:1px solid var(--line)}
+.wd h3{font-family:var(--display);font-size:clamp(1.5rem,3vw,2.2rem);margin:12px 0 16px;font-weight:400}
+.wd p{font-size:15.5px;color:var(--slate);max-width:58ch;margin:0 auto}
+.wd .btn{display:inline-block;margin-top:32px;background:var(--navy);color:#fff;
+  font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;padding:15px 38px;border-radius:100px}
+
+@media(max-width:1100px){
+  .ov-g,.ar-g{grid-template-columns:1fr;gap:44px}
+  .card{position:static}
+  .ar-txt{padding:70px 44px}
+  .a-grid,.st-grid{grid-template-columns:1fr 1fr}
+  .a-col{border-bottom:1px solid var(--line)}
+  .enq{grid-template-columns:1fr 1fr;border-radius:6px;padding:20px}
+  .e-f{border-right:none}
+  .sp-bar{grid-template-columns:1fr 1fr 1fr}
+  .sp:nth-child(3){border-right:none}
+  .m-float{height:400px}
+  .m-float img{transform:scale(.75)}
+}
+@media(max-width:760px){
+  .wrap,.nav-in{padding-left:20px;padding-right:20px}
+  .nav-links{display:none}
+  .mosaic,.ov,.amen,.stay,.gal,.cta{padding-top:70px;padding-bottom:70px}
+  .m-float{display:none}
+  .mosaic{padding-bottom:40px}
+  .enq{grid-template-columns:1fr;gap:14px}
+  .e-btn{width:100%}
+  .sp-bar{grid-template-columns:1fr 1fr}
+  .sp{border-bottom:1px solid var(--line)}
+  .a-grid,.st-grid,.g-grid{grid-template-columns:1fr}
+  .a-col{border-right:none;padding-right:0}
+  .g-grid figure:first-child{grid-column:span 1;grid-row:span 1}
+  .ar-txt{padding:56px 20px}
+  .modal-box{padding:36px 22px}
+  .mrow{grid-template-columns:1fr;gap:0}
+  .hero-c{padding:120px 0 44px}
+}
+@media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
+</style>
+</head>
+<body>
+
+<div class="concept">
+  <span>Concept preview — not a live site</span>
+  <span>Prepared for Villa Escala by <a href="https://wdstudio.agency" target="_blank" rel="noopener">WD Studio</a></span>
+</div>
+
+<nav id="nav">
+  <div class="nav-in">
+    <a href="#" class="brand">VILLA ESCALA</a>
+    <div class="nav-links">
+      <a href="#overview">Overview</a>
+      <a href="#amenities">Amenities</a>
+      <a href="#stays">Your Stay</a>
+      <a href="#area">The Area</a>
+      <a href="#gallery">Gallery</a>
+    </div>
+    <a href="#enquire" class="nav-cta">Enquire</a>
+  </div>
+</nav>
+
+<header>
+  <img class="bg" src="https://images.squarespace-cdn.com/content/v1/666a0d639b0fb4333f95b1c6/1725822433085-U0BPIVCQI6RWVIL9SKQ3/drone-1.jpg?format=2500w" alt="Villa Escala above the bay of Zihuatanejo">
+  <div class="hero-c">
+    <div class="wrap">
+      <p class="kick">Playa La Ropa · Zihuatanejo, Mexico</p>
+      <h1>VILLA <em>escala</em></h1>
+      <p class="sub">Six bedrooms on the hillside above the bay. Completely private, completely staffed, and the best view in Zihuatanejo.</p>
+
+      <div class="enq">
+        <div class="e-f"><label>Arrival</label><input type="date" id="eIn"></div>
+        <div class="e-f"><label>Departure</label><input type="date" id="eOut"></div>
+        <div class="e-f"><label>Guests</label>
+          <select id="eGuests"><option>2 – 6</option><option selected>7 – 12</option><option>13 – 15</option><option>16 – 17</option></select>
+        </div>
+        <button class="e-btn" id="eGo">Check availability</button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section class="mosaic">
+  <div class="wrap reveal">
+    <p class="tag">The villa</p>
+    <h2 style="margin-top:14px">A hidden gem above<br>the <em>Mexican Pacific</em></h2>
+  </div>
+  <div class="m-float reveal" aria-hidden="true">
+    <img class="m1" src="https://images.squarespace-cdn.com/content/v1/666a0d639b0fb4333f95b1c6/1725822522808-FTUJI02NWKX652XAKDQM/exterior-2.jpg?format=750w" alt="" loading="lazy">
+    <img class="m2" src="https://images.squarespace-cdn.com/content/v1/666a0d639b0fb4333f95b1c6/1725822419825-LFNRCSG0BJ6GT3VEEG3W/room-1.jpg?format=750w" alt="" loading="lazy">
+    <img class="m3" src="https://images.squarespace-cdn.com/content/v1/666a0d639b0fb4333f95b1c6/1725822414453-Q2DZ9XFURJPDQH274X9J/food-1.jpg?format=500w" alt="" loading="lazy">
+    <img class="m4" src="https://images.squarespace-cdn.com/content/v1/666a0d639b0fb4333f95b1c6/1725838215286-CERE2VPTT0COJHKPAXPZ/property-5.jpg?format=750w" alt="" loading="lazy">
+    <img class="m5" src="https://images.squarespace-cdn.com/content/v1/666a0d639b0fb4333f95b1c6/1725822406872-ATXYIZTOKSJK31MCS389/exterior-1.jpg?format=750w" alt="" loading="lazy">
+    <img class="m6" src="https://images.squarespace-cdn.com/content/v1/666a0d639b0fb4333f95b1c6/1725838216526-RK4Q60U4VSBBNKB5D9YX/property-7.jpg?format=750w" alt="" loading="lazy">
+    <img class="m7" src="https://images.squarespace-cdn.com/content/v1/666a0d639b0fb4333f95b1c6/1725838218128-BSXL3TWA4IT5X536E44P/property-13.jpg?format=500w" alt="" loading="lazy">
+    <img class="m8" src="https://images.squarespace-cdn.com/content/v1/666a0d639b0fb4333f95b1c6/1725822579125-UBG9GH7HR10KZWD8B3HJ/exterior-3.jpg?format=750w" alt="" loading="lazy">
+  </div>
+</section>
+
+<section class="specs">
+  <div class="wrap">
+    <div class="sp-bar reveal">
+      <div class="sp"><div class="v">6</div><div class="l">Bedrooms</div></div>
+      <div class="sp"><div class="v">17</div><div class="l">Guests max</div></div>
+      <div class="sp"><div class="v">5</div><div class="l">Ocean-view balconies</div></div>
+      <div class="sp"><div class="v">6<span style="font-size:.42em"> min</span></div><div class="l">To La Ropa Beach</div></div>
+      <div class="sp"><div class="v">24/7</div><div class="l">On-site security</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="ov" id="overview">
+  <div class="wrap ov-g">
+    <div class="ov-body reveal">
+      <p class="tag">Overview</p>
+      <h2 style="margin:14px 0 26px">Where the hillside<br>meets the <em>bay</em></h2>
+      <p>Villa Escala sits perched on the hillside above Zihuatanejo, completely renovated from top to bottom, with unbroken ocean views from every corner. <strong>Six bedrooms, a seventh on request</strong> — six king beds and three daybeds, sleeping fifteen comfortably and seventeen with the additional master.</p>
+      <p>A private infinity pool. A gourmet kitchen with the best view in town, and a custom full-service bar built for a group that has no intention of going out. An expansive lawn for yoga and meditation, fully fenced, with security on site around the clock.</p>
+      <p>Breakfast and freshly brewed coffee arrive each morning. Housekeeping comes daily. The chef is available whenever you'd rather not think about dinner. <strong>Nothing here requires organising.</strong></p>
+    </div>
+    <aside>
+      <div class="card reveal">
+        <p class="loc">Playa La Ropa · Zihuatanejo</p>
+        <h3>Villa Escala</h3>
+        <div class="row"><span>Bedrooms</span><b>6 (+1 on request)</b></div>
+        <div class="row"><span>Guests</span><b>Up to 17</b></div>
+        <div class="row"><span>Beds</span><b>6 king · 3 daybeds</b></div>
+        <div class="row"><span>Pool</span><b>Private infinity</b></div>
+        <div class="row"><span>Staff</span><b>Daily · chef on request</b></div>
+        <div class="row"><span>Pets</span><b>Welcome (max 2)</b></div>
+        <div class="price">
+          <div class="p">Price on request</div>
+          <div class="n">Rates vary by season &amp; group</div>
+        </div>
+        <a class="btn" href="#enquire">Enquire about dates</a>
+        <p class="fine">Whole-villa bookings only · Reply within 24 hours</p>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<section class="amen" id="amenities">
+  <div class="wrap">
+    <div class="reveal">
+      <p class="tag">Amenities</p>
+      <h2 style="margin-top:14px">Everything, <em>already handled</em></h2>
+    </div>
+    <div class="a-grid reveal">
+      <div class="a-col">
+        <h4>In-villa</h4>
+        <ul>
+          <li>Gourmet kitchen with ocean view</li>
+          <li>Custom full-service bar</li>
+          <li>Air-conditioned gathering area</li>
+          <li>Fibre optic &amp; Starlink internet</li>
+          <li>Custom bathrooms, organic toiletries</li>
+        </ul>
+      </div>
+      <div class="a-col">
+        <h4>Outdoors</h4>
+        <ul>
+          <li>Private infinity pool</li>
+          <li>Expansive lawn, yoga &amp; meditation</li>
+          <li>Private terraces</li>
+          <li>Fully fenced grounds</li>
+          <li>24/7 on-site security</li>
+        </ul>
+      </div>
+      <div class="a-col">
+        <h4>Service</h4>
+        <ul>
+          <li>Breakfast &amp; coffee each morning</li>
+          <li>Daily housekeeping</li>
+          <li>In-house chef on request</li>
+          <li>Concierge for taxis, fishing, tours</li>
+          <li>Pet-friendly, up to two dogs</li>
+        </ul>
+      </div>
+      <div class="a-col">
+        <h4>On request</h4>
+        <ul>
+          <li>Personal trainer</li>
+          <li>Yoga instructor</li>
+          <li>Massage &amp; acupuncture</li>
+          <li>Private dining, small or large groups</li>
+          <li>Seventh bedroom</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="stay" id="stays">
+  <div class="wrap">
+    <div class="reveal">
+      <p class="tag">Your stay</p>
+      <h2 style="margin-top:14px">What brings <em>your group</em> here</h2>
+    </div>
+    <div class="st-grid reveal">
+      <div class="st">
+        <img src="https://images.squarespace-cdn.com/content/v1/666a0d639b0fb4333f95b1c6/1725922985639-IWGVRWU5AYKDPIBPWT7U/events-1.jpg?format=1000w" alt="" loading="lazy">
+        <div class="st-t"><h3>Weddings</h3><p>The whole villa, the whole bay, and nobody driving home.</p></div>
+      </div>
+      <div class="st">
+        <img src="https://images.squarespace-cdn.com/content/v1/666a0d639b0fb4333f95b1c6/1725838102246-XFNOB654WPR2A9RE0ZHA/property-3.jpg?format=1000w" alt="" loading="lazy">
+        <div class="st-t"><h3>Family reunions</h3><p>Seventeen people, one house, and enough space to still like each other.</p></div>
+      </div>
+      <div class="st">
+        <img src="https://images.squarespace-cdn.com/content/v1/666a0d639b0fb4333f95b1c6/1725838323782-B96YWS15KKKXKTFGZC9R/property-4.jpg?format=1000w" alt="" loading="lazy">
+        <div class="st-t"><h3>Wellness retreats</h3><p>Lawn, instructors, and a bay that does half the work.</p></div>
+      </div>
+      <div class="st">
+        <img src="https://images.squarespace-cdn.com/content/v1/666a0d639b0fb4333f95b1c6/1725838216859-J9M05MZOFTO823H6CPAN/property-8.jpg?format=1000w" alt="" loading="lazy">
+        <div class="st-t"><h3>Corporate retreats</h3><p>Reliable wifi, air conditioning, and a reason for people to actually show up.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="area" id="area">
+  <div class="ar-g">
+    <div class="ar-img">
+      <img src="https://images.squarespace-cdn.com/content/v1/666a0d639b0fb4333f95b1c6/1725838390985-JTSAZXCJMNL7TIC38BE4/adventure-2.jpg?format=1500w" alt="Zihuatanejo bay" loading="lazy">
+    </div>
+    <div class="ar-txt reveal">
+      <p class="tag">The area</p>
+      <h2 style="margin-top:14px">Playa La Ropa,<br><em>Zihuatanejo</em></h2>
+      <p class="lede" style="margin-top:24px">Six minutes on foot to Playa La Ropa — the stretch of Pacific sand that has stood in for paradise in film, most famously in the closing scene of <em>The Shawshank Redemption</em>. Twelve minutes to the centre of town, where the markets, the boats and the restaurants are.</p>
+      <ul class="ar-list">
+        <li><span>—</span><span>Snorkelling, diving and hidden coves by kayak</span></li>
+        <li><span>—</span><span>Deep-sea fishing and yachting from the bay</span></li>
+        <li><span>—</span><span>Whale watching in season</span></li>
+        <li><span>—</span><span>Surfing, ziplining, cycling and the ancient ruins</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="gal" id="gallery">
+  <div class="wrap">
+    <div class="reveal">
+      <p class="tag">Gallery</p>
+      <h2 style="margin-top:14px">Inside <em>Villa Escala</em></h2>
+    </div>
+    <div class="g-grid reveal">
+      <figure><img src="https://images.squarespace-cdn.com/content/v1/666a0d639b0fb4333f95b1c6/9b40ba58-24d5-4514-bfd8-6b47a774b5e1/Lounge+Area.jpg?format=1500w" alt="" loading="lazy"></figure>
+      <figure><img src="https://images.squarespace-cdn.com/content/v1/666a0d639b0fb4333f95b1c6/1a84edb1-47b3-46cd-81e2-b1acfcd75fcd/interior-1.jpg?format=800w" alt="" loading="lazy"></figure>
+      <figure><img src="https://images.squarespace-cdn.com/content/v1/666a0d639b0fb4333f95b1c6/1725838216526-RK4Q60U4VSBBNKB5D9YX/property-7.jpg?format=800w" alt="" loading="lazy"></figure>
+      <figure><img src="https://images.squarespace-cdn.com/content/v1/666a0d639b0fb4333f95b1c6/f48d2349-8018-4479-893c-0959ce1d5dca/Lounge+Area+Night.jpg?format=800w" alt="" loading="lazy"></figure>
+      <figure><img src="https://images.squarespace-cdn.com/content/v1/666a0d639b0fb4333f95b1c6/1725838218700-BXOIZMZWM6T2TCBNH5AX/property-14.jpg?format=800w" alt="" loading="lazy"></figure>
+      <figure><img src="https://images.squarespace-cdn.com/content/v1/666a0d639b0fb4333f95b1c6/1725838323580-EVYLSZW15VHW9CS10ISJ/property-10.jpg?format=800w" alt="" loading="lazy"></figure>
+      <figure><img src="https://images.squarespace-cdn.com/content/v1/666a0d639b0fb4333f95b1c6/1725838325085-FWHMBZQSIQJCSF06YVS4/property-15.jpg?format=800w" alt="" loading="lazy"></figure>
+      <figure><img src="https://images.squarespace-cdn.com/content/v1/666a0d639b0fb4333f95b1c6/1725822414453-Q2DZ9XFURJPDQH274X9J/food-1.jpg?format=800w" alt="" loading="lazy"></figure>
+      <figure><img src="https://images.squarespace-cdn.com/content/v1/666a0d639b0fb4333f95b1c6/1725838102508-Y4UDMOPKXUU0U82L4DDJ/property-9.jpg?format=800w" alt="" loading="lazy"></figure>
+    </div>
+  </div>
+</section>
+
+<section class="cta" id="enquire">
+  <div class="wrap reveal">
+    <p class="tag">Reservations</p>
+    <h2 style="margin-top:14px">Tell us who's coming,<br>and <em>when</em></h2>
+    <p class="lede">Rates depend on season, group size and length of stay, so we quote each enquiry directly rather than posting a number that would be wrong for most people.</p>
+    <a class="btn" href="#" id="ctaBtn">Enquire about your dates</a>
+    <p class="fine">Direct with the villa · Reply within 24 hours</p>
+  </div>
+</section>
+
+<div class="modal" id="enqModal">
+  <div class="modal-bg" data-close></div>
+  <div class="modal-box">
+    <button class="modal-close" data-close aria-label="Close">×</button>
+    <div id="mForm">
+      <h3>Enquire about your dates</h3>
+      <p class="msub">Direct with the villa. No platform, no middleman.</p>
+      <div class="mrow">
+        <div class="mfield"><label>Arrival</label><input type="date" id="mIn"></div>
+        <div class="mfield"><label>Departure</label><input type="date" id="mOut"></div>
+      </div>
+      <div class="mrow">
+        <div class="mfield"><label>Guests</label>
+          <select id="mGuests"><option>2 – 6</option><option selected>7 – 12</option><option>13 – 15</option><option>16 – 17</option></select>
+        </div>
+        <div class="mfield"><label>Occasion</label>
+          <select id="mType"><option>Family stay</option><option>Wedding</option><option>Wellness retreat</option><option>Corporate retreat</option><option>Celebration</option><option>Other</option></select>
+        </div>
+      </div>
+      <div class="mrow">
+        <div class="mfield"><label>Name</label><input type="text" id="mName"></div>
+        <div class="mfield"><label>Email</label><input type="email" id="mEmail"></div>
+      </div>
+      <div class="mfield"><label>Anything we should know</label><textarea id="mMsg" rows="2"></textarea></div>
+      <button class="msubmit" id="mBtn">Send enquiry</button>
+      <p class="mfine">We reply with rates and availability within 24 hours.</p>
+    </div>
+    <div class="mok" id="mOk">
+      <h4>Enquiry received.</h4>
+      <p>We'll come back with rates and availability within 24 hours.</p>
+    </div>
+  </div>
+</div>
+
+<a class="wa" href="https://wa.me/17603906397?text=Hi%2C%20I%27m%20interested%20in%20Villa%20Escala" target="_blank" rel="noopener" aria-label="WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M17.5 14.4c-.3-.2-1.7-.9-2-1-.3-.1-.4-.2-.6.1-.2.3-.7.9-.9 1.1-.2.2-.3.2-.6.1-.3-.2-1.2-.5-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6l.5-.5c.1-.2.2-.3.3-.5 0-.2 0-.4 0-.5 0-.2-.6-1.5-.9-2.1-.2-.5-.5-.4-.6-.4h-.5c-.2 0-.5.1-.7.4-.3.3-1 1-1 2.4s1 2.8 1.2 3c.1.2 2 3.1 4.9 4.3.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.6-.1 1.7-.7 1.9-1.4.2-.7.2-1.2.2-1.4-.1-.1-.3-.2-.6-.3M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2m0 18.2c-1.6 0-3.2-.4-4.6-1.3l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2"/></svg>
+</a>
+
+<footer>
+  <div class="wrap">
+    <div class="f-top">
+      <div class="f-brand">VILLA ESCALA</div>
+      <div class="f-col">
+        Playa La Ropa<br>Zihuatanejo, Guerrero<br>Mexico
+      </div>
+      <div class="f-col">
+        <a href="tel:+17603906397">+1 760 390 6397</a><br>
+        <a href="#enquire">Enquire</a>
+      </div>
+      <div class="f-col">
+        <a href="#overview">Overview</a><br>
+        <a href="#stays">Your Stay</a><br>
+        <a href="#gallery">Gallery</a>
+      </div>
+    </div>
+    <div class="f-bot">
+      <span>© 2026 Villa Escala · Zihuatanejo</span>
+      <span>Concept design — WD Studio</span>
+    </div>
+  </div>
+</footer>
+
+<section class="wd">
+  <div class="wrap">
+    <p class="tag">About this preview</p>
+    <h3>A concept, not a proposal</h3>
+    <p>Built using your own photography, to show one direction. The enquiry form would connect to a live calendar with direct rates. The full project would start from your material and your input, not from this.</p>
+    <a class="btn" href="https://wdstudio.agency" target="_blank" rel="noopener">wdstudio.agency</a>
+  </div>
+</section>
+
+<script>
+var nav=document.getElementById('nav');
+window.addEventListener('scroll',function(){nav.classList.toggle('solid',window.scrollY>60);});
+
+var modal=document.getElementById('enqModal');
+function openModal(e){if(e)e.preventDefault();modal.classList.add('open');document.body.style.overflow='hidden';}
+function closeModal(){modal.classList.remove('open');document.body.style.overflow='';}
+document.querySelectorAll('#eGo, #ctaBtn, .nav-cta, a[href="#enquire"], .card .btn').forEach(function(el){
+  el.addEventListener('click', openModal);
+});
+modal.querySelectorAll('[data-close]').forEach(function(el){el.addEventListener('click',closeModal);});
+document.addEventListener('keydown',function(e){if(e.key==='Escape')closeModal();});
+
+function iso(d){return d.toISOString().split('T')[0];}
+[['eIn','eOut'],['mIn','mOut']].forEach(function(pair){
+  var a=document.getElementById(pair[0]), b=document.getElementById(pair[1]);
+  if(!a||!b) return;
+  a.min=iso(new Date()); b.min=iso(new Date(Date.now()+864e5));
+  a.addEventListener('change',function(){
+    var d=new Date(a.value); d.setDate(d.getDate()+1);
+    b.min=iso(d);
+    if(!b.value||b.value<=a.value) b.value=iso(d);
+  });
+});
+document.getElementById('mBtn').addEventListener('click',function(){
+  document.getElementById('mForm').style.display='none';
+  document.getElementById('mOk').style.display='block';
+});
+
+if('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+  var io=new IntersectionObserver(function(es){
+    es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});
+  },{threshold:.1});
+  document.querySelectorAll('.reveal').forEach(function(el){io.observe(el);});
+}else{
+  document.querySelectorAll('.reveal').forEach(function(el){el.classList.add('in');});
+}
+</script>
+
+</body>
+</html>
