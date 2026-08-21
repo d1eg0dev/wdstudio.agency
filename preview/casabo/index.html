@@ -143,6 +143,22 @@ header::after{content:'';position:absolute;inset:0;background:linear-gradient(18
 .g-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:30px;margin-top:54px}
 .g-grid .pola{padding:10px 10px 40px}
 
+/* SHOP */
+.shop{padding:120px 0;background:var(--paper)}
+.shop-g{display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:center;margin-top:56px}
+.shop-img .pola{padding:14px 14px 54px}
+.shop-img .pola img{aspect-ratio:4/5}
+.shop-list{list-style:none;border-top:1px solid var(--line)}
+.shop-list li{display:flex;align-items:center;gap:20px;padding:20px 0;border-bottom:1px solid var(--line)}
+.shop-list .nm{flex:1;font-size:15.5px;letter-spacing:.02em}
+.shop-list .pr{font-size:14px;color:var(--taupe);white-space:nowrap}
+.shop-list .add{font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--accentInk);
+  border:1px solid var(--accentInk);padding:9px 16px;white-space:nowrap;transition:all .3s}
+.shop-list .add:hover{background:var(--accentInk);color:var(--white)}
+.shop-note{margin-top:26px;font-size:13px;color:var(--taupe);line-height:1.7}
+@media(max-width:1000px){.shop-g{grid-template-columns:1fr;gap:44px}}
+@media(max-width:760px){.shop{padding:70px 0}.shop-list li{flex-wrap:wrap;gap:12px}.shop-list .add{width:100%;text-align:center}}
+
 /* FOOTER */
 footer{background:var(--ink);color:var(--white);padding:80px 0 30px}
 .f-top{display:flex;justify-content:space-between;gap:40px;flex-wrap:wrap;padding-bottom:46px;border-bottom:1px solid rgba(255,252,241,.16)}
@@ -200,6 +216,7 @@ footer{background:var(--ink);color:var(--white);padding:80px 0 30px}
     <div class="nav-links">
       <a href="#hotel">The Hotel</a>
       <a href="#rooms">Rooms</a>
+      <a href="#shop">Shop</a>
       <a href="#lapaz">La Paz</a>
       <a href="#gallery">Gallery</a>
     </div>
@@ -350,10 +367,37 @@ footer{background:var(--ink);color:var(--white);padding:80px 0 30px}
   </div>
 </section>
 
+<section class="shop" id="shop">
+  <div class="wrap">
+    <div class="reveal">
+      <p class="tag">The shop</p>
+      <h2 style="margin-top:14px">Take a piece of<br><em>Casa Bo</em> home</h2>
+    </div>
+    <div class="shop-g reveal">
+      <div class="shop-img">
+        <figure class="pola rot-a"><span class="tape"></span>
+          <img src="https://static.wixstatic.com/media/940d70_c2de728e20ae4c79a17a1595c2519835~mv2.jpg/v1/fill/w_800,h_1000,al_c,q_90/shop.jpg" alt="Casa Bo shop" loading="lazy">
+          <figcaption>THE COLLECTION</figcaption>
+        </figure>
+      </div>
+      <div>
+        <ul class="shop-list">
+          <li><span class="nm">We Were Together</span><span class="pr">MX$590</span><a class="add" href="#">Add to cart</a></li>
+          <li><span class="nm">Smile</span><span class="pr">MX$590</span><a class="add" href="#">Add to cart</a></li>
+          <li><span class="nm">Do Not Disturb</span><span class="pr">MX$590</span><a class="add" href="#">Add to cart</a></li>
+          <li><span class="nm">Casa Bo Cap</span><span class="pr">MX$390</span><a class="add" href="#">Add to cart</a></li>
+        </ul>
+        <p class="shop-note">Ships across Mexico. Card and transfer accepted at checkout — or add it to your room and pick it up at reception.</p>
+        <p class="hand" style="margin-top:20px;font-size:1.3rem">worn best on the roof</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <a class="wa" href="https://wa.me/526121678810?text=Hola%2C%20me%20gustar%C3%ADa%20informaci%C3%B3n%20sobre%20Casa%20Bo" target="_blank" rel="noopener" aria-label="WhatsApp">
   <svg viewBox="0 0 24 24"><path d="M17.5 14.4c-.3-.2-1.7-.9-2-1-.3-.1-.4-.2-.6.1-.2.3-.7.9-.9 1.1-.2.2-.3.2-.6.1-.3-.2-1.2-.5-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6l.5-.5c.1-.2.2-.3.3-.5 0-.2 0-.4 0-.5 0-.2-.6-1.5-.9-2.1-.2-.5-.5-.4-.6-.4h-.5c-.2 0-.5.1-.7.4-.3.3-1 1-1 2.4s1 2.8 1.2 3c.1.2 2 3.1 4.9 4.3.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.6-.1 1.7-.7 1.9-1.4.2-.7.2-1.2.2-1.4-.1-.1-.3-.2-.6-.3M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2m0 18.2c-1.6 0-3.2-.4-4.6-1.3l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2"/></svg>
 </a>
-
+  
 <footer>
   <div class="wrap">
     <div class="f-top">
