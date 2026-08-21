@@ -7,156 +7,176 @@
 <meta name="robots" content="noindex,nofollow">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500;600&family=Caveat:wght@500;600&display=swap" rel="stylesheet">
 <style>
 :root{
-  --black:#0E0E0E;
-  --ivory:#F7F6F3;
-  --sand:#D8CFC4;
-  --mute:#8C857C;
-  --line:#E2DDD5;
-  --display:'Anton',Impact,sans-serif;
-  --body:'Inter',-apple-system,'Helvetica Neue',Arial,sans-serif;
+  --white:#FFFCF1;      /* floral white */
+  --paper:#F3F2ED;
+  --ink:#130E0E;        /* pitch black */
+  --taupe:#5C5252;
+  --mahogany:#470C0D;
+  --line:#E2DED2;
+  --body:'Inter Tight',-apple-system,'Helvetica Neue',Arial,sans-serif;
+  --hand:'Caveat',cursive;
 }
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{background:var(--ivory);color:var(--black);font-family:var(--body);font-weight:300;line-height:1.7;-webkit-font-smoothing:antialiased}
+body{background:var(--white);color:var(--ink);font-family:var(--body);font-weight:300;line-height:1.65;-webkit-font-smoothing:antialiased}
 img{display:block;width:100%;height:auto}
 a{color:inherit;text-decoration:none}
-.wrap{max-width:1280px;margin:0 auto;padding:0 40px}
-.eyebrow{font-size:10px;letter-spacing:.32em;text-transform:uppercase;color:var(--mute)}
-.dsp{font-family:var(--display);font-weight:400;text-transform:uppercase;line-height:.92;letter-spacing:-.005em}
-h2.dsp{font-size:clamp(2.4rem,6.5vw,5.4rem)}
-.lede{font-size:17px;line-height:1.8;color:#4A453E;max-width:56ch}
-.reveal{opacity:0;transform:translateY(24px);transition:opacity 1s ease,transform 1s ease}
+.wrap{max-width:1300px;margin:0 auto;padding:0 44px}
+.tag{font-size:9.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--taupe)}
+h2{font-weight:400;font-size:clamp(2rem,5vw,3.9rem);line-height:1.06;letter-spacing:-.025em}
+h2 em{font-style:normal;color:var(--mahogany)}
+.lede{font-size:17px;line-height:1.8;color:var(--taupe);max-width:54ch}
+.hand{font-family:var(--hand);font-size:1.6rem;color:var(--mahogany);line-height:1.15;transform:rotate(-3deg);display:inline-block}
+.reveal{opacity:0;transform:translateY(22px);transition:opacity 1s ease,transform 1s ease}
 .reveal.in{opacity:1;transform:none}
 
-/* BARRA CONCEPTO */
-.concept{position:fixed;top:0;left:0;right:0;z-index:300;background:var(--black);color:var(--sand);
-  font-size:10px;letter-spacing:.2em;text-transform:uppercase;padding:9px 22px;
+/* polaroid + cinta */
+.pola{background:#fff;padding:12px 12px 46px;box-shadow:0 10px 30px rgba(19,14,14,.13);position:relative}
+.pola img{aspect-ratio:1/1;object-fit:cover;width:100%;height:auto}
+.pola figcaption{position:absolute;left:0;right:0;bottom:12px;text-align:center;
+  font-family:var(--hand);font-size:1.15rem;color:var(--taupe)}
+.tape{position:absolute;width:96px;height:26px;background:rgba(216,206,180,.62);
+  top:-12px;left:50%;transform:translateX(-50%) rotate(-2.5deg);z-index:4;
+  box-shadow:0 1px 3px rgba(19,14,14,.09)}
+.rot-a{transform:rotate(-2.2deg)} .rot-b{transform:rotate(1.8deg)} .rot-c{transform:rotate(-1.1deg)} .rot-d{transform:rotate(2.6deg)}
+
+/* CONCEPTO */
+.concept{position:fixed;top:0;left:0;right:0;z-index:300;background:var(--ink);color:var(--white);
+  font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;padding:9px 22px;
   display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap}
-.concept a{border-bottom:1px solid rgba(216,207,196,.45)}
+.concept a{border-bottom:1px solid rgba(255,252,241,.4)}
 
 /* NAV */
-nav{position:fixed;top:31px;left:0;right:0;z-index:200;padding:20px 0;transition:all .4s}
-nav.solid{background:rgba(247,246,243,.96);backdrop-filter:blur(10px);padding:12px 0;border-bottom:1px solid var(--line)}
-.nav-in{max-width:1280px;margin:0 auto;padding:0 40px;display:flex;justify-content:space-between;align-items:center;gap:26px}
-.brand{font-family:var(--display);font-size:22px;letter-spacing:.02em;color:#fff;text-transform:uppercase}
-nav.solid .brand{color:var(--black)}
-.nav-links{display:flex;gap:30px}
-.nav-links a{font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.8)}
-nav.solid .nav-links a{color:var(--mute)}
-nav.solid .nav-links a:hover{color:var(--black)}
-.nav-book{background:#fff;color:var(--black);font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;
-  font-weight:500;padding:12px 24px;transition:all .3s}
-nav.solid .nav-book{background:var(--black);color:var(--ivory)}
-.nav-book:hover{opacity:.85}
+nav{position:fixed;top:31px;left:0;right:0;z-index:200;padding:18px 0;transition:all .4s}
+nav.solid{background:rgba(255,252,241,.96);backdrop-filter:blur(10px);padding:11px 0;border-bottom:1px solid var(--line)}
+.nav-in{max-width:1300px;margin:0 auto;padding:0 44px;display:flex;justify-content:space-between;align-items:center;gap:24px}
+.nav-logo img{height:34px;width:auto;filter:brightness(0) invert(1)}
+nav.solid .nav-logo img{filter:none}
+.nav-links{display:flex;gap:28px}
+.nav-links a{font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,252,241,.85)}
+nav.solid .nav-links a{color:var(--taupe)}
+nav.solid .nav-links a:hover{color:var(--ink)}
+.nav-book{background:var(--white);color:var(--ink);font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;
+  font-weight:500;padding:11px 22px;transition:all .3s}
+nav.solid .nav-book{background:var(--mahogany);color:var(--white)}
+.nav-book:hover{opacity:.86}
 
 /* HERO */
-header{position:relative;height:100vh;min-height:620px;overflow:hidden;background:var(--black)}
-header img{position:absolute;inset:0;height:100%;object-fit:cover;opacity:.86}
-header::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(14,14,14,.5) 0%,rgba(14,14,14,.08) 38%,rgba(14,14,14,.82) 100%)}
-.hero-c{position:absolute;left:0;right:0;bottom:0;z-index:3;color:#fff;padding-bottom:150px}
-.hero-c h1{font-size:clamp(3rem,11vw,9rem)}
-.hero-c .sub{margin-top:20px;font-size:clamp(.95rem,1.7vw,1.2rem);letter-spacing:.06em;max-width:34ch;color:rgba(255,255,255,.9)}
+header{position:relative;height:100vh;min-height:620px;overflow:hidden;background:var(--ink)}
+header .bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center}
+header::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(19,14,14,.34) 0%,rgba(19,14,14,.06) 42%,rgba(19,14,14,.62) 100%)}
+.hero-c{position:absolute;left:0;right:0;bottom:0;z-index:4;padding-bottom:158px}
+.hero-logo{max-width:min(560px,72vw);filter:brightness(0) invert(1);margin-bottom:26px}
+.hero-c .sub{color:var(--white);font-size:clamp(1rem,1.8vw,1.3rem);max-width:32ch;font-weight:300;letter-spacing:.01em}
+.hero-note{position:absolute;right:6vw;top:32vh;z-index:5;font-family:var(--hand);font-size:clamp(1.2rem,2.4vw,2rem);
+  color:var(--white);transform:rotate(-6deg);text-align:right;line-height:1.2;opacity:.92}
 
-/* BARRA DE RESERVA */
-.bookbar{position:absolute;left:0;right:0;bottom:0;z-index:6;background:var(--black);color:var(--ivory)}
-.bookbar.stuck{position:fixed;bottom:0;box-shadow:0 -8px 30px rgba(14,14,14,.2)}
-.bb-in{max-width:1280px;margin:0 auto;padding:18px 40px;display:flex;align-items:end;gap:22px;flex-wrap:wrap}
-.bb-f{display:flex;flex-direction:column;gap:7px}
-.bb-f label{font-size:9px;letter-spacing:.24em;text-transform:uppercase;color:var(--mute)}
-.bb-f input,.bb-f select{background:transparent;border:none;border-bottom:1px solid rgba(216,207,196,.4);
-  color:var(--ivory);font-family:var(--body);font-size:14px;font-weight:300;padding:6px 0;min-width:130px}
-.bb-f input:focus,.bb-f select:focus{outline:none;border-bottom-color:var(--sand)}
-.bb-f select option{background:var(--black)}
-.bb-btn{margin-left:auto;background:var(--sand);color:var(--black);border:none;cursor:pointer;
-  font-family:var(--display);font-size:15px;letter-spacing:.08em;text-transform:uppercase;
-  padding:15px 40px;transition:opacity .3s}
-.bb-btn:hover{opacity:.85}
-.bb-note{width:100%;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--mute);padding-top:4px}
+/* BOOK BAR */
+.bookbar{position:absolute;left:0;right:0;bottom:0;z-index:6;background:var(--white);border-top:1px solid var(--line)}
+.bookbar.stuck{position:fixed;bottom:0;box-shadow:0 -8px 26px rgba(19,14,14,.14)}
+.bb-in{max-width:1300px;margin:0 auto;padding:16px 44px;display:flex;align-items:end;gap:20px;flex-wrap:wrap}
+.bb-f{display:flex;flex-direction:column;gap:6px}
+.bb-f label{font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:var(--taupe)}
+.bb-f input,.bb-f select{background:transparent;border:none;border-bottom:1px solid var(--line);
+  color:var(--ink);font-family:var(--body);font-size:14.5px;font-weight:300;padding:5px 0;min-width:132px}
+.bb-f input:focus,.bb-f select:focus{outline:none;border-bottom-color:var(--mahogany)}
+.bb-btn{margin-left:auto;background:var(--mahogany);color:var(--white);border:none;cursor:pointer;
+  font-family:var(--body);font-size:11px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;
+  padding:15px 38px;transition:opacity .3s}
+.bb-btn:hover{opacity:.86}
+.bb-note{width:100%;font-size:9.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--taupe);padding-top:2px}
 
 /* INTRO */
-.intro{padding:130px 0 110px;background:var(--ivory)}
-.intro-g{display:grid;grid-template-columns:1.2fr 1fr;gap:80px;align-items:end}
-.intro p{font-size:18px;line-height:1.9;color:#4A453E}
+.intro{padding:130px 0 110px}
+.intro-g{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.intro p{font-size:18px;line-height:1.9;color:var(--taupe)}
 .intro p+p{margin-top:20px}
-.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:30px;margin-top:80px;border-top:2px solid var(--black);padding-top:34px}
-.stat .v{font-family:var(--display);font-size:clamp(2rem,3.6vw,3rem);line-height:1}
-.stat .l{margin-top:8px;font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--mute)}
+.intro strong{font-weight:500;color:var(--ink)}
+.collage{position:relative;min-height:520px}
+.collage .pola{position:absolute;width:56%}
+.c1{top:0;left:0} .c2{top:22%;right:0} .c3{bottom:0;left:14%}
+
+/* STATS */
+.stats{border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:44px 0;
+  display:grid;grid-template-columns:repeat(4,1fr);gap:30px;margin-top:90px}
+.stat .v{font-size:clamp(1.9rem,3.4vw,2.8rem);font-weight:400;letter-spacing:-.03em}
+.stat .l{margin-top:6px;font-size:9.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--taupe)}
 
 /* ROOMS */
-.rooms{padding:120px 0;background:var(--sand)}
-.room-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;margin-top:60px}
-.room figure{overflow:hidden;aspect-ratio:4/3;background:var(--line)}
-.room img{height:100%;object-fit:cover;transition:transform 1.2s cubic-bezier(.2,.7,.3,1)}
-.room:hover img{transform:scale(1.05)}
-.room h3{font-family:var(--display);font-size:1.7rem;text-transform:uppercase;margin-top:20px;line-height:1.05}
-.room p{margin-top:10px;font-size:14.5px;line-height:1.7;color:#4A453E}
-.room .go{display:inline-block;margin-top:16px;font-size:10px;letter-spacing:.22em;text-transform:uppercase;
-  border-bottom:1px solid var(--black);padding-bottom:4px}
+.rooms{padding:120px 0;background:var(--paper)}
+.room-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:44px;margin-top:66px}
+.room .pola{padding-bottom:16px}
+.room h3{margin-top:22px;font-size:1.45rem;font-weight:400;letter-spacing:-.02em}
+.room .meta{margin-top:5px;font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--taupe)}
+.room p{margin-top:12px;font-size:14.5px;line-height:1.75;color:var(--taupe)}
+.room .go{display:inline-block;margin-top:14px;font-size:10px;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--mahogany);border-bottom:1px solid var(--mahogany);padding-bottom:3px}
 
-/* BANDA NEGRA */
-.band{background:var(--black);color:var(--ivory);padding:130px 0;text-align:center}
-.band h2{font-size:clamp(2rem,5.5vw,4.4rem);max-width:20ch;margin:0 auto}
-.band .btn{display:inline-block;margin-top:46px;background:var(--sand);color:var(--black);
-  font-family:var(--display);font-size:16px;letter-spacing:.08em;text-transform:uppercase;padding:18px 52px;transition:opacity .3s}
-.band .btn:hover{opacity:.85}
-.band .fine{margin-top:22px;font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--mute)}
+/* BANDA */
+.band{background:var(--mahogany);color:var(--white);padding:120px 0;text-align:center}
+.band h2{max-width:18ch;margin:0 auto}
+.band h2 em{color:rgba(255,252,241,.55)}
+.band .hand{color:rgba(255,252,241,.8);margin-top:22px}
+.band .btn{display:inline-block;margin-top:40px;background:var(--white);color:var(--mahogany);
+  font-size:11px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;padding:17px 46px;transition:opacity .3s}
+.band .btn:hover{opacity:.88}
+.band .fine{margin-top:20px;font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,252,241,.55)}
 
-/* SPLIT */
-.split{display:grid;grid-template-columns:1fr 1fr;align-items:center}
-.split-img{aspect-ratio:1/1;overflow:hidden}
-.split-img img{height:100%;object-fit:cover}
-.split-txt{padding:90px 70px}
+/* LA PAZ */
+.lapaz{padding:130px 0}
+.lp-g{display:grid;grid-template-columns:1fr 1.1fr;gap:80px;align-items:center}
+.lp-collage{position:relative;min-height:460px}
+.lp-collage .pola{position:absolute;width:60%}
+.l1{top:0;right:4%} .l2{bottom:0;left:0}
 
-/* MOSAICO */
-.mosaic{padding:120px 0}
-.m-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:54px}
-.m-grid figure{overflow:hidden;aspect-ratio:1/1;background:var(--line)}
-.m-grid figure:first-child{grid-column:span 2;grid-row:span 2;aspect-ratio:1/1}
-.m-grid img{height:100%;object-fit:cover;transition:transform 1.2s cubic-bezier(.2,.7,.3,1)}
-.m-grid figure:hover img{transform:scale(1.05)}
+/* GALERÍA */
+.gal{padding:0 0 130px}
+.g-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:30px;margin-top:54px}
+.g-grid .pola{padding:10px 10px 40px}
 
 /* FOOTER */
-footer{background:var(--black);color:var(--ivory);padding:90px 0 30px}
-.f-top{display:flex;justify-content:space-between;gap:40px;flex-wrap:wrap;padding-bottom:50px;border-bottom:1px solid rgba(216,207,196,.2)}
-.f-col{font-size:13.5px;line-height:2.1;color:rgba(247,246,243,.7)}
-.f-mark{font-family:var(--display);font-size:clamp(3rem,13vw,11rem);line-height:.85;text-transform:uppercase;margin-top:56px}
-.f-bot{margin-top:30px;display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;font-size:11px;color:rgba(247,246,243,.45)}
+footer{background:var(--ink);color:var(--white);padding:80px 0 30px}
+.f-top{display:flex;justify-content:space-between;gap:40px;flex-wrap:wrap;padding-bottom:46px;border-bottom:1px solid rgba(255,252,241,.16)}
+.f-logo img{max-width:230px;filter:brightness(0) invert(1)}
+.f-col{font-size:13.5px;line-height:2.05;color:rgba(255,252,241,.68)}
+.f-bot{margin-top:26px;display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;font-size:11px;color:rgba(255,252,241,.4)}
 
 /* WHATSAPP */
-.wa{position:fixed;right:24px;bottom:104px;z-index:180;width:54px;height:54px;border-radius:50%;
-  background:var(--black);display:flex;align-items:center;justify-content:center;box-shadow:0 6px 22px rgba(14,14,14,.3);transition:transform .3s}
+.wa{position:fixed;right:22px;bottom:104px;z-index:180;width:52px;height:52px;border-radius:50%;
+  background:var(--mahogany);display:flex;align-items:center;justify-content:center;
+  box-shadow:0 6px 20px rgba(19,14,14,.28);transition:transform .3s}
 .wa:hover{transform:translateY(-3px)}
-.wa svg{width:24px;height:24px;fill:var(--sand)}
+.wa svg{width:23px;height:23px;fill:var(--white)}
 
 /* CIERRE WD */
-.wd{padding:90px 0;text-align:center;background:var(--ivory);border-top:1px solid var(--line)}
-.wd h3{font-family:var(--display);font-size:clamp(1.6rem,3.2vw,2.6rem);text-transform:uppercase;margin:14px 0 16px}
-.wd p{font-size:15.5px;color:#4A453E;max-width:54ch;margin:0 auto}
-.wd .btn{display:inline-block;margin-top:34px;background:var(--black);color:var(--ivory);
-  font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;padding:16px 40px}
+.wd{padding:90px 0;text-align:center;border-top:1px solid var(--line)}
+.wd h3{font-size:clamp(1.5rem,3vw,2.2rem);font-weight:400;margin:12px 0 16px;letter-spacing:-.02em}
+.wd p{font-size:15.5px;color:var(--taupe);max-width:56ch;margin:0 auto}
+.wd .btn{display:inline-block;margin-top:32px;background:var(--ink);color:var(--white);
+  font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;padding:15px 38px}
 
 @media(max-width:1000px){
-  .intro-g,.split{grid-template-columns:1fr;gap:40px}
-  .split-txt{padding:60px 40px}
-  .room-grid{grid-template-columns:1fr;gap:36px}
+  .intro-g,.lp-g{grid-template-columns:1fr;gap:56px}
+  .room-grid{grid-template-columns:1fr;gap:56px}
+  .g-grid{grid-template-columns:1fr 1fr;gap:22px}
   .stats{grid-template-columns:1fr 1fr;gap:26px}
-  .m-grid{grid-template-columns:1fr 1fr}
-  .m-grid figure:first-child{grid-column:span 2;grid-row:span 1}
+  .collage,.lp-collage{min-height:440px}
 }
 @media(max-width:760px){
   .wrap,.nav-in,.bb-in{padding-left:20px;padding-right:20px}
   .nav-links{display:none}
-  .intro,.rooms,.band,.mosaic{padding:70px 0}
-  .split-txt{padding:48px 20px}
-  .hero-c{padding-bottom:210px}
-  .bb-in{gap:14px}
-  .bb-f{flex:1;min-width:110px}
+  .intro,.rooms,.band,.lapaz{padding:70px 0}
+  .hero-c{padding-bottom:216px}
+  .hero-note{display:none}
+  .bb-f{flex:1;min-width:112px}
   .bb-f input,.bb-f select{min-width:0;width:100%}
   .bb-btn{margin-left:0;width:100%}
-  .wa{bottom:150px;right:16px}
+  .wa{bottom:152px;right:14px}
+  .collage,.lp-collage{min-height:380px}
+  .collage .pola,.lp-collage .pola{width:62%}
 }
 @media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
 </style>
@@ -170,23 +190,24 @@ footer{background:var(--black);color:var(--ivory);padding:90px 0 30px}
 
 <nav id="nav">
   <div class="nav-in">
-    <a href="#" class="brand">Casa Bo</a>
+    <a href="#" class="nav-logo"><img src="https://static.wixstatic.com/media/940d70_684a44a1106b4d41b02d4381f79329dc~mv2.jpg/v1/fill/w_400,h_365,al_c,q_90/logo.jpg" alt="Casa Bo"></a>
     <div class="nav-links">
       <a href="#hotel">The Hotel</a>
       <a href="#rooms">Rooms</a>
-      <a href="#gallery">Gallery</a>
       <a href="#lapaz">La Paz</a>
+      <a href="#gallery">Gallery</a>
     </div>
     <a href="https://hotels.cloudbeds.com/reservation/mnHLKh" target="_blank" rel="noopener" class="nav-book">Book</a>
   </div>
 </nav>
 
 <header>
-  <img src="https://static.wixstatic.com/media/940d70_684a44a1106b4d41b02d4381f79329dc~mv2.jpg/v1/fill/w_1800,h_1200,al_c,q_85/casa-bo.jpg" alt="Casa Bo">
+  <img class="bg" src="https://static.wixstatic.com/media/8a6efe_de38c1c27b144597a18b1eb715fd2cb0~mv2.jpg/v1/fill/w_1800,h_1200,q_90/hero.jpg" alt="Casa Bo, La Paz">
+  <p class="hero-note">one block<br>from the water</p>
   <div class="hero-c">
     <div class="wrap">
-      <h1 class="dsp">A desert<br>getaway</h1>
-      <p class="sub">Eleven suites in downtown La Paz. One block from the beach, one flight of stairs from the sunset.</p>
+      <img class="hero-logo" src="https://static.wixstatic.com/media/940d70_684a44a1106b4d41b02d4381f79329dc~mv2.jpg/v1/fill/w_900,h_822,al_c,q_90/logo.jpg" alt="Casa Bo">
+      <p class="sub">Eleven suites in downtown La Paz. Cactus, concrete, and every Baja sunset from the roof.</p>
     </div>
   </div>
 
@@ -207,19 +228,33 @@ footer{background:var(--black);color:var(--ivory);padding:90px 0 30px}
   <div class="wrap">
     <div class="intro-g reveal">
       <div>
-        <p class="eyebrow">The hotel</p>
-        <h2 class="dsp" style="margin-top:14px">Cactus, concrete<br>and Baja light</h2>
+        <p class="tag">The hotel</p>
+        <h2 style="margin-top:14px">A house that<br>runs on <em>Baja time</em></h2>
+        <p style="margin-top:30px">Casa Bo sits in a quiet corner of downtown La Paz, <strong>one block from the beach</strong>. Eleven suites across three buildings — deluxe rooms, studios, and suites with private patios and outdoor bathtubs.</p>
+        <p>Handmade furniture and lighting. A pool ringed by cactus, sun beds, an outdoor shower. And a rooftop for yoga, a barbecue, or doing nothing at all while the sky works through its colours.</p>
+        <p class="hand" style="margin-top:26px">a perfect place for your getaway</p>
       </div>
-      <div>
-        <p>Casa Bo sits in a quiet corner of downtown La Paz, one block from the water. Eleven suites across three buildings — deluxe rooms, studios and suites with private patios and outdoor bathtubs.</p>
-        <p>Handmade furniture, minimalist rooms, a pool ringed by cactus, and a rooftop for yoga, barbecue, or doing nothing at all while Baja works through its colours.</p>
+      <div class="collage">
+        <figure class="pola rot-a c1"><span class="tape"></span>
+          <img src="https://static.wixstatic.com/media/8a6efe_063683619d2f491d805026db769cc631~mv2.jpg/v1/fill/w_700,h_700,q_90/a.jpg" alt="" loading="lazy">
+          <figcaption>the pool</figcaption>
+        </figure>
+        <figure class="pola rot-b c2"><span class="tape"></span>
+          <img src="https://static.wixstatic.com/media/8a6efe_92062ef754a54c82a6bd851638561792~mv2.jpg/v1/fill/w_700,h_700,q_90/b.jpg" alt="" loading="lazy">
+          <figcaption>deluxe</figcaption>
+        </figure>
+        <figure class="pola rot-c c3"><span class="tape"></span>
+          <img src="https://static.wixstatic.com/media/8a6efe_8bec6954d45443f6b33613514d29a1b7~mv2.jpg/v1/fill/w_700,h_700,q_90/c.jpg" alt="" loading="lazy">
+          <figcaption>tierra</figcaption>
+        </figure>
       </div>
     </div>
+
     <div class="stats reveal">
       <div class="stat"><div class="v">11</div><div class="l">Suites</div></div>
       <div class="stat"><div class="v">1</div><div class="l">Block from the beach</div></div>
       <div class="stat"><div class="v">3</div><div class="l">Room types</div></div>
-      <div class="stat"><div class="v">∞</div><div class="l">Rooftop sunsets</div></div>
+      <div class="stat"><div class="v">1</div><div class="l">Rooftop, every sunset</div></div>
     </div>
   </div>
 </section>
@@ -227,26 +262,35 @@ footer{background:var(--black);color:var(--ivory);padding:90px 0 30px}
 <section class="rooms" id="rooms">
   <div class="wrap">
     <div class="reveal">
-      <p class="eyebrow">Rooms</p>
-      <h2 class="dsp" style="margin-top:14px">Pick your<br>corner</h2>
+      <p class="tag">Rooms</p>
+      <h2 style="margin-top:14px">Pick your <em>corner</em></h2>
     </div>
     <div class="room-grid reveal">
       <div class="room">
-        <figure><img src="https://static.wixstatic.com/media/8a6efe_8bec6954d45443f6b33613514d29a1b7~mv2.jpg/v1/fill/w_900,h_675,q_88/tierra.jpg" alt="Tierra" loading="lazy"></figure>
-        <h3>Tierra<br>Deluxe</h3>
-        <p>Ground floor, facing the street. Tall windows, king bed, kitchen and a living area stripped to what matters.</p>
+        <figure class="pola rot-a"><span class="tape"></span>
+          <img src="https://static.wixstatic.com/media/8a6efe_8bec6954d45443f6b33613514d29a1b7~mv2.jpg/v1/fill/w_800,h_800,q_90/tierra.jpg" alt="Tierra" loading="lazy">
+        </figure>
+        <h3>Tierra</h3>
+        <p class="meta">Deluxe · King · Ground floor</p>
+        <p>Facing the street with tall windows. King bed, kitchen, and a living area stripped back to what matters.</p>
         <a class="go" href="https://hotels.cloudbeds.com/reservation/mnHLKh" target="_blank" rel="noopener">Check dates</a>
       </div>
       <div class="room">
-        <figure><img src="https://static.wixstatic.com/media/940d70_f44b258eb8414b8cad1bc6152e29518b~mv2.jpg/v1/fill/w_900,h_675,q_88/matador.jpg" alt="Matador" loading="lazy"></figure>
-        <h3>Matador<br>Deluxe</h3>
-        <p>The largest of the ground-floor rooms. Designer furniture and lighting, full kitchen, super king bed.</p>
+        <figure class="pola rot-b"><span class="tape"></span>
+          <img src="https://static.wixstatic.com/media/940d70_f44b258eb8414b8cad1bc6152e29518b~mv2.jpg/v1/fill/w_800,h_800,q_90/matador.jpg" alt="Matador" loading="lazy">
+        </figure>
+        <h3>Matador</h3>
+        <p class="meta">Deluxe · Super king · Ground floor</p>
+        <p>The largest room downstairs. Designer furniture and light fixtures, fully equipped kitchen.</p>
         <a class="go" href="https://hotels.cloudbeds.com/reservation/mnHLKh" target="_blank" rel="noopener">Check dates</a>
       </div>
       <div class="room">
-        <figure><img src="https://static.wixstatic.com/media/8a6efe_65426f05ff7a426683c70510786e4d30~mv2.jpg/v1/fill/w_900,h_675,q_88/manana.jpg" alt="El Mañana" loading="lazy"></figure>
-        <h3>El Mañana<br>Two Bedrooms</h3>
-        <p>First floor, two bedrooms and two full baths. Separate living area with light and art. Sleeps four.</p>
+        <figure class="pola rot-c"><span class="tape"></span>
+          <img src="https://static.wixstatic.com/media/8a6efe_65426f05ff7a426683c70510786e4d30~mv2.jpg/v1/fill/w_800,h_800,q_90/manana.jpg" alt="El Mañana" loading="lazy">
+        </figure>
+        <h3>El Mañana</h3>
+        <p class="meta">Two bedrooms · Sleeps 4 · First floor</p>
+        <p>Two bedrooms, two full baths, and a separate living area full of light and art.</p>
         <a class="go" href="https://hotels.cloudbeds.com/reservation/mnHLKh" target="_blank" rel="noopener">Check dates</a>
       </div>
     </div>
@@ -255,33 +299,45 @@ footer{background:var(--black);color:var(--ivory);padding:90px 0 30px}
 
 <section class="band">
   <div class="wrap reveal">
-    <h2 class="dsp">Book direct.<br>Skip the platform.</h2>
+    <h2>Book direct.<br><em>Skip the platform.</em></h2>
+    <p class="hand">no fees, no middleman</p>
     <a class="btn" href="https://hotels.cloudbeds.com/reservation/mnHLKh" target="_blank" rel="noopener">See live availability</a>
-    <p class="fine">Best rate guaranteed · No booking fees · Free cancellation</p>
+    <p class="fine">Best rate guaranteed · Free cancellation</p>
   </div>
 </section>
 
-<section class="split">
-  <div class="split-img"><img src="https://static.wixstatic.com/media/940d70_cde6d67f53894e0082d463940265874c~mv2.png/v1/fill/w_1000,h_1000,al_c,q_88/rooftop.png" alt="" loading="lazy"></div>
-  <div class="split-txt reveal" id="lapaz">
-    <p class="eyebrow">La Paz</p>
-    <h2 class="dsp" style="margin-top:14px;font-size:clamp(2rem,4vw,3.4rem)">The sea of<br>Cortez, up close</h2>
-    <p class="lede" style="margin-top:24px">Whale sharks between October and April. Balandra, one of the most photographed beaches in Mexico, thirty minutes north. Espíritu Santo island by boat. And a malecón that fills up every evening for no reason other than the light.</p>
+<section class="lapaz" id="lapaz">
+  <div class="wrap lp-g reveal">
+    <div class="lp-collage">
+      <figure class="pola rot-d l1"><span class="tape"></span>
+        <img src="https://static.wixstatic.com/media/8a6efe_de38c1c27b144597a18b1eb715fd2cb0~mv2.jpg/v1/fill/w_700,h_700,q_90/lp1.jpg" alt="" loading="lazy">
+        <figcaption>the rooftop</figcaption>
+      </figure>
+      <figure class="pola rot-a l2"><span class="tape"></span>
+        <img src="https://static.wixstatic.com/media/8a6efe_063683619d2f491d805026db769cc631~mv2.jpg/v1/fill/w_700,h_700,q_90/lp2.jpg" alt="" loading="lazy">
+        <figcaption>cactus &amp; sun beds</figcaption>
+      </figure>
+    </div>
+    <div>
+      <p class="tag">La Paz</p>
+      <h2 style="margin-top:14px">The Sea of Cortez,<br><em>up close</em></h2>
+      <p class="lede" style="margin-top:26px">Whale sharks from October through April. Balandra — one of the most photographed beaches in Mexico — thirty minutes north. Espíritu Santo island by boat. And a malecón that fills every evening for no reason other than the light.</p>
+      <p class="hand" style="margin-top:24px">bring nothing. we have bikes.</p>
+    </div>
   </div>
 </section>
 
-<section class="mosaic" id="gallery">
+<section class="gal" id="gallery">
   <div class="wrap">
     <div class="reveal">
-      <p class="eyebrow">Gallery</p>
-      <h2 class="dsp" style="margin-top:14px">Inside Casa Bo</h2>
+      <p class="tag">Gallery</p>
+      <h2 style="margin-top:14px">Inside <em>Casa Bo</em></h2>
     </div>
-    <div class="m-grid reveal">
-      <figure><img src="https://static.wixstatic.com/media/940d70_684a44a1106b4d41b02d4381f79329dc~mv2.jpg/v1/fill/w_1000,h_1000,al_c,q_88/g1.jpg" alt="" loading="lazy"></figure>
-      <figure><img src="https://static.wixstatic.com/media/8a6efe_8bec6954d45443f6b33613514d29a1b7~mv2.jpg/v1/fill/w_600,h_600,q_85/g2.jpg" alt="" loading="lazy"></figure>
-      <figure><img src="https://static.wixstatic.com/media/940d70_f44b258eb8414b8cad1bc6152e29518b~mv2.jpg/v1/fill/w_600,h_600,q_85/g3.jpg" alt="" loading="lazy"></figure>
-      <figure><img src="https://static.wixstatic.com/media/8a6efe_65426f05ff7a426683c70510786e4d30~mv2.jpg/v1/fill/w_600,h_600,q_85/g4.jpg" alt="" loading="lazy"></figure>
-      <figure><img src="https://static.wixstatic.com/media/940d70_cde6d67f53894e0082d463940265874c~mv2.png/v1/fill/w_600,h_600,al_c,q_85/g5.png" alt="" loading="lazy"></figure>
+    <div class="g-grid reveal">
+      <figure class="pola rot-b"><span class="tape"></span><img src="https://static.wixstatic.com/media/8a6efe_de38c1c27b144597a18b1eb715fd2cb0~mv2.jpg/v1/fill/w_600,h_600,q_88/g1.jpg" alt="" loading="lazy"><figcaption>casa bo</figcaption></figure>
+      <figure class="pola rot-c"><span class="tape"></span><img src="https://static.wixstatic.com/media/8a6efe_92062ef754a54c82a6bd851638561792~mv2.jpg/v1/fill/w_600,h_600,q_88/g2.jpg" alt="" loading="lazy"><figcaption>deluxe</figcaption></figure>
+      <figure class="pola rot-a"><span class="tape"></span><img src="https://static.wixstatic.com/media/8a6efe_8bec6954d45443f6b33613514d29a1b7~mv2.jpg/v1/fill/w_600,h_600,q_88/g3.jpg" alt="" loading="lazy"><figcaption>tierra</figcaption></figure>
+      <figure class="pola rot-d"><span class="tape"></span><img src="https://static.wixstatic.com/media/8a6efe_063683619d2f491d805026db769cc631~mv2.jpg/v1/fill/w_600,h_600,q_88/g4.jpg" alt="" loading="lazy"><figcaption>the pool</figcaption></figure>
     </div>
   </div>
 </section>
@@ -293,6 +349,9 @@ footer{background:var(--black);color:var(--ivory);padding:90px 0 30px}
 <footer>
   <div class="wrap">
     <div class="f-top">
+      <div class="f-logo">
+        <img src="https://static.wixstatic.com/media/940d70_684a44a1106b4d41b02d4381f79329dc~mv2.jpg/v1/fill/w_500,h_457,al_c,q_90/logo.jpg" alt="Casa Bo">
+      </div>
       <div class="f-col">
         C. Francisco I. Madero 640<br>Esterito, 23020<br>La Paz, B.C.S. Mexico
       </div>
@@ -307,7 +366,6 @@ footer{background:var(--black);color:var(--ivory);padding:90px 0 30px}
         <a href="https://hotels.cloudbeds.com/reservation/mnHLKh" target="_blank" rel="noopener">Book direct</a>
       </div>
     </div>
-    <div class="f-mark">Casa Bo</div>
     <div class="f-bot">
       <span>© 2026 Casa Bo · La Paz, B.C.S.</span>
       <span>Concept design — WD Studio</span>
@@ -317,43 +375,42 @@ footer{background:var(--black);color:var(--ivory);padding:90px 0 30px}
 
 <section class="wd">
   <div class="wrap">
-    <p class="eyebrow">About this preview</p>
+    <p class="tag">About this preview</p>
     <h3>A concept, not a proposal</h3>
-    <p>Built using your own photography to show one direction. The booking bar connects straight to your existing Cloudbeds account — same system, one step instead of several. The full project would start from your material and your input, not from this.</p>
+    <p>Built using your own photography and your own logo, to show one direction. The booking bar connects straight to your existing Cloudbeds account — same system, one step instead of several. The full project would start from your material and your input, not from this.</p>
     <a class="btn" href="https://wdstudio.agency" target="_blank" rel="noopener">wdstudio.agency</a>
   </div>
 </section>
 
 <script>
-var CB = 'https://hotels.cloudbeds.com/reservation/mnHLKh';
-var nav = document.getElementById('nav'), bar = document.getElementById('bookbar'), hdr = document.querySelector('header');
-window.addEventListener('scroll', function(){
-  nav.classList.toggle('solid', window.scrollY > 60);
-  bar.classList.toggle('stuck', window.scrollY > hdr.offsetHeight - 120);
+var CB='https://hotels.cloudbeds.com/reservation/mnHLKh';
+var nav=document.getElementById('nav'),bar=document.getElementById('bookbar'),hdr=document.querySelector('header');
+window.addEventListener('scroll',function(){
+  nav.classList.toggle('solid',window.scrollY>60);
+  bar.classList.toggle('stuck',window.scrollY>hdr.offsetHeight-120);
 });
-var t = new Date(), tm = new Date(Date.now() + 864e5);
-function iso(d){ return d.toISOString().split('T')[0]; }
-var bIn = document.getElementById('bIn'), bOut = document.getElementById('bOut');
-bIn.min = iso(t); bOut.min = iso(tm);
-bIn.addEventListener('change', function(){
-  var d = new Date(bIn.value); d.setDate(d.getDate()+1);
-  bOut.min = iso(d);
-  if (!bOut.value || bOut.value <= bIn.value) bOut.value = iso(d);
+function iso(d){return d.toISOString().split('T')[0];}
+var bIn=document.getElementById('bIn'),bOut=document.getElementById('bOut');
+bIn.min=iso(new Date()); bOut.min=iso(new Date(Date.now()+864e5));
+bIn.addEventListener('change',function(){
+  var d=new Date(bIn.value); d.setDate(d.getDate()+1);
+  bOut.min=iso(d);
+  if(!bOut.value||bOut.value<=bIn.value) bOut.value=iso(d);
 });
-document.getElementById('bGo').addEventListener('click', function(){
-  var u = CB, p = [];
-  if (bIn.value) p.push('checkin=' + bIn.value);
-  if (bOut.value) p.push('checkout=' + bOut.value);
-  p.push('adults=' + document.getElementById('bGuests').value);
-  window.open(u + '?' + p.join('&'), '_blank');
+document.getElementById('bGo').addEventListener('click',function(){
+  var p=[];
+  if(bIn.value)p.push('checkin='+bIn.value);
+  if(bOut.value)p.push('checkout='+bOut.value);
+  p.push('adults='+document.getElementById('bGuests').value);
+  window.open(CB+'?'+p.join('&'),'_blank');
 });
-if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches){
-  var io = new IntersectionObserver(function(es){
-    es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
-  }, {threshold:.1});
-  document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
-} else {
-  document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('in'); });
+if('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+  var io=new IntersectionObserver(function(es){
+    es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});
+  },{threshold:.1});
+  document.querySelectorAll('.reveal').forEach(function(el){io.observe(el);});
+}else{
+  document.querySelectorAll('.reveal').forEach(function(el){el.classList.add('in');});
 }
 </script>
 
