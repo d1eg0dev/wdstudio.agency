@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Casa Bo — Concept by WD Studio</title>
+<meta name="robots" content="noindex,nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --black:#0E0E0E;
+  --ivory:#F7F6F3;
+  --sand:#D8CFC4;
+  --mute:#8C857C;
+  --line:#E2DDD5;
+  --display:'Anton',Impact,sans-serif;
+  --body:'Inter',-apple-system,'Helvetica Neue',Arial,sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--ivory);color:var(--black);font-family:var(--body);font-weight:300;line-height:1.7;-webkit-font-smoothing:antialiased}
+img{display:block;width:100%;height:auto}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1280px;margin:0 auto;padding:0 40px}
+.eyebrow{font-size:10px;letter-spacing:.32em;text-transform:uppercase;color:var(--mute)}
+.dsp{font-family:var(--display);font-weight:400;text-transform:uppercase;line-height:.92;letter-spacing:-.005em}
+h2.dsp{font-size:clamp(2.4rem,6.5vw,5.4rem)}
+.lede{font-size:17px;line-height:1.8;color:#4A453E;max-width:56ch}
+.reveal{opacity:0;transform:translateY(24px);transition:opacity 1s ease,transform 1s ease}
+.reveal.in{opacity:1;transform:none}
+
+/* BARRA CONCEPTO */
+.concept{position:fixed;top:0;left:0;right:0;z-index:300;background:var(--black);color:var(--sand);
+  font-size:10px;letter-spacing:.2em;text-transform:uppercase;padding:9px 22px;
+  display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap}
+.concept a{border-bottom:1px solid rgba(216,207,196,.45)}
+
+/* NAV */
+nav{position:fixed;top:31px;left:0;right:0;z-index:200;padding:20px 0;transition:all .4s}
+nav.solid{background:rgba(247,246,243,.96);backdrop-filter:blur(10px);padding:12px 0;border-bottom:1px solid var(--line)}
+.nav-in{max-width:1280px;margin:0 auto;padding:0 40px;display:flex;justify-content:space-between;align-items:center;gap:26px}
+.brand{font-family:var(--display);font-size:22px;letter-spacing:.02em;color:#fff;text-transform:uppercase}
+nav.solid .brand{color:var(--black)}
+.nav-links{display:flex;gap:30px}
+.nav-links a{font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.8)}
+nav.solid .nav-links a{color:var(--mute)}
+nav.solid .nav-links a:hover{color:var(--black)}
+.nav-book{background:#fff;color:var(--black);font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;
+  font-weight:500;padding:12px 24px;transition:all .3s}
+nav.solid .nav-book{background:var(--black);color:var(--ivory)}
+.nav-book:hover{opacity:.85}
+
+/* HERO */
+header{position:relative;height:100vh;min-height:620px;overflow:hidden;background:var(--black)}
+header img{position:absolute;inset:0;height:100%;object-fit:cover;opacity:.86}
+header::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(14,14,14,.5) 0%,rgba(14,14,14,.08) 38%,rgba(14,14,14,.82) 100%)}
+.hero-c{position:absolute;left:0;right:0;bottom:0;z-index:3;color:#fff;padding-bottom:150px}
+.hero-c h1{font-size:clamp(3rem,11vw,9rem)}
+.hero-c .sub{margin-top:20px;font-size:clamp(.95rem,1.7vw,1.2rem);letter-spacing:.06em;max-width:34ch;color:rgba(255,255,255,.9)}
+
+/* BARRA DE RESERVA */
+.bookbar{position:absolute;left:0;right:0;bottom:0;z-index:6;background:var(--black);color:var(--ivory)}
+.bookbar.stuck{position:fixed;bottom:0;box-shadow:0 -8px 30px rgba(14,14,14,.2)}
+.bb-in{max-width:1280px;margin:0 auto;padding:18px 40px;display:flex;align-items:end;gap:22px;flex-wrap:wrap}
+.bb-f{display:flex;flex-direction:column;gap:7px}
+.bb-f label{font-size:9px;letter-spacing:.24em;text-transform:uppercase;color:var(--mute)}
+.bb-f input,.bb-f select{background:transparent;border:none;border-bottom:1px solid rgba(216,207,196,.4);
+  color:var(--ivory);font-family:var(--body);font-size:14px;font-weight:300;padding:6px 0;min-width:130px}
+.bb-f input:focus,.bb-f select:focus{outline:none;border-bottom-color:var(--sand)}
+.bb-f select option{background:var(--black)}
+.bb-btn{margin-left:auto;background:var(--sand);color:var(--black);border:none;cursor:pointer;
+  font-family:var(--display);font-size:15px;letter-spacing:.08em;text-transform:uppercase;
+  padding:15px 40px;transition:opacity .3s}
+.bb-btn:hover{opacity:.85}
+.bb-note{width:100%;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--mute);padding-top:4px}
+
+/* INTRO */
+.intro{padding:130px 0 110px;background:var(--ivory)}
+.intro-g{display:grid;grid-template-columns:1.2fr 1fr;gap:80px;align-items:end}
+.intro p{font-size:18px;line-height:1.9;color:#4A453E}
+.intro p+p{margin-top:20px}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:30px;margin-top:80px;border-top:2px solid var(--black);padding-top:34px}
+.stat .v{font-family:var(--display);font-size:clamp(2rem,3.6vw,3rem);line-height:1}
+.stat .l{margin-top:8px;font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--mute)}
+
+/* ROOMS */
+.rooms{padding:120px 0;background:var(--sand)}
+.room-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;margin-top:60px}
+.room figure{overflow:hidden;aspect-ratio:4/3;background:var(--line)}
+.room img{height:100%;object-fit:cover;transition:transform 1.2s cubic-bezier(.2,.7,.3,1)}
+.room:hover img{transform:scale(1.05)}
+.room h3{font-family:var(--display);font-size:1.7rem;text-transform:uppercase;margin-top:20px;line-height:1.05}
+.room p{margin-top:10px;font-size:14.5px;line-height:1.7;color:#4A453E}
+.room .go{display:inline-block;margin-top:16px;font-size:10px;letter-spacing:.22em;text-transform:uppercase;
+  border-bottom:1px solid var(--black);padding-bottom:4px}
+
+/* BANDA NEGRA */
+.band{background:var(--black);color:var(--ivory);padding:130px 0;text-align:center}
+.band h2{font-size:clamp(2rem,5.5vw,4.4rem);max-width:20ch;margin:0 auto}
+.band .btn{display:inline-block;margin-top:46px;background:var(--sand);color:var(--black);
+  font-family:var(--display);font-size:16px;letter-spacing:.08em;text-transform:uppercase;padding:18px 52px;transition:opacity .3s}
+.band .btn:hover{opacity:.85}
+.band .fine{margin-top:22px;font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--mute)}
+
+/* SPLIT */
+.split{display:grid;grid-template-columns:1fr 1fr;align-items:center}
+.split-img{aspect-ratio:1/1;overflow:hidden}
+.split-img img{height:100%;object-fit:cover}
+.split-txt{padding:90px 70px}
+
+/* MOSAICO */
+.mosaic{padding:120px 0}
+.m-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:54px}
+.m-grid figure{overflow:hidden;aspect-ratio:1/1;background:var(--line)}
+.m-grid figure:first-child{grid-column:span 2;grid-row:span 2;aspect-ratio:1/1}
+.m-grid img{height:100%;object-fit:cover;transition:transform 1.2s cubic-bezier(.2,.7,.3,1)}
+.m-grid figure:hover img{transform:scale(1.05)}
+
+/* FOOTER */
+footer{background:var(--black);color:var(--ivory);padding:90px 0 30px}
+.f-top{display:flex;justify-content:space-between;gap:40px;flex-wrap:wrap;padding-bottom:50px;border-bottom:1px solid rgba(216,207,196,.2)}
+.f-col{font-size:13.5px;line-height:2.1;color:rgba(247,246,243,.7)}
+.f-mark{font-family:var(--display);font-size:clamp(3rem,13vw,11rem);line-height:.85;text-transform:uppercase;margin-top:56px}
+.f-bot{margin-top:30px;display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;font-size:11px;color:rgba(247,246,243,.45)}
+
+/* WHATSAPP */
+.wa{position:fixed;right:24px;bottom:104px;z-index:180;width:54px;height:54px;border-radius:50%;
+  background:var(--black);display:flex;align-items:center;justify-content:center;box-shadow:0 6px 22px rgba(14,14,14,.3);transition:transform .3s}
+.wa:hover{transform:translateY(-3px)}
+.wa svg{width:24px;height:24px;fill:var(--sand)}
+
+/* CIERRE WD */
+.wd{padding:90px 0;text-align:center;background:var(--ivory);border-top:1px solid var(--line)}
+.wd h3{font-family:var(--display);font-size:clamp(1.6rem,3.2vw,2.6rem);text-transform:uppercase;margin:14px 0 16px}
+.wd p{font-size:15.5px;color:#4A453E;max-width:54ch;margin:0 auto}
+.wd .btn{display:inline-block;margin-top:34px;background:var(--black);color:var(--ivory);
+  font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;padding:16px 40px}
+
+@media(max-width:1000px){
+  .intro-g,.split{grid-template-columns:1fr;gap:40px}
+  .split-txt{padding:60px 40px}
+  .room-grid{grid-template-columns:1fr;gap:36px}
+  .stats{grid-template-columns:1fr 1fr;gap:26px}
+  .m-grid{grid-template-columns:1fr 1fr}
+  .m-grid figure:first-child{grid-column:span 2;grid-row:span 1}
+}
+@media(max-width:760px){
+  .wrap,.nav-in,.bb-in{padding-left:20px;padding-right:20px}
+  .nav-links{display:none}
+  .intro,.rooms,.band,.mosaic{padding:70px 0}
+  .split-txt{padding:48px 20px}
+  .hero-c{padding-bottom:210px}
+  .bb-in{gap:14px}
+  .bb-f{flex:1;min-width:110px}
+  .bb-f input,.bb-f select{min-width:0;width:100%}
+  .bb-btn{margin-left:0;width:100%}
+  .wa{bottom:150px;right:16px}
+}
+@media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
+</style>
+</head>
+<body>
+
+<div class="concept">
+  <span>Concept preview — not a live site</span>
+  <span>Prepared for Casa Bo by <a href="https://wdstudio.agency" target="_blank" rel="noopener">WD Studio</a></span>
+</div>
+
+<nav id="nav">
+  <div class="nav-in">
+    <a href="#" class="brand">Casa Bo</a>
+    <div class="nav-links">
+      <a href="#hotel">The Hotel</a>
+      <a href="#rooms">Rooms</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#lapaz">La Paz</a>
+    </div>
+    <a href="https://hotels.cloudbeds.com/reservation/mnHLKh" target="_blank" rel="noopener" class="nav-book">Book</a>
+  </div>
+</nav>
+
+<header>
+  <img src="https://static.wixstatic.com/media/940d70_684a44a1106b4d41b02d4381f79329dc~mv2.jpg/v1/fill/w_1800,h_1200,al_c,q_85/casa-bo.jpg" alt="Casa Bo">
+  <div class="hero-c">
+    <div class="wrap">
+      <h1 class="dsp">A desert<br>getaway</h1>
+      <p class="sub">Eleven suites in downtown La Paz. One block from the beach, one flight of stairs from the sunset.</p>
+    </div>
+  </div>
+
+  <div class="bookbar" id="bookbar">
+    <div class="bb-in">
+      <div class="bb-f"><label>Check in</label><input type="date" id="bIn"></div>
+      <div class="bb-f"><label>Check out</label><input type="date" id="bOut"></div>
+      <div class="bb-f"><label>Guests</label>
+        <select id="bGuests"><option>1</option><option selected>2</option><option>3</option><option>4</option></select>
+      </div>
+      <button class="bb-btn" id="bGo">Check availability</button>
+      <div class="bb-note">Live rates · Instant confirmation · Best price direct</div>
+    </div>
+  </div>
+</header>
+
+<section class="intro" id="hotel">
+  <div class="wrap">
+    <div class="intro-g reveal">
+      <div>
+        <p class="eyebrow">The hotel</p>
+        <h2 class="dsp" style="margin-top:14px">Cactus, concrete<br>and Baja light</h2>
+      </div>
+      <div>
+        <p>Casa Bo sits in a quiet corner of downtown La Paz, one block from the water. Eleven suites across three buildings — deluxe rooms, studios and suites with private patios and outdoor bathtubs.</p>
+        <p>Handmade furniture, minimalist rooms, a pool ringed by cactus, and a rooftop for yoga, barbecue, or doing nothing at all while Baja works through its colours.</p>
+      </div>
+    </div>
+    <div class="stats reveal">
+      <div class="stat"><div class="v">11</div><div class="l">Suites</div></div>
+      <div class="stat"><div class="v">1</div><div class="l">Block from the beach</div></div>
+      <div class="stat"><div class="v">3</div><div class="l">Room types</div></div>
+      <div class="stat"><div class="v">∞</div><div class="l">Rooftop sunsets</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="rooms" id="rooms">
+  <div class="wrap">
+    <div class="reveal">
+      <p class="eyebrow">Rooms</p>
+      <h2 class="dsp" style="margin-top:14px">Pick your<br>corner</h2>
+    </div>
+    <div class="room-grid reveal">
+      <div class="room">
+        <figure><img src="https://static.wixstatic.com/media/8a6efe_8bec6954d45443f6b33613514d29a1b7~mv2.jpg/v1/fill/w_900,h_675,q_88/tierra.jpg" alt="Tierra" loading="lazy"></figure>
+        <h3>Tierra<br>Deluxe</h3>
+        <p>Ground floor, facing the street. Tall windows, king bed, kitchen and a living area stripped to what matters.</p>
+        <a class="go" href="https://hotels.cloudbeds.com/reservation/mnHLKh" target="_blank" rel="noopener">Check dates</a>
+      </div>
+      <div class="room">
+        <figure><img src="https://static.wixstatic.com/media/940d70_f44b258eb8414b8cad1bc6152e29518b~mv2.jpg/v1/fill/w_900,h_675,q_88/matador.jpg" alt="Matador" loading="lazy"></figure>
+        <h3>Matador<br>Deluxe</h3>
+        <p>The largest of the ground-floor rooms. Designer furniture and lighting, full kitchen, super king bed.</p>
+        <a class="go" href="https://hotels.cloudbeds.com/reservation/mnHLKh" target="_blank" rel="noopener">Check dates</a>
+      </div>
+      <div class="room">
+        <figure><img src="https://static.wixstatic.com/media/8a6efe_65426f05ff7a426683c70510786e4d30~mv2.jpg/v1/fill/w_900,h_675,q_88/manana.jpg" alt="El Mañana" loading="lazy"></figure>
+        <h3>El Mañana<br>Two Bedrooms</h3>
+        <p>First floor, two bedrooms and two full baths. Separate living area with light and art. Sleeps four.</p>
+        <a class="go" href="https://hotels.cloudbeds.com/reservation/mnHLKh" target="_blank" rel="noopener">Check dates</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band">
+  <div class="wrap reveal">
+    <h2 class="dsp">Book direct.<br>Skip the platform.</h2>
+    <a class="btn" href="https://hotels.cloudbeds.com/reservation/mnHLKh" target="_blank" rel="noopener">See live availability</a>
+    <p class="fine">Best rate guaranteed · No booking fees · Free cancellation</p>
+  </div>
+</section>
+
+<section class="split">
+  <div class="split-img"><img src="https://static.wixstatic.com/media/940d70_cde6d67f53894e0082d463940265874c~mv2.png/v1/fill/w_1000,h_1000,al_c,q_88/rooftop.png" alt="" loading="lazy"></div>
+  <div class="split-txt reveal" id="lapaz">
+    <p class="eyebrow">La Paz</p>
+    <h2 class="dsp" style="margin-top:14px;font-size:clamp(2rem,4vw,3.4rem)">The sea of<br>Cortez, up close</h2>
+    <p class="lede" style="margin-top:24px">Whale sharks between October and April. Balandra, one of the most photographed beaches in Mexico, thirty minutes north. Espíritu Santo island by boat. And a malecón that fills up every evening for no reason other than the light.</p>
+  </div>
+</section>
+
+<section class="mosaic" id="gallery">
+  <div class="wrap">
+    <div class="reveal">
+      <p class="eyebrow">Gallery</p>
+      <h2 class="dsp" style="margin-top:14px">Inside Casa Bo</h2>
+    </div>
+    <div class="m-grid reveal">
+      <figure><img src="https://static.wixstatic.com/media/940d70_684a44a1106b4d41b02d4381f79329dc~mv2.jpg/v1/fill/w_1000,h_1000,al_c,q_88/g1.jpg" alt="" loading="lazy"></figure>
+      <figure><img src="https://static.wixstatic.com/media/8a6efe_8bec6954d45443f6b33613514d29a1b7~mv2.jpg/v1/fill/w_600,h_600,q_85/g2.jpg" alt="" loading="lazy"></figure>
+      <figure><img src="https://static.wixstatic.com/media/940d70_f44b258eb8414b8cad1bc6152e29518b~mv2.jpg/v1/fill/w_600,h_600,q_85/g3.jpg" alt="" loading="lazy"></figure>
+      <figure><img src="https://static.wixstatic.com/media/8a6efe_65426f05ff7a426683c70510786e4d30~mv2.jpg/v1/fill/w_600,h_600,q_85/g4.jpg" alt="" loading="lazy"></figure>
+      <figure><img src="https://static.wixstatic.com/media/940d70_cde6d67f53894e0082d463940265874c~mv2.png/v1/fill/w_600,h_600,al_c,q_85/g5.png" alt="" loading="lazy"></figure>
+    </div>
+  </div>
+</section>
+
+<a class="wa" href="https://wa.me/526121678810?text=Hola%2C%20me%20gustar%C3%ADa%20informaci%C3%B3n%20sobre%20Casa%20Bo" target="_blank" rel="noopener" aria-label="WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M17.5 14.4c-.3-.2-1.7-.9-2-1-.3-.1-.4-.2-.6.1-.2.3-.7.9-.9 1.1-.2.2-.3.2-.6.1-.3-.2-1.2-.5-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6l.5-.5c.1-.2.2-.3.3-.5 0-.2 0-.4 0-.5 0-.2-.6-1.5-.9-2.1-.2-.5-.5-.4-.6-.4h-.5c-.2 0-.5.1-.7.4-.3.3-1 1-1 2.4s1 2.8 1.2 3c.1.2 2 3.1 4.9 4.3.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.6-.1 1.7-.7 1.9-1.4.2-.7.2-1.2.2-1.4-.1-.1-.3-.2-.6-.3M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2m0 18.2c-1.6 0-3.2-.4-4.6-1.3l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2"/></svg>
+</a>
+
+<footer>
+  <div class="wrap">
+    <div class="f-top">
+      <div class="f-col">
+        C. Francisco I. Madero 640<br>Esterito, 23020<br>La Paz, B.C.S. Mexico
+      </div>
+      <div class="f-col">
+        <a href="tel:+526121678810">+52 612 167 8810</a><br>
+        <a href="https://instagram.com/_casabo" target="_blank" rel="noopener">@_casabo</a><br>
+        <a href="https://goo.gl/maps/RP5JAqTAg7ciSjJG8" target="_blank" rel="noopener">Open in maps</a>
+      </div>
+      <div class="f-col">
+        <a href="#rooms">Rooms</a><br>
+        <a href="#gallery">Gallery</a><br>
+        <a href="https://hotels.cloudbeds.com/reservation/mnHLKh" target="_blank" rel="noopener">Book direct</a>
+      </div>
+    </div>
+    <div class="f-mark">Casa Bo</div>
+    <div class="f-bot">
+      <span>© 2026 Casa Bo · La Paz, B.C.S.</span>
+      <span>Concept design — WD Studio</span>
+    </div>
+  </div>
+</footer>
+
+<section class="wd">
+  <div class="wrap">
+    <p class="eyebrow">About this preview</p>
+    <h3>A concept, not a proposal</h3>
+    <p>Built using your own photography to show one direction. The booking bar connects straight to your existing Cloudbeds account — same system, one step instead of several. The full project would start from your material and your input, not from this.</p>
+    <a class="btn" href="https://wdstudio.agency" target="_blank" rel="noopener">wdstudio.agency</a>
+  </div>
+</section>
+
+<script>
+var CB = 'https://hotels.cloudbeds.com/reservation/mnHLKh';
+var nav = document.getElementById('nav'), bar = document.getElementById('bookbar'), hdr = document.querySelector('header');
+window.addEventListener('scroll', function(){
+  nav.classList.toggle('solid', window.scrollY > 60);
+  bar.classList.toggle('stuck', window.scrollY > hdr.offsetHeight - 120);
+});
+var t = new Date(), tm = new Date(Date.now() + 864e5);
+function iso(d){ return d.toISOString().split('T')[0]; }
+var bIn = document.getElementById('bIn'), bOut = document.getElementById('bOut');
+bIn.min = iso(t); bOut.min = iso(tm);
+bIn.addEventListener('change', function(){
+  var d = new Date(bIn.value); d.setDate(d.getDate()+1);
+  bOut.min = iso(d);
+  if (!bOut.value || bOut.value <= bIn.value) bOut.value = iso(d);
+});
+document.getElementById('bGo').addEventListener('click', function(){
+  var u = CB, p = [];
+  if (bIn.value) p.push('checkin=' + bIn.value);
+  if (bOut.value) p.push('checkout=' + bOut.value);
+  p.push('adults=' + document.getElementById('bGuests').value);
+  window.open(u + '?' + p.join('&'), '_blank');
+});
+if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+  var io = new IntersectionObserver(function(es){
+    es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, {threshold:.1});
+  document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+} else {
+  document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('in'); });
+}
+</script>
+
+</body>
+</html>
