@@ -70,19 +70,23 @@ header::after{content:'';position:absolute;inset:0;background:linear-gradient(18
   letter-spacing:.16em;text-transform:uppercase;padding:16px 34px;border-radius:100px;transition:background .3s;white-space:nowrap}
 .e-btn:hover{background:var(--teal)}
 
-/* MOSAICO */
-.mosaic{padding:120px 0 0;position:relative;text-align:center}
+/* CARRUSEL */
+.mosaic{padding:120px 0 0;text-align:center;overflow:hidden}
 .mosaic h2{max-width:16ch;margin:0 auto}
-.m-float{position:relative;height:520px;margin-top:-40px}
-.m-float img{position:absolute;border-radius:2px;object-fit:cover;box-shadow:0 12px 34px rgba(1,41,64,.1)}
-.m1{width:200px;height:135px;left:4%;top:60px}
-.m2{width:150px;height:190px;left:22%;top:0}
-.m3{width:120px;height:88px;left:38%;top:200px}
-.m4{width:180px;height:120px;right:24%;top:20px}
-.m5{width:210px;height:145px;right:3%;top:120px}
-.m6{width:165px;height:115px;left:10%;bottom:20px}
-.m7{width:140px;height:100px;left:44%;bottom:0}
-.m8{width:225px;height:150px;right:8%;bottom:10px}
+.car{position:relative;margin-top:56px}
+.car-track{display:flex;gap:20px;transition:transform .75s cubic-bezier(.3,.8,.3,1);will-change:transform}
+.car-slide{flex:0 0 calc((100% - 40px)/3);aspect-ratio:4/3;overflow:hidden;border-radius:3px;background:var(--mist)}
+.car-slide img{width:100%;height:100%;object-fit:cover}
+.car-nav{display:flex;justify-content:center;align-items:center;gap:22px;margin-top:34px}
+.car-btn{width:48px;height:48px;border-radius:50%;border:1px solid var(--line);background:transparent;
+  cursor:pointer;color:var(--navy);display:flex;align-items:center;justify-content:center;transition:all .3s}
+.car-btn:hover{background:var(--navy);border-color:var(--navy);color:#fff}
+.car-btn:disabled{opacity:.3;cursor:default}
+.car-btn:disabled:hover{background:transparent;border-color:var(--line);color:var(--navy)}
+.car-btn svg{width:16px;height:16px;stroke:currentColor;stroke-width:1.5;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.car-count{font-size:11px;letter-spacing:.18em;color:var(--slate);font-variant-numeric:tabular-nums}
+@media(max-width:1000px){.car-slide{flex:0 0 calc((100% - 20px)/2)}}
+@media(max-width:640px){.car-slide{flex:0 0 100%}.mosaic{padding-top:70px}}
 
 /* SPECS */
 .specs{padding:0 0 120px}
@@ -272,21 +276,35 @@ footer{background:var(--navy);color:#fff;padding:80px 0 30px}
     </div>
   </div>
 </header>
-
 <section class="mosaic">
   <div class="wrap reveal">
     <p class="tag">The villa</p>
     <h2 style="margin-top:14px">A hidden gem above<br>the <em>Mexican Pacific</em></h2>
   </div>
-  <div class="m-float reveal" aria-hidden="true">
-    <img class="m1" src="https://images.squarespace-cdn.com/content/v1/666a0d639b0fb4333f95b1c6/1725822522808-FTUJI02NWKX652XAKDQM/exterior-2.jpg?format=750w" alt="" loading="lazy">
-    <img class="m2" src="https://images.squarespace-cdn.com/content/v1/666a0d639b0fb4333f95b1c6/1725822419825-LFNRCSG0BJ6GT3VEEG3W/room-1.jpg?format=750w" alt="" loading="lazy">
-    <img class="m3" src="https://images.squarespace-cdn.com/content/v1/666a0d639b0fb4333f95b1c6/1725822414453-Q2DZ9XFURJPDQH274X9J/food-1.jpg?format=500w" alt="" loading="lazy">
-    <img class="m4" src="https://images.squarespace-cdn.com/content/v1/666a0d639b0fb4333f95b1c6/1725838215286-CERE2VPTT0COJHKPAXPZ/property-5.jpg?format=750w" alt="" loading="lazy">
-    <img class="m5" src="https://images.squarespace-cdn.com/content/v1/666a0d639b0fb4333f95b1c6/1725822406872-ATXYIZTOKSJK31MCS389/exterior-1.jpg?format=750w" alt="" loading="lazy">
-    <img class="m6" src="https://images.squarespace-cdn.com/content/v1/666a0d639b0fb4333f95b1c6/1725838216526-RK4Q60U4VSBBNKB5D9YX/property-7.jpg?format=750w" alt="" loading="lazy">
-    <img class="m7" src="https://images.squarespace-cdn.com/content/v1/666a0d639b0fb4333f95b1c6/1725838218128-BSXL3TWA4IT5X536E44P/property-13.jpg?format=500w" alt="" loading="lazy">
-    <img class="m8" src="https://images.squarespace-cdn.com/content/v1/666a0d639b0fb4333f95b1c6/1725822579125-UBG9GH7HR10KZWD8B3HJ/exterior-3.jpg?format=750w" alt="" loading="lazy">
+
+  <div class="wrap reveal">
+    <div class="car">
+      <div class="car-track" id="carTrack">
+        <div class="car-slide"><img src="https://images.squarespace-cdn.com/content/v1/666a0d639b0fb4333f95b1c6/1725822406872-ATXYIZTOKSJK31MCS389/exterior-1.jpg?format=1500w" alt="" loading="lazy"></div>
+        <div class="car-slide"><img src="https://images.squarespace-cdn.com/content/v1/666a0d639b0fb4333f95b1c6/9b40ba58-24d5-4514-bfd8-6b47a774b5e1/Lounge+Area.jpg?format=1500w" alt="" loading="lazy"></div>
+        <div class="car-slide"><img src="https://images.squarespace-cdn.com/content/v1/666a0d639b0fb4333f95b1c6/1725822419825-LFNRCSG0BJ6GT3VEEG3W/room-1.jpg?format=1500w" alt="" loading="lazy"></div>
+        <div class="car-slide"><img src="https://images.squarespace-cdn.com/content/v1/666a0d639b0fb4333f95b1c6/1725822522808-FTUJI02NWKX652XAKDQM/exterior-2.jpg?format=1500w" alt="" loading="lazy"></div>
+        <div class="car-slide"><img src="https://images.squarespace-cdn.com/content/v1/666a0d639b0fb4333f95b1c6/f48d2349-8018-4479-893c-0959ce1d5dca/Lounge+Area+Night.jpg?format=1500w" alt="" loading="lazy"></div>
+        <div class="car-slide"><img src="https://images.squarespace-cdn.com/content/v1/666a0d639b0fb4333f95b1c6/1725838215286-CERE2VPTT0COJHKPAXPZ/property-5.jpg?format=1500w" alt="" loading="lazy"></div>
+        <div class="car-slide"><img src="https://images.squarespace-cdn.com/content/v1/666a0d639b0fb4333f95b1c6/1725822579125-UBG9GH7HR10KZWD8B3HJ/exterior-3.jpg?format=1500w" alt="" loading="lazy"></div>
+        <div class="car-slide"><img src="https://images.squarespace-cdn.com/content/v1/666a0d639b0fb4333f95b1c6/1725822414453-Q2DZ9XFURJPDQH274X9J/food-1.jpg?format=1500w" alt="" loading="lazy"></div>
+        <div class="car-slide"><img src="https://images.squarespace-cdn.com/content/v1/666a0d639b0fb4333f95b1c6/1725838218128-BSXL3TWA4IT5X536E44P/property-13.jpg?format=1500w" alt="" loading="lazy"></div>
+      </div>
+      <div class="car-nav">
+        <button class="car-btn" id="carPrev" aria-label="Previous">
+          <svg viewBox="0 0 24 24"><polyline points="15 5 8 12 15 19"/></svg>
+        </button>
+        <span class="car-count" id="carCount">01 / 09</span>
+        <button class="car-btn" id="carNext" aria-label="Next">
+          <svg viewBox="0 0 24 24"><polyline points="9 5 16 12 9 19"/></svg>
+        </button>
+      </div>
+    </div>
   </div>
 </section>
 
