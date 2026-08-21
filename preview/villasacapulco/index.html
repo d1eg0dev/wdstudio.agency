@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Villas y Lujo en Acapulco — Concepto por WD Studio</title>
+<meta name="robots" content="noindex,nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant:wght@300;400;500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#14232E;
+  --deep:#0C1720;
+  --slate:#5A6B76;
+  --cream:#E8E1D3;
+  --paper:#FBFAF7;
+  --gold:#B08D4F;
+  --gold2:#A8853F;
+  --line:#E4DED2;
+  --display:'Cormorant',Georgia,serif;
+  --body:'Inter',-apple-system,'Helvetica Neue',Arial,sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--paper);color:var(--ink);font-family:var(--body);font-weight:300;line-height:1.7;-webkit-font-smoothing:antialiased}
+img{display:block;width:100%;height:auto}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1340px;margin:0 auto;padding:0 44px}
+.tag{font-size:10px;letter-spacing:.32em;text-transform:uppercase;color:var(--gold2);font-weight:500}
+h2{font-family:var(--display);font-weight:400;font-size:clamp(2.1rem,4.6vw,3.5rem);line-height:1.14}
+.lede{font-size:17.5px;line-height:1.85;color:var(--slate);max-width:58ch}
+.reveal{opacity:0;transform:translateY(24px);transition:opacity 1s ease,transform 1s ease}
+.reveal.in{opacity:1;transform:none}
+.flor{position:absolute;opacity:.5;pointer-events:none;user-select:none}
+
+.concept{position:fixed;top:0;left:0;right:0;z-index:300;background:var(--deep);color:var(--cream);
+  font-size:10px;letter-spacing:.2em;text-transform:uppercase;padding:9px 22px;display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap}
+.concept a{border-bottom:1px solid rgba(232,225,211,.5)}
+
+nav{position:fixed;top:31px;left:0;right:0;z-index:200;padding:18px 0;transition:all .4s}
+nav.solid{background:rgba(251,250,247,.97);backdrop-filter:blur(10px);padding:11px 0;border-bottom:1px solid var(--line)}
+.nav-in{max-width:1340px;margin:0 auto;padding:0 44px;display:flex;justify-content:space-between;align-items:center;gap:24px}
+.nav-logo{display:flex;align-items:center;gap:12px}
+.nav-logo img{height:38px;width:auto}
+.nav-logo .txt{font-family:var(--display);font-size:19px;line-height:1.1;color:#fff;letter-spacing:.02em}
+.nav-logo .txt small{display:block;font-family:var(--body);font-size:8.5px;letter-spacing:.28em;text-transform:uppercase;color:rgba(255,255,255,.7);margin-top:3px}
+nav.solid .nav-logo .txt{color:var(--ink)}
+nav.solid .nav-logo .txt small{color:var(--slate)}
+.nav-links{display:flex;gap:28px}
+.nav-links a{font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.85)}
+nav.solid .nav-links a{color:var(--slate)}
+nav.solid .nav-links a:hover{color:var(--ink)}
+.nav-cta{background:#fff;color:var(--ink);font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;font-weight:500;padding:12px 22px;transition:all .3s}
+nav.solid .nav-cta{background:var(--ink);color:#fff}
+.nav-cta:hover{opacity:.86}
+
+header{position:relative;min-height:100vh;overflow:hidden;background:var(--deep);display:flex;align-items:center}
+header .bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.62}
+header::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(12,23,32,.62) 0%,rgba(12,23,32,.28) 45%,rgba(12,23,32,.88) 100%)}
+.hero-c{position:relative;z-index:4;width:100%;color:#fff;padding:150px 0 60px}
+.hero-c h1{font-family:var(--display);font-weight:300;font-size:clamp(2.5rem,6.6vw,5.4rem);line-height:1.06;max-width:16ch}
+.hero-c h1 em{font-style:italic;color:var(--cream)}
+.hero-c .sub{margin-top:20px;font-size:clamp(1rem,1.7vw,1.2rem);max-width:44ch;color:rgba(255,255,255,.9)}
+
+/* BUSCADOR */
+.search{margin-top:44px;background:rgba(251,250,247,.97);backdrop-filter:blur(8px);padding:22px 26px;max-width:1000px;
+  display:grid;grid-template-columns:1.3fr 1fr 1fr auto;gap:20px;align-items:end}
+.s-f{display:flex;flex-direction:column;gap:7px}
+.s-f label{font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:var(--slate)}
+.s-f select,.s-f input{width:100%;background:transparent;border:none;border-bottom:1px solid var(--line);
+  padding:7px 0;font-family:var(--body);font-size:15px;font-weight:300;color:var(--ink)}
+.s-f select:focus,.s-f input:focus{outline:none;border-bottom-color:var(--gold2)}
+.s-btn{background:var(--ink);color:#fff;border:none;cursor:pointer;font-family:var(--body);
+  font-size:11px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;padding:15px 34px;transition:opacity .3s;white-space:nowrap}
+.s-btn:hover{opacity:.86}
+.s-count{grid-column:1/-1;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--slate);padding-top:4px}
+
+/* ZONAS */
+.zonas{padding:120px 0;position:relative}
+.z-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-top:52px}
+.z-card{position:relative;aspect-ratio:3/4;overflow:hidden;background:var(--ink)}
+.z-card img{height:100%;object-fit:cover;transition:transform 1.3s cubic-bezier(.2,.7,.3,1);opacity:.82}
+.z-card:hover img{transform:scale(1.06)}
+.z-card::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(12,23,32,.1) 40%,rgba(12,23,32,.82) 100%)}
+.z-txt{position:absolute;left:0;right:0;bottom:0;z-index:3;padding:26px 22px;color:#fff}
+.z-txt h3{font-family:var(--display);font-size:1.6rem;font-weight:400;line-height:1.15}
+.z-txt p{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.75);margin-top:6px}
+
+/* VILLAS */
+.villas{padding:120px 0;background:var(--cream);position:relative;overflow:hidden}
+.v-head{display:flex;justify-content:space-between;align-items:end;gap:24px;flex-wrap:wrap}
+.v-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:30px;margin-top:56px}
+.v-card{background:var(--paper);display:flex;flex-direction:column}
+.v-card figure{aspect-ratio:4/3;overflow:hidden;position:relative}
+.v-card img{height:100%;object-fit:cover;transition:transform 1.3s cubic-bezier(.2,.7,.3,1)}
+.v-card:hover img{transform:scale(1.05)}
+.v-badge{position:absolute;top:14px;left:14px;z-index:3;background:rgba(251,250,247,.95);
+  font-size:9px;letter-spacing:.2em;text-transform:uppercase;padding:7px 12px;color:var(--ink);font-weight:500}
+.v-body{padding:24px 24px 26px;display:flex;flex-direction:column;flex:1}
+.v-body .zone{font-size:9.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold2);font-weight:500}
+.v-body h3{font-family:var(--display);font-size:1.55rem;font-weight:400;margin:8px 0 14px;line-height:1.2}
+.v-specs{display:flex;gap:18px;flex-wrap:wrap;font-size:13px;color:var(--slate);padding-bottom:18px;border-bottom:1px solid var(--line)}
+.v-foot{display:flex;justify-content:space-between;align-items:center;gap:14px;margin-top:18px}
+.v-foot .price{font-size:13px;color:var(--slate)}
+.v-foot .price b{font-family:var(--display);font-size:1.15rem;font-weight:500;color:var(--ink)}
+.v-foot .go{font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink);
+  border:1px solid var(--ink);padding:9px 16px;transition:all .3s}
+.v-foot .go:hover{background:var(--ink);color:#fff}
+.v-all{margin-top:52px;text-align:center}
+.v-all a{display:inline-block;border:1px solid var(--ink);color:var(--ink);font-size:11px;font-weight:500;
+  letter-spacing:.18em;text-transform:uppercase;padding:16px 44px;transition:all .3s}
+.v-all a:hover{background:var(--ink);color:#fff}
+
+/* SERVICIOS */
+.serv{padding:120px 0}
+.s-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:0;margin-top:56px;border-top:1px solid var(--line)}
+.s-col{padding:32px 24px 32px 0;border-right:1px solid var(--line)}
+.s-col:last-child{border-right:none;padding-right:0}
+.s-col .n{font-family:var(--display);font-size:1.1rem;color:var(--gold2)}
+.s-col h4{font-family:var(--display);font-size:1.3rem;font-weight:400;margin:12px 0 10px;line-height:1.2}
+.s-col p{font-size:13.5px;line-height:1.7;color:var(--slate)}
+
+/* PROPIETARIOS */
+.own{position:relative;background:var(--deep);color:#fff;overflow:hidden}
+.own-g{display:grid;grid-template-columns:1fr 1fr;align-items:center}
+.own-img{aspect-ratio:4/3;overflow:hidden}
+.own-img img{height:100%;object-fit:cover}
+.own-txt{padding:100px 70px;position:relative;z-index:3}
+.own-txt h2{color:#fff}
+.own-txt .lede{color:rgba(255,255,255,.8)}
+.own-list{list-style:none;margin-top:30px}
+.own-list li{display:flex;gap:16px;padding:14px 0;border-bottom:1px solid rgba(255,255,255,.16);font-size:14.5px;color:rgba(255,255,255,.82)}
+.own-list li span:first-child{color:var(--cream);flex-shrink:0}
+.own-txt .btn{display:inline-block;margin-top:34px;background:var(--cream);color:var(--ink);
+  font-size:11px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;padding:16px 40px;transition:opacity .3s}
+.own-txt .btn:hover{opacity:.88}
+
+/* RESEÑAS */
+.rev{padding:120px 0;background:var(--cream)}
+.r-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:52px}
+.r-card{background:var(--paper);padding:36px 30px;display:flex;flex-direction:column;gap:18px}
+.r-stars{color:var(--gold2);font-size:13px;letter-spacing:.24em}
+.r-card blockquote{font-family:var(--display);font-size:1.2rem;line-height:1.55;flex:1}
+.r-who{padding-top:16px;border-top:1px solid var(--line);font-size:12.5px;color:var(--slate)}
+
+/* CTA */
+.cta{padding:130px 0;text-align:center;position:relative;overflow:hidden}
+.cta .lede{margin:22px auto 0}
+.cta .btn{display:inline-block;margin-top:40px;background:var(--ink);color:#fff;
+  font-size:11px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;padding:18px 48px}
+.cta .fine{margin-top:20px;font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--slate)}
+
+/* MODAL */
+.modal{position:fixed;inset:0;z-index:400;display:none;align-items:center;justify-content:center;padding:24px}
+.modal.open{display:flex}
+.modal-bg{position:absolute;inset:0;background:rgba(12,23,32,.66);backdrop-filter:blur(4px)}
+.modal-box{position:relative;background:var(--paper);width:100%;max-width:560px;max-height:90vh;overflow-y:auto;padding:46px 42px}
+.modal-close{position:absolute;top:18px;right:22px;background:none;border:none;cursor:pointer;font-family:var(--body);font-size:24px;color:var(--slate);line-height:1}
+.modal-box h3{font-family:var(--display);font-weight:400;font-size:2rem;line-height:1.2;margin-bottom:8px}
+.modal-box .msub{font-size:14px;color:var(--slate);margin-bottom:28px}
+.mrow{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.mfield{margin-bottom:18px}
+.mfield label{display:block;font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--slate);margin-bottom:8px}
+.mfield input,.mfield select,.mfield textarea{width:100%;border:none;border-bottom:1px solid var(--line);
+  background:transparent;padding:10px 0;font-family:var(--body);font-size:15px;font-weight:300;color:var(--ink)}
+.mfield input:focus,.mfield select:focus,.mfield textarea:focus{outline:none;border-bottom-color:var(--gold2)}
+.mfield textarea{resize:vertical;min-height:56px}
+.msubmit{width:100%;margin-top:12px;background:var(--ink);color:#fff;border:none;cursor:pointer;
+  font-family:var(--body);font-size:11px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;padding:17px}
+.mfine{margin-top:16px;font-size:11px;color:var(--slate);text-align:center}
+.mok{display:none;text-align:center;padding:30px 0}
+.mok h4{font-family:var(--display);font-size:1.7rem;margin-bottom:10px}
+.mok p{font-size:14.5px;color:var(--slate)}
+
+footer{background:var(--deep);color:var(--cream);padding:80px 0 30px}
+.f-top{display:flex;justify-content:space-between;gap:44px;flex-wrap:wrap;padding-bottom:46px;border-bottom:1px solid rgba(232,225,211,.18)}
+.f-brand{font-family:var(--display);font-size:1.6rem;line-height:1.2}
+.f-brand small{display:block;font-family:var(--body);font-size:9px;letter-spacing:.28em;text-transform:uppercase;color:rgba(232,225,211,.6);margin-top:6px}
+.f-col{font-size:13.5px;line-height:2.05;color:rgba(232,225,211,.72)}
+.f-bot{margin-top:26px;display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;font-size:11px;color:rgba(232,225,211,.45)}
+
+.wa{position:fixed;right:22px;bottom:24px;z-index:180;width:56px;height:56px;border-radius:50%;
+  background:var(--ink);display:flex;align-items:center;justify-content:center;box-shadow:0 6px 22px rgba(12,23,32,.3);transition:transform .3s}
+.wa:hover{transform:translateY(-3px)}
+.wa svg{width:25px;height:25px;fill:var(--cream)}
+
+.wd{padding:90px 0;text-align:center;border-top:1px solid var(--line)}
+.wd h3{font-family:var(--display);font-size:clamp(1.5rem,3vw,2.2rem);margin:12px 0 16px}
+.wd p{font-size:15.5px;color:var(--slate);max-width:58ch;margin:0 auto}
+.wd .btn{display:inline-block;margin-top:32px;background:var(--ink);color:#fff;
+  font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;padding:15px 38px}
+
+@media(max-width:1100px){
+  .z-grid{grid-template-columns:1fr 1fr}
+  .v-grid,.r-grid{grid-template-columns:1fr 1fr}
+  .s-grid{grid-template-columns:1fr 1fr 1fr}
+  .s-col{border-bottom:1px solid var(--line)}
+  .own-g{grid-template-columns:1fr}
+  .own-txt{padding:70px 44px}
+  .search{grid-template-columns:1fr 1fr}
+}
+@media(max-width:760px){
+  .wrap,.nav-in{padding-left:20px;padding-right:20px}
+  .nav-links{display:none}
+  .zonas,.villas,.serv,.rev,.cta{padding:70px 0}
+  .z-grid,.v-grid,.r-grid,.s-grid{grid-template-columns:1fr}
+  .s-col{border-right:none;padding-right:0}
+  .search{grid-template-columns:1fr;padding:20px}
+  .s-btn{width:100%}
+  .own-txt{padding:56px 20px}
+  .modal-box{padding:36px 22px}
+  .mrow{grid-template-columns:1fr;gap:0}
+  .hero-c{padding:130px 0 44px}
+}
+@media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
+</style>
+</head>
+<body>
+
+<div class="concept">
+  <span>Concepto — no es un sitio en vivo</span>
+  <span>Preparado para Villas y Lujo por <a href="https://wdstudio.agency" target="_blank" rel="noopener">WD Studio</a></span>
+</div>
+
+<nav id="nav">
+  <div class="nav-in">
+    <a href="#" class="nav-logo">
+      <img src="images/vla-flor.png" alt="">
+      <span class="txt">Villas y Lujo<small>Acapulco</small></span>
+    </a>
+    <div class="nav-links">
+      <a href="#zonas">Zonas</a>
+      <a href="#villas">Villas</a>
+      <a href="#servicios">Servicios</a>
+      <a href="#propietarios">Propietarios</a>
+    </div>
+    <a href="#cotiza" class="nav-cta">Cotizar</a>
+  </div>
+</nav>
+
+<header>
+  <img class="bg" src="https://villasylujoenacapulco.com/wp-content/uploads/bfi_thumb/DJI_0004-7nxuql03jq0arrg4s7f6utrw85zqey8fae016amo2fk.jpg" alt="Villas de lujo en Acapulco">
+  <div class="hero-c">
+    <div class="wrap">
+      <h1>Las mejores casas<br>de Acapulco, <em>una por una</em></h1>
+      <p class="sub">Más de veinticinco villas en Las Brisas, Diamante, Dorado y Tres Vidas. Administradas, no solo listadas.</p>
+
+      <div class="search">
+        <div class="s-f">
+          <label>Zona</label>
+          <select id="sZona">
+            <option>Todas las zonas</option>
+            <option>Las Brisas</option>
+            <option>Acapulco Diamante</option>
+            <option>Acapulco Dorado</option>
+            <option>Tres Vidas</option>
+            <option>Marina Brisas</option>
+          </select>
+        </div>
+        <div class="s-f">
+          <label>Huéspedes</label>
+          <select id="sHues"><option>Cualquiera</option><option>1 – 8</option><option>9 – 14</option><option>15 – 20</option><option>21 – 30</option></select>
+        </div>
+        <div class="s-f">
+          <label>Habitaciones</label>
+          <select id="sHab"><option>Cualquiera</option><option>2 – 4</option><option>5 – 6</option><option>7 – 8</option><option>9 +</option></select>
+        </div>
+        <button class="s-btn" id="sGo">Buscar</button>
+        <div class="s-count">27 villas disponibles · Renta y venta · Respuesta el mismo día</div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section class="zonas" id="zonas">
+  <img class="flor" src="images/vla-flor.png" alt="" style="width:280px;right:-90px;top:60px;opacity:.35">
+  <div class="wrap">
+    <div class="reveal">
+      <p class="tag">Las zonas</p>
+      <h2 style="margin-top:14px">Cuatro Acapulcos<br>distintos.</h2>
+    </div>
+    <div class="z-grid reveal">
+      <a class="z-card" href="#villas">
+        <img src="https://villasylujoenacapulco.com/wp-content/uploads/bfi_thumb/DJI_0065-7p8myrjollw6xnhk9dt7jf9c300p9syjhtpyaoctfm8.jpg" alt="Las Brisas" loading="lazy">
+        <div class="z-txt"><h3>Las Brisas</h3><p>Vista a la bahía · 14 villas</p></div>
+      </a>
+      <a class="z-card" href="#villas">
+        <img src="https://villasylujoenacapulco.com/wp-content/uploads/bfi_thumb/Casas-Nuevas-071-6ilieqtkpshvfcgpclhnggozkmcfsocaa75zkjsa53k.jpg" alt="Tres Vidas" loading="lazy">
+        <div class="z-txt"><h3>Tres Vidas</h3><p>Con playa · 6 villas</p></div>
+      </a>
+      <a class="z-card" href="#villas">
+        <img src="https://villasylujoenacapulco.com/wp-content/uploads/bfi_thumb/IMG_3352-e1569273664164-6ry3svjk4pumcdw3woprtphfbn1pu9qdrr00i0iam34.jpg" alt="Acapulco Diamante" loading="lazy">
+        <div class="z-txt"><h3>Diamante</h3><p>Condominios y villas · 4 propiedades</p></div>
+      </a>
+      <a class="z-card" href="#villas">
+        <img src="https://villasylujoenacapulco.com/wp-content/uploads/bfi_thumb/acapulco-casa-star-departamentos-vacaciones-en-acapulco-hospedaje-la-roqueta-caleta-hoteles-renta-de-casas-en-acapulco-renta-de-casas-en-las-brisas-2-7fjj1vl5k2y9fkximlavlbcnwba5dw483js0dkwfsy8.jpg" alt="Acapulco Dorado" loading="lazy">
+        <div class="z-txt"><h3>Dorado</h3><p>El Acapulco clásico · 3 villas</p></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="villas" id="villas">
+  <img class="flor" src="images/vla-flor.png" alt="" style="width:340px;left:-120px;bottom:40px;opacity:.4">
+  <div class="wrap">
+    <div class="v-head reveal">
+      <div>
+        <p class="tag">La colección</p>
+        <h2 style="margin-top:14px">Villas destacadas</h2>
+      </div>
+      <p style="font-size:13px;color:var(--slate);letter-spacing:.04em">Mostrando 6 de 27</p>
+    </div>
+
+    <div class="v-grid reveal">
+      <div class="v-card">
+        <figure>
+          <span class="v-badge">Renta</span>
+          <img src="https://villasylujoenacapulco.com/wp-content/uploads/bfi_thumb/Drone-Sardan-e1533587977449-6meec5ss66sxct35xlb104p3srqpholna5dyqi88v9s.jpg" alt="Casa Dan" loading="lazy">
+        </figure>
+        <div class="v-body">
+          <p class="zone">Club Las Brisas</p>
+          <h3>Casa Dan</h3>
+          <div class="v-specs"><span>11 habitaciones</span><span>30 huéspedes</span><span>Alberca</span></div>
+          <div class="v-foot">
+            <span class="price">Desde <b>$—</b> / noche</span>
+            <a class="go" href="#cotiza">Cotizar</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="v-card">
+        <figure>
+          <span class="v-badge">Renta</span>
+          <img src="https://villasylujoenacapulco.com/wp-content/uploads/bfi_thumb/acapulco-casa-chica-departamentos-vacaciones-en-acapulco-hospedaje-la-roqueta-caleta-hoteles-renta-de-casas-en-acapulco-renta-de-casas-en-las-brisas-aerea-7f2pao97s9v7ybjzxp34okc82tro35t3h8uswjrqh5c.jpg" alt="Casa Chica" loading="lazy">
+        </figure>
+        <div class="v-body">
+          <p class="zone">Club Las Brisas</p>
+          <h3>Casa Chica</h3>
+          <div class="v-specs"><span>8 habitaciones</span><span>20 huéspedes</span><span>Eventos</span></div>
+          <div class="v-foot">
+            <span class="price">Desde <b>$—</b> / noche</span>
+            <a class="go" href="#cotiza">Cotizar</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="v-card">
+        <figure>
+          <span class="v-badge">Renta</span>
+          <img src="https://villasylujoenacapulco.com/wp-content/uploads/bfi_thumb/1-1-7ppp4l12n98i7hapw3306t64s9zaoimp1xopwosnjv4.jpg" alt="Casa Misha" loading="lazy">
+        </figure>
+        <div class="v-body">
+          <p class="zone">La Cima</p>
+          <h3>Casa Misha</h3>
+          <div class="v-specs"><span>7 habitaciones</span><span>14 huéspedes</span><span>Vista bahía</span></div>
+          <div class="v-foot">
+            <span class="price">Desde <b>$—</b> / noche</span>
+            <a class="go" href="#cotiza">Cotizar</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="v-card">
+        <figure>
+          <span class="v-badge">Renta</span>
+          <img src="https://villasylujoenacapulco.com/wp-content/uploads/bfi_thumb/DJI_0014sn-1-6t9ep9nh289w6fmbjei0evaj9bq40v13dng0pwbiafk.jpg" alt="Villa Elle" loading="lazy">
+        </figure>
+        <div class="v-body">
+          <p class="zone">Club Las Brisas</p>
+          <h3>Villa Elle</h3>
+          <div class="v-specs"><span>6 habitaciones</span><span>18 huéspedes</span><span>Alberca</span></div>
+          <div class="v-foot">
+            <span class="price">Desde <b>$—</b> / noche</span>
+            <a class="go" href="#cotiza">Cotizar</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="v-card">
+        <figure>
+          <span class="v-badge">Renta</span>
+          <img src="https://villasylujoenacapulco.com/wp-content/uploads/bfi_thumb/WhatsApp-Image-2019-06-27-at-12.25.34-PM-e1569340455766-6ryh9ap3ycniafgri9vwl3rvek6ch58m62ss7mt34uo.jpeg" alt="Villa Ross" loading="lazy">
+        </figure>
+        <div class="v-body">
+          <p class="zone">Tres Vidas</p>
+          <h3>Villa Ross</h3>
+          <div class="v-specs"><span>7 habitaciones</span><span>14 huéspedes</span><span>Con playa</span></div>
+          <div class="v-foot">
+            <span class="price">Desde <b>$—</b> / noche</span>
+            <a class="go" href="#cotiza">Cotizar</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="v-card">
+        <figure>
+          <span class="v-badge" style="background:var(--ink);color:#fff">En venta</span>
+          <img src="https://villasylujoenacapulco.com/wp-content/uploads/bfi_thumb/IMG_1474-7piuf2elpufwqjb3lq16wz37f8qk892efu88tlad9ow.jpg" alt="Casa Portofino" loading="lazy">
+        </figure>
+        <div class="v-body">
+          <p class="zone">Las Brisas</p>
+          <h3>Casa Portofino</h3>
+          <div class="v-specs"><span>Venta</span><span>Vista bahía</span><span>Alberca</span></div>
+          <div class="v-foot">
+            <span class="price">Precio a solicitud</span>
+            <a class="go" href="#cotiza">Informes</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="v-all reveal"><a href="#cotiza">Ver las 27 propiedades</a></div>
+  </div>
+</section>
+
+<section class="serv" id="servicios">
+  <div class="wrap">
+    <div class="reveal">
+      <p class="tag">Servicios</p>
+      <h2 style="margin-top:14px">No solo se renta<br>la casa.</h2>
+    </div>
+    <div class="s-grid reveal">
+      <div class="s-col"><div class="n">I</div><h4>Administración de villas</h4><p>Operación, mantenimiento, personal y ocupación para propietarios que no viven en Acapulco.</p></div>
+      <div class="s-col"><div class="n">II</div><h4>Concierge</h4><p>Chef, transporte, compras, yates y todo lo que el grupo necesite antes de pedirlo.</p></div>
+      <div class="s-col"><div class="n">III</div><h4>Bodas</h4><p>La villa completa como sede. Coordinamos con tu wedding planner o lo somos nosotros.</p></div>
+      <div class="s-col"><div class="n">IV</div><h4>Fiestas y eventos</h4><p>Cumpleaños, aniversarios y celebraciones en casas preparadas para recibir.</p></div>
+      <div class="s-col"><div class="n">V</div><h4>Despedidas</h4><p>Grupos grandes, música, alberca y una casa donde nadie tiene que manejar de regreso.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="own" id="propietarios">
+  <div class="own-g">
+    <div class="own-img">
+      <img src="https://villasylujoenacapulco.com/wp-content/uploads/bfi_thumb/administracion-venta-renta-villas-casas-de-lujo-en-acapulco-brisas-playa-1-1-6zsxqksdderamwnzfn7rbc15itk5h6azkbpxoya1nps.jpg" alt="Administración de villas" loading="lazy">
+    </div>
+    <div class="own-txt reveal">
+      <p class="tag" style="color:var(--cream)">Propietarios</p>
+      <h2 style="margin-top:14px">¿Tienes una casa<br>en Acapulco?</h2>
+      <p class="lede" style="margin-top:22px">Llevamos más de una década administrando propiedades de lujo en la bahía. Tú conservas la casa; nosotros nos encargamos de que trabaje.</p>
+      <ul class="own-list">
+        <li><span>—</span><span>Ocupación, tarifas y calendario gestionados</span></li>
+        <li><span>—</span><span>Personal, mantenimiento y proveedores</span></li>
+        <li><span>—</span><span>Fotografía profesional y presencia en línea</span></li>
+        <li><span>—</span><span>Filtro de huéspedes y contratos</span></li>
+      </ul>
+      <a class="btn" href="#cotiza">Hablemos de tu propiedad</a>
+    </div>
+  </div>
+</section>
+
+<section class="rev">
+  <div class="wrap">
+    <div class="reveal" style="text-align:center">
+      <p class="tag">Huéspedes</p>
+      <h2 style="margin-top:14px">Lo que dicen<br>quienes ya vinieron.</h2>
+    </div>
+    <div class="r-grid reveal">
+      <div class="r-card">
+        <div class="r-stars">★★★★★</div>
+        <blockquote>La casa superó lo que esperábamos y Susana estuvo pendiente de todo el fin de semana.</blockquote>
+        <div class="r-who">Reseña de huésped · 2026</div>
+      </div>
+      <div class="r-card">
+        <div class="r-stars">★★★★★</div>
+        <blockquote>Vinimos catorce personas y no faltó nada. El personal de la villa hizo la diferencia.</blockquote>
+        <div class="r-who">Reseña de huésped · 2026</div>
+      </div>
+      <div class="r-card">
+        <div class="r-stars">★★★★★</div>
+        <blockquote>Organizaron la boda completa. Nosotros solo llegamos. Volveríamos sin pensarlo.</blockquote>
+        <div class="r-who">Reseña de huésped · 2026</div>
+      </div>
+    </div>
+    <p style="margin-top:36px;text-align:center;font-size:12.5px;color:var(--slate)">Las reseñas se sincronizan automáticamente desde Google y Facebook.</p>
+  </div>
+</section>
+
+<section class="cta" id="cotiza">
+  <img class="flor" src="images/vla-flor.png" alt="" style="width:420px;left:50%;transform:translateX(-50%);top:20px;opacity:.28">
+  <div class="wrap reveal" style="position:relative;z-index:3">
+    <p class="tag">Cotiza</p>
+    <h2 style="margin-top:14px">Dinos cuántos son<br>y cuándo llegan.</h2>
+    <p class="lede">Te mandamos las opciones que sí caben con tu grupo, tu fecha y tu presupuesto. Sin plataformas de por medio.</p>
+    <a class="btn" href="#" id="ctaBtn">Solicitar cotización</a>
+    <p class="fine">Respuesta el mismo día · Trato directo · Sin comisiones de plataforma</p>
+  </div>
+</section>
+
+<div class="modal" id="quoteModal">
+  <div class="modal-bg" data-close></div>
+  <div class="modal-box">
+    <button class="modal-close" data-close aria-label="Cerrar">×</button>
+    <div id="mForm">
+      <h3>Solicitar cotización</h3>
+      <p class="msub">Trato directo con la administración. Sin plataformas.</p>
+      <div class="mrow">
+        <div class="mfield"><label>Llegada</label><input type="date" id="mIn"></div>
+        <div class="mfield"><label>Salida</label><input type="date" id="mOut"></div>
+      </div>
+      <div class="mrow">
+        <div class="mfield"><label>Adultos</label><select id="mAd"><option>1–4</option><option selected>5–10</option><option>11–16</option><option>17–30</option></select></div>
+        <div class="mfield"><label>Niños</label><select id="mNi"><option selected>0</option><option>1–2</option><option>3–5</option><option>6+</option></select></div>
+      </div>
+      <div class="mrow">
+        <div class="mfield"><label>Zona preferida</label>
+          <select id="mZona"><option>Sin preferencia</option><option>Las Brisas</option><option>Acapulco Diamante</option><option>Acapulco Dorado</option><option>Tres Vidas</option></select>
+        </div>
+        <div class="mfield"><label>Motivo</label>
+          <select id="mMot"><option>Vacaciones en familia</option><option>Boda</option><option>Despedida</option><option>Cumpleaños o evento</option><option>Compra de propiedad</option></select>
+        </div>
+      </div>
+      <div class="mrow">
+        <div class="mfield"><label>Nombre</label><input type="text" id="mName"></div>
+        <div class="mfield"><label>WhatsApp o correo</label><input type="text" id="mContact"></div>
+      </div>
+      <button class="msubmit" id="mBtn">Enviar solicitud</button>
+      <p class="mfine">Respuesta el mismo día · Sin compromiso</p>
+    </div>
+    <div class="mok" id="mOk">
+      <h4>Solicitud recibida.</h4>
+      <p>Te mandamos opciones para tus fechas el día de hoy.</p>
+    </div>
+  </div>
+</div>
+
+<a class="wa" href="https://api.whatsapp.com/send?phone=527441005139&text=Hola%2C%20quiero%20cotizar%20una%20villa%20en%20Acapulco" target="_blank" rel="noopener" aria-label="WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M17.5 14.4c-.3-.2-1.7-.9-2-1-.3-.1-.4-.2-.6.1-.2.3-.7.9-.9 1.1-.2.2-.3.2-.6.1-.3-.2-1.2-.5-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6l.5-.5c.1-.2.2-.3.3-.5 0-.2 0-.4 0-.5 0-.2-.6-1.5-.9-2.1-.2-.5-.5-.4-.6-.4h-.5c-.2 0-.5.1-.7.4-.3.3-1 1-1 2.4s1 2.8 1.2 3c.1.2 2 3.1 4.9 4.3.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.6-.1 1.7-.7 1.9-1.4.2-.7.2-1.2.2-1.4-.1-.1-.3-.2-.6-.3M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2m0 18.2c-1.6 0-3.2-.4-4.6-1.3l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2"/></svg>
+</a>
+
+<footer>
+  <div class="wrap">
+    <div class="f-top">
+      <div>
+        <div class="f-brand">Villas y Lujo<small>Acapulco · Administraciones Susana Gómez</small></div>
+      </div>
+      <div class="f-col">
+        Oficina en Acapulco<br>
+        <a href="tel:+527441005139">(744) 100-5139</a><br>
+        <a href="tel:+527444047588">(744) 404-7588</a>
+      </div>
+      <div class="f-col">
+        <a href="mailto:susana@luxuryvillasadministration.com">susana@luxuryvillasadministration.com</a><br>
+        <a href="https://www.instagram.com/villasylujoacapulco" target="_blank" rel="noopener">Instagram</a><br>
+        <a href="https://www.facebook.com/VillasSusanaGomez/" target="_blank" rel="noopener">Facebook</a>
+      </div>
+      <div class="f-col">
+        <a href="#villas">Villas</a><br>
+        <a href="#servicios">Servicios</a><br>
+        <a href="#propietarios">Propietarios</a>
+      </div>
+    </div>
+    <div class="f-bot">
+      <span>© 2026 Villas y Lujo en Acapulco</span>
+      <span>Concepto — WD Studio</span>
+    </div>
+  </div>
+</footer>
+
+<section class="wd">
+  <div class="wrap">
+    <p class="tag">Sobre este concepto</p>
+    <h3>Es una dirección, no una propuesta</h3>
+    <p>Construido con sus propias fotos y su sello, para mostrar cómo se vería la cartera con buscador, fichas comparables y una sola ruta a cotizar. El proyecto real partiría de su material y sus decisiones, no de esto.</p>
+    <a class="btn" href="https://wdstudio.agency" target="_blank" rel="noopener">wdstudio.agency</a>
+  </div>
+</section>
+
+<script>
+var nav=document.getElementById('nav');
+window.addEventListener('scroll',function(){nav.classList.toggle('solid',window.scrollY>60);});
+
+var modal=document.getElementById('quoteModal');
+function openModal(e){if(e)e.preventDefault();modal.classList.add('open');document.body.style.overflow='hidden';}
+function closeModal(){modal.classList.remove('open');document.body.style.overflow='';}
+document.querySelectorAll('#sGo, #ctaBtn, .nav-cta, a[href="#cotiza"], .v-foot .go, .v-all a, .own-txt .btn').forEach(function(el){
+  el.addEventListener('click', openModal);
+});
+modal.querySelectorAll('[data-close]').forEach(function(el){el.addEventListener('click',closeModal);});
+document.addEventListener('keydown',function(e){if(e.key==='Escape')closeModal();});
+
+function iso(d){return d.toISOString().split('T')[0];}
+var mIn=document.getElementById('mIn'),mOut=document.getElementById('mOut');
+mIn.min=iso(new Date()); mOut.min=iso(new Date(Date.now()+864e5));
+mIn.addEventListener('change',function(){
+  var d=new Date(mIn.value); d.setDate(d.getDate()+1);
+  mOut.min=iso(d);
+  if(!mOut.value||mOut.value<=mIn.value) mOut.value=iso(d);
+});
+document.getElementById('mBtn').addEventListener('click',function(){
+  document.getElementById('mForm').style.display='none';
+  document.getElementById('mOk').style.display='block';
+});
+
+if('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+  var io=new IntersectionObserver(function(es){
+    es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});
+  },{threshold:.1});
+  document.querySelectorAll('.reveal').forEach(function(el){io.observe(el);});
+}else{
+  document.querySelectorAll('.reveal').forEach(function(el){el.classList.add('in');});
+}
+</script>
+
+</body>
+</html>
