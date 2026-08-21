@@ -155,6 +155,20 @@ header::after{content:'';position:absolute;inset:0;background:linear-gradient(18
 .g-grid img{height:100%;object-fit:cover;transition:transform 1.3s cubic-bezier(.2,.7,.3,1)}
 .g-grid figure:hover img{transform:scale(1.05)}
 
+/* RESEÑAS */
+.rev{padding:120px 0;background:var(--mist)}
+.rev .r-grid{display:grid;grid-template-columns:1fr 1fr;gap:30px;margin-top:56px}
+.rev .r-card{position:relative;background:var(--paper);padding:48px 40px 40px;border-radius:3px;margin:0;display:block}
+.rev .r-mark{position:absolute;top:14px;left:34px;font-family:var(--display);font-size:5rem;line-height:1;color:var(--teal);opacity:.5}
+.rev .r-card blockquote{position:relative;margin:0;padding:0;border:none}
+.rev .r-card blockquote p{font-size:16px;line-height:1.85;color:var(--slate);margin:0}
+.rev .r-card blockquote p + p{margin-top:16px}
+.rev .r-card blockquote em{font-style:normal;color:var(--navy);font-weight:500}
+.rev .r-card figcaption{margin-top:26px;padding-top:20px;border-top:1px solid var(--line);
+  font-family:var(--display);font-size:1.2rem;color:var(--navy)}
+@media(max-width:1000px){.rev .r-grid{grid-template-columns:1fr;gap:20px}}
+@media(max-width:760px){.rev{padding:70px 0}.rev .r-card{padding:40px 24px 32px}.rev .r-mark{left:20px}}
+
 /* CTA */
 .cta{padding:130px 0;text-align:center;background:var(--mist)}
 .cta .lede{margin:22px auto 0}
