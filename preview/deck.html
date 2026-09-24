@@ -171,6 +171,21 @@ es:{
  i3:'Se adapta a tu identidad', i3d:'Tipografía, colores y tono. El sistema se viste como tu propiedad, no como una plantilla.',
  i4:'Móvil primero', i4d:'La mayoría de las reservas llegan desde el teléfono. Está diseñado para eso.',
 
+ ob_k:'La pregunta que todos hacen', ob_t:'&laquo;Todavía no tenemos<br><b>reservas directas&raquo;</b>',
+ ob_b:'Exacto. Y no es porque no haya demanda: es porque no hay dónde recibirla.',
+ ob_1:'Ya te escriben', ob_1d:'Cada semana alguien pregunta por Instagram, WhatsApp o tu correo. Esa gente ya te encontró y ya te quiere. Hoy contestas a mano, mandas precios y esperas — y muchos terminan reservando en la plataforma porque es más fácil.',
+ ob_2:'El canal no empieza en cero', ob_2d:'Empieza con quien ya te busca por tu nombre. Con quien ya se quedó una vez. Con quien vio tu Instagram. Sólo les faltaba un lugar donde cerrar.',
+ ob_3:'Y con quien ya viene por plataforma', ob_3d:'Un huésped que ya conoce la casa no necesita a la plataforma para volver. Necesita saber que puede reservarte directo.',
+ ob_n:'La pregunta no es si tendrás reservas directas. Es cuántas de las que ya tienes están pasando por una comisión que podrías no pagar.',
+
+ cx_k:'Complementos', cx_t:'Lo que se puede<br><b>añadir después</b>',
+ cx_b:'No vienen incluidos. Se añaden cuando el canal ya está funcionando y tiene sentido crecerlo.',
+ x1:'Sincronía con Airbnb', x1d:'Tu calendario y el de las plataformas se bloquean entre sí de forma automática, vía iCal. Se sincroniza cada hora — no es instantáneo, así que conviene saberlo.',
+ x2:'Pago dividido', x2d:'50% al reservar y 50% antes de llegar. Baja la fricción en estancias de ticket alto.',
+ x3:'Códigos de descuento', x3d:'Para promociones de temporada baja o para huéspedes que repiten.',
+ x4:'Correos previos a la llegada', x4d:'Indicaciones, horarios, cómo llegar. Automáticos, sin que escribas nada.',
+ x5:'Petición de reseña', x5d:'Después de la estancia, un correo pidiendo reseña en Google. Es lo que hace que te encuentren.',
+ x6:'Varias propiedades', x6d:'Un solo sistema, todas tus casas. El huésped elige cuál antes de reservar.',
  s9k:'Inversión', s9t:'Tres niveles',
  t1n:'Enlace de reserva', t1a:'Página propia con tu marca', t1b:'Calendario, tarifas y extras', t1c:'Pago con tarjeta vía Stripe', t1d:'Hoja de administración', t1e:'Lo mandas por WhatsApp o Instagram',
  t2n:'Integrado a tu sitio', t2a:'Todo lo del nivel anterior', t2b:'Embebido en tu web', t2c:'Recuperación de reservas abandonadas', t2d:'El enlace sigue funcionando', t2e:'Adaptado a tu identidad',
@@ -246,6 +261,21 @@ en:{
  i3:'Matched to your identity', i3d:'Typography, colour and tone. The system dresses as your property, not as a template.',
  i4:'Mobile first', i4d:'Most bookings arrive from a phone. It is designed for that.',
 
+ ob_k:'The question everyone asks', ob_t:'&ldquo;We do not have<br><b>direct bookings yet&rdquo;</b>',
+ ob_b:'Exactly. And it is not for lack of demand: it is that there is nowhere to receive it.',
+ ob_1:'People already write to you', ob_1d:'Every week someone asks through Instagram, WhatsApp or your inbox. Those people already found you and already want you. Today you reply by hand, send prices and wait — and many end up booking on the platform because it is easier.',
+ ob_2:'The channel does not start at zero', ob_2d:'It starts with the people already searching your name. The ones who stayed before. The ones who follow you. All they were missing was somewhere to close.',
+ ob_3:'And with those arriving via platform', ob_3d:'A guest who already knows the house does not need the platform to come back. They need to know they can book you directly.',
+ ob_n:'The question is not whether you will have direct bookings. It is how many of the ones you already have are paying a commission you could stop paying.',
+
+ cx_k:'Add-ons', cx_t:'What can be<br><b>added later</b>',
+ cx_b:'Not included. Added once the channel is working and it makes sense to grow it.',
+ x1:'Airbnb calendar sync', x1d:'Your calendar and the platforms block each other automatically, via iCal. It syncs hourly — not instant, so it is worth knowing.',
+ x2:'Split payment', x2d:'50% on booking, 50% before arrival. Lowers friction on higher-ticket stays.',
+ x3:'Discount codes', x3d:'For low-season promotions or returning guests.',
+ x4:'Pre-arrival emails', x4d:'Directions, timings, how to get there. Automatic, without you writing anything.',
+ x5:'Review request', x5d:'After the stay, an email asking for a Google review. That is what gets you found.',
+ x6:'Multiple properties', x6d:'One system, all your houses. The guest picks which one before booking.',
  s9k:'Investment', s9t:'Three tiers',
  t1n:'Booking link', t1a:'Its own page, in your brand', t1b:'Calendar, rates and extras', t1c:'Card payment via Stripe', t1d:'Admin spreadsheet', t1e:'You send it by WhatsApp or Instagram',
  t2n:'Built into your site', t2a:'Everything in the previous tier', t2b:'Embedded in your website', t2c:'Abandoned booking recovery', t2d:'The link keeps working', t2e:'Matched to your identity',
@@ -318,7 +348,13 @@ d.innerHTML=
 +'<section class="s"><div class="k">'+t('s8k')+'</div><h2>'+t('s8t')+'</h2>'
 +'<div class="g4">'+bx('',t('i1'),t('i1d'))+bx('',t('i2'),t('i2d'))+bx('',t('i3'),t('i3d'))+bx('',t('i4'),t('i4d'))+'</div></section>'
 
-/* 9 */
+/* 9 — objeción */
++'<section class="s dark"><div class="k">'+t('ob_k')+'</div><h2>'+t('ob_t')+'</h2>'
++'<p class="lead">'+t('ob_b')+'</p>'
++'<div class="rows">'+rw('01',t('ob_1'),t('ob_1d'))+rw('02',t('ob_2'),t('ob_2d'))+rw('03',t('ob_3'),t('ob_3d'))+'</div>'
++'<p class="bd" style="margin-top:24px;font-size:.9rem">'+t('ob_n')+'</p></section>'
+
+/* 10 */
 +'<section class="s"><div class="k">'+t('s9k')+'</div><h2>'+t('s9t')+'</h2>'
 +'<div class="tiers">'
 +'<div class="tier"><div class="nm">'+t('t1n')+'</div><div class="pr"><s>$1,414</s>$1,188<span class="cur">USD</span></div>'
@@ -337,7 +373,13 @@ d.innerHTML=
 +'</div>'
 +'<p class="bd" style="margin-top:26px;font-size:.88rem">'+t('sav_n')+'</p></section>'
 
-/* 11 */
+/* 12 — complementos */
++'<section class="s"><div class="k">'+t('cx_k')+'</div><h2>'+t('cx_t')+'</h2>'
++'<p class="lead">'+t('cx_b')+'</p>'
++'<div class="g3">'+bx('',t('x1'),t('x1d'))+bx('',t('x2'),t('x2d'))+bx('',t('x3'),t('x3d'))+'</div>'
++'<div class="g3">'+bx('',t('x4'),t('x4d'))+bx('',t('x5'),t('x5d'))+bx('',t('x6'),t('x6d'))+'</div></section>'
+
+/* 13 */
 +'<section class="s"><div class="k">'+t('s10k')+'</div><h2>'+t('s10t')+'</h2>'
 +'<div class="rows">'+rw('01',t('w1'),t('w1d'))+rw('02',t('w2'),t('w2d'))+rw('03',t('w3'),t('w3d'))+rw('04',t('w4'),t('w4d'))+'</div></section>'
 
