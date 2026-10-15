@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Pago · WD Studio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#0B0B0B; --paper:#FFFFFF; --bone:#F4F2ED;
+  --g700:#404040; --g500:#737373; --g300:#D4D4D4; --g200:#E7E5E1;
+  --display:'Cormorant Garamond',Georgia,serif;
+  --body:'Inter',-apple-system,'Helvetica Neue',Arial,sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bone);color:var(--ink);font-family:var(--body);font-weight:300;line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+.wrap{max-width:640px;margin:0 auto;padding:40px 20px 64px}
+header{display:flex;justify-content:space-between;align-items:center;margin-bottom:48px}
+header img{height:20px;width:auto}
+.label{font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:var(--g500);font-weight:500}
+.secure{display:flex;align-items:center;gap:8px}
+.secure svg{width:12px;height:12px}
+h1{font-family:var(--display);font-weight:300;font-size:clamp(2rem,7vw,2.8rem);line-height:1.15;margin:14px 0 6px}
+.concept{color:var(--g700);font-size:15px}
+.amount{font-family:var(--display);font-size:clamp(2.6rem,10vw,3.6rem);font-weight:300;line-height:1;margin:32px 0 6px}
+.amount small{font-family:var(--body);font-size:13px;letter-spacing:.12em;color:var(--g500);margin-left:6px}
+.note{font-size:12.5px;color:var(--g500)}
+.options{display:grid;gap:16px;margin-top:40px}
+.card{background:var(--paper);border:1px solid var(--g200);border-radius:4px;padding:28px 24px}
+.card h2{font-family:var(--display);font-weight:400;font-size:1.6rem;margin:10px 0 4px}
+.card .sub{font-size:13.5px;color:var(--g700);margin-bottom:20px}
+.row{display:flex;justify-content:space-between;gap:16px;padding:12px 0;border-top:1px solid var(--g200);font-size:14px}
+.row span:first-child{color:var(--g500)}
+.row span:last-child{text-align:right;font-weight:400;word-break:break-all}
+.copy{display:inline-flex;align-items:center;gap:6px;margin-top:16px;background:none;border:1px solid var(--ink);color:var(--ink);font:500 11px/1 var(--body);letter-spacing:.18em;text-transform:uppercase;padding:13px 18px;cursor:pointer;border-radius:2px}
+.copy:hover{background:var(--ink);color:var(--paper)}
+.btn{display:block;text-align:center;background:var(--ink);color:var(--paper);text-decoration:none;font:500 12px/1 var(--body);letter-spacing:.2em;text-transform:uppercase;padding:18px;border-radius:2px;margin-top:20px}
+.btn:hover{opacity:.88}
+.fine{font-size:12px;color:var(--g500);margin-top:14px}
+.after{margin-top:40px;font-size:13.5px;color:var(--g700)}
+footer{margin-top:56px;padding-top:24px;border-top:1px solid var(--g300);display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;font-size:12px;color:var(--g500)}
+.hidden{display:none}
+.missing{background:var(--paper);border:1px solid var(--g200);padding:28px 24px;border-radius:4px;font-size:14px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <a href="https://wdstudio.agency"><img src="../images/work/logo-dark.png" alt="WD Studio"></a>
+    <span class="label secure"><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M3 5V3.5a3 3 0 0 1 6 0V5h.5a1 1 0 0 1 1 1v4.5a1 1 0 0 1-1 1h-7a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1zm1 0h4V3.5a2 2 0 0 0-4 0z" fill="#737373"/></svg>Pago seguro</span>
+  </header>
+
+  <main id="pay" class="hidden">
+    <div class="label">Solicitud de pago</div>
+    <h1 id="client"></h1>
+    <p class="concept" id="concept"></p>
+    <div class="amount"><span id="amount"></span><small>MXN</small></div>
+    <p class="note" id="ivaNote"></p>
+
+    <section class="options">
+      <div class="card">
+        <div class="label">Opción 1 · Sin comisión</div>
+        <h2>Transferencia bancaria</h2>
+        <p class="sub">SPEI desde México o transferencia internacional.</p>
+        <div class="row"><span>Monto</span><span id="tAmount"></span></div>
+        <div class="row"><span>Banco</span><span>Banorte</span></div>
+        <div class="row"><span>Titular</span><span>Diego Eduardo Larios Mejia</span></div>
+        <div class="row"><span>CLABE</span><span id="clabe">072090010163330276</span></div>
+        <div class="row"><span>SWIFT (internacional)</span><span>MENOMXMTXXX</span></div>
+        <div class="row" id="refRow"><span>Concepto / referencia</span><span id="ref"></span></div>
+        <button class="copy" id="copyBtn" type="button">Copiar CLABE</button>
+        <p class="fine">Cuando hagas la transferencia, envía el comprobante a <a href="mailto:diego@wdstudio.agency">diego@wdstudio.agency</a>.</p>
+      </div>
+
+      <div class="card" id="cardOption">
+        <div class="label">Opción 2 · Tarjeta de crédito o débito</div>
+        <h2>Pago con tarjeta</h2>
+        <p class="sub">Incluye la comisión del procesador de pagos.</p>
+        <div class="row"><span>Monto con tarjeta</span><span id="kAmount"></span></div>
+        <a class="btn" id="cardBtn" href="#" rel="noopener">Pagar con tarjeta</a>
+        <p class="fine">El cobro se procesa de forma segura con Shopify. En tu estado de cuenta aparecerá como <strong>Vision Fraktal</strong>, nuestra marca hermana.</p>
+      </div>
+    </section>
+
+    <p class="after">¿Dudas con el pago? Escríbeme a <a href="mailto:diego@wdstudio.agency">diego@wdstudio.agency</a>. — Diego, WD Studio</p>
+  </main>
+
+  <div id="missing" class="missing hidden">Este enlace de pago no está completo. Escríbenos a <a href="mailto:diego@wdstudio.agency">diego@wdstudio.agency</a> y te mandamos uno nuevo.</div>
+
+  <footer><span>WD Studio · wdstudio.agency</span><span>Desde 2019</span></footer>
+</div>
+<script>
+(function(){
+  var p = new URLSearchParams(location.search);
+  var money = function(v){ var n = Number(v); return isFinite(n) && n > 0 ? n.toLocaleString('es-MX',{style:'currency',currency:'MXN'}) : null; };
+  var client = p.get('n'), concept = p.get('c'), t = money(p.get('t')), k = money(p.get('k'));
+  var inv = p.get('s') || '';
+  if(!client || !t){ document.getElementById('missing').classList.remove('hidden'); return; }
+  document.getElementById('client').textContent = client;
+  document.getElementById('concept').textContent = concept || 'Servicios digitales · WD Studio';
+  document.getElementById('amount').textContent = t;
+  document.getElementById('tAmount').textContent = t + ' MXN';
+  document.getElementById('ivaNote').textContent = p.get('iva') === '1' ? 'Incluye IVA (16%). Se emite factura.' : 'Monto sin IVA.';
+  var ref = p.get('r');
+  if(ref){ document.getElementById('ref').textContent = ref; } else { document.getElementById('refRow').remove(); }
+  // Solo se aceptan enlaces de pago de la tienda de Shopify propia
+  var okInv = /^\d+\/invoices\/[a-f0-9]{16,64}$/.test(inv);
+  if(okInv && k){
+    document.getElementById('kAmount').textContent = k + ' MXN';
+    document.getElementById('cardBtn').href = 'https://uwbc4g-i0.myshopify.com/' + inv;
+  } else {
+    document.getElementById('cardOption').remove();
+  }
+  document.getElementById('copyBtn').addEventListener('click', function(){
+    var b = this;
+    try { navigator.clipboard.writeText('072090010163330276').then(function(){ b.textContent = 'CLABE copiada'; }); }
+    catch(e){ b.textContent = '072090010163330276'; }
+  });
+  document.getElementById('pay').classList.remove('hidden');
+})();
+</script>
+</body>
+</html>
