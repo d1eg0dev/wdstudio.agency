@@ -424,7 +424,7 @@ function sum(){
   CFG.adds.forEach(function(x){if(!S.ad[x.id])return;var amt=x.u==='night'?x.p*n:x.p;
     h+='<div class="r"><span>'+x.n+(x.u==='night'?'<small>'+n+' nights × '+$$(x.p)+'</small>':'')+'</span><b>'+$$(amt)+'</b></div>'});
   h+='<div class="r tt"><span>Total</span><b>'+$$(tot())+' USD</b></div>'
-   +'<div class="kept">Booked direct, this stay keeps <b>'+$$(tot()*0.16)+' USD</b> that a platform would have taken at 16%.</div></div>';
+   +'<div class="kept">Booked direct, this stay keeps <b>'+$$(tot()*0.155)+' USD</b> that a platform would have taken at 15.5%.</div></div>';
   return h;
 }
 R();
