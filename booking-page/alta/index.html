@@ -1,0 +1,896 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Formulario de recepción</title>
+<style>
+:root{
+  --ink:#1A1A18; --mute:#8B857A;
+  --paper:#FBFAF7; --card:#FFFFFF; --line:#E2DED4;
+  --field:#FFFFFF; --field-alt:#FDFCFA; --head:#1A1A18; --head-txt:#FBFAF7;
+  --accent:#2D5F56; --warn:#A8611C; --warn-bg:#FFF8EC; --err:#B3261E;
+  --sans:'Inter',system-ui,-apple-system,'Segoe UI',sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --ink:#ECE8E0; --mute:#9A9488;
+    --paper:#141412; --card:#1D1D1A; --line:#33332E;
+    --field:#141412; --field-alt:#191916; --head:#000; --head-txt:#ECE8E0;
+    --accent:#6FB3A4; --warn:#D99B52; --warn-bg:#2A2117; --err:#F2B8B5;
+  }
+}
+:root[data-theme="dark"]{
+  --ink:#ECE8E0; --mute:#9A9488;
+  --paper:#141412; --card:#1D1D1A; --line:#33332E;
+  --field:#141412; --field-alt:#191916; --head:#000; --head-txt:#ECE8E0;
+  --accent:#6FB3A4; --warn:#D99B52; --warn-bg:#2A2117; --err:#F2B8B5;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--sans);font-size:15px;line-height:1.6;color:var(--ink);background:var(--paper);padding:0 0 120px}
+.wrap{max-width:820px;margin:0 auto;padding:0 20px}
+header{background:var(--head);color:var(--head-txt);padding:44px 0 38px;margin-bottom:40px}
+header .wrap{display:flex;gap:20px;justify-content:space-between;align-items:flex-start;flex-wrap:wrap}
+header h1{font-size:clamp(24px,4vw,32px);font-weight:600;letter-spacing:-.01em}
+header p{color:var(--mute);margin-top:10px;max-width:58ch}
+#lang{display:flex;gap:0;border:1px solid #4A463E;border-radius:7px;overflow:hidden;flex:0 0 auto}
+#lang button{
+  background:none;border:0;color:var(--head-txt);font:inherit;font-size:13px;
+  padding:7px 14px;cursor:pointer;opacity:.6;
+}
+#lang button[aria-pressed=true]{background:var(--head-txt);color:var(--head);opacity:1;font-weight:500}
+fieldset{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:26px;margin-bottom:22px}
+legend{font-weight:600;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);padding:0 10px}
+.hint{font-size:13px;color:var(--mute);margin:-4px 0 18px}
+label{display:block;margin-bottom:16px}
+label>span{display:block;font-size:13px;font-weight:500;margin-bottom:5px}
+label>em{display:block;font-size:12px;font-style:normal;color:var(--mute);margin-bottom:5px}
+input,select,textarea{
+  width:100%;font:inherit;font-size:14px;padding:10px 12px;
+  border:1px solid var(--line);border-radius:7px;background:var(--field);color:var(--ink);
+}
+input:focus,select:focus,textarea:focus{outline:2px solid var(--accent);outline-offset:-1px;border-color:transparent}
+textarea{min-height:90px;resize:vertical}
+.row{display:grid;gap:14px}
+@media(min-width:620px){
+  .row-2{grid-template-columns:1fr 1fr}
+  .row-3{grid-template-columns:1fr 1fr 1fr}
+  .row-4{grid-template-columns:1fr 1fr 1fr 1fr}
+}
+.rep{border:1px dashed var(--line);border-radius:8px;padding:16px;margin-bottom:12px;position:relative;background:var(--field-alt)}
+.rep .del{position:absolute;top:10px;right:10px;background:none;border:0;color:var(--mute);cursor:pointer;font-size:13px}
+.rep .del:hover{color:var(--err)}
+button.add{
+  background:none;border:1px dashed var(--accent);color:var(--accent);
+  padding:9px 16px;border-radius:7px;font:inherit;font-size:13.5px;cursor:pointer;
+}
+button.add:hover{background:rgba(45,95,86,.08)}
+.bar{
+  position:fixed;left:0;right:0;bottom:0;background:var(--card);
+  border-top:1px solid var(--line);padding:14px 20px;z-index:20;
+  box-shadow:0 -4px 20px rgba(0,0,0,.06);
+}
+.bar .wrap{display:flex;gap:12px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+.btn{
+  background:var(--ink);color:var(--paper);border:0;border-radius:7px;
+  padding:13px 24px;font:inherit;font-size:14px;font-weight:500;cursor:pointer;
+}
+.btn:hover{background:var(--accent)}
+.btn.ghost{background:none;color:var(--ink);border:1px solid var(--line)}
+.btn.ghost:hover{background:var(--field-alt)}
+#status{font-size:13px;color:var(--mute)}
+#status.err{color:var(--err)}
+#status.ok{color:var(--accent)}
+.note{background:var(--warn-bg);border-left:3px solid var(--warn);padding:14px 16px;border-radius:0 7px 7px 0;font-size:13.5px;margin-bottom:18px}
+.note b{color:var(--warn)}
+details{margin-top:10px}
+summary{cursor:pointer;font-size:13.5px;color:var(--accent)}
+pre{background:var(--head);color:var(--head-txt);border:1px solid var(--line);padding:16px;border-radius:8px;overflow:auto;font-size:12px;line-height:1.5;margin-top:12px;max-height:380px}
+.swatch{display:flex;gap:8px;align-items:center}
+.swatch input[type=color]{width:46px;height:40px;padding:3px;cursor:pointer}
+.cond{margin-top:10px;max-height:300px;overflow-y:auto;border:1px solid var(--line);
+  border-radius:7px;padding:16px 18px;background:var(--field-alt)}
+.cond p{font-size:13px;line-height:1.65;margin-bottom:11px;color:var(--mute)}
+.cond p:last-child{margin-bottom:0}
+.cond b{color:var(--ink);font-weight:500}
+.acepto{display:flex;gap:10px;align-items:flex-start;margin-top:14px;font-size:14px;cursor:pointer}
+.acepto input{width:auto;margin-top:3px;flex-shrink:0}
+[hidden]{display:none!important}
+
+/* Subida de fotos */
+.drop{
+  border:1.5px dashed var(--line);border-radius:9px;padding:30px 20px;text-align:center;
+  background:var(--field-alt);transition:border-color .15s,background .15s;cursor:pointer;
+}
+.drop:hover,.drop.sobre{border-color:var(--accent);background:var(--card)}
+.drop p{font-size:14px;margin:0}
+.drop em{display:block;margin-top:7px;font-size:12.5px;color:var(--mute);font-style:normal}
+.enlace{background:none;border:0;padding:0;font:inherit;color:var(--accent);text-decoration:underline;cursor:pointer}
+.tiras{display:grid;grid-template-columns:repeat(auto-fill,minmax(112px,1fr));gap:10px;margin-top:14px}
+.tira{position:relative;border-radius:7px;overflow:hidden;background:var(--field-alt);border:1px solid var(--line)}
+.tira img{display:block;width:100%;aspect-ratio:4/3;object-fit:cover}
+.tira .n{position:absolute;top:5px;left:5px;background:rgba(0,0,0,.72);color:#fff;font-size:10.5px;
+  padding:2px 7px;border-radius:20px;letter-spacing:.02em}
+.tira .acc{display:flex;border-top:1px solid var(--line)}
+.tira .acc button{flex:1;background:var(--card);border:0;border-right:1px solid var(--line);
+  padding:5px 0;font:inherit;font-size:12px;color:var(--mute);cursor:pointer;line-height:1.2}
+.tira .acc button:last-child{border-right:0}
+.tira .acc button:hover:not(:disabled){background:var(--field-alt);color:var(--ink)}
+.tira .acc button:disabled{opacity:.3;cursor:default}
+.tira.sube img{opacity:.45}
+.tira .pct{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+  font-size:12px;font-weight:500;color:var(--ink)}
+.fotos-info{margin-top:10px;font-size:12.5px;color:var(--mute)}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <div>
+      <h1 data-en="Your booking system">Tu sistema de reservas</h1>
+      <p data-en="Fill in what you know and download the file at the end. Leave anything you don't have at hand blank and we'll sort it out. Takes about fifteen minutes.">Llena lo que sepas y descarga el archivo al final. Lo que no tengas a la mano, déjalo en blanco y lo resolvemos nosotros. Toma unos quince minutos.</p>
+    </div>
+    <div id="lang">
+      <button type="button" data-lang="es" aria-pressed="true">Español</button>
+      <button type="button" data-lang="en" aria-pressed="false">English</button>
+    </div>
+  </div>
+</header>
+
+<form class="wrap" id="f">
+
+  <fieldset>
+    <legend data-en="Your plan">Tu plan</legend>
+    <label><span data-en="What did you sign up for?">¿Qué contrataste?</span>
+      <select name="plan">
+        <option value="renta" data-en="Booking Page, rented monthly">Booking Page en renta mensual</option>
+        <option value="compra" data-en="Full system, purchased">Sistema completo, comprado</option>
+      </select></label>
+    <p class="hint" id="planHint" data-plan="renta" data-en="The Booking Page runs on our template with your colors, typeface and logo. Extras and pet fees come with the full system.">La Booking Page usa nuestra plantilla con tus colores, tu tipografía y tu logo. Los extras y el cargo por mascota vienen con el sistema completo.</p>
+  </fieldset>
+
+  <fieldset>
+    <legend data-en="The property">La propiedad</legend>
+    <label><span data-en="Name">Nombre</span><input name="p_name" required placeholder="Casa Luna"></label>
+    <label><span data-en="One line describing it · Spanish">Una frase que la describa · español</span>
+      <em data-en="The first thing a guest reads. Two lines at most.">Lo primero que lee el huésped. Dos renglones máximo.</em>
+      <input name="p_tag_es" placeholder="Cuatro suites, hasta diez huéspedes. Alberca, terraza y el mar a unos pasos."></label>
+    <label><span data-en="The same line in English">La misma frase en inglés</span>
+      <em data-en="If you don't have it, we'll translate it.">Si no la tienes, la traducimos nosotros.</em>
+      <input name="p_tag_en" data-ph-en="Four suites, up to ten guests. Pool, terrace and the sea a few steps away."></label>
+    <label><span data-en="Describe it · Spanish">Descríbela · español</span>
+      <em data-en="Two or three sentences, under the photos. What it's like to be there, not a list of features.">Dos o tres frases, van debajo de las fotos. Cómo se siente estar ahí, no una lista de características.</em>
+      <textarea name="p_about_es" rows="4" placeholder="Una casa de piedra sobre el acantilado, con tres terrazas que miran al mar y una cocina donde de verdad se cocina. El pueblo queda a diez minutos a pie; la cala, a dos."></textarea></label>
+    <label><span data-en="The same in English">La misma en inglés</span>
+      <em data-en="If you leave it blank, we'll translate the one above.">Si la dejas vacía, la traducimos de la de arriba.</em>
+      <textarea name="p_about_en" rows="4"></textarea></label>
+    <div class="row row-2">
+      <label><span data-en="Current website">Sitio web actual</span><em data-en="Leave blank if you don't have one.">Si no tienes, déjalo vacío.</em><input name="p_site" type="url" placeholder="https://"></label>
+      <label><span data-en="Maximum guests">Huéspedes máximo</span><input name="p_max" type="number" min="1" value="10"></label>
+    </div>
+    <div class="row row-2">
+      <label><span data-en="Check-in time">Hora de entrada</span><input name="p_in" type="time" value="15:00"></label>
+      <label><span data-en="Check-out time">Hora de salida</span><input name="p_out" type="time" value="11:00"></label>
+    </div>
+  </fieldset>
+
+  <fieldset>
+    <legend data-en="Brand">Marca</legend>
+    <p class="hint" data-en="If you're not sure about colors, leave them as they are: we'll pick something that works with your photos.">Si no sabes los colores, déjalos como están: elegimos algo que combine con tus fotos.</p>
+    <div class="row row-3">
+      <label><span data-en="Text color">Color de texto</span><div class="swatch"><input name="b_ink" type="color" value="#1A1A18"></div></label>
+      <label><span data-en="Accent color">Color de acento</span><em data-en="Buttons and details.">Botones y detalles.</em><div class="swatch"><input name="b_accent" type="color" value="#2D5F56"></div></label>
+      <label><span data-en="Background color">Color de fondo</span><div class="swatch"><input name="b_paper" type="color" value="#FCFBF9"></div></label>
+    </div>
+    <label><span data-en="Link to your logo">Enlace a tu logo</span>
+      <em data-en="PNG or SVG with a transparent background, on Drive or Dropbox with a public link. If you don't have one, we'll use the property name in your typeface.">PNG o SVG con fondo transparente, en Drive o Dropbox con enlace público. Si no tienes, usamos el nombre de la propiedad con tu tipografía.</em>
+      <input name="b_logo" type="url" placeholder="https://"></label>
+    <label><span data-en="Typeface">Tipografía</span>
+      <select name="b_font">
+        <option>Inter</option><option>Jost</option><option>Cormorant Garamond</option>
+        <option>Montserrat</option><option>Lora</option><option>Poppins</option>
+      </select></label>
+  </fieldset>
+
+  <fieldset>
+    <legend data-en="Language and currency">Idioma y moneda</legend>
+    <div class="row row-3">
+      <label><span data-en="Site languages">Idiomas del sitio</span>
+        <select name="langs">
+          <option value="es,en" data-en="Spanish and English">Español e inglés</option>
+          <option value="es" data-en="Spanish only">Solo español</option>
+          <option value="en" data-en="English only">Solo inglés</option>
+        </select></label>
+      <label><span data-en="Default language">Idioma por defecto</span>
+        <select name="deflang">
+          <option value="es" data-en="Spanish">Español</option>
+          <option value="en" data-en="English">Inglés</option>
+        </select></label>
+      <label><span data-en="Currency you charge in">Moneda en que cobras</span>
+        <select name="cur"><option>USD</option><option>MXN</option><option>EUR</option><option>CAD</option></select></label>
+    </div>
+  </fieldset>
+
+  <fieldset>
+    <legend data-en="Rates">Tarifas</legend>
+    <label><span data-en="You charge">Cobras</span>
+      <select name="unit">
+        <option value="night" data-en="Per night (lodging)">Por noche (hospedaje)</option>
+        <option value="day" data-en="Per day (cars, boats, venues)">Por día (autos, yates, espacios)</option>
+      </select></label>
+    <div class="row row-2">
+      <label><span data-en="Nightly rate, standard">Tarifa por noche, normal</span><em data-en="What you charge most of the year.">La que cobras la mayor parte del año.</em><input name="r_def" type="number" min="0" step="1" required placeholder="495"></label>
+      <label><span data-en="Minimum nights, standard">Mínimo de noches, normal</span><input name="r_min" type="number" min="1" value="3"></label>
+    </div>
+    <p class="hint" data-en="Seasons with a different price. Add as many as you need; if you charge the same all year, add none.">Temporadas con precio distinto. Agrega las que necesites; si cobras igual todo el año, no agregues ninguna.</p>
+    <div id="seasons"></div>
+    <button class="add" type="button" data-add="season" data-en="+ Add season">+ Agregar temporada</button>
+  </fieldset>
+
+  <fieldset>
+    <legend data-en="Fees">Cargos</legend>
+    <div class="row row-4">
+      <label><span data-en="Cleaning">Limpieza</span><em data-en="Per stay.">Por estancia.</em><input name="f_clean" type="number" min="0" value="0"></label>
+      <label data-plan="compra"><span data-en="Pet, per night">Mascota, por noche</span><em data-en="0 if you don't accept them.">0 si no aceptas.</em><input name="f_pet" type="number" min="0" value="0"></label>
+      <label data-plan="compra"><span data-en="Maximum pets">Máximo de mascotas</span><input name="f_maxpet" type="number" min="0" value="0"></label>
+      <label><span data-en="Tax %">Impuesto %</span><em data-en="0 if already included.">0 si ya va incluido.</em><input name="f_tax" type="number" min="0" step="0.1" value="0"></label>
+    </div>
+  </fieldset>
+
+  <fieldset data-plan="compra">
+    <legend data-en="Extras">Extras</legend>
+    <p class="hint" data-en="Services a guest can add when booking: chef, transfer, tour, massage. Skip it if you don't offer any.">Servicios que el huésped puede agregar al reservar: chef, traslado, tour, masaje. Si no ofreces ninguno, sáltalo.</p>
+    <div id="extras"></div>
+    <button class="add" type="button" data-add="extra" data-en="+ Add extra">+ Agregar extra</button>
+  </fieldset>
+
+  <fieldset>
+    <legend data-en="Payment">Cobro</legend>
+    <div class="row row-2">
+      <label><span data-en="How much you charge at booking">Cuánto cobras al reservar</span>
+        <select name="pay_pct">
+          <option value="100" data-en="The full amount up front">Todo por adelantado</option>
+          <option value="50" data-en="50% deposit">50% de anticipo</option>
+          <option value="30" data-en="30% deposit">30% de anticipo</option>
+        </select></label>
+      <label><span data-en="Do you already have a Stripe account?">¿Ya tienes cuenta de Stripe?</span>
+        <select name="has_stripe">
+          <option value="no" data-en="No, I need help opening one">No, necesito ayuda para abrirla</option>
+          <option value="si" data-en="Yes, I have one">Sí, ya tengo</option>
+        </select></label>
+    </div>
+    <div class="note"><b data-en="Important.">Importante.</b> <span data-en="The Stripe account stays in your name and the money from each booking goes straight into it. It never passes through us. Never send us your secret key by message: you enter it yourself in the settings when we get to that step.">La cuenta de Stripe queda a tu nombre y el dinero de cada reserva entra directo ahí. En ningún momento pasa por nosotros. Nunca nos mandes tu llave secreta por mensaje: la pones tú en la configuración cuando lleguemos a ese paso.</span></div>
+  </fieldset>
+
+  <fieldset>
+    <legend data-en="Calendars">Calendarios</legend>
+    <p class="hint" data-en="So dates already booked on the platforms block themselves on your site. It's the iCal export link from each one.">Para que las fechas ocupadas en las plataformas se bloqueen solas en tu sitio. Es el enlace iCal de exportación de cada una.</p>
+    <label><span data-en="Airbnb iCal">iCal de Airbnb</span><input name="ical1" type="url" placeholder="https://www.airbnb.com/calendar/ical/..."></label>
+    <label><span data-en="Booking iCal">iCal de Booking</span><input name="ical2" type="url"></label>
+    <label><span data-en="VRBO or other iCal">iCal de VRBO u otra</span><input name="ical3" type="url"></label>
+    <details><summary data-en="Where do I find that link?">¿Dónde encuentro ese enlace?</summary>
+      <p class="hint" style="margin-top:10px" data-en="On Airbnb: Calendar → Availability → Sync calendars → Export calendar. On Booking: Calendar → Sync calendars. If you can't find them, tell us and we'll do it together on a short call.">En Airbnb: Calendario → Disponibilidad → Sincronizar calendarios → Exportar calendario. En Booking: Calendario → Sincronizar calendarios. Si no los encuentras, dínoslo y lo vemos juntos en una llamada corta.</p></details>
+  </fieldset>
+
+  <fieldset>
+    <legend data-en="Contact">Contacto</legend>
+    <div class="row row-2">
+      <label><span data-en="Email where you receive bookings">Correo donde recibes las reservas</span><input name="c_email" type="email" required placeholder="reservas@tusitio.com"></label>
+      <label><span data-en="WhatsApp">WhatsApp</span><em data-en="With country code.">Con código de país.</em><input name="c_wa" placeholder="+52 312 000 0000"></label>
+    </div>
+  </fieldset>
+
+  <fieldset>
+    <legend data-en="Policies">Políticas</legend>
+    <p class="hint" data-en="These come filled in with the most common terms. Change them if your rules are different. Write normally: one point per line.">Vienen llenas con lo más común. Cámbialas si tus reglas son distintas. Escribe normal: un punto por renglón.</p>
+    <label><span data-en="Cancellation policy and house rules · Spanish">Política de cancelación y reglas · español</span><textarea name="pol_es" rows="7"></textarea></label>
+    <label><span data-en="The same in English">La misma en inglés</span><em data-en="If you leave it blank, we'll translate the one above.">Si la dejas vacía, la traducimos de la de arriba.</em><textarea name="pol_en" rows="7"></textarea></label>
+  </fieldset>
+
+  <fieldset>
+    <legend data-en="Photos">Fotos</legend>
+    <div class="drop" id="drop">
+      <input type="file" id="archivos" accept="image/jpeg,image/png,image/webp" multiple hidden>
+      <p><span data-en="Drag your photos here, or">Arrastra tus fotos aquí, o</span>
+        <button type="button" class="enlace" id="buscar" data-en="browse">búscalas</button></p>
+      <em data-en="Seven photos: a cover and six for the gallery. Landscape. The first one is the cover. We resize them for you.">Siete fotos: una de portada y seis para la galería. Horizontales. La primera es la portada. Nosotros las ajustamos de tamaño.</em>
+    </div>
+    <div class="tiras" id="tiras"></div>
+    <p class="fotos-info" id="fotos-info" hidden></p>
+    <details>
+      <summary data-en="I'd rather send them by link">Prefiero mandarlas por enlace</summary>
+      <label><span data-en="Link to your photos">Enlace a tus fotos</span><em data-en="Drive, Dropbox or WeTransfer. Check that the link is public.">Drive, Dropbox o WeTransfer. Revisa que el enlace sea público.</em><input name="photos" type="url" placeholder="https://"></label>
+    </details>
+  </fieldset>
+
+  <fieldset>
+    <legend data-en="Service terms">Condiciones del servicio</legend>
+    <details>
+      <summary data-en="Read the terms">Leer las condiciones</summary>
+      <div id="cond-texto" class="cond"></div>
+    </details>
+    <label class="acepto"><input type="checkbox" id="acepto">
+      <span data-en="I have read and accept the service terms.">He leído y acepto las condiciones del servicio.</span></label>
+  </fieldset>
+
+  <fieldset>
+    <legend data-en="Who referred you">Quién te recomendó</legend>
+    <label><span data-en="Referral code">Código de referencia</span><em data-en="If someone sent you here, put their code. If not, leave it blank.">Si alguien te mandó, pon su código. Si no, déjalo en blanco.</em><input name="codigo" maxlength="24" placeholder="WD-XXXX"></label>
+  </fieldset>
+
+</form>
+
+<div class="bar">
+  <div class="wrap">
+    <span id="status" data-en="When you're done, download the file and send it to us.">Al terminar, descarga el archivo y mándanoslo.</span>
+    <span style="display:flex;gap:10px">
+      <button class="btn ghost" type="button" id="preview" data-en="View the file">Ver el archivo</button>
+      <button class="btn ghost" type="button" id="download" data-en="Download config.json">Descargar config.json</button>
+      <button class="btn" type="button" id="publish" hidden data-en="Publish my page">Publicar mi página</button>
+    </span>
+  </div>
+</div>
+
+<div class="wrap"><pre id="out" hidden></pre></div>
+
+<script>
+/* ---------- idioma ---------- */
+/* Cada texto trae su version en ingles en data-en. El español se guarda
+   en data-es la primera vez, para poder ir y venir sin perderlo. */
+let LANG = 'es';
+
+function swap(el, attr, store){
+  const other = el.getAttribute('data-' + attr + '-en') || (attr === 'txt' ? el.getAttribute('data-en') : null);
+  if (other === null) return;
+  if (!el.hasAttribute(store)) {
+    el.setAttribute(store, attr === 'txt' ? el.textContent : el.getAttribute('placeholder') || '');
+  }
+  const val = LANG === 'en' ? other : el.getAttribute(store);
+  if (attr === 'txt') el.textContent = val; else el.setAttribute('placeholder', val);
+}
+
+function applyLang(){
+  document.documentElement.lang = LANG;
+  document.querySelectorAll('[data-en]').forEach(el => swap(el, 'txt', 'data-es'));
+  document.querySelectorAll('[data-ph-en]').forEach(el => swap(el, 'ph', 'data-ph-es'));
+  document.querySelectorAll('#lang button').forEach(b =>
+    b.setAttribute('aria-pressed', String(b.dataset.lang === LANG)));
+  syncPolicyDefaults();
+  rebuildBlockLabels();
+}
+
+document.querySelectorAll('#lang button').forEach(b =>
+  b.addEventListener('click', () => { LANG = b.dataset.lang; applyLang(); }));
+
+/* ---------- politicas ---------- */
+const POL = {
+  es: [
+    'Reserva. La reserva se confirma al recibir el pago.',
+    'Cancelación. Más de 60 días antes de la llegada se reembolsa el 100%. Entre 30 y 60 días, el 50%. Con menos de 30 días no hay reembolso.',
+    'Entrada y salida. Entrada desde las 15:00. Salida antes de las 11:00.',
+    'Daños. El huésped es responsable de cualquier daño durante la estancia.',
+    'Reglas. No se permiten eventos sin aprobación por escrito. Horario de silencio desde las 22:00.'
+  ].join('\n'),
+  en: [
+    'Reservation. A reservation is confirmed once payment is received.',
+    'Cancellation. More than 60 days before arrival, 100% is refunded. Between 30 and 60 days, 50%. Under 30 days, non-refundable.',
+    'Check-in and check-out. Check-in from 15:00. Check-out by 11:00.',
+    'Damages. The guest is responsible for any damage during the stay.',
+    'House rules. No events without written approval. Quiet hours from 22:00.'
+  ].join('\n')
+};
+const POL_ES = POL.es, POL_EN = POL.en;
+
+const esc = s => s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+
+/* Texto plano -> HTML. Pone en negritas el título corto que abre el párrafo. */
+function toHtml(txt){
+  return txt.split(/\n\s*\n|\n/).map(l => l.trim()).filter(Boolean).map(l => {
+    if (/^</.test(l)) return l;                        // ya venía en HTML, respetar
+    const m = l.match(/^([^.]{2,30})\.\s+(.+)$/);
+    return m ? `<p><b>${esc(m[1])}.</b> ${esc(m[2])}</p>` : `<p>${esc(l)}</p>`;
+  }).join('');
+}
+
+const f = document.getElementById('f');
+f.pol_es.value = POL.es;
+f.pol_en.value = POL.en;
+
+/* ---------- plan ---------- */
+/* La renta va sobre la plantilla: sin extras ni cargo por mascota.
+   Lo que no aplica se oculta y no se manda en el archivo. */
+const isRent = () => f.plan.value === 'renta';
+function applyPlan(){
+  document.querySelectorAll('[data-plan]').forEach(el => { el.hidden = el.dataset.plan !== f.plan.value; });
+}
+f.plan.addEventListener('change', applyPlan);
+
+/* El idioma del formulario no cambia el idioma de las políticas: siempre se
+   entregan las dos. Esto solo evita que una quede en blanco. */
+function syncPolicyDefaults(){
+  if (!f.pol_es.value.trim()) f.pol_es.value = POL.es;
+  if (!f.pol_en.value.trim()) f.pol_en.value = POL.en;
+}
+
+/* ---------- bloques repetibles ---------- */
+const T = {
+  season: {
+    name_es: ['Nombre · español', 'Name · Spanish'], name_en: ['Nombre · inglés', 'Name · English'],
+    from: ['Desde', 'From'], to: ['Hasta', 'To'],
+    nightly: ['Por noche', 'Per night'], minNights: ['Mín. noches', 'Min. nights']
+  },
+  extra: {
+    name_es: ['Nombre · español', 'Name · Spanish'], name_en: ['Nombre · inglés', 'Name · English'],
+    desc_es: ['Descripción corta · español', 'Short description · Spanish'],
+    desc_en: ['Descripción corta · inglés', 'Short description · English'],
+    price: ['Precio', 'Price'], unit: ['Se cobra', 'Charged']
+  }
+};
+const DEL = ['Quitar', 'Remove'];
+const UNITS = [['stay', 'Una vez por estancia', 'Once per stay'],
+               ['night', 'Por noche', 'Per night'],
+               ['person', 'Por persona', 'Per person']];
+
+const L = pair => pair[LANG === 'en' ? 1 : 0];
+
+function TPL(kind){
+  const t = T[kind];
+  const lab = (k, extra = '') => `<label><span data-k-label="${k}">${L(t[k])}</span>${extra}`;
+  if (kind === 'season') return `
+    <button class="del" type="button" data-del>${L(DEL)}</button>
+    <div class="row row-2">
+      ${lab('name_es')}<input data-k="name_es" placeholder="Temporada alta" data-ph-en="High season"></label>
+      ${lab('name_en')}<input data-k="name_en" placeholder="High season"></label>
+    </div>
+    <div class="row row-4">
+      ${lab('from')}<input data-k="from" type="date"></label>
+      ${lab('to')}<input data-k="to" type="date"></label>
+      ${lab('nightly')}<input data-k="nightly" type="number" min="0"></label>
+      ${lab('minNights')}<input data-k="minNights" type="number" min="1" value="2"></label>
+    </div>`;
+  return `
+    <button class="del" type="button" data-del>${L(DEL)}</button>
+    <div class="row row-2">
+      ${lab('name_es')}<input data-k="name_es" placeholder="Chef privado" data-ph-en="Private chef"></label>
+      ${lab('name_en')}<input data-k="name_en" placeholder="Private chef"></label>
+    </div>
+    ${lab('desc_es')}<input data-k="desc_es" placeholder="Desayuno y cena, diario" data-ph-en="Breakfast and dinner, daily"></label>
+    ${lab('desc_en')}<input data-k="desc_en" placeholder="Breakfast and dinner, daily"></label>
+    <div class="row row-2">
+      ${lab('price')}<input data-k="price" type="number" min="0"></label>
+      ${lab('unit')}<select data-k="unit">${UNITS.map(u =>
+        `<option value="${u[0]}">${L([u[1], u[2]])}</option>`).join('')}</select></label>
+    </div>`;
+}
+
+/* Al cambiar de idioma, reetiquetar los bloques ya agregados sin tocar lo escrito. */
+function rebuildBlockLabels(){
+  document.querySelectorAll('.rep').forEach(el => {
+    const t = T[el.dataset.kind];
+    el.querySelectorAll('[data-k-label]').forEach(s => { s.textContent = L(t[s.dataset.kLabel]); });
+    const d = el.querySelector('[data-del]'); if (d) d.textContent = L(DEL);
+    const u = el.querySelector('[data-k=unit]');
+    if (u) UNITS.forEach((opt, i) => { u.options[i].textContent = L([opt[1], opt[2]]); });
+    el.querySelectorAll('[data-ph-en]').forEach(i => swap(i, 'ph', 'data-ph-es'));
+  });
+}
+
+function addBlock(kind){
+  const host = document.getElementById(kind === 'season' ? 'seasons' : 'extras');
+  const div = document.createElement('div');
+  div.className = 'rep';
+  div.dataset.kind = kind;
+  div.innerHTML = TPL(kind);
+  host.appendChild(div);
+}
+document.querySelectorAll('[data-add]').forEach(b =>
+  b.addEventListener('click', () => addBlock(b.dataset.add)));
+document.addEventListener('click', e => {
+  if (e.target.matches('[data-del]')) e.target.closest('.rep').remove();
+});
+
+/* ---------- recoger ---------- */
+const val = n => (f[n] && f[n].value || '').trim();
+const num = n => { const v = parseFloat(val(n)); return isNaN(v) ? 0 : v; };
+const slug = s => s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'')
+                   .replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'') || 'extra';
+
+function readBlocks(kind){
+  return [...document.querySelectorAll(`.rep[data-kind="${kind}"]`)].map(el => {
+    const g = k => { const i = el.querySelector(`[data-k="${k}"]`); return i ? i.value.trim() : ''; };
+    /* El que falte toma el del otro idioma: llenar el formulario en inglés no
+       puede dejar el sitio en español con nombres vacíos, ni al revés. */
+    const both = (a, bk) => ({ es: g(a) || g(bk), en: g(bk) || g(a) });
+    return kind === 'season'
+      ? { name: both('name_es','name_en'),
+          from:g('from'), to:g('to'),
+          nightly:parseFloat(g('nightly'))||0, minNights:parseInt(g('minNights'))||1 }
+      : { id:slug(g('name_es') || g('name_en')), name: both('name_es','name_en'),
+          desc: both('desc_es','desc_en'),
+          price:parseFloat(g('price'))||0, unit:g('unit') || 'stay' };
+  });
+}
+
+const MSG = {
+  missName:   ['el nombre de la propiedad', 'the property name'],
+  missRate:   ['la tarifa por noche', 'the nightly rate'],
+  missEmail:  ['el correo de contacto', 'the contact email'],
+  seasonRev:  ['las fechas de la temporada %s están al revés', 'the dates of season %s are the wrong way round'],
+  seasonHalf: ['falta una fecha en la temporada %s', 'season %s is missing a date'],
+  extraName:  ['el extra %s no tiene nombre', 'extra %s has no name'],
+  missing:    ['Falta %s.', 'Missing: %s.'],
+  ready:      ['Al terminar, descarga el archivo y mándanoslo.', "When you're done, download the file and send it to us."],
+  done:       ['Listo. Mándanoslo junto con el enlace de tus fotos.', 'Done. Send it to us along with the link to your photos.'],
+  declined:   ['No se guardó el archivo. Si fue sin querer, vuelve a intentarlo.', "The file wasn't saved. If that was a mistake, try again."],
+  rate:       ['Espera unos segundos y vuelve a intentarlo.', 'Wait a few seconds and try again.'],
+  big:        ['El archivo salió demasiado grande. Avísanos.', 'The file came out too large. Let us know.'],
+  nosave:     ['No se pudo guardar. Usa "Ver el archivo" y cópialo.', 'Could not save. Use "View the file" and copy it.'],
+  sending:    ['Enviando…', 'Sending…'],
+  sent:       ['Recibido. Te mandamos tu página por correo hoy mismo.', "Got it. We'll email you your page today."],
+  sendfail:   ['No se pudo enviar. Descarga el archivo y mándanoslo por correo.', "Couldn't send. Download the file and email it to us."]
+};
+const M = (k, n) => L(MSG[k]).replace('%s', n);
+
+function problems(){
+  const bad = [];
+  if (!val('p_name'))  bad.push(M('missName'));
+  if (!val('r_def'))   bad.push(M('missRate'));
+  if (!val('c_email')) bad.push(M('missEmail'));
+  readBlocks('season').forEach((s, i) => {
+    if (s.from && s.to && s.from > s.to) bad.push(M('seasonRev', i + 1));
+    if ((s.from && !s.to) || (!s.from && s.to)) bad.push(M('seasonHalf', i + 1));
+  });
+  if (!isRent()) readBlocks('extra').forEach((x, i) => { if (!x.name.es && !x.name.en) bad.push(M('extraName', i + 1)); });
+  const ac = document.getElementById('acepto');
+  if (ac && !ac.checked) bad.push(LANG === 'en' ? 'accept the service terms' : 'aceptar las condiciones del servicio');
+  return bad;
+}
+
+function build(){
+  const langs = val('langs').split(',');
+  const icals = ['ical1','ical2','ical3'].map(val).filter(Boolean);
+  return {
+    _info: 'Generado con el formulario de recepción. Revisar antes de publicar.',
+    _intake: {
+      plan: val('plan'),
+      photosUrl: val('photos') || null,
+      fotos: FOTOS.length,
+      condiciones: (document.getElementById('acepto') || {}).checked
+        ? { version: COND_VERSION, aceptadoEn: new Date().toISOString() } : null,
+      hasStripe: val('has_stripe') === 'si',
+      filledAt: new Date().toISOString().slice(0,10),
+      formLanguage: LANG,
+      /* Editó una política pero dejó la otra de fábrica: hay que traducir antes de publicar. */
+      policyNeedsTranslation: (val('pol_es') !== POL.es) !== (val('pol_en') !== POL.en),
+      taglineNeedsTranslation: !val('p_tag_en') !== !val('p_tag_es'),
+      aboutNeedsTranslation: !val('p_about_en') !== !val('p_about_es')
+    },
+    property: {
+      name: val('p_name'),
+      tagline: { es: val('p_tag_es') || val('p_tag_en'), en: val('p_tag_en') || val('p_tag_es') },
+      about: { es: val('p_about_es') || val('p_about_en'), en: val('p_about_en') || val('p_about_es') },
+      /* Las fotos no se piden aquí: un enlace de Drive no se puede incrustar
+         en la página. El cliente manda el enlace en _intake.photosUrl, y las
+         direcciones definitivas se llenan al subir las imágenes. */
+      photos: [],
+      logo: val('b_logo'),
+      website: val('p_site'),
+      maxGuests: parseInt(val('p_max')) || 10,
+      checkIn: val('p_in') || '15:00',
+      checkOut: val('p_out') || '11:00'
+    },
+    plan: val('plan'),
+    brand: { ink: val('b_ink'), accent: val('b_accent'), paper: val('b_paper'), font: val('b_font'), poweredBy: false },
+    languages: langs,
+    defaultLanguage: langs.includes(val('deflang')) ? val('deflang') : langs[0],
+    unit: val('unit') || 'night',
+    currency: val('cur'),
+    locale: val('cur') === 'MXN' ? 'es-MX' : 'en-US',
+    rates: { defaultNightly: num('r_def'), defaultMinNights: parseInt(val('r_min')) || 1, seasons: readBlocks('season') },
+    fees: { cleaning: num('f_clean'), petPerNight: isRent() ? 0 : num('f_pet'),
+            maxPets: isRent() ? 0 : (parseInt(val('f_maxpet')) || 0), taxPercent: num('f_tax') },
+    extras: isRent() ? [] : readBlocks('extra'),
+    payment: { mode: 'demo', chargePercent: parseInt(val('pay_pct')) || 100 },
+    availability: { icalUrls: icals, blockedDates: [] },
+    backendUrl: '',
+    contact: { email: val('c_email'), whatsapp: val('c_wa') },
+    policy: { es: toHtml(val('pol_es') || POL.es), en: toHtml(val('pol_en') || val('pol_es') || POL.en) }
+  };
+}
+
+const status = document.getElementById('status');
+const out = document.getElementById('out');
+
+function check(){
+  const bad = problems();
+  if (bad.length){
+    status.className = 'err';
+    status.textContent = M('missing', bad.join(', '));
+    status.removeAttribute('data-en');
+    return false;
+  }
+  status.className = '';
+  status.textContent = M('ready');   // borrar el error anterior ya corregido
+  return true;
+}
+
+document.getElementById('preview').addEventListener('click', () => {
+  check();
+  out.hidden = false;
+  out.textContent = JSON.stringify(build(), null, 2);
+  out.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+});
+
+/* Publicado como página, el navegador no deja que la página baje archivos sola:
+   hay que pedírselo al visor. Como archivo suelto, esa vía no existe y se usa
+   la descarga normal. Las dos quedan cubiertas. */
+let saver = null;
+if (window.claude && typeof window.claude.use === 'function'){
+  window.claude.use('downloads').then(d => { saver = d; }).catch(() => {});
+}
+
+document.getElementById('download').addEventListener('click', async () => {
+  if (!check()) return;
+  const text = JSON.stringify(build(), null, 2) + '\n';
+  const done = () => { status.className = 'ok'; status.textContent = M('done');
+                       status.removeAttribute('data-en'); };
+  const fail = k => { status.className = 'err'; status.textContent = M(k);
+                      status.removeAttribute('data-en'); };
+
+  if (saver){
+    try { await saver.save({ filename: 'config.json', data: text }); done(); }
+    catch (e){
+      const code = e && e.code;
+      fail(code === 'declined' ? 'declined' : code === 'rate_limited' ? 'rate'
+         : code === 'too_large' ? 'big' : 'nosave');
+    }
+    return;
+  }
+  const blob = new Blob([text], { type: 'application/json' });
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'config.json';
+  a.click();
+  URL.revokeObjectURL(a.href);
+  done();
+});
+
+/* ---------- fotos ---------- */
+/* El cliente arrastra sus fotos y aquí mismo se achican antes de salir:
+   una foto de celular pesa 8 MB y llega a unos 300 KB. Sin esto no caben
+   en el límite de Apps Script, tardan una eternidad desde un móvil, y la
+   página del huésped acaba pesando veinte megas. */
+/* Siete y no más: la página usa una de portada y seis en la galería, así que
+   pedir quince significaría tirar ocho fotos que el cliente se tomó la
+   molestia de mandar. */
+const MAX_LADO = 1800, CALIDAD = 0.82, MAX_FOTOS = 7;
+let FOTOS = [];
+
+async function achica(file){
+  let bm;
+  try {
+    /* from-image endereza las fotos verticales del celular. Sin esto salen
+       acostadas en los navegadores que no aplican el EXIF al dibujar. */
+    bm = await createImageBitmap(file, { imageOrientation: 'from-image' });
+  } catch (e){
+    bm = await new Promise((ok, mal) => {
+      const u = URL.createObjectURL(file), im = new Image();
+      im.onload = () => { URL.revokeObjectURL(u); ok(im); };
+      im.onerror = () => { URL.revokeObjectURL(u); mal(new Error('no se pudo leer')); };
+      im.src = u;
+    });
+  }
+  const f = Math.min(1, MAX_LADO / Math.max(bm.width, bm.height));
+  const w = Math.max(1, Math.round(bm.width * f)), h = Math.max(1, Math.round(bm.height * f));
+  const c = document.createElement('canvas');
+  c.width = w; c.height = h;
+  c.getContext('2d').drawImage(bm, 0, 0, w, h);
+  if (bm.close) bm.close();
+  return { datos: c.toDataURL('image/jpeg', CALIDAD), w, h };
+}
+
+function pesoFotos(){
+  /* El dataURL lleva cabecera y base64: los bytes reales son ~3/4. */
+  return FOTOS.reduce((s, f) => s + f.datos.length * 0.75, 0);
+}
+
+function pintaFotos(){
+  const cont = document.getElementById('tiras'), info = document.getElementById('fotos-info');
+  cont.innerHTML = FOTOS.map((f, i) => `
+    <div class="tira" data-i="${i}">
+      <img src="${f.datos}" alt="">
+      <span class="n">${i === 0 ? (LANG === 'en' ? 'cover' : 'portada') : i + 1}</span>
+      <div class="acc">
+        <button type="button" data-ac="izq" ${i === 0 ? 'disabled' : ''} title="${LANG === 'en' ? 'Move left' : 'Mover a la izquierda'}">←</button>
+        <button type="button" data-ac="der" ${i === FOTOS.length - 1 ? 'disabled' : ''} title="${LANG === 'en' ? 'Move right' : 'Mover a la derecha'}">→</button>
+        <button type="button" data-ac="fuera" title="${LANG === 'en' ? 'Remove' : 'Quitar'}">✕</button>
+      </div>
+    </div>`).join('');
+  info.hidden = !FOTOS.length;
+  if (FOTOS.length){
+    const mb = (pesoFotos() / 1048576).toFixed(1);
+    info.textContent = LANG === 'en'
+      ? `${FOTOS.length} of 7 · ${mb} MB after resizing`
+        + (FOTOS.length === 7 ? '' : ` · ${7 - FOTOS.length} to go`)
+      : `${FOTOS.length} de 7 · ${mb} MB ya ajustadas`
+        + (FOTOS.length === 7 ? '' : ` · faltan ${7 - FOTOS.length}`);
+  }
+}
+
+async function agrega(files){
+  const drop = document.getElementById('drop');
+  const sitio = MAX_FOTOS - FOTOS.length;
+  const lista = [...files].filter(f => /^image\//.test(f.type)).slice(0, Math.max(0, sitio));
+  if (!lista.length) return;
+  drop.querySelector('p').textContent = LANG === 'en' ? 'Preparing…' : 'Preparando…';
+  for (const f of lista){
+    try { FOTOS.push(await achica(f)); pintaFotos(); }
+    catch (e){ /* una foto ilegible no debe tumbar las demás */ }
+  }
+  drop.querySelector('p').innerHTML = LANG === 'en'
+    ? 'Drag your photos here, or <button type="button" class="enlace" id="buscar">browse</button>'
+    : 'Arrastra tus fotos aquí, o <button type="button" class="enlace" id="buscar">búscalas</button>';
+  enganchaBuscar();
+}
+
+function enganchaBuscar(){
+  const b = document.getElementById('buscar');
+  if (b) b.onclick = e => { e.stopPropagation(); document.getElementById('archivos').click(); };
+}
+
+(function fotosWidget(){
+  const drop = document.getElementById('drop'), inp = document.getElementById('archivos');
+  if (!drop) return;
+  enganchaBuscar();
+  drop.addEventListener('click', () => inp.click());
+  inp.addEventListener('change', () => { agrega(inp.files); inp.value = ''; });
+  ['dragenter','dragover'].forEach(ev => drop.addEventListener(ev, e => {
+    e.preventDefault(); drop.classList.add('sobre');
+  }));
+  ['dragleave','drop'].forEach(ev => drop.addEventListener(ev, e => {
+    e.preventDefault(); drop.classList.remove('sobre');
+  }));
+  drop.addEventListener('drop', e => agrega(e.dataTransfer.files));
+  document.getElementById('tiras').addEventListener('click', e => {
+    const b = e.target.closest('button[data-ac]');
+    if (!b) return;
+    const i = +b.closest('.tira').dataset.i, ac = b.dataset.ac;
+    if (ac === 'fuera') FOTOS.splice(i, 1);
+    else { const j = ac === 'izq' ? i - 1 : i + 1; [FOTOS[i], FOTOS[j]] = [FOTOS[j], FOTOS[i]]; }
+    pintaFotos();
+  });
+})();
+
+function marca(i, estado){
+  const t = document.querySelector(`.tira[data-i="${i}"]`);
+  if (!t) return;
+  t.classList.toggle('sube', estado === 'sube');
+  let p = t.querySelector('.pct');
+  if (estado === 'sube'){
+    if (!p){ p = document.createElement('div'); p.className = 'pct'; t.appendChild(p); }
+    p.textContent = LANG === 'en' ? 'sending…' : 'enviando…';
+  } else if (p) p.remove();
+}
+
+/* Una foto por petición: Apps Script no traga un envío de veinte megas, y
+   así una que falle no se lleva por delante a las demás.
+
+   Con fetch y no con XMLHttpRequest a propósito. Con XHR se puede enseñar el
+   porcentaje exacto escuchando upload.onprogress, pero registrar ese
+   escuchador convierte la petición en no-simple para CORS y el navegador
+   manda antes un OPTIONS, que Apps Script no contesta: la subida se cae
+   entera. Vale más que suba sin porcentaje a que no suba. */
+async function mandaFoto(id, i){
+  marca(i, 'sube');
+  let r;
+  try {
+    r = await fetch(ALTA_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+      body: JSON.stringify({ accion: 'foto', id, n: i + 1, total: FOTOS.length,
+                             datos: FOTOS[i].datos })
+    });
+  } catch (e){
+    marca(i, 'listo');
+    throw new Error('se cortó la conexión en la foto ' + (i + 1));
+  }
+  let d = {};
+  try { d = await r.json(); } catch (e){}
+  marca(i, 'listo');
+  if (!d.ok) throw new Error(d.error || 'no se pudo guardar la foto ' + (i + 1));
+}
+
+/* ---------- condiciones del servicio ---------- */
+/* La versión va con la aceptación a la hoja. Si el texto cambia, cambia la
+   fecha: así se sabe siempre qué aceptó cada cliente, y no "las condiciones"
+   en abstracto, que el día de una discusión no sirve de nada. */
+const COND_VERSION = '2026-11-05';
+const CONDICIONES = [
+  ['Qué incluye',
+   'Una página de reservas propia para tu propiedad: calendario, cálculo de precios, cobro en línea, textos en español e inglés, alojamiento y las mejoras que vayamos publicando. No somos una agencia de viajes y no gestionamos tu propiedad.'],
+  ['Cuánto cuesta',
+   '79 USD al mes, el mismo precio en todos los países, cobrado por adelantado. Si eres de los veinte primeros, tienes seis meses sin costo; antes del primer cobro te avisamos con 30 días y puedes cancelar sin pagar nada.'],
+  ['El dinero de tus reservas es tuyo',
+   'Los pagos de tus huéspedes entran directo a tu cuenta de Stripe. WD Studio no cobra ninguna comisión sobre tus reservas y no toca ese dinero en ningún momento. Stripe sí cobra sus propias comisiones por procesar cada pago: en México, alrededor de 3.6% más 3 pesos por transacción, y en otros países varía. Esa comisión la cobra Stripe, no nosotros.'],
+  ['Si dejas de pagar',
+   'Te avisamos. A los 15 días de impago la página se suspende y deja de aceptar reservas nuevas; las reservas ya confirmadas no se ven afectadas, porque viven en tu Stripe y en tu correo. Guardamos tu información 60 días por si quieres volver, y después se borra.'],
+  ['Tus fotos y tus textos son tuyos',
+   'Nos autorizas a publicarlos en tu página. Podemos enseñar tu página como ejemplo de nuestro trabajo; si prefieres que no, dínoslo por escrito y dejamos de hacerlo.'],
+  ['El dominio',
+   'Mientras no tengas uno propio, tu página vive en un subdominio nuestro. Si compras tu dominio, es tuyo: lo conectamos, y si algún día te vas, se queda contigo.'],
+  ['Cancelar',
+   'Cuando quieras, escribiendo a hola@wdstudio.agency. El servicio sigue hasta el final del mes que ya pagaste y te entregamos tu configuración y tus fotos.'],
+  ['Lo que no cubrimos',
+   'No respondemos por lo que ocurra entre tú y tus huéspedes, ni por decisiones de Stripe sobre tu cuenta, ni por caídas de servicios de terceros. Hacemos lo razonable para que tu página esté siempre en línea, pero no garantizamos disponibilidad ininterrumpida.'],
+  ['Cambios',
+   'Si cambiamos estas condiciones o el precio, te avisamos con 30 días de antelación. Si no te parece, puedes cancelar antes de que apliquen.']
+];
+
+(function pintaCondiciones(){
+  const c = document.getElementById('cond-texto');
+  if (!c) return;
+  c.innerHTML = CONDICIONES.map(([t, b], i) =>
+    `<p><b>${i + 1}. ${t}.</b> ${b}</p>`).join('');
+})();
+
+/* ---------- publicar ---------- */
+/* Pega aquí la URL de la aplicación web de Apps Script (backend/Intake.gs).
+   Mientras esté vacía, el formulario se comporta como antes: el cliente
+   descarga el archivo y lo manda. Con URL, aparece el botón de publicar. */
+const ALTA_URL = 'https://script.google.com/macros/s/AKfycbwHekgYbD_yPRyR2zBtV9qOIBaYcLY3QbULMdWuGx3KL6eE_tTdEOjr558pe-IWYB1t/exec';
+
+if (ALTA_URL){
+  const bp = document.getElementById('publish');
+  bp.hidden = false;
+  /* Con el botón de publicar, el texto de abajo ya no aplica: nadie tiene
+     que descargar ni mandar nada. */
+  status.textContent = LANG === 'en'
+    ? "When you're done, press Publish my page."
+    : 'Al terminar, dale a Publicar mi página.';
+  status.removeAttribute('data-en');
+  bp.addEventListener('click', async () => {
+    if (!check()) return;
+    bp.disabled = true;
+    status.className = ''; status.textContent = M('sending');
+    status.removeAttribute('data-en');
+    try {
+      /* text/plain evita el preflight CORS, que Apps Script no contesta. */
+      const r = await fetch(ALTA_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+        body: JSON.stringify({ config: build(), codigo: val('codigo') })
+      });
+      const d = await r.json();
+      if (!d.ok) throw new Error(d.error || 'sin detalle');
+
+      /* Las fotos van después y de una en una: ya existe la fila que las
+         espera. Si alguna falla, el alta ya está guardada y sólo se pierden
+         las fotos, no los datos que el cliente tardó en llenar. */
+      if (FOTOS.length && d.referencia){
+        for (let i = 0; i < FOTOS.length; i++){
+          status.className = '';
+          status.textContent = LANG === 'en'
+            ? `Uploading photo ${i + 1} of ${FOTOS.length}…`
+            : `Subiendo foto ${i + 1} de ${FOTOS.length}…`;
+          await mandaFoto(d.referencia, i);
+        }
+      }
+
+      status.className = 'ok';
+      status.textContent = d.mensaje || M('sent');
+    } catch (e){
+      status.className = 'err';
+      /* El motivo, no sólo "no se pudo": sin esto, un fallo obliga a abrir
+         las herramientas del navegador para averiguar qué pasó. */
+      status.textContent = M('sendfail') + (e && e.message ? ' (' + e.message + ')' : '');
+      bp.disabled = false;
+    }
+  });
+}
+
+applyPlan();
+applyLang();
+</script>
+</body>
+</html>
