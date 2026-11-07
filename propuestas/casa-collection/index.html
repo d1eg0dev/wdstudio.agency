@@ -20,7 +20,10 @@
 }
 *{margin:0;padding:0;box-sizing:border-box}
 body{background:var(--paper);color:var(--ink);font-family:var(--body);
-  font-size:17.5px;font-weight:300;line-height:1.8;-webkit-font-smoothing:antialiased}
+  font-size:17.5px;font-weight:300;line-height:1.8;-webkit-font-smoothing:antialiased;
+  /* Nunca partir una palabra: si no cabe, que salte de línea entera. */
+  hyphens:manual;overflow-wrap:break-word;text-wrap:pretty}
+h1,h2,.qa-q{text-wrap:balance}
 img{display:block;max-width:100%}
 a{color:inherit}
 
@@ -46,7 +49,8 @@ strong{font-weight:500;color:var(--ink)}
 .wide{aspect-ratio:21/9;margin-top:60px}
 .trio{display:grid;gap:26px;margin-top:60px}
 @media(min-width:720px){.trio{grid-template-columns:repeat(3,1fr)}}
-.trio .shot{aspect-ratio:3/4}
+/* Las fuentes son apaisadas: recortarlas a vertical las destroza. */
+.trio .shot{aspect-ratio:3/2}
 .duo{display:grid;gap:26px;margin-top:60px}
 @media(min-width:720px){.duo{grid-template-columns:1fr 1fr}}
 .duo .shot{aspect-ratio:4/3}
@@ -136,6 +140,8 @@ li::before{content:'';position:absolute;left:0;top:.78em;width:13px;height:1px;b
 .cierre h2{color:var(--bone)}
 .cierre p{color:var(--g300)}
 .cierre a{color:var(--bone);text-decoration:none;border-bottom:1px solid var(--g700)}
+/* strong hereda el color de tinta y sobre negro desaparece. */
+.cierre strong{color:var(--bone);font-weight:400}
 .firma{margin-top:54px;padding-top:28px;border-top:1px solid var(--g800);color:var(--g400)}
 .firma strong{color:var(--bone);font-weight:400;display:block;margin-bottom:5px;font-size:1.05rem}
 
@@ -161,14 +167,26 @@ li::before{content:'';position:absolute;left:0;top:.78em;width:13px;height:1px;b
 }
 
 @media print{
-  body{font-size:10.8pt}
-  section{padding:26pt 0;break-inside:auto}
+  body{font-size:10.8pt;line-height:1.62}
+  /* Un apartado por página: así nada se parte a mitad de argumento. */
+  section{padding:0 0 10pt;break-after:page;break-inside:auto;border-top:none}
+  section:last-of-type{break-after:auto}
+  p,li,.credito,.pie,.exp-l,.pago,.fila,.hall-i,.hito,.qa-item,.nota{break-inside:avoid}
+  h1,h2,.qa-q,.label{break-after:avoid}
   .in,.bleed{padding:0;max-width:none}
   .cover{padding:0}
   .cover-meta{margin-top:30pt}
+  .wide{margin-top:24pt}
+  .trio,.duo,.exps,.hall,.qa,.tabla,.hitos,.pagos{margin-top:18pt}
+  .hito{padding:14pt 16pt}
+  .qa-item{padding:16pt 0}
+  .hall-i{padding:14pt 0}
+  .fila{padding:16pt 0}
   .precio{background:#fff;border-top:1px solid var(--g300)}
   .cierre{background:#fff;color:var(--ink)}
-  .cierre h2,.cierre a{color:var(--ink)}
+  /* En pantalla el cierre va sobre negro y strong se fuerza a hueso; al
+     imprimir el fondo es blanco, así que hay que devolverlo a tinta. */
+  .cierre h2,.cierre a,.cierre strong{color:var(--ink)}
   .cierre p{color:var(--g700)}
   .cierre .label{color:var(--g500)}
   .firma{border-top-color:var(--g300);color:var(--g700)}
@@ -224,12 +242,12 @@ li::before{content:'';position:absolute;left:0;top:.78em;width:13px;height:1px;b
   <div class="bleed">
     <div class="duo">
       <figure class="shot">
-        <img src="https://le-de.cdn-website.com/e5a31d4f88f6406ea810cbbe60da3a3c/dms3rep/multi/opt/alquiler-vacacional-tenerife-sur-614w.jpg"
-             alt="Villa con piscina en el sur de Tenerife" loading="lazy" onerror="this.closest('.shot').remove()">
+        <img src="https://le-de.cdn-website.com/e5a31d4f88f6406ea810cbbe60da3a3c/dms3rep/multi/opt/excursiones-en-barco-tenerife-sur-1920w.jpg"
+             alt="Salida en barco por el sur de Tenerife" loading="lazy" onerror="this.closest('.shot').remove()">
       </figure>
       <figure class="shot">
-        <img src="https://le-de.cdn-website.com/e5a31d4f88f6406ea810cbbe60da3a3c/dms3rep/multi/opt/_DSC8512+copia-614w.jpg"
-             alt="Alojamiento en Callao Salvaje" loading="lazy" onerror="this.closest('.shot').remove()">
+        <img src="https://le-de.cdn-website.com/e5a31d4f88f6406ea810cbbe60da3a3c/dms3rep/multi/opt/Teide-gran-tour-tenerife-1920w.webp"
+             alt="El Teide" loading="lazy" onerror="this.closest('.shot').remove()">
       </figure>
     </div>
   </div>
@@ -387,13 +405,13 @@ li::before{content:'';position:absolute;left:0;top:.78em;width:13px;height:1px;b
           onerror="this.closest('.shot').remove()">
       </figure>
       <figure class="shot">
-        <img loading="lazy" alt="Villa con piscina en Costa Adeje"
-          src="https://le-de.cdn-website.com/e5a31d4f88f6406ea810cbbe60da3a3c/dms3rep/multi/opt/20260409+-+55+-+Pura+Vida+Canarias+-+Costa+Adeje-35-614w.jpg"
+        <img loading="lazy" alt="Buceo con tortugas"
+          src="https://le-de.cdn-website.com/e5a31d4f88f6406ea810cbbe60da3a3c/dms3rep/multi/opt/Atlantis_Diving_buceo-tenerife-3-1920w.webp"
           onerror="this.closest('.shot').remove()">
       </figure>
       <figure class="shot">
-        <img loading="lazy" alt="El Teide"
-          src="https://le-de.cdn-website.com/e5a31d4f88f6406ea810cbbe60da3a3c/dms3rep/multi/opt/Teide-gran-tour-tenerife-1920w.webp"
+        <img loading="lazy" alt="Buggy en un mirador sobre la costa"
+          src="https://le-de.cdn-website.com/e5a31d4f88f6406ea810cbbe60da3a3c/dms3rep/multi/opt/xclusive-buggy-tenerife-sur-1920w.jpg"
           onerror="this.closest('.shot').remove()">
       </figure>
     </div>
@@ -455,7 +473,7 @@ li::before{content:'';position:absolute;left:0;top:.78em;width:13px;height:1px;b
       <div class="fila">
         <div class="fila-t">
           <b>Soporte y mantenimiento</b>
-          <small>Alojamiento, SSL y dominio · Copias diarias · Seguridad y vigilancia · 3 h/mes de cambios · Soporte por correo y WhatsApp · Informe trimestral</small>
+          <small>Los tres primeros meses van incluidos, sin coste. Se empieza a cobrar a partir del cuarto · Alojamiento, SSL y dominio · Copias diarias · Seguridad y vigilancia · 3 h/mes de cambios · Soporte por correo y WhatsApp · Informe trimestral</small>
         </div>
         <div class="fila-n">175 <span>EUR / MES</span></div>
       </div>
@@ -468,7 +486,7 @@ li::before{content:'';position:absolute;left:0;top:.78em;width:13px;height:1px;b
       </div>
       <div class="pago">
         <h4>Si preferís mensualidades</h4>
-        <p>Hay flexibilidad: lo repartimos en mensualidades a lo largo del proyecto, sin recargo. Decidnos en cuántas y lo ajustamos.</p>
+        <p>Hay flexibilidad: 50% al firmar y el 50% restante repartido en hasta seis mensualidades, sin recargo. Elegís vosotros en cuántas.</p>
       </div>
       <div class="pago">
         <h4>Cómo se paga</h4>
@@ -476,7 +494,7 @@ li::before{content:'';position:absolute;left:0;top:.78em;width:13px;height:1px;b
       </div>
     </div>
 
-    <p class="pie">Precios en euros (EUR), impuestos no incluidos. La cuota de soporte empieza el mes siguiente a la puesta en marcha y se puede cancelar con 30 días de aviso.</p>
+    <p class="pie">Precios en euros (EUR), impuestos no incluidos. Los tres primeros meses de soporte van incluidos en el proyecto: la cuota de 175 € empieza en el cuarto mes desde la puesta en marcha y se puede cancelar con 30 días de aviso.</p>
   </div>
 </section>
 
