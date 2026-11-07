@@ -9,6 +9,7 @@
 <meta name="robots" content="noindex,nofollow">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://le-de.cdn-website.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
 :root{
@@ -30,7 +31,6 @@ a{color:inherit}
 h1,h2,h3{font-family:var(--display);font-weight:300;letter-spacing:-.01em}
 h1{font-size:clamp(2.6rem,6vw,4.4rem);line-height:1.08}
 h2{font-size:clamp(1.9rem,3.6vw,2.9rem);line-height:1.15;margin-top:14px}
-h3{font-size:1.35rem;line-height:1.3;margin-bottom:8px}
 p{margin-top:16px;color:var(--g800)}
 p.lead{font-size:1.14rem;color:var(--g700)}
 strong{font-weight:500;color:var(--ink)}
@@ -38,12 +38,24 @@ strong{font-weight:500;color:var(--ink)}
 section{padding:76px 0;border-top:1px solid var(--g200)}
 section:first-of-type{border-top:none}
 
+/* Fotos: suyas, servidas desde su propio sitio. Si alguna no carga,
+   el bloque entero desaparece y la maqueta no se rompe. */
+.shot{margin-top:40px;overflow:hidden;background:var(--bone)}
+.shot img{width:100%;height:100%;object-fit:cover}
+.shot-wide{aspect-ratio:21/9}
+.shot-tall{aspect-ratio:4/3}
+.shot cite{display:block;margin-top:8px;font-size:10px;font-style:normal;
+  letter-spacing:.16em;text-transform:uppercase;color:var(--g400)}
+.shots{display:grid;gap:14px;margin-top:40px}
+@media(min-width:760px){.shots{grid-template-columns:1fr 1fr}}
+.shots .shot{margin-top:0}
+
 /* Portada */
-.cover{padding:56px 0 84px;border:none}
+.cover{padding:56px 0 76px;border:none}
 .cover-logo img{height:26px;width:auto}
-.cover-meta{margin-top:120px}
+.cover-meta{margin-top:104px}
 .cover h1{margin-top:18px}
-.cover-rule{margin-top:56px;padding-top:22px;border-top:1px solid var(--g200);
+.cover-rule{margin-top:48px;padding-top:22px;border-top:1px solid var(--g200);
   display:flex;flex-wrap:wrap;gap:12px 56px;font-size:12px;color:var(--g500);letter-spacing:.04em}
 
 /* Listas */
@@ -51,12 +63,30 @@ ul{list-style:none;margin-top:20px}
 li{position:relative;padding-left:26px;margin-top:11px;color:var(--g800)}
 li::before{content:'';position:absolute;left:0;top:.72em;width:12px;height:1px;background:var(--g400)}
 
-/* Bloques de dos columnas */
+/* Dos columnas */
 .pair{display:grid;gap:40px;margin-top:40px}
 @media(min-width:860px){.pair{grid-template-columns:1fr 1fr;gap:56px}}
 .pair h3{font-family:var(--body);font-size:12px;font-weight:500;letter-spacing:.18em;
   text-transform:uppercase;color:var(--ink);margin-bottom:12px}
 .pair p{margin-top:0}
+
+/* Hallazgos del análisis */
+.hall{margin-top:44px;max-width:720px}
+.hall-i{padding:24px 0;border-top:1px solid var(--g200);display:grid;gap:4px}
+.hall-i:last-child{border-bottom:1px solid var(--g200)}
+@media(min-width:720px){.hall-i{grid-template-columns:150px 1fr;gap:28px}}
+.hall-k{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--g500);padding-top:5px}
+.hall-v{color:var(--g800)}
+.hall-v b{font-weight:500;color:var(--ink)}
+
+/* Rejilla de experiencias */
+.exp{margin-top:36px;max-width:720px;border-top:1px solid var(--g300)}
+.exp-i{display:flex;justify-content:space-between;align-items:baseline;gap:20px;
+  padding:13px 0;border-bottom:1px solid var(--g200);font-size:.95rem}
+.exp-n{color:var(--g800)}
+.exp-n small{color:var(--g500);font-size:.84rem;margin-left:8px}
+.exp-p{font-family:var(--display);font-size:1.15rem;white-space:nowrap;color:var(--ink)}
+.exp-cta{margin-top:18px;font-size:.9rem;color:var(--g500);max-width:720px}
 
 /* Preguntas */
 .qa{margin-top:44px;max-width:720px}
@@ -100,15 +130,18 @@ li::before{content:'';position:absolute;left:0;top:.72em;width:12px;height:1px;b
 @media(max-width:560px){
   .sheet{padding:0 22px}
   section{padding:54px 0}
-  .cover-meta{margin-top:68px}
+  .cover-meta{margin-top:62px}
   .fila{flex-direction:column;gap:8px}
+  .shot-wide{aspect-ratio:3/2}
 }
 
 @media print{
   body{font-size:10.5pt}
-  section{padding:30pt 0;break-inside:avoid}
-  .cover{padding:0 0 30pt}
-  .cover-meta{margin-top:40pt}
+  section{padding:28pt 0;break-inside:avoid}
+  .cover{padding:0 0 26pt}
+  .cover-meta{margin-top:34pt}
+  .shot-wide{aspect-ratio:21/9}
+  .shots{grid-template-columns:1fr 1fr}
   .cierre{background:#fff;color:var(--ink)}
   .cierre h2,.cierre a{color:var(--ink)}
   .cierre p{color:var(--g700)}
@@ -117,8 +150,8 @@ li::before{content:'';position:absolute;left:0;top:.72em;width:12px;height:1px;b
   .firma strong{color:var(--ink)}
   .precio{background:#fff;border-top:1px solid var(--g300)}
   .nota{background:#fff;border-left:2px solid var(--g300);padding-left:20pt}
-  .qa-item,.hito{break-inside:avoid}
-  @page{margin:18mm 16mm}
+  .qa-item,.hito,.hall-i,.shot{break-inside:avoid}
+  @page{margin:16mm 14mm}
 }
 </style>
 </head>
@@ -133,8 +166,13 @@ li::before{content:'';position:absolute;left:0;top:.72em;width:12px;height:1px;b
     <div class="cover-meta">
       <p class="label">Propuesta de proyecto</p>
       <h1>Casa Collection<br>Tenerife</h1>
-      <p class="lead col">Un sitio nuevo para las tres líneas de negocio, gestionado por vosotros, con reservas directas de alojamiento y de excursiones.</p>
+      <p class="lead col">Un sitio nuevo para las cuatro líneas, gestionado por vosotros, con reservas directas de alojamiento y de experiencias.</p>
     </div>
+    <figure class="shot shot-wide">
+      <img src="https://le-de.cdn-website.com/e5a31d4f88f6406ea810cbbe60da3a3c/dms3rep/multi/opt/foto-calma-paraiso-alquiler-vacacional-tenerife-1440w.jpg"
+           alt="Alojamiento de Casa Collection Tenerife" loading="eager"
+           onerror="this.closest('.shot').remove()">
+    </figure>
     <div class="cover-rule">
       <span>7 de noviembre de 2026</span>
       <span>Válida hasta el 7 de diciembre de 2026</span>
@@ -144,64 +182,136 @@ li::before{content:'';position:absolute;left:0;top:.72em;width:12px;height:1px;b
 
   <section>
     <p class="label">01 · El encargo</p>
-    <h2 class="col">Tres negocios en una web pensada para uno.</h2>
+    <h2 class="col">Cuatro negocios en una web pensada para uno.</h2>
     <div class="col">
-      <p>Gestionáis alojamiento vacacional, vendéis e intermediáis propiedades, y organizáis excursiones y actividades. Son tres públicos distintos, con tres recorridos distintos, y hoy comparten una estructura que no los distingue.</p>
-      <p>Nos pedís tres cosas concretas: una imagen más profesional, una navegación que cada uno de esos tres públicos entienda a la primera, y poder reservar directamente —tanto los alojamientos como las excursiones— sin que ninguna reserva tenga que pasar por una persona.</p>
-      <p>Y una cuarta, que es la que más condiciona el diseño técnico: <strong>queréis gestionarlo vosotros</strong>, con nuestro soporte detrás cuando haga falta.</p>
+      <p>Alquiler vacacional en Costa Adeje, Los Cristianos, Palm Mar y Callao Salvaje. Experiencias, de la excursión en barco al Gran Tour del Teide. Inmobiliaria. Y una cuarta línea que es la que más futuro tiene y la que peor se ve hoy: <strong>Propietarios</strong>, que es vuestro negocio B2B.</p>
+      <p>Son cuatro públicos distintos con cuatro recorridos distintos. Hoy comparten una estructura que no los distingue, y el visitante tiene que averiguar por su cuenta en cuál de los cuatro está.</p>
+      <p>Nos pedís imagen más profesional, navegación sencilla y reservas directas. Y una cuarta cosa, que es la que más condiciona el diseño técnico: <strong>queréis gestionarlo vosotros</strong>, con nuestro soporte detrás cuando haga falta.</p>
     </div>
   </section>
 
   <section>
-    <p class="label">02 · Qué construimos</p>
+    <p class="label">02 · Lo que vimos en vuestro sitio</p>
+    <h2 class="col">Antes de escribir esto, lo analizamos.</h2>
+    <div class="col">
+      <p>No es una web mal hecha. Es una web que se os ha quedado pequeña: está construida sobre un creador de páginas, y ese tipo de herramienta aguanta bien un negocio y empieza a crujir con cuatro. Esto es lo que encontramos.</p>
+    </div>
+
+    <div class="hall">
+      <div class="hall-i">
+        <div class="hall-k">Plataforma</div>
+        <div class="hall-v"><b>Duda</b>, un creador de páginas. Explica bien los límites de hoy: no hay un panel pensado para una cartera de propiedades, y cada ficha nueva es trabajo manual en lugar de un registro.</div>
+      </div>
+      <div class="hall-i">
+        <div class="hall-k">Idiomas</div>
+        <div class="hall-v">Español, inglés y francés. La traducción está incompleta: en la versión inglesa conviven rótulos en los dos idiomas. Un francés o un inglés que ve una web a medio traducir duda del resto.</div>
+      </div>
+      <div class="hall-i">
+        <div class="hall-k">Reservar alojamiento</div>
+        <div class="hall-v">En la portada hay un bloque que dice <b>«Elige tus fechas»</b> y debajo no hay ningún selector de fechas. Esa es exactamente la promesa que la web hace y no cumple.</div>
+      </div>
+      <div class="hall-i">
+        <div class="hall-k">Reservar experiencias</div>
+        <div class="hall-v">Nueve experiencias publicadas, con sus precios, y las nueve con un botón que dice <b>«Reservar esta experiencia»</b>. Ninguna se puede reservar: todas acaban en un formulario o en WhatsApp.</div>
+      </div>
+      <div class="hall-i">
+        <div class="hall-k">Prueba social</div>
+        <div class="hall-v">Las cuatro reseñas de la portada citan Airbnb y Booking. Vuestra reputación está construida, pero está prestada: vive en los portales, no en vuestro dominio.</div>
+      </div>
+      <div class="hall-i">
+        <div class="hall-k">Smoobu</div>
+        <div class="hall-v">Aparece acreditado en el pie. Buena noticia: ya tenéis resuelto lo difícil, que es la sincronización de calendarios. Lo que falta es conectarlo a una web que esté a su altura.</div>
+      </div>
+    </div>
+
+    <div class="shots">
+      <figure class="shot shot-tall">
+        <img src="https://le-de.cdn-website.com/e5a31d4f88f6406ea810cbbe60da3a3c/dms3rep/multi/opt/alquiler-vacacional-tenerife-sur-614w.jpg"
+             alt="Villa con piscina, Tenerife sur" loading="lazy" onerror="this.closest('.shot').remove()">
+      </figure>
+      <figure class="shot shot-tall">
+        <img src="https://le-de.cdn-website.com/e5a31d4f88f6406ea810cbbe60da3a3c/dms3rep/multi/opt/_DSC8512+copia-614w.jpg"
+             alt="Alojamiento en Callao Salvaje" loading="lazy" onerror="this.closest('.shot').remove()">
+      </figure>
+    </div>
+    <p class="pie">Vuestras propias fotografías. El material está, y es bueno: el problema no es lo que tenéis que contar, es el sitio donde lo estáis contando.</p>
+  </section>
+
+  <section>
+    <p class="label">03 · El hueco</p>
+    <h2 class="col">Nueve botones que dicen «Reservar» y no reservan.</h2>
+    <div class="col">
+      <p>Smoobu gestiona alojamiento, no actividades. Por eso el alquiler funciona y las experiencias no: no hay ninguna herramienta detrás, solo una persona contestando.</p>
+      <p>Esto es lo que hay publicado hoy, con vuestros precios:</p>
+    </div>
+
+    <div class="exp">
+      <div class="exp-i"><div class="exp-n">Excursión en Barco <small>3 h · Puerto Colón</small></div><div class="exp-p">47 €</div></div>
+      <div class="exp-i"><div class="exp-n">Chárter Privado <small>3 h · Puerto Colón</small></div><div class="exp-p">910 €</div></div>
+      <div class="exp-i"><div class="exp-n">Buceo <small>Los Cristianos</small></div><div class="exp-p">75 €</div></div>
+      <div class="exp-i"><div class="exp-n">Parapente <small>Taucho</small></div><div class="exp-p">110 €</div></div>
+      <div class="exp-i"><div class="exp-n">Rutas en Buggy <small>3 h · Las Chafiras</small></div><div class="exp-p">195 €</div></div>
+      <div class="exp-i"><div class="exp-n">Kayak y Esnórquel <small>2 h · Los Cristianos</small></div><div class="exp-p">45 €</div></div>
+      <div class="exp-i"><div class="exp-n">Motos de Agua <small>Puerto Colón</small></div><div class="exp-p">100 €</div></div>
+      <div class="exp-i"><div class="exp-n">Aventura Volcánica en Buggy <small>3 h · Playa Paraíso</small></div><div class="exp-p">210 €</div></div>
+      <div class="exp-i"><div class="exp-n">Gran Tour · Teide, Masca y el Norte <small>8 h</small></div><div class="exp-p">58 €</div></div>
+    </div>
+    <p class="exp-cta">Precios desde, tomados de vuestra página el 7 de noviembre de 2026.</p>
+
+    <div class="col">
+      <p>Un huésped que ya está alojado con vosotros es el cliente más fácil que vais a tener: ya pagó, ya está en la isla y quiere gastar más. Pero decide a las once de la noche, desde el sofá de la villa, y en ese momento no hay nadie contestando.</p>
+    </div>
+
+    <div class="nota">
+      <p>El motor de reservas de experiencias va <strong>incluido</strong> en esta propuesta, no como extra. Es la diferencia entre renovar una web y añadir una línea de ingresos que cobra sola, de noche y en tres idiomas.</p>
+    </div>
+
+    <figure class="shot shot-wide">
+      <img src="https://le-de.cdn-website.com/e5a31d4f88f6406ea810cbbe60da3a3c/dms3rep/multi/opt/diving-kayak-snorkel-tenerife-5-614w.jpg"
+           alt="Kayak y esnórquel con tortugas, Los Cristianos" loading="lazy" onerror="this.closest('.shot').remove()">
+    </figure>
+  </section>
+
+  <section>
+    <p class="label">04 · Qué construimos</p>
     <h2 class="col">Un sitio, un panel y dos motores de reserva.</h2>
 
     <div class="pair col">
       <div>
         <h3>El sitio</h3>
-        <p>Diseño a medida, no plantilla. Tres recorridos claros desde la portada: alquiler vacacional, propiedades en venta, excursiones. Fichas de propiedad con galería, mapa y características. Buscador de venta con filtros. Español, inglés y alemán.</p>
+        <p>Diseño a medida, no plantilla. Cuatro recorridos claros desde la portada: alquiler vacacional, experiencias, inmobiliaria y propietarios. Fichas con galería, mapa y características. Buscador de venta con filtros. Español, inglés y francés, traducidos de verdad.</p>
       </div>
       <div>
         <h3>El panel</h3>
-        <p>Vuestro, sin conocimientos técnicos. Alta y baja de propiedades, fichas de alojamiento, excursiones con sus horarios y cupos, textos, fotos y precios de cualquier página. Entrega con formación y grabación.</p>
+        <p>Vuestro, sin conocimientos técnicos. Alta y baja de propiedades, fichas de alojamiento, experiencias con sus horarios y cupos, textos, fotos y precios de cualquier página. Entrega con formación y grabación.</p>
       </div>
       <div>
         <h3>Reservas de alojamiento</h3>
-        <p>Sobre vuestro Smoobu actual. Smoobu sigue siendo el único dueño del calendario, así que la sincronización que ya tenéis con Airbnb, Booking y Vrbo sigue intacta y no se introduce ningún riesgo de doble reserva.</p>
+        <p>Sobre vuestro Smoobu actual, y por fin con el selector de fechas que la portada ya promete. Smoobu sigue siendo el único dueño del calendario, así que vuestra sincronización con Airbnb, Booking y Vrbo queda intacta.</p>
       </div>
       <div>
-        <h3>Reservas de excursiones</h3>
-        <p>Motor propio, porque Smoobu no gestiona actividades. Calendario por actividad, cupos, horarios, temporadas, precio por adulto y niño, pago con tarjeta y confirmación automática.</p>
+        <h3>Reservas de experiencias</h3>
+        <p>Motor propio, porque Smoobu no las cubre. Calendario por actividad, cupos, horarios, temporadas, precio por adulto y niño, pago con tarjeta y confirmación automática por correo.</p>
       </div>
     </div>
   </section>
 
   <section>
-    <p class="label">03 · El hueco</p>
-    <h2 class="col">Las excursiones son la parte que hoy no cobra sola.</h2>
-    <div class="col">
-      <p>El alojamiento ya lo tenéis resuelto: Smoobu hace su trabajo y los portales traen reservas. Las excursiones, no. Hoy un huésped que quiere una actividad tiene que escribir o llamar, y alguien tiene que contestar en horario de oficina y en el idioma que toque.</p>
-      <p>Es el peor sitio donde tener fricción, porque ese cliente ya está convencido: está alojado con vosotros, ya pagó, y quiere gastar más. Cada excursión que no se puede reservar a las once de la noche desde el sofá de la villa es margen que se queda sin cobrar.</p>
-    </div>
-    <div class="nota">
-      <p>El motor de excursiones va incluido en esta propuesta, no como extra. Es la diferencia entre renovar una web y añadir una línea de ingresos que funciona sin vosotros delante.</p>
-    </div>
-  </section>
-
-  <section>
-    <p class="label">04 · Vuestras preguntas</p>
+    <p class="label">05 · Vuestras preguntas</p>
     <h2 class="col">Respuestas directas.</h2>
 
     <div class="qa">
       <div class="qa-item">
         <p class="qa-q">¿Trabajáis con WordPress u otra plataforma?</p>
         <p>Sí, trabajamos con WordPress cuando el proyecto lo pide. Para el vuestro no lo recomendamos.</p>
-        <p>Una web con tres líneas de negocio, fichas de propiedad, reservas y pagos acaba siendo en WordPress seis o siete plugins de terceros que se actualizan por su cuenta; el día que uno rompe el calendario, la solución no está en nuestras manos. Nosotros hacemos webs a medida con un panel de gestión propio encima: va más rápida, no hay plugins que mantener, y lo que se rompe lo arreglamos nosotros porque lo hemos escrito nosotros.</p>
+        <p>Vuestro caso tiene cuatro líneas de negocio, fichas de propiedad, reservas y pagos. Eso en WordPress acaba siendo seis o siete plugins de terceros que se actualizan por su cuenta; el día que uno rompe el calendario, la solución no está en nuestras manos. Y por el camino habríais cambiado un creador de páginas por otro sistema que tampoco controláis del todo.</p>
+        <p>Nosotros hacemos webs a medida con un panel de gestión propio encima: va más rápida, no hay plugins que mantener, y lo que se rompe lo arreglamos nosotros porque lo hemos escrito nosotros.</p>
       </div>
 
       <div class="qa-item">
         <p class="qa-q">¿Podríamos gestionar nosotros mismos contenidos, fotografías, precios y propiedades?</p>
-        <p>Sí, y es la parte que más nos importa dejar bien resuelta. Dais de alta y retiráis propiedades en venta con sus fotos, precios y características; editáis las fichas de alojamiento; creáis y modificáis excursiones con horarios, cupos y temporadas; y cambiáis textos, fotos y precios de cualquier página del sitio. Sin tocar código y sin pedírnoslo.</p>
+        <p>Sí, y es la parte que más nos importa dejar bien resuelta. Dais de alta y retiráis propiedades en venta con sus fotos, precios y características; editáis las fichas de alojamiento; creáis y modificáis experiencias con horarios, cupos y temporadas; y cambiáis textos, fotos y precios de cualquier página del sitio. Sin tocar código y sin pedírnoslo.</p>
+        <p>Una diferencia con lo que tenéis ahora: las propiedades y las experiencias dejan de ser páginas sueltas y pasan a ser registros. Publicar una villa nueva será rellenar un formulario, no maquetar una página.</p>
       </div>
 
       <div class="qa-item">
@@ -224,14 +334,14 @@ li::before{content:'';position:absolute;left:0;top:.72em;width:12px;height:1px;b
   </section>
 
   <section class="precio">
-    <p class="label">05 · Inversión</p>
+    <p class="label">06 · Inversión</p>
     <h2 class="col">Un proyecto cerrado, una cuota.</h2>
 
     <div class="tabla">
       <div class="fila">
         <div class="fila-t">
           Proyecto completo
-          <small>Sitio nuevo con las tres líneas de negocio · Panel de gestión · Español, inglés y alemán · Integración con Smoobu · Motor de reservas de excursiones</small>
+          <small>Sitio nuevo con las cuatro líneas · Panel de gestión · Español, inglés y francés · Integración con Smoobu · Motor de reservas de experiencias</small>
         </div>
         <div class="fila-n">7.500 <span>EUR</span></div>
       </div>
@@ -248,21 +358,21 @@ li::before{content:'';position:absolute;left:0;top:.72em;width:12px;height:1px;b
   </section>
 
   <section>
-    <p class="label">06 · Plazos</p>
+    <p class="label">07 · Plazos</p>
     <h2 class="col">De cinco a siete semanas.</h2>
 
     <div class="hitos">
       <div class="hito">
         <div class="hito-n">01</div>
-        <div class="hito-c"><strong>Semana 1 — Arranque</strong><span>Reunión de contenidos, accesos a Smoobu, inventario de propiedades, excursiones y fotografía. Aquí decidimos qué falta.</span></div>
+        <div class="hito-c"><strong>Semana 1 — Arranque</strong><span>Reunión de contenidos, accesos a Smoobu, inventario de propiedades y experiencias, revisión de fotografía. Aquí decidimos qué falta.</span></div>
       </div>
       <div class="hito">
         <div class="hito-n">02</div>
-        <div class="hito-c"><strong>Semanas 2 y 3 — Diseño</strong><span>Portada y las tres plantillas clave: ficha de alojamiento, ficha de propiedad en venta y ficha de excursión. Se aprueban antes de programar nada.</span></div>
+        <div class="hito-c"><strong>Semanas 2 y 3 — Diseño</strong><span>Portada y las cuatro plantillas clave: alojamiento, propiedad en venta, experiencia y propietarios. Se aprueban antes de programar nada.</span></div>
       </div>
       <div class="hito">
         <div class="hito-n">03</div>
-        <div class="hito-c"><strong>Semanas 3 a 6 — Desarrollo</strong><span>Sitio, panel, integración con Smoobu y motor de excursiones. Los tres idiomas y las pruebas de pago entran aquí.</span></div>
+        <div class="hito-c"><strong>Semanas 3 a 6 — Desarrollo</strong><span>Sitio, panel, integración con Smoobu y motor de experiencias. Los tres idiomas y las pruebas de pago entran aquí.</span></div>
       </div>
       <div class="hito">
         <div class="hito-n">04</div>
@@ -274,13 +384,13 @@ li::before{content:'';position:absolute;left:0;top:.72em;width:12px;height:1px;b
   </section>
 
   <section>
-    <p class="label">07 · Qué necesitamos de vosotros</p>
+    <p class="label">08 · Qué necesitamos de vosotros</p>
     <h2 class="col">Cuatro datos para cerrar el presupuesto con precisión.</h2>
     <div class="col">
       <ul>
         <li>Cuántas villas gestionáis ahora y cuántas propiedades en venta tenéis publicadas de media.</li>
         <li>Qué plan de Smoobu tenéis contratado.</li>
-        <li>Si los tres idiomas son español, inglés y alemán, o hay alguno más.</li>
+        <li>Si los idiomas siguen siendo español, inglés y francés, o queréis añadir alemán.</li>
         <li>Si tenéis manual de marca, o hay que trabajarlo.</li>
       </ul>
       <p>Con eso confirmamos la cifra de arriba o la ajustamos. Preferimos ajustarla antes de firmar que descubrirlo a mitad del proyecto.</p>
@@ -288,7 +398,7 @@ li::before{content:'';position:absolute;left:0;top:.72em;width:12px;height:1px;b
   </section>
 
   <section class="cierre">
-    <p class="label">08 · Siguiente paso</p>
+    <p class="label">09 · Siguiente paso</p>
     <h2 class="col">Media hora y lo cerramos.</h2>
     <div class="col">
       <p>Una llamada de treinta minutos basta para resolver lo que quede y fijar fecha de arranque. Decidnos dos o tres huecos que os sirvan.</p>
