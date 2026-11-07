@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Propuesta · Casa Collection Tenerife · WD Studio</title>
+<meta name="description" content="Propuesta de renovación web, gestión propia de contenidos y reservas directas para Casa Collection Tenerife.">
+<!-- Documento comercial: no debe aparecer en buscadores. -->
+<meta name="robots" content="noindex,nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#0B0B0B; --paper:#FFFFFF; --bone:#F4F2ED;
+  --g900:#171717; --g800:#262626; --g700:#404040;
+  --g500:#737373; --g400:#A3A3A3; --g300:#D4D4D4; --g200:#E7E5E1;
+  --display:'Cormorant Garamond',Georgia,serif;
+  --body:'Inter',-apple-system,'Helvetica Neue',Arial,sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font-family:var(--body);font-weight:300;line-height:1.7;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%}
+a{color:inherit}
+
+.sheet{max-width:1000px;margin:0 auto;padding:0 40px}
+.col{max-width:720px}
+
+.label{font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:var(--g500);font-weight:500}
+h1,h2,h3{font-family:var(--display);font-weight:300;letter-spacing:-.01em}
+h1{font-size:clamp(2.6rem,6vw,4.4rem);line-height:1.08}
+h2{font-size:clamp(1.9rem,3.6vw,2.9rem);line-height:1.15;margin-top:14px}
+h3{font-size:1.35rem;line-height:1.3;margin-bottom:8px}
+p{margin-top:16px;color:var(--g800)}
+p.lead{font-size:1.14rem;color:var(--g700)}
+strong{font-weight:500;color:var(--ink)}
+
+section{padding:76px 0;border-top:1px solid var(--g200)}
+section:first-of-type{border-top:none}
+
+/* Portada */
+.cover{padding:56px 0 84px;border:none}
+.cover-logo img{height:26px;width:auto}
+.cover-meta{margin-top:120px}
+.cover h1{margin-top:18px}
+.cover-rule{margin-top:56px;padding-top:22px;border-top:1px solid var(--g200);
+  display:flex;flex-wrap:wrap;gap:12px 56px;font-size:12px;color:var(--g500);letter-spacing:.04em}
+
+/* Listas */
+ul{list-style:none;margin-top:20px}
+li{position:relative;padding-left:26px;margin-top:11px;color:var(--g800)}
+li::before{content:'';position:absolute;left:0;top:.72em;width:12px;height:1px;background:var(--g400)}
+
+/* Bloques de dos columnas */
+.pair{display:grid;gap:40px;margin-top:40px}
+@media(min-width:860px){.pair{grid-template-columns:1fr 1fr;gap:56px}}
+.pair h3{font-family:var(--body);font-size:12px;font-weight:500;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--ink);margin-bottom:12px}
+.pair p{margin-top:0}
+
+/* Preguntas */
+.qa{margin-top:44px;max-width:720px}
+.qa-item{padding:26px 0;border-top:1px solid var(--g200)}
+.qa-item:last-child{border-bottom:1px solid var(--g200)}
+.qa-q{font-family:var(--display);font-size:1.3rem;line-height:1.3;color:var(--ink)}
+.qa-item p{margin-top:12px;font-size:.97rem}
+
+/* Destacado */
+.nota{margin-top:36px;padding:30px 32px;background:var(--bone);max-width:720px}
+.nota p:first-child{margin-top:0}
+
+/* Precio */
+.precio{background:var(--bone)}
+.tabla{margin-top:40px;max-width:720px}
+.fila{display:flex;justify-content:space-between;align-items:baseline;gap:28px;
+  padding:22px 0;border-top:1px solid var(--g300)}
+.fila:last-of-type{border-bottom:1px solid var(--g300)}
+.fila-t{color:var(--g800)}
+.fila-t small{display:block;font-size:.84rem;color:var(--g500);margin-top:3px;line-height:1.5}
+.fila-n{font-family:var(--display);font-size:1.9rem;line-height:1;white-space:nowrap;color:var(--ink)}
+.fila-n span{font-family:var(--body);font-size:.78rem;letter-spacing:.1em;color:var(--g500)}
+.pie{margin-top:22px;font-size:.86rem;color:var(--g500);max-width:720px}
+
+/* Plazos */
+.hitos{margin-top:40px;display:grid;gap:1px;background:var(--g200);max-width:720px}
+.hito{background:var(--paper);padding:24px 26px;display:flex;gap:26px;align-items:baseline}
+.hito-n{font-family:var(--display);font-size:1.5rem;color:var(--g400);min-width:34px}
+.hito-c strong{display:block;margin-bottom:4px}
+.hito-c span{font-size:.92rem;color:var(--g700)}
+
+/* Cierre */
+.cierre{background:var(--ink);color:var(--bone);border:none}
+.cierre .label{color:var(--g400)}
+.cierre h2{color:var(--bone)}
+.cierre p{color:var(--g300)}
+.cierre a{color:var(--bone);text-decoration:none;border-bottom:1px solid var(--g700)}
+.firma{margin-top:48px;padding-top:26px;border-top:1px solid var(--g800);font-size:.92rem;color:var(--g400)}
+.firma strong{color:var(--bone);font-weight:400;display:block;margin-bottom:4px}
+
+@media(max-width:560px){
+  .sheet{padding:0 22px}
+  section{padding:54px 0}
+  .cover-meta{margin-top:68px}
+  .fila{flex-direction:column;gap:8px}
+}
+
+@media print{
+  body{font-size:10.5pt}
+  section{padding:30pt 0;break-inside:avoid}
+  .cover{padding:0 0 30pt}
+  .cover-meta{margin-top:40pt}
+  .cierre{background:#fff;color:var(--ink)}
+  .cierre h2,.cierre a{color:var(--ink)}
+  .cierre p{color:var(--g700)}
+  .cierre .label{color:var(--g500)}
+  .firma{border-top-color:var(--g300);color:var(--g700)}
+  .firma strong{color:var(--ink)}
+  .precio{background:#fff;border-top:1px solid var(--g300)}
+  .nota{background:#fff;border-left:2px solid var(--g300);padding-left:20pt}
+  .qa-item,.hito{break-inside:avoid}
+  @page{margin:18mm 16mm}
+}
+</style>
+</head>
+<body>
+
+<div class="sheet">
+
+  <section class="cover">
+    <div class="cover-logo">
+      <img src="../../images/work/logo-dark.png" alt="WD Studio Agency" width="560" height="88">
+    </div>
+    <div class="cover-meta">
+      <p class="label">Propuesta de proyecto</p>
+      <h1>Casa Collection<br>Tenerife</h1>
+      <p class="lead col">Un sitio nuevo para las tres líneas de negocio, gestionado por vosotros, con reservas directas de alojamiento y de excursiones.</p>
+    </div>
+    <div class="cover-rule">
+      <span>7 de noviembre de 2026</span>
+      <span>Válida hasta el 7 de diciembre de 2026</span>
+      <span>WD Studio · Ref. CCT-01</span>
+    </div>
+  </section>
+
+  <section>
+    <p class="label">01 · El encargo</p>
+    <h2 class="col">Tres negocios en una web pensada para uno.</h2>
+    <div class="col">
+      <p>Gestionáis alojamiento vacacional, vendéis e intermediáis propiedades, y organizáis excursiones y actividades. Son tres públicos distintos, con tres recorridos distintos, y hoy comparten una estructura que no los distingue.</p>
+      <p>Nos pedís tres cosas concretas: una imagen más profesional, una navegación que cada uno de esos tres públicos entienda a la primera, y poder reservar directamente —tanto los alojamientos como las excursiones— sin que ninguna reserva tenga que pasar por una persona.</p>
+      <p>Y una cuarta, que es la que más condiciona el diseño técnico: <strong>queréis gestionarlo vosotros</strong>, con nuestro soporte detrás cuando haga falta.</p>
+    </div>
+  </section>
+
+  <section>
+    <p class="label">02 · Qué construimos</p>
+    <h2 class="col">Un sitio, un panel y dos motores de reserva.</h2>
+
+    <div class="pair col">
+      <div>
+        <h3>El sitio</h3>
+        <p>Diseño a medida, no plantilla. Tres recorridos claros desde la portada: alquiler vacacional, propiedades en venta, excursiones. Fichas de propiedad con galería, mapa y características. Buscador de venta con filtros. Español, inglés y alemán.</p>
+      </div>
+      <div>
+        <h3>El panel</h3>
+        <p>Vuestro, sin conocimientos técnicos. Alta y baja de propiedades, fichas de alojamiento, excursiones con sus horarios y cupos, textos, fotos y precios de cualquier página. Entrega con formación y grabación.</p>
+      </div>
+      <div>
+        <h3>Reservas de alojamiento</h3>
+        <p>Sobre vuestro Smoobu actual. Smoobu sigue siendo el único dueño del calendario, así que la sincronización que ya tenéis con Airbnb, Booking y Vrbo sigue intacta y no se introduce ningún riesgo de doble reserva.</p>
+      </div>
+      <div>
+        <h3>Reservas de excursiones</h3>
+        <p>Motor propio, porque Smoobu no gestiona actividades. Calendario por actividad, cupos, horarios, temporadas, precio por adulto y niño, pago con tarjeta y confirmación automática.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <p class="label">03 · El hueco</p>
+    <h2 class="col">Las excursiones son la parte que hoy no cobra sola.</h2>
+    <div class="col">
+      <p>El alojamiento ya lo tenéis resuelto: Smoobu hace su trabajo y los portales traen reservas. Las excursiones, no. Hoy un huésped que quiere una actividad tiene que escribir o llamar, y alguien tiene que contestar en horario de oficina y en el idioma que toque.</p>
+      <p>Es el peor sitio donde tener fricción, porque ese cliente ya está convencido: está alojado con vosotros, ya pagó, y quiere gastar más. Cada excursión que no se puede reservar a las once de la noche desde el sofá de la villa es margen que se queda sin cobrar.</p>
+    </div>
+    <div class="nota">
+      <p>El motor de excursiones va incluido en esta propuesta, no como extra. Es la diferencia entre renovar una web y añadir una línea de ingresos que funciona sin vosotros delante.</p>
+    </div>
+  </section>
+
+  <section>
+    <p class="label">04 · Vuestras preguntas</p>
+    <h2 class="col">Respuestas directas.</h2>
+
+    <div class="qa">
+      <div class="qa-item">
+        <p class="qa-q">¿Trabajáis con WordPress u otra plataforma?</p>
+        <p>Sí, trabajamos con WordPress cuando el proyecto lo pide. Para el vuestro no lo recomendamos.</p>
+        <p>Una web con tres líneas de negocio, fichas de propiedad, reservas y pagos acaba siendo en WordPress seis o siete plugins de terceros que se actualizan por su cuenta; el día que uno rompe el calendario, la solución no está en nuestras manos. Nosotros hacemos webs a medida con un panel de gestión propio encima: va más rápida, no hay plugins que mantener, y lo que se rompe lo arreglamos nosotros porque lo hemos escrito nosotros.</p>
+      </div>
+
+      <div class="qa-item">
+        <p class="qa-q">¿Podríamos gestionar nosotros mismos contenidos, fotografías, precios y propiedades?</p>
+        <p>Sí, y es la parte que más nos importa dejar bien resuelta. Dais de alta y retiráis propiedades en venta con sus fotos, precios y características; editáis las fichas de alojamiento; creáis y modificáis excursiones con horarios, cupos y temporadas; y cambiáis textos, fotos y precios de cualquier página del sitio. Sin tocar código y sin pedírnoslo.</p>
+      </div>
+
+      <div class="qa-item">
+        <p class="qa-q">¿Ofrecéis soporte técnico y mantenimiento continuo?</p>
+        <p>Sí, con cuota mensual. Incluye alojamiento, certificado SSL y dominio gestionados; copias de seguridad diarias con restauración; actualizaciones de seguridad y vigilancia de caídas; hasta tres horas al mes de cambios que nos pidáis; soporte por correo y WhatsApp con respuesta en menos de 24 h laborables; e informe trimestral de visitas y reservas.</p>
+        <p>Queda fuera, y lo decimos para que no haya sorpresas en ninguna dirección: funcionalidad nueva, secciones nuevas y rediseños, que se presupuestan aparte.</p>
+      </div>
+
+      <div class="qa-item">
+        <p class="qa-q">¿El motor de reservas se integraría con vuestro Smoobu actual?</p>
+        <p>Sí. Integramos el motor de reservas de Smoobu en el sitio nuevo con nuestro diseño encima, de forma que el huésped reserva sin salir de vuestra web. Smoobu sigue siendo la única fuente de disponibilidad y precios: vuestras políticas, vuestras formas de pago y vuestra sincronización con los portales siguen funcionando exactamente igual.</p>
+        <p>Es una decisión deliberada: ningún sistema nuestro debería competir con vuestro channel manager por decidir qué días están libres.</p>
+      </div>
+
+      <div class="qa-item">
+        <p class="qa-q">¿Cuál sería el coste?</p>
+        <p>Está en el apartado siguiente, con lo que incluye y lo que no.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="precio">
+    <p class="label">05 · Inversión</p>
+    <h2 class="col">Un proyecto cerrado, una cuota.</h2>
+
+    <div class="tabla">
+      <div class="fila">
+        <div class="fila-t">
+          Proyecto completo
+          <small>Sitio nuevo con las tres líneas de negocio · Panel de gestión · Español, inglés y alemán · Integración con Smoobu · Motor de reservas de excursiones</small>
+        </div>
+        <div class="fila-n">7.500 <span>EUR</span></div>
+      </div>
+      <div class="fila">
+        <div class="fila-t">
+          Soporte y mantenimiento
+          <small>Alojamiento, SSL y dominio · Copias diarias · Seguridad y vigilancia · 3 h/mes de cambios · Soporte por correo y WhatsApp · Informe trimestral</small>
+        </div>
+        <div class="fila-n">175 <span>EUR / MES</span></div>
+      </div>
+    </div>
+
+    <p class="pie">Precios en euros (EUR), impuestos no incluidos. Forma de pago propuesta: 40% al firmar, 30% a la aprobación del diseño, 30% a la entrega. La cuota de soporte empieza el mes siguiente a la puesta en marcha y se puede cancelar con 30 días de aviso.</p>
+  </section>
+
+  <section>
+    <p class="label">06 · Plazos</p>
+    <h2 class="col">De cinco a siete semanas.</h2>
+
+    <div class="hitos">
+      <div class="hito">
+        <div class="hito-n">01</div>
+        <div class="hito-c"><strong>Semana 1 — Arranque</strong><span>Reunión de contenidos, accesos a Smoobu, inventario de propiedades, excursiones y fotografía. Aquí decidimos qué falta.</span></div>
+      </div>
+      <div class="hito">
+        <div class="hito-n">02</div>
+        <div class="hito-c"><strong>Semanas 2 y 3 — Diseño</strong><span>Portada y las tres plantillas clave: ficha de alojamiento, ficha de propiedad en venta y ficha de excursión. Se aprueban antes de programar nada.</span></div>
+      </div>
+      <div class="hito">
+        <div class="hito-n">03</div>
+        <div class="hito-c"><strong>Semanas 3 a 6 — Desarrollo</strong><span>Sitio, panel, integración con Smoobu y motor de excursiones. Los tres idiomas y las pruebas de pago entran aquí.</span></div>
+      </div>
+      <div class="hito">
+        <div class="hito-n">04</div>
+        <div class="hito-c"><strong>Semana 7 — Entrega</strong><span>Carga de contenido final, formación sobre vuestro propio panel y puesta en marcha. Dos semanas de garantía de ajustes sin coste.</span></div>
+      </div>
+    </div>
+
+    <p class="pie">El plazo cuenta desde que tengamos el contenido. Si las fotografías o los textos de las propiedades tardan, el calendario se mueve con ellos: preferimos decirlo ahora a justificarlo en la semana cinco.</p>
+  </section>
+
+  <section>
+    <p class="label">07 · Qué necesitamos de vosotros</p>
+    <h2 class="col">Cuatro datos para cerrar el presupuesto con precisión.</h2>
+    <div class="col">
+      <ul>
+        <li>Cuántas villas gestionáis ahora y cuántas propiedades en venta tenéis publicadas de media.</li>
+        <li>Qué plan de Smoobu tenéis contratado.</li>
+        <li>Si los tres idiomas son español, inglés y alemán, o hay alguno más.</li>
+        <li>Si tenéis manual de marca, o hay que trabajarlo.</li>
+      </ul>
+      <p>Con eso confirmamos la cifra de arriba o la ajustamos. Preferimos ajustarla antes de firmar que descubrirlo a mitad del proyecto.</p>
+    </div>
+  </section>
+
+  <section class="cierre">
+    <p class="label">08 · Siguiente paso</p>
+    <h2 class="col">Media hora y lo cerramos.</h2>
+    <div class="col">
+      <p>Una llamada de treinta minutos basta para resolver lo que quede y fijar fecha de arranque. Decidnos dos o tres huecos que os sirvan.</p>
+      <p>Si preferís empezar por escrito, respondednos al correo con los cuatro datos del apartado anterior y os devolvemos el presupuesto confirmado.</p>
+      <div class="firma">
+        <strong>Diego Larios · WD Studio</strong>
+        <a href="mailto:diego@wdstudio.agency">diego@wdstudio.agency</a> · +52 312 241 1693<br>
+        <a href="https://wdstudio.agency">wdstudio.agency</a>
+      </div>
+    </div>
+  </section>
+
+</div>
+</body>
+</html>
