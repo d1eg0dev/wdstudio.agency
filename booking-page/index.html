@@ -176,6 +176,7 @@ footer{padding:56px 0;border-top:1px solid var(--g200)}
   .container,.nav-in{padding-left:22px;padding-right:22px}
   section{padding:72px 0}
   .nav-link{display:none}
+  .nav-lang{display:inline;gap:0}
 }
 </style>
 </head>
@@ -188,6 +189,7 @@ footer{padding:56px 0;border-top:1px solid var(--g200)}
       <a class="nav-link" href="#cuenta">La cuenta</a>
       <a class="nav-link" href="#producto">El producto</a>
       <a class="nav-link" href="#precio">Precio</a>
+      <a class="nav-link nav-lang" href="en/" lang="en">EN</a>
       <a class="nav-cta" href="#empezar">Empezar</a>
     </div>
   </div>
@@ -504,6 +506,9 @@ footer{padding:56px 0;border-top:1px solid var(--g200)}
   [].forEach.call(document.querySelectorAll('[data-pago]'), function(a){
     var plan = a.dataset.pago;
     a.href = PAGO[plan] || ('alta/?plan=' + plan);
+    a.addEventListener('click', function(){
+      try { localStorage.setItem('bp_lang', 'es'); } catch (e) {}
+    });
   });
 })();
 

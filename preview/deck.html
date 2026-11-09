@@ -58,6 +58,7 @@ h2 b{font-weight:500}
 .s.dark .rw span{color:#9C9891}
 
 .tiers{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(14px,2vw,26px);margin-top:34px}
+.tiers.two{grid-template-columns:repeat(2,1fr);max-width:820px}
 .tier{background:var(--card);border:1px solid var(--line);border-radius:3px;padding:clamp(20px,2.4vw,30px);position:relative}
 .tier.mid{border-color:var(--ink);border-width:1.5px}
 .tier .tag{position:absolute;top:-9px;left:clamp(20px,2.4vw,30px);background:var(--ink);color:#fff;
@@ -100,7 +101,7 @@ h2 b{font-weight:500}
 .sigurl{margin-top:18px;font-size:12px;letter-spacing:.14em;color:#8E8B85}
 
 @media(max-width:820px){
-  .g2,.g3,.g4,.tiers{grid-template-columns:1fr;gap:18px}
+  .g2,.g3,.g4,.tiers,.tiers.two{grid-template-columns:1fr;gap:18px}
   .s{padding:9vh 7vw}
   .g4{gap:12px}
 }
@@ -204,7 +205,7 @@ es:{
  t2n:'Integrado a tu sitio', t2a:'Todo lo del nivel anterior', t2b:'Embebido en tu web', t2c:'Recuperación de reservas abandonadas', t2d:'El enlace sigue funcionando', t2e:'Adaptado a tu identidad',
  t3n:'Landing + reservas', t3a:'Todo lo del nivel anterior', t3b:'Landing de la propiedad, diseñada', t3c:'Recuperación de reservas abandonadas', t3d:'Optimizada para buscadores', t3e:'Para quien sólo tiene Airbnb',
  popular:'El más elegido',
- s9n:'Mantenimiento: <b>79 USD al mes</b> ($1,399 MXN + IVA en México) en los tres niveles. Cubre hosting, respaldos, actualizaciones, soporte y el envío de los correos de recuperación.<br>Si vienes de la Booking Page, hasta seis mensualidades pagadas se descuentan del precio de compra.',
+ s9n:'Mantenimiento: <b>79 USD al mes</b> ($1,399 MXN + IVA en México) en los dos niveles. Cubre hosting, respaldos, actualizaciones, soporte y el envío de los correos de recuperación.<br>Si vienes de la Booking Page, hasta seis mensualidades pagadas se descuentan del precio de compra.',
 
  s10k:'Tiempos', s10t:'De la firma<br><b>a la primera reserva</b>',
  w1:'Día 1', w1d:'Definimos temporadas, tarifas, mínimos y extras contigo.',
@@ -302,7 +303,7 @@ en:{
  t2n:'Built into your site', t2a:'Everything in the previous tier', t2b:'Embedded in your website', t2c:'Abandoned booking recovery', t2d:'The link keeps working', t2e:'Matched to your identity',
  t3n:'Landing + booking', t3a:'Everything in the previous tier', t3b:'Property landing page, designed', t3c:'Abandoned booking recovery', t3d:'Search optimised', t3e:'For those with only Airbnb',
  popular:'Most chosen',
- s9n:'Maintenance: <b>79 USD per month</b> ($1,399 MXN + VAT in Mexico) across all three tiers. Covers hosting, backups, updates, support and sending the recovery emails.<br>If you come from the Booking Page, up to six paid months come off the purchase price.',
+ s9n:'Maintenance: <b>79 USD per month</b> ($1,399 MXN + VAT in Mexico) on both tiers. Covers hosting, backups, updates, support and sending the recovery emails.<br>If you come from the Booking Page, up to six paid months come off the purchase price.',
 
  s10k:'Timeline', s10t:'From signature<br><b>to first booking</b>',
  w1:'Day 1', w1d:'We define seasons, rates, minimums and extras with you.',
@@ -384,11 +385,9 @@ d.innerHTML=
 
 /* 11 — compra */
 +'<section class="s"><div class="k">'+t('s9k')+'</div><h2>'+t('s9t')+'</h2>'
-+'<div class="tiers">'
-+'<div class="tier"><div class="nm">'+t('t1n')+'</div><div class="pr">$1,414<span class="cur">USD</span></div><div class="mx">$24,900 '+t('mxv')+'</div>'
-+'<ul><li>'+t('t1a')+'</li><li>'+t('t1b')+'</li><li>'+t('t1c')+'</li><li>'+t('t1d')+'</li><li>'+t('t1e')+'</li></ul></div>'
++'<div class="tiers two">'
 +'<div class="tier mid"><div class="tag">'+t('popular')+'</div><div class="nm">'+t('t2n')+'</div><div class="pr">$1,890<span class="cur">USD</span></div><div class="mx">$33,500 '+t('mxv')+'</div>'
-+'<ul><li>'+t('t2a')+'</li><li>'+t('t2b')+'</li><li>'+t('t2c')+'</li><li>'+t('t2d')+'</li><li>'+t('t2e')+'</li></ul></div>'
++'<ul><li>'+t('t1a')+'</li><li>'+t('t1b')+'</li><li>'+t('t1c')+'</li><li>'+t('t1d')+'</li><li>'+t('t2b')+'</li><li>'+t('t2c')+'</li></ul></div>'
 +'<div class="tier"><div class="nm">'+t('t3n')+'</div><div class="pr">$3,400<span class="cur">USD</span></div><div class="mx">$59,900 '+t('mxv')+'</div>'
 +'<ul><li>'+t('t3a')+'</li><li>'+t('t3b')+'</li><li>'+t('t3c')+'</li><li>'+t('t3d')+'</li><li>'+t('t3e')+'</li></ul></div>'
 +'</div><p class="bd" style="margin-top:26px;font-size:.88rem">'+t('s9n')+'</p></section>'

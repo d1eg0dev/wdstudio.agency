@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Proposal · Casa Collection Tenerife · WD Studio</title>
+<meta name="description" content="Proposal for a new website, self-managed content and direct bookings for Casa Collection Tenerife.">
+<meta name="robots" content="noindex,nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://le-de.cdn-website.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#0B0B0B; --paper:#FFFFFF; --bone:#F4F2ED;
+  --g900:#171717; --g800:#262626; --g700:#404040;
+  --g500:#737373; --g400:#A3A3A3; --g300:#D4D4D4; --g200:#E7E5E1;
+  --display:'Cormorant Garamond',Georgia,serif;
+  --body:'Inter',-apple-system,'Helvetica Neue',Arial,sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font-family:var(--body);
+  font-size:17.5px;font-weight:300;line-height:1.8;-webkit-font-smoothing:antialiased;
+  /* Nunca partir una palabra: si no cabe, que salte de línea entera. */
+  hyphens:manual;overflow-wrap:break-word;text-wrap:pretty}
+h1,h2,.qa-q{text-wrap:balance}
+img{display:block;max-width:100%}
+a{color:inherit}
+
+/* Las secciones van a sangre; el contenido se centra dentro. */
+section{padding:112px 0;border-top:1px solid var(--g200)}
+section:first-of-type{border-top:none}
+.in{max-width:1280px;margin:0 auto;padding:0 56px}
+.col{max-width:860px}
+.bleed{margin:0 auto;padding:0 56px}
+
+.label{font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:var(--g500);font-weight:500}
+h1,h2{font-family:var(--display);font-weight:300;letter-spacing:-.01em}
+h1{font-size:clamp(2.9rem,6.4vw,4.8rem);line-height:1.06}
+h2{font-size:clamp(2.05rem,3.9vw,3.1rem);line-height:1.14;margin-top:16px}
+p{margin-top:24px;color:var(--g800)}
+p.lead{font-size:1.32rem;line-height:1.62;color:var(--g700);margin-top:28px}
+strong{font-weight:500;color:var(--ink)}
+
+/* Fotografía. Son suyas, servidas desde su propio sitio; si alguna no
+   carga, su bloque desaparece y la maqueta aguanta sin huecos. */
+.shot{overflow:hidden;background:var(--bone)}
+.shot img{width:100%;height:100%;object-fit:cover}
+.wide{aspect-ratio:21/9;margin-top:60px}
+.trio{display:grid;gap:26px;margin-top:60px}
+@media(min-width:720px){.trio{grid-template-columns:repeat(3,1fr)}}
+/* Las fuentes son apaisadas: recortarlas a vertical las destroza. */
+.trio .shot{aspect-ratio:3/2}
+.duo{display:grid;gap:26px;margin-top:60px}
+@media(min-width:720px){.duo{grid-template-columns:1fr 1fr}}
+.duo .shot{aspect-ratio:4/3}
+.credito{margin-top:22px;font-size:.92rem;color:var(--g500);max-width:860px}
+
+/* Portada */
+.cover{padding:60px 0 0}
+.cover-logo img{height:28px;width:auto}
+.cover-meta{margin-top:112px}
+.cover h1{margin-top:20px}
+.cover-rule{margin-top:52px;padding-top:24px;border-top:1px solid var(--g200);
+  display:flex;flex-wrap:wrap;gap:12px 60px;font-size:13px;color:var(--g500);letter-spacing:.04em}
+
+/* Listas */
+ul{list-style:none;margin-top:28px}
+li{position:relative;padding-left:30px;margin-top:16px;color:var(--g800)}
+li::before{content:'';position:absolute;left:0;top:.78em;width:13px;height:1px;background:var(--g400)}
+
+/* Dos columnas */
+.pair{display:grid;gap:54px;margin-top:60px}
+@media(min-width:860px){.pair{grid-template-columns:1fr 1fr;gap:72px 80px}}
+.pair h3{font-family:var(--body);font-size:12px;font-weight:500;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--ink);margin-bottom:18px}
+.pair p{margin-top:0}
+
+/* Hallazgos */
+.hall{margin-top:60px;max-width:1000px}
+.hall-i{padding:34px 0;border-top:1px solid var(--g200);display:grid;gap:8px}
+.hall-i:last-child{border-bottom:1px solid var(--g200)}
+@media(min-width:720px){.hall-i{grid-template-columns:200px 1fr;gap:44px}}
+.hall-k{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--g500);padding-top:7px}
+.hall-v{color:var(--g800)}
+.hall-v b{font-weight:500;color:var(--ink)}
+
+/* Experiencias con foto */
+.exps{display:grid;gap:52px 32px;margin-top:64px}
+@media(min-width:640px){.exps{grid-template-columns:1fr 1fr}}
+@media(min-width:980px){.exps{grid-template-columns:repeat(3,1fr)}}
+.exp .shot{aspect-ratio:3/2}
+.exp-l{display:flex;justify-content:space-between;align-items:baseline;gap:18px;
+  margin-top:18px;padding-top:15px;border-top:1px solid var(--g300)}
+.exp-t{font-size:1rem;color:var(--ink);line-height:1.35}
+.exp-t small{display:block;font-size:.84rem;color:var(--g500);margin-top:3px;font-weight:300}
+.exp-p{font-family:var(--display);font-size:1.4rem;white-space:nowrap}
+
+/* Preguntas */
+.qa{margin-top:60px;max-width:900px}
+.qa-item{padding:40px 0;border-top:1px solid var(--g200)}
+.qa-item:last-child{border-bottom:1px solid var(--g200)}
+.qa-q{font-family:var(--display);font-size:1.65rem;line-height:1.26;color:var(--ink)}
+.qa-item p{margin-top:18px}
+
+/* Destacado */
+.nota{margin-top:56px;padding:40px 44px;background:var(--paper);
+  border-left:2px solid var(--ink);max-width:900px}
+.nota p:first-child{margin-top:0;font-size:1.14rem}
+
+/* Precio */
+.precio{background:var(--bone);border-top:none}
+.tabla{margin-top:60px;max-width:1000px}
+.fila{display:flex;justify-content:space-between;align-items:baseline;gap:44px;
+  padding:34px 0;border-top:1px solid var(--g300)}
+.fila:last-of-type{border-bottom:1px solid var(--g300)}
+.fila-t{color:var(--g800)}
+.fila-t b{font-weight:500;color:var(--ink);font-size:1.08rem}
+.fila-t small{display:block;font-size:.93rem;color:var(--g500);margin-top:5px;line-height:1.55}
+.fila-n{font-family:var(--display);font-size:2.3rem;line-height:1;white-space:nowrap;color:var(--ink)}
+.fila-n span{font-family:var(--body);font-size:.8rem;letter-spacing:.1em;color:var(--g500)}
+
+.pagos{margin-top:60px;display:grid;gap:44px;max-width:1000px}
+@media(min-width:760px){.pagos{grid-template-columns:repeat(3,1fr)}}
+.pago h4{font-family:var(--body);font-size:11px;font-weight:500;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--g500);margin-bottom:14px}
+.pago p{margin-top:0;font-size:1rem}
+.pie{margin-top:48px;font-size:.95rem;color:var(--g500);max-width:1000px}
+
+/* Plazos */
+.hitos{margin-top:60px;display:grid;gap:1px;background:var(--g200);max-width:1000px}
+.hito{background:var(--paper);padding:36px 40px;display:flex;gap:40px;align-items:baseline}
+.hito-n{font-family:var(--display);font-size:1.7rem;color:var(--g400);min-width:38px}
+.hito-c strong{display:block;margin-bottom:5px}
+.hito-c span{color:var(--g700)}
+
+/* Cierre */
+.cierre{background:var(--ink);color:var(--bone);border-top:none}
+.cierre .label{color:var(--g400)}
+.cierre h2{color:var(--bone)}
+.cierre p{color:var(--g300)}
+.cierre a{color:var(--bone);text-decoration:none;border-bottom:1px solid var(--g700)}
+/* strong hereda el color de tinta y sobre negro desaparece. */
+.cierre strong{color:var(--bone);font-weight:400}
+.firma{margin-top:54px;padding-top:28px;border-top:1px solid var(--g800);color:var(--g400)}
+.firma strong{color:var(--bone);font-weight:400;display:block;margin-bottom:5px;font-size:1.05rem}
+
+@media(max-width:900px){
+  .in,.bleed{padding:0 36px}
+  section{padding:84px 0}
+}
+@media(max-width:560px){
+  body{font-size:17px}
+  .in,.bleed{padding:0 24px}
+  section{padding:66px 0}
+  .cover{padding:36px 0 0}
+  .cover-meta{margin-top:68px}
+  .cover-rule{gap:10px 0;flex-direction:column}
+  .fila{flex-direction:column;gap:14px}
+  .fila-n{font-size:2rem}
+  .wide{aspect-ratio:4/3}
+  .trio .shot{aspect-ratio:3/2}
+  .nota{padding:30px 26px;margin-top:44px}
+  .hito{padding:28px 24px;gap:22px}
+  .hall-i{padding:28px 0}
+  .exps{gap:40px 20px}
+}
+
+@media print{
+  body{font-size:10.8pt;line-height:1.62}
+  /* Un apartado por página: así nada se parte a mitad de argumento. */
+  section{padding:0 0 10pt;break-after:page;break-inside:auto;border-top:none}
+  section:last-of-type{break-after:auto}
+  p,li,.credito,.pie,.exp-l,.pago,.fila,.hall-i,.hito,.qa-item,.nota{break-inside:avoid}
+  h1,h2,.qa-q,.label{break-after:avoid}
+  .in,.bleed{padding:0;max-width:none}
+  .cover{padding:0}
+  .cover-meta{margin-top:30pt}
+  .wide{margin-top:24pt}
+  .trio,.duo,.exps,.hall,.qa,.tabla,.hitos,.pagos{margin-top:18pt}
+  .hito{padding:14pt 16pt}
+  .qa-item{padding:16pt 0}
+  .hall-i{padding:14pt 0}
+  .fila{padding:16pt 0}
+  .precio{background:#fff;border-top:1px solid var(--g300)}
+  .cierre{background:#fff;color:var(--ink)}
+  /* En pantalla el cierre va sobre negro y strong se fuerza a hueso; al
+     imprimir el fondo es blanco, así que hay que devolverlo a tinta. */
+  .cierre h2,.cierre a,.cierre strong{color:var(--ink)}
+  .cierre p{color:var(--g700)}
+  .cierre .label{color:var(--g500)}
+  .firma{border-top-color:var(--g300);color:var(--g700)}
+  .firma strong{color:var(--ink)}
+  .exps{grid-template-columns:repeat(3,1fr)}
+  .trio{grid-template-columns:repeat(3,1fr)}
+  .duo{grid-template-columns:1fr 1fr}
+  .qa-item,.hito,.hall-i,.exp,.shot,.pago{break-inside:avoid}
+  @page{margin:15mm 14mm}
+}
+</style>
+</head>
+<body>
+
+<section class="cover">
+  <div class="in">
+    <div class="cover-logo">
+      <img src="../../../images/work/logo-dark.png" alt="WD Studio Agency" width="560" height="88">
+    </div>
+    <div class="cover-meta">
+      <p class="label">Project proposal</p>
+      <h1>Casa Collection<br>Tenerife</h1>
+      <p class="lead col">A new website for all four lines of business, managed by you, with direct bookings for both accommodation and experiences.</p>
+    </div>
+  </div>
+  <div class="bleed">
+    <figure class="shot wide">
+      <img src="https://le-de.cdn-website.com/e5a31d4f88f6406ea810cbbe60da3a3c/dms3rep/multi/opt/Eco+catamar%C3%A1n+avistamiento+de+ballenas+Tenerife+proa-1920w.jpg"
+           alt="Eco catamaran off the coast of Tenerife" loading="eager"
+           onerror="this.closest('.shot').remove()">
+    </figure>
+  </div>
+  <div class="in">
+    <div class="cover-rule">
+      <span>7 November 2026</span>
+      <span>Valid until 7 December 2026</span>
+      <span>WD Studio · Ref. CCT-01</span>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="in">
+    <p class="label">01 · The brief</p>
+    <h2 class="col">Four businesses on a website built for one.</h2>
+    <div class="col">
+      <p>Holiday rentals in Costa Adeje, Los Cristianos, Palm Mar and Callao Salvaje. Experiences, from boat trips to the Grand Tour of Teide. Real estate. And a fourth line, the one with the most future and the least visibility today: <strong>Owners</strong>, your B2B business.</p>
+      <p>That's four different audiences with four different journeys. Today they share a structure that doesn't tell them apart, and visitors have to work out for themselves which of the four they're in.</p>
+      <p>You asked for a more professional image, simple navigation and direct bookings. And a fourth thing, the one that shapes the technical design most: <strong>you want to manage it yourselves</strong>, with our support behind you when you need it.</p>
+    </div>
+  </div>
+
+  <div class="bleed">
+    <div class="duo">
+      <figure class="shot">
+        <img src="https://le-de.cdn-website.com/e5a31d4f88f6406ea810cbbe60da3a3c/dms3rep/multi/opt/excursiones-en-barco-tenerife-sur-1920w.jpg"
+             alt="Boat trip off the south of Tenerife" loading="lazy" onerror="this.closest('.shot').remove()">
+      </figure>
+      <figure class="shot">
+        <img src="https://le-de.cdn-website.com/e5a31d4f88f6406ea810cbbe60da3a3c/dms3rep/multi/opt/Teide-gran-tour-tenerife-1920w.webp"
+             alt="Mount Teide" loading="lazy" onerror="this.closest('.shot').remove()">
+      </figure>
+    </div>
+  </div>
+  <div class="in"><p class="credito">Your own photography. The material is there, and it's good.</p></div>
+</section>
+
+<section>
+  <div class="in">
+    <p class="label">02 · What we found on your site</p>
+    <h2 class="col">Before writing this, we studied it.</h2>
+    <div class="col">
+      <p>It isn't a badly made website. It's a website you've outgrown: it's built on a page builder, and that kind of tool holds up well for one business and starts to creak with four. This is what we found.</p>
+    </div>
+
+    <div class="hall">
+      <div class="hall-i">
+        <div class="hall-k">Platform</div>
+        <div class="hall-v"><b>Duda</b>, a page builder. It explains today's limits well: there's no dashboard designed for a portfolio of properties, and every new listing is manual work instead of a record.</div>
+      </div>
+      <div class="hall-i">
+        <div class="hall-k">Languages</div>
+        <div class="hall-v">Spanish, English and French. The translation is incomplete: the English version mixes labels in both languages. An English or French visitor who sees a half-translated site starts doubting the rest.</div>
+      </div>
+      <div class="hall-i">
+        <div class="hall-k">Booking accommodation</div>
+        <div class="hall-v">The "Choose your dates" search works, but <b>it takes the guest off your domain</b> to finish the booking. The design changes, the address changes, and right at the moment of paying the guest is no longer in your house. That's where people drop off.</div>
+      </div>
+      <div class="hall-i">
+        <div class="hall-k">Booking experiences</div>
+        <div class="hall-v">Nine experiences published, with their prices, and all nine with a button that says <b>"Book this experience"</b>. None of them books anything: the icon on all nine buttons is WhatsApp's.</div>
+      </div>
+      <div class="hall-i">
+        <div class="hall-k">Social proof</div>
+        <div class="hall-v">The four reviews on the home page quote Airbnb and Booking.com. Your reputation is built, but it's borrowed: it lives on the platforms, not on your domain.</div>
+      </div>
+      <div class="hall-i">
+        <div class="hall-k">Smoobu</div>
+        <div class="hall-v">It's credited in the footer. Good news: you've already solved the hard part, which is calendar sync. What's missing is connecting it to a website that matches it.</div>
+      </div>
+    </div>
+    <p class="credito">Information taken from casacollectiontenerife.com on 7 November 2026. If anything has changed since, tell us and we'll correct it.</p>
+  </div>
+</section>
+
+<section>
+  <div class="in">
+    <p class="label">03 · The gap</p>
+    <h2 class="col">Nine buttons that say "Book" and open WhatsApp.</h2>
+    <div class="col">
+      <p>Smoobu handles accommodation, not activities. That's why rentals work and experiences don't: there's no tool behind them, just a person answering messages.</p>
+      <p>This is what you have published today, with your prices and your photography:</p>
+    </div>
+  </div>
+
+  <div class="bleed">
+    <div class="exps">
+      <figure class="exp">
+        <div class="shot"><img loading="lazy" alt="Boat trip, whale watching"
+          src="https://le-de.cdn-website.com/e5a31d4f88f6406ea810cbbe60da3a3c/dms3rep/multi/opt/Eco+catamar%C3%A1n+avistamiento+de+ballenas+Tenerife+proa-1920w.jpg"
+          onerror="this.closest('.shot').remove()"></div>
+        <figcaption class="exp-l"><span class="exp-t">Boat Trip<small>3 h · Puerto Colón</small></span><span class="exp-p">€47</span></figcaption>
+      </figure>
+      <figure class="exp">
+        <div class="shot"><img loading="lazy" alt="Private charter in the south of Tenerife"
+          src="https://le-de.cdn-website.com/e5a31d4f88f6406ea810cbbe60da3a3c/dms3rep/multi/opt/excursiones-en-barco-tenerife-sur-1920w.jpg"
+          onerror="this.closest('.shot').remove()"></div>
+        <figcaption class="exp-l"><span class="exp-t">Private Charter<small>3 h · Puerto Colón</small></span><span class="exp-p">€910</span></figcaption>
+      </figure>
+      <figure class="exp">
+        <div class="shot"><img loading="lazy" alt="Diving with turtles in Los Cristianos"
+          src="https://le-de.cdn-website.com/e5a31d4f88f6406ea810cbbe60da3a3c/dms3rep/multi/opt/Atlantis_Diving_buceo-tenerife-3-1920w.webp"
+          onerror="this.closest('.shot').remove()"></div>
+        <figcaption class="exp-l"><span class="exp-t">Diving<small>Los Cristianos</small></span><span class="exp-p">€75</span></figcaption>
+      </figure>
+      <figure class="exp">
+        <div class="shot"><img loading="lazy" alt="Tandem paragliding over the coast"
+          src="https://le-de.cdn-website.com/e5a31d4f88f6406ea810cbbe60da3a3c/dms3rep/multi/opt/parapente-tenerife.sur-1-1920w.webp"
+          onerror="this.closest('.shot').remove()"></div>
+        <figcaption class="exp-l"><span class="exp-t">Paragliding<small>Taucho</small></span><span class="exp-p">€110</span></figcaption>
+      </figure>
+      <figure class="exp">
+        <div class="shot"><img loading="lazy" alt="Buggy route across volcanic terrain"
+          src="https://le-de.cdn-website.com/e5a31d4f88f6406ea810cbbe60da3a3c/dms3rep/multi/opt/top-buggy-adventure-tenerife-1-1920w.webp"
+          onerror="this.closest('.shot').remove()"></div>
+        <figcaption class="exp-l"><span class="exp-t">Buggy Routes<small>3 h · Las Chafiras</small></span><span class="exp-p">€195</span></figcaption>
+      </figure>
+      <figure class="exp">
+        <div class="shot"><img loading="lazy" alt="Snorkelling next to a sea turtle"
+          src="https://le-de.cdn-website.com/e5a31d4f88f6406ea810cbbe60da3a3c/dms3rep/multi/opt/diving-kayak-snorkel-tenerife-5-1920w.jpg"
+          onerror="this.closest('.shot').remove()"></div>
+        <figcaption class="exp-l"><span class="exp-t">Kayak and Snorkel<small>2 h · Los Cristianos</small></span><span class="exp-p">€45</span></figcaption>
+      </figure>
+      <figure class="exp">
+        <div class="shot"><img loading="lazy" alt="Jet ski off Adeje"
+          src="https://le-de.cdn-website.com/e5a31d4f88f6406ea810cbbe60da3a3c/dms3rep/multi/opt/Radikal-_Jet_Ski_Tenerife_adeje_canarias_moto_de_agua-1-1920w.jpg"
+          onerror="this.closest('.shot').remove()"></div>
+        <figcaption class="exp-l"><span class="exp-t">Jet Skis<small>Puerto Colón</small></span><span class="exp-p">€100</span></figcaption>
+      </figure>
+      <figure class="exp">
+        <div class="shot"><img loading="lazy" alt="Buggy at a viewpoint above the cliffs"
+          src="https://le-de.cdn-website.com/e5a31d4f88f6406ea810cbbe60da3a3c/dms3rep/multi/opt/xclusive-buggy-tenerife-sur-1920w.jpg"
+          onerror="this.closest('.shot').remove()"></div>
+        <figcaption class="exp-l"><span class="exp-t">Volcanic Buggy Adventure<small>3 h · Playa Paraíso</small></span><span class="exp-p">€210</span></figcaption>
+      </figure>
+      <figure class="exp">
+        <div class="shot"><img loading="lazy" alt="Mount Teide, Grand Tour"
+          src="https://le-de.cdn-website.com/e5a31d4f88f6406ea810cbbe60da3a3c/dms3rep/multi/opt/Teide-gran-tour-tenerife-1920w.webp"
+          onerror="this.closest('.shot').remove()"></div>
+        <figcaption class="exp-l"><span class="exp-t">Grand Tour · Teide, Masca and the North<small>8 h</small></span><span class="exp-p">€58</span></figcaption>
+      </figure>
+    </div>
+  </div>
+
+  <div class="in">
+    <p class="credito">Prices "from", taken from your website on 7 November 2026.</p>
+    <div class="col">
+      <p>A guest already staying with you is the easiest customer you'll ever have: they've already paid, they're already on the island and they want to spend more. But they decide at eleven at night, from the villa sofa, and at that moment nobody is answering WhatsApp.</p>
+    </div>
+    <div class="nota">
+      <p>The experiences booking engine is <strong>included</strong> in this proposal, not an extra. It's the difference between refreshing a website and adding a revenue line that takes payments on its own, at night and in three languages.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="in">
+    <p class="label">04 · What we build</p>
+    <h2 class="col">One website, one dashboard and two booking engines.</h2>
+
+    <div class="pair col">
+      <div>
+        <h3>The website</h3>
+        <p>Custom design, not a template. Four clear journeys from the home page: holiday rentals, experiences, real estate and owners. Listings with gallery, map and features. A sales search with filters. Spanish, English and French, properly translated.</p>
+      </div>
+      <div>
+        <h3>The dashboard</h3>
+        <p>Yours, with no technical knowledge needed. Add and remove properties, accommodation listings, experiences with their times and capacity, and the text, photos and prices of any page. Handed over with training and a recording.</p>
+      </div>
+      <div>
+        <h3>Accommodation bookings</h3>
+        <p>Built on your current Smoobu, but properly integrated: guests search, choose and pay without ever leaving your domain. Smoobu stays the only owner of the calendar, so your sync with Airbnb, Booking.com and Vrbo stays exactly as it is.</p>
+      </div>
+      <div>
+        <h3>Experience bookings</h3>
+        <p>Our own engine, because Smoobu doesn't cover them. A calendar per activity, capacity, time slots, seasons, adult and child prices, card payment and automatic email confirmation.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="bleed">
+    <div class="trio">
+      <figure class="shot">
+        <img loading="lazy" alt="Paragliding over the south coast"
+          src="https://le-de.cdn-website.com/e5a31d4f88f6406ea810cbbe60da3a3c/dms3rep/multi/opt/parapente-tenerife.sur-1-1920w.webp"
+          onerror="this.closest('.shot').remove()">
+      </figure>
+      <figure class="shot">
+        <img loading="lazy" alt="Diving with turtles"
+          src="https://le-de.cdn-website.com/e5a31d4f88f6406ea810cbbe60da3a3c/dms3rep/multi/opt/Atlantis_Diving_buceo-tenerife-3-1920w.webp"
+          onerror="this.closest('.shot').remove()">
+      </figure>
+      <figure class="shot">
+        <img loading="lazy" alt="Buggy at a viewpoint over the coast"
+          src="https://le-de.cdn-website.com/e5a31d4f88f6406ea810cbbe60da3a3c/dms3rep/multi/opt/xclusive-buggy-tenerife-sur-1920w.jpg"
+          onerror="this.closest('.shot').remove()">
+      </figure>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="in">
+    <p class="label">05 · Your questions</p>
+    <h2 class="col">Straight answers.</h2>
+
+    <div class="qa">
+      <div class="qa-item">
+        <p class="qa-q">Do you work with WordPress or another platform?</p>
+        <p>Yes, we work with WordPress when a project calls for it. For yours we don't recommend it.</p>
+        <p>Your case has four lines of business, property listings, bookings and payments. In WordPress that ends up as six or seven third-party plugins that update on their own; the day one of them breaks the calendar, the fix isn't in our hands. And along the way you'd have swapped one page builder for another system you don't fully control either.</p>
+        <p>We build custom websites with our own management dashboard on top: it's faster, there are no plugins to maintain, and whatever breaks, we fix, because we wrote it.</p>
+      </div>
+
+      <div class="qa-item">
+        <p class="qa-q">Could we manage the content, photos, prices and properties ourselves?</p>
+        <p>Yes, and it's the part we care most about getting right. You add and remove properties for sale with their photos, prices and features; edit accommodation listings; create and change experiences with times, capacity and seasons; and change the text, photos and prices of any page on the site. Without touching code and without asking us.</p>
+        <p>One difference from what you have now: properties and experiences stop being standalone pages and become records. Publishing a new villa will mean filling in a form, not laying out a page.</p>
+      </div>
+
+      <div class="qa-item">
+        <p class="qa-q">Do you offer technical support and ongoing maintenance?</p>
+        <p>Yes, for a monthly fee. It includes managed hosting, SSL certificate and domain; daily backups with restore; security updates and downtime monitoring; up to three hours a month of changes you request; support by email and WhatsApp with a reply within 24 working hours; and a quarterly report on visits and bookings.</p>
+        <p>Not included, and we say so to avoid surprises either way: new features, new sections and redesigns, which are quoted separately.</p>
+      </div>
+
+      <div class="qa-item">
+        <p class="qa-q">Would the booking engine integrate with your current Smoobu?</p>
+        <p>Yes. We integrate Smoobu's booking engine into the new site with our design on top, so guests book without leaving your website. Smoobu remains the only source of availability and prices: your policies, your payment methods and your sync with the platforms keep working exactly as they do now.</p>
+        <p>It's a deliberate choice: no system of ours should compete with your channel manager over which days are free.</p>
+      </div>
+
+      <div class="qa-item">
+        <p class="qa-q">What would it cost?</p>
+        <p>It's in the next section, with the payment terms and what's included.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="precio">
+  <div class="in">
+    <p class="label">06 · Investment</p>
+    <h2 class="col">One fixed-scope project, one monthly fee.</h2>
+
+    <div class="tabla">
+      <div class="fila">
+        <div class="fila-t">
+          <b>Complete project</b>
+          <small>New website with all four lines · Management dashboard · Spanish, English and French · Smoobu integration · Experiences booking engine</small>
+        </div>
+        <div class="fila-n">7,500 <span>EUR</span></div>
+      </div>
+      <div class="fila">
+        <div class="fila-t">
+          <b>Support and maintenance</b>
+          <small>The first three months are included at no cost. Billing starts from the fourth · Hosting, SSL and domain · Daily backups · Security and monitoring · 3 h/month of changes · Support by email and WhatsApp · Quarterly report</small>
+        </div>
+        <div class="fila-n">175 <span>EUR / MONTH</span></div>
+      </div>
+    </div>
+
+    <div class="pagos">
+      <div class="pago">
+        <h4>Payment terms</h4>
+        <p>40% on signing, 30% on design approval and 30% on delivery. Each payment is tied to something you already have in hand.</p>
+      </div>
+      <div class="pago">
+        <h4>If you prefer instalments</h4>
+        <p>There's flexibility: 50% on signing and the remaining 50% spread over up to six monthly payments, at no extra cost. You choose how many.</p>
+      </div>
+      <div class="pago">
+        <h4>How to pay</h4>
+        <p>Bank transfer or credit card, whichever suits you. An invoice for each payment.</p>
+      </div>
+    </div>
+
+    <p class="pie">Prices in euros (EUR), taxes not included. The first three months of support are included in the project: the €175 fee starts in the fourth month after launch and can be cancelled with 30 days' notice.</p>
+  </div>
+</section>
+
+<section>
+  <div class="in">
+    <p class="label">07 · Timeline</p>
+    <h2 class="col">Five to seven weeks.</h2>
+
+    <div class="hitos">
+      <div class="hito">
+        <div class="hito-n">01</div>
+        <div class="hito-c"><strong>Week 1 · Kick-off</strong><span>Content meeting, Smoobu access, inventory of properties and experiences, photography review. This is where we decide what's missing.</span></div>
+      </div>
+      <div class="hito">
+        <div class="hito-n">02</div>
+        <div class="hito-c"><strong>Weeks 2 and 3 · Design</strong><span>Home page and the four key templates: accommodation, property for sale, experience and owners. Approved before we code anything.</span></div>
+      </div>
+      <div class="hito">
+        <div class="hito-n">03</div>
+        <div class="hito-c"><strong>Weeks 3 to 6 · Development</strong><span>Website, dashboard, Smoobu integration and experiences engine. The three languages and payment testing happen here.</span></div>
+      </div>
+      <div class="hito">
+        <div class="hito-n">04</div>
+        <div class="hito-c"><strong>Week 7 · Delivery</strong><span>Final content upload, training on your own dashboard and launch. Two weeks of adjustments guaranteed at no cost.</span></div>
+      </div>
+    </div>
+
+    <p class="pie">The timeline starts once we have the content. If the property photos or text are delayed, the schedule moves with them: we'd rather say so now than explain it in week five.</p>
+  </div>
+</section>
+
+<section>
+  <div class="in">
+    <p class="label">08 · What we need from you</p>
+    <h2 class="col">Four details to finalise the quote precisely.</h2>
+    <div class="col">
+      <ul>
+        <li>How many villas you manage now, and how many properties for sale you usually have listed.</li>
+        <li>Which Smoobu plan you're on.</li>
+        <li>Whether the languages are still Spanish, English and French, or you'd like to add German.</li>
+        <li>Whether you have brand guidelines, or they need work.</li>
+      </ul>
+      <p>With that, we confirm the figure above or adjust it. We'd rather adjust it before signing than discover it halfway through the project.</p>
+    </div>
+  </div>
+</section>
+
+<section class="cierre">
+  <div class="in">
+    <p class="label">09 · Next step</p>
+    <h2 class="col">Half an hour and we're done.</h2>
+    <div class="col">
+      <p>A thirty-minute call is enough to settle anything outstanding and set a start date.</p>
+      <p><strong>Next week my calendar is open: any day, any time.</strong> I'll be in Paris, so the Canaries are one hour behind me, and I'll fit around whatever suits you, early or late. Tell us when and we'll be there.</p>
+      <p>If you'd rather start in writing, reply to the email with the four details from the previous section and we'll send back the confirmed quote.</p>
+      <div class="firma">
+        <strong>Diego Larios · WD Studio</strong>
+        <a href="mailto:diego@wdstudio.agency">diego@wdstudio.agency</a> · +52 312 241 1693<br>
+        <a href="https://wdstudio.agency">wdstudio.agency</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>
