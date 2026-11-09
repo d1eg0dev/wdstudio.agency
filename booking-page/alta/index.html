@@ -213,7 +213,7 @@ pre{background:var(--head);color:var(--head-txt);border:1px solid var(--line);pa
           <option value="en" data-en="English">Inglés</option>
         </select></label>
       <label><span data-en="Currency you charge in">Moneda en que cobras</span>
-        <select name="cur"><option>USD</option><option>MXN</option><option>EUR</option><option>CAD</option></select></label>
+        <select name="cur"><option>USD</option><option>MXN</option><option>EUR</option><option>CAD</option><option>GBP</option><option>AUD</option><option>SGD</option></select></label>
     </div>
   </fieldset>
 
@@ -607,7 +607,7 @@ function build(){
     defaultLanguage: langs.includes(val('deflang')) ? val('deflang') : langs[0],
     unit: val('unit') || 'night',
     currency: val('cur'),
-    locale: val('cur') === 'MXN' ? 'es-MX' : 'en-US',
+    locale: ({ MXN: 'es-MX', GBP: 'en-GB', AUD: 'en-AU', SGD: 'en-SG' })[val('cur')] || 'en-US',
     rates: { defaultNightly: num('r_def'), defaultMinNights: parseInt(val('r_min')) || 1, seasons: readBlocks('season') },
     fees: { cleaning: num('f_clean'), petPerNight: isRent() ? 0 : num('f_pet'),
             maxPets: isRent() ? 0 : (parseInt(val('f_maxpet')) || 0), taxPercent: num('f_tax') },
